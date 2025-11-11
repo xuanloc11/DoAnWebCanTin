@@ -1,0 +1,10 @@
+<Context>
+    <Resource name="jdbc/cantinDS"
+              auth="Container"
+              type="javax.sql.DataSource"
+              factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+              driverClassName="com.mysql.cj.jdbc.Driver"
+              url="jdbc:mysql://localhost:3306/cantin?useSSL=false&characterEncoding=UTF-8"
+              username="root" password="12345" maxActive="20" maxIdle="10" minIdle="2"
+              maxWait="10000"/>
+</Context>

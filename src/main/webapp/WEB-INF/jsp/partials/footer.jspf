@@ -1,0 +1,31 @@
+<%-- Footer partial: site footer links and meta --%>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<footer class="site-footer">
+    <div class="container footer-inner">
+        <div class="footer-brand">
+            <img class="brand-logo" src="${pageContext.request.contextPath}/assets/img/Hcmute-Logo-Vector.svg-.png" alt="HCMUTE logo" style="height: 150px;width: 150px;"/>
+            <span class="brand-text">Căn tin ĐHSPKT</span>
+            <p class="muted">Chúng tôi luôn đặt dinh dưỡng, giá cả phải chăng và hương vị lên hàng đầu trong thực đơn để học sinh có thể tập trung vào việc học</p>
+        </div>
+        <div class="footer-links">
+            <div>
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="${pageContext.request.contextPath}/#menu">Menu</a></li>
+                    <li><a href="${pageContext.request.contextPath}/#about">Về chúng tôi</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Help</h4>
+                <ul>
+                    <li><a href="${pageContext.request.contextPath}/#contact">Liên Hệ</a></li>
+                    <li><a href="#">Allergies</a></li>
+                    <li><a href="#">FAQs</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-meta">
+            <p class="muted">©<span id="year"><script>document.getElementById('year').innerText = new Date().getFullYear()</script></span> Căn tin - ĐHSPKT. All rights reserved.</p>
+        </div>
+    </div>
+</footer>

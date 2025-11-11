@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+
+    <!-- Admin management -->
+    <servlet>
+        <servlet-name>ManagementServlet</servlet-name>
+        <servlet-class>servlet.doanweb.Managment</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ManagementServlet</servlet-name>
+        <url-pattern>/admin/management</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManagementServlet</servlet-name>
+        <url-pattern>/admin</url-pattern>
+    </servlet-mapping>
+
+    <!-- Admin CRUD: Add/Edit/Delete MonAn -->
+    <servlet>
+        <servlet-name>AddMonAnServlet</servlet-name>
+        <servlet-class>servlet.doanweb.AddMonAnServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddMonAnServlet</servlet-name>
+        <url-pattern>/admin/monan/add</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EditMonAnServlet</servlet-name>
+        <servlet-class>servlet.doanweb.EditMonAnServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditMonAnServlet</servlet-name>
+        <url-pattern>/admin/monan/edit</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeleteMonAnServlet</servlet-name>
+        <servlet-class>servlet.doanweb.DeleteMonAnServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteMonAnServlet</servlet-name>
+        <url-pattern>/admin/monan/delete</url-pattern>
+    </servlet-mapping>
+
+    <!-- Auth: Login/Logout -->
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>servlet.doanweb.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>servlet.doanweb.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
+    <!-- Explicit mappings for Menu module -->
+    <servlet>
+        <servlet-name>MenuServlet</servlet-name>
+        <servlet-class>servlet.doanweb.MenuServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MenuServlet</servlet-name>
+        <url-pattern>/admin/menu</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AddMenuServlet</servlet-name>
+        <servlet-class>servlet.doanweb.AddMenuServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddMenuServlet</servlet-name>
+        <url-pattern>/admin/menu/add</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EditMenuServlet</servlet-name>
+        <servlet-class>servlet.doanweb.EditMenuServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditMenuServlet</servlet-name>
+        <url-pattern>/admin/menu/edit</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeleteMenuServlet</servlet-name>
+        <servlet-class>servlet.doanweb.DeleteMenuServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteMenuServlet</servlet-name>
+        <url-pattern>/admin/menu/delete</url-pattern>
+    </servlet-mapping>
+
+    <!-- Explicit mappings for Orders module -->
+    <servlet>
+        <servlet-name>OrderServlet</servlet-name>
+        <servlet-class>servlet.doanweb.OrderServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OrderServlet</servlet-name>
+        <url-pattern>/admin/orders</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AddOrderServlet</servlet-name>
+        <servlet-class>servlet.doanweb.AddOrderServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddOrderServlet</servlet-name>
+        <url-pattern>/admin/orders/add</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EditOrderServlet</servlet-name>
+        <servlet-class>servlet.doanweb.EditOrderServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditOrderServlet</servlet-name>
+        <url-pattern>/admin/orders/edit</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeleteOrderServlet</servlet-name>
+        <servlet-class>servlet.doanweb.DeleteOrderServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteOrderServlet</servlet-name>
+        <url-pattern>/admin/orders/delete</url-pattern>
+    </servlet-mapping>
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+</web-app>
