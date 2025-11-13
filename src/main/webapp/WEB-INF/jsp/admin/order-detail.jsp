@@ -54,7 +54,19 @@
             </div>
           </div>
           <div class="row"><div class="label">Thời gian đặt</div><div><fmt:formatDate value="${order.thoiGianDat}" pattern="dd/MM/yyyy HH:mm" /></div></div>
-          <div class="row"><div class="label">Người dùng (ID)</div><div>${order.userId}</div></div>
+          <div class="row"><div class="label">Người dùng</div>
+            <div>
+              <c:choose>
+                <c:when test="${not empty user}">
+                  <strong><c:out value="${user.hoTen}"/></strong>
+                  <span class="muted" style="margin-left:6px">(${user.donVi})</span>
+                </c:when>
+                <c:otherwise>
+                  ID: ${order.userId}
+                </c:otherwise>
+              </c:choose>
+            </div>
+          </div>
           <div class="row"><div class="label">Quầy hàng</div><div><c:out value="${quay != null ? quay.tenQuayHang : order.quayHangId}"/></div></div>
           <div class="row"><div class="label">Tổng tiền (DB)</div><div><fmt:formatNumber value="${order.tongTien}" pattern="#,##0"/> ₫</div></div>
           <div class="row"><div class="label">Tổng tính lại</div><div><fmt:formatNumber value="${calcTotal}" pattern="#,##0"/> ₫</div></div>

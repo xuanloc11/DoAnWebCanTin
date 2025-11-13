@@ -17,6 +17,8 @@
     .field input, .field select, .field textarea{ padding:10px 12px; border:1px solid var(--border); border-radius:10px; font:inherit; }
     .field textarea{ min-height: 110px; resize: vertical; }
     .actions{ display:flex; gap:8px; margin-top:12px; }
+    /* CKEditor editable area height */
+    .ck-editor__editable_inline { min-height: 160px; }
   </style>
 </head>
 <body>
@@ -111,5 +113,25 @@
   </div>
 </div>
 <script src="${pageContext.request.contextPath}/assets/js/admin.js?v=20251022"></script>
+<!-- CKEditor 5 CDN and initialization -->
+<script src="https://cdn.ckeditor.com/ckeditor5/39.0.0/classic/ckeditor.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var moTaTextarea = document.getElementById('mo_ta');
+    if (!moTaTextarea || typeof ClassicEditor === 'undefined') return;
+    ClassicEditor.create(moTaTextarea, {
+      toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', 'undo', 'redo' ]
+    }).then(function (editor) {
+      var form = moTaTextarea.closest('form');
+      if (form) {
+        form.addEventListener('submit', function () {
+          moTaTextarea.value = editor.getData();
+        });
+      }
+    }).catch(function (error) {
+      console.error('CKEditor init error:', error);
+    });
+  });
+</script>
 </body>
 </html>

@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/home.css?v=20251021" />
 </head>
 <body data-context="${pageContext.request.contextPath}">
-<%@ include file="/WEB-INF/jsp/partials/header.jspf" %>
+<%@ include file="/WEB-INF/jsp/partials/header-backup.jspf" %>
 
 <%
     // Fetch latest foods from DB (limit 9) and expose to JSTL as request attribute
@@ -342,6 +342,6 @@
   });
 })();
 </script>
-<%@ include file="/WEB-INF/jsp/partials/footer.jspf" %>
+<%@ include file="/WEB-INF/jsp/partials/footer-backup.jspf" %>
 </body>
 </html>

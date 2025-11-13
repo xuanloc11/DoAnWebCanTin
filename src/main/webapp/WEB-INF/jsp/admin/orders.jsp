@@ -32,9 +32,7 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th class="col-id">ID</th>
-                                    <th>User ID</th>
-                                    <th>Quầy hàng ID</th>
+                                    <th class="col-id">ID đơn hàng</th>
                                     <th>Tổng tiền</th>
                                     <th>Thời gian đặt</th>
                                     <th>Trạng thái</th>
@@ -46,8 +44,6 @@
                                 <c:forEach var="o" items="${orders}">
                                     <tr>
                                         <td class="col-id">${o.orderId}</td>
-                                        <td>${o.userId}</td>
-                                        <td>${o.quayHangId}</td>
                                         <td><fmt:formatNumber value="${o.tongTien}" type="number" groupingUsed="true" maxFractionDigits="0"/> VNĐ</td>
                                         <td><fmt:formatDate value="${o.thoiGianDat}" pattern="dd/MM/yyyy HH:mm" /></td>
                                         <td>

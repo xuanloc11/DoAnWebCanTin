@@ -18,6 +18,10 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 @WebServlet(name = "CheckoutServlet", urlPatterns = "/checkout")
 public class CheckoutServlet extends HttpServlet {
@@ -42,33 +46,68 @@ public class CheckoutServlet extends HttpServlet {
         User auth = (User) session.getAttribute("authUser");
         if (cart == null || cart.getItems().isEmpty()) { resp.sendRedirect(req.getContextPath()+"/cart"); return; }
         if (auth == null) { resp.sendRedirect(req.getContextPath()+"/login?next=/checkout"); return; }
-        Order o = new Order();
-        o.setUserId(auth.getUserId());
-        // Derive quayHangId from first cart item to satisfy FK if needed
-        int derivedQh = 0;
-        for (CartItem ci : cart.getItems().values()) { derivedQh = ci.getMonAn().getQuayHangId(); break; }
-        o.setQuayHangId(derivedQh);
-        o.setTongTien(cart.getTotalPrice());
-        o.setThoiGianDat(Timestamp.from(Instant.now()));
-        o.setTrangThaiOrder("MOI_DAT");
-        o.setGhiChu(req.getParameter("ghi_chu"));
-        int newOrderId = orderService.create(o);
-        if (newOrderId > 0) {
-            for (CartItem ci : cart.getItems().values()) {
+
+        // Group cart items by stall (quayHangId)
+        Map<Integer, List<CartItem>> groups = new LinkedHashMap<>();
+        for (CartItem ci : cart.getItems().values()) {
+            int qh = (ci.getMonAn() != null) ? ci.getMonAn().getQuayHangId() : 0;
+            groups.computeIfAbsent(qh, k -> new ArrayList<>()).add(ci);
+        }
+
+        String ghiChu = req.getParameter("ghi_chu");
+        Timestamp now = Timestamp.from(Instant.now());
+        List<Integer> createdOrderIds = new ArrayList<>();
+        boolean failed = false;
+
+        // Create orders per stall
+        for (Map.Entry<Integer, List<CartItem>> e : groups.entrySet()) {
+            if (failed) break;
+            int quayHangId = e.getKey();
+            List<CartItem> items = e.getValue();
+
+            BigDecimal groupTotal = BigDecimal.ZERO;
+            for (CartItem ci : items) {
+                BigDecimal itemTotal = ci.getTongGia();
+                groupTotal = groupTotal.add(itemTotal == null ? BigDecimal.ZERO : itemTotal);
+            }
+
+            Order o = new Order();
+            o.setUserId(auth.getUserId());
+            o.setQuayHangId(quayHangId);
+            o.setTongTien(groupTotal);
+            o.setThoiGianDat(now);
+            o.setTrangThaiOrder("MOI_DAT");
+            o.setGhiChu(ghiChu);
+
+            int newOrderId = orderService.create(o);
+            if (newOrderId <= 0) { failed = true; break; }
+            createdOrderIds.add(newOrderId);
+
+            for (CartItem ci : items) {
                 OrderItem oi = new OrderItem();
                 oi.setOrderId(newOrderId);
                 oi.setMonAnId(ci.getMonAn().getMonAnId());
                 oi.setSoLuong(ci.getSoLuong());
-                BigDecimal price = ci.getMonAn().getGia() == null ? BigDecimal.ZERO : ci.getMonAn().getGia();
+                BigDecimal price = (ci.getMonAn().getGia() == null) ? BigDecimal.ZERO : ci.getMonAn().getGia();
                 oi.setDonGiaMonAnLucDat(price);
-                orderItemService.create(oi);
+                int itemId = orderItemService.create(oi);
+                if (itemId <= 0) { failed = true; break; }
             }
-            // Clear entire cart
-            session.removeAttribute("cart");
-            resp.sendRedirect(req.getContextPath() + "/?order=success");
-        } else {
-            resp.sendRedirect(req.getContextPath() + "/checkout?error=1");
         }
+
+        if (failed) {
+            // Best-effort rollback
+            for (Integer oid : createdOrderIds) {
+                try { orderItemService.clearOrder(oid); } catch (Exception ignored) {}
+                try { orderService.delete(oid); } catch (Exception ignored) {}
+            }
+            resp.sendRedirect(req.getContextPath() + "/checkout?error=1");
+            return;
+        }
+
+        // All created OK
+        session.removeAttribute("cart");
+        resp.sendRedirect(req.getContextPath() + "/?order=success");
     }
 
     private int parseInt(String v){ try { return Integer.parseInt(v); } catch(Exception e){ return 0; } }

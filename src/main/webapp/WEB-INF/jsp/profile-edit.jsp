@@ -15,7 +15,7 @@
   </style>
 </head>
 <body>
-<%@ include file="/WEB-INF/jsp/partials/header.jspf" %>
+<%@ include file="/WEB-INF/jsp/partials/header-backup.jspf" %>
 <div class="wrap">
   <div class="card">
     <h1>Chỉnh sửa thông tin cá nhân</h1>

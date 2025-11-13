@@ -15,6 +15,7 @@ import service.MonAnService;
 import service.OrderItemService;
 import service.OrderService;
 import service.QuayHangService;
+import service.UserService;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -28,6 +29,7 @@ public class AdminOrderDetailServlet extends HttpServlet {
     private final OrderItemService orderItemService = new OrderItemService();
     private final MonAnService monAnService = new MonAnService();
     private final QuayHangService quayHangService = new QuayHangService();
+    private final UserService userService = new UserService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -61,13 +63,16 @@ public class AdminOrderDetailServlet extends HttpServlet {
         }
         QuayHang quay = null;
         try { quay = quayHangService.get(order.getQuayHangId()); } catch (Exception ignored) {}
+        // Load user for display
+        User user = null;
+        try { user = userService.get(order.getUserId()); } catch (Exception ignored) {}
         req.setAttribute("order", order);
         req.setAttribute("items", items);
         req.setAttribute("monMap", monMap);
         req.setAttribute("lineTotals", lineTotals);
         req.setAttribute("calcTotal", calcTotal);
         req.setAttribute("quay", quay);
+        req.setAttribute("user", user);
         req.getRequestDispatcher("/WEB-INF/jsp/admin/order-detail.jsp").forward(req, resp);
     }
 }
-

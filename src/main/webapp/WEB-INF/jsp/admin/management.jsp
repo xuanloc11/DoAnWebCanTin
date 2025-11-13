@@ -10,7 +10,6 @@
     <title>Admin - Quản lý món ăn</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
-    <!-- Existing styles (kept last so they can override Bootstrap if needed) -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/home.css?v=20251021" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin.css?v=20251107" />
 </head>

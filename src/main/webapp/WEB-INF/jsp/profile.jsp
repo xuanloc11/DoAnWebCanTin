@@ -25,11 +25,12 @@
     .st-DANG_GIAO{ background:#bfdbfe; color:#1e3a8a; }
     .st-DA_GIAO{ background:#e0f2fe; color:#0369a1; }
     .st-CANCELLED{ background:#fee2e2; color:#b91c1c; }
+    .st-MIXED{ background:#ede9fe; color:#5b21b6; }
     .note{ font-size:13px; }
   </style>
 </head>
 <body>
-<%@ include file="/WEB-INF/jsp/partials/header.jspf" %>
+<%@ include file="/WEB-INF/jsp/partials/header-backup.jspf" %>
 <div class="profile-shell">
   <nav class="profile-nav" aria-label="Profile sections">
     <a href="#info" class="active">🧑 Thông tin cá nhân</a>
@@ -64,35 +65,38 @@
     <section id="orders" class="profile-card" aria-labelledby="orders-title" style="margin-top:28px;">
       <h1 id="orders-title">Đơn hàng của tôi</h1>
       <c:choose>
-        <c:when test="${not empty orders}">
+        <c:when test="${not empty groupedOrders}">
           <table>
             <thead>
               <tr>
-                <th style="width:90px">#ID</th>
-                <th>Quầy</th>
+                <th style="width:90px">#Đơn</th>
+                <th>Quầy liên quan</th>
                 <th>Thời gian</th>
                 <th>Tổng tiền</th>
                 <th>Trạng thái</th>
               </tr>
             </thead>
             <tbody>
-              <c:forEach var="o" items="${orders}">
+              <c:forEach var="g" items="${groupedOrders}">
                 <tr>
                   <td>
-                    <a href="${pageContext.request.contextPath}/profile/order?id=${o.orderId}">${o.orderId}</a>
+                    <a href="${pageContext.request.contextPath}/profile/order?id=${g.primaryOrderId}">
+                      <c:out value="${g.orderIds}"/>
+                    </a>
                   </td>
-                  <td><c:out value="${empty quayMap ? o.quayHangId : (quayMap[o.quayHangId] != null ? quayMap[o.quayHangId] : o.quayHangId)}"/></td>
-                  <td><fmt:formatDate value="${o.thoiGianDat}" pattern="dd/MM/yyyy HH:mm"/></td>
-                  <td><fmt:formatNumber value="${o.tongTien}" type="number" groupingUsed="true" maxFractionDigits="0"/> VNĐ</td>
+                  <td><c:out value="${g.stallsDisplay}"/></td>
+                  <td><fmt:formatDate value="${g.thoiGianDat}" pattern="dd/MM/yyyy HH:mm"/></td>
+                  <td><fmt:formatNumber value="${g.tongTien}" type="number" groupingUsed="true" maxFractionDigits="0"/> VNĐ</td>
                   <td>
-                    <span class="status-chip st-${o.trangThaiOrder}">
+                    <span class="status-chip st-${g.trangThaiTong}">
                       <c:choose>
-                        <c:when test="${o.trangThaiOrder eq 'MOI_DAT'}">Mới đặt</c:when>
-                        <c:when test="${o.trangThaiOrder eq 'DA_XAC_NHAN'}">Đã xác nhận</c:when>
-                        <c:when test="${o.trangThaiOrder eq 'DANG_GIAO'}">Đang giao</c:when>
-                        <c:when test="${o.trangThaiOrder eq 'DA_GIAO'}">Đã giao</c:when>
-                        <c:when test="${o.trangThaiOrder eq 'CANCELLED'}">Đã hủy</c:when>
-                        <c:otherwise><c:out value="${o.trangThaiOrder}"/></c:otherwise>
+                        <c:when test="${g.trangThaiTong eq 'MOI_DAT'}">Mới đặt</c:when>
+                        <c:when test="${g.trangThaiTong eq 'DA_XAC_NHAN'}">Đã xác nhận</c:when>
+                        <c:when test="${g.trangThaiTong eq 'DANG_GIAO'}">Đang giao</c:when>
+                        <c:when test="${g.trangThaiTong eq 'DA_GIAO'}">Đã giao</c:when>
+                        <c:when test="${g.trangThaiTong eq 'CANCELLED'}">Đã hủy</c:when>
+                        <c:when test="${g.trangThaiTong eq 'MIXED'}">Nhiều trạng thái</c:when>
+                        <c:otherwise><c:out value="${g.trangThaiTong}"/></c:otherwise>
                       </c:choose>
                     </span>
                   </td>
@@ -100,11 +104,51 @@
               </c:forEach>
             </tbody>
           </table>
+          <p class="note muted" style="margin-top:8px;">Gợi ý: Nhấp vào mã đơn để xem chi tiết; nếu đơn gồm nhiều quầy, trang chi tiết sẽ hiển thị theo từng quầy.</p>
         </c:when>
         <c:otherwise>
           <p class="muted">Bạn chưa có đơn hàng nào.</p>
         </c:otherwise>
       </c:choose>
+
+      <!-- Keep the legacy per-order table hidden (can be toggled for debug) -->
+      <c:if test="false">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:90px">#ID</th>
+              <th>Quầy</th>
+              <th>Thời gian</th>
+              <th>Tổng tiền</th>
+              <th>Trạng thái</th>
+            </tr>
+          </thead>
+          <tbody>
+            <c:forEach var="o" items="${orders}">
+              <tr>
+                <td>
+                  <a href="${pageContext.request.contextPath}/profile/order?id=${o.orderId}">${o.orderId}</a>
+                </td>
+                <td><c:out value="${empty quayMap ? o.quayHangId : (quayMap[o.quayHangId] != null ? quayMap[o.quayHangId] : o.quayHangId)}"/></td>
+                <td><fmt:formatDate value="${o.thoiGianDat}" pattern="dd/MM/yyyy HH:mm"/></td>
+                <td><fmt:formatNumber value="${o.tongTien}" type="number" groupingUsed="true" maxFractionDigits="0"/> VNĐ</td>
+                <td>
+                  <span class="status-chip st-${o.trangThaiOrder}">
+                    <c:choose>
+                      <c:when test="${o.trangThaiOrder eq 'MOI_DAT'}">Mới đặt</c:when>
+                      <c:when test="${o.trangThaiOrder eq 'DA_XAC_NHAN'}">Đã xác nhận</c:when>
+                      <c:when test="${o.trangThaiOrder eq 'DANG_GIAO'}">Đang giao</c:when>
+                      <c:when test="${o.trangThaiOrder eq 'DA_GIAO'}">Đã giao</c:when>
+                      <c:when test="${o.trangThaiOrder eq 'CANCELLED'}">Đã hủy</c:when>
+                      <c:otherwise><c:out value="${o.trangThaiOrder}"/></c:otherwise>
+                    </c:choose>
+                  </span>
+                </td>
+              </tr>
+            </c:forEach>
+          </tbody>
+        </table>
+      </c:if>
     </section>
   </div>
 </div>
