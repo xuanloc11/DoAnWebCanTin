@@ -1,0 +1,115 @@
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<c:set var="CTX" value="${pageContext.request.contextPath}" />
+
+<footer class="footer-section fix black-bg">
+    <div class="container">
+        <div class="footer-widget-wrapper">
+            <div class="row g-4">
+                <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6 wow fadeInUp" data-wow-delay=".2s">
+                    <div class="single-footer-widget pt-0 pb-0">
+                        <div class="widget-head">
+                            <a href="${CTX}/">
+                                <img src="${CTX}/assets/img/logo/logo-white.png" alt="logo-img">
+                            </a>
+                        </div>
+                        <div class="footer-content">
+                            <p class="fs-16 white-clr opacity-75 mb-xl-3 mb-2">
+                                1487 Rocky Horse Carre 1487Rocky
+                                Arlington, TX 16819 United
+                            </p>
+                            <h5 class="text-white mb-lg-3 mb-2">1800 6565 222</h5>
+                            <p class="fs-16 white-clr opacity-75">info@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-sm-center col-xl-2 col-lg-2 col-md-5 col-sm-6 wow fadeInUp"
+                     data-wow-delay=".4s">
+                    <div class="single-footer-widget pt-0 pb-0">
+                        <h5 class="widget-head text-white text-uppercase fs-20 white-clr fw-semibold">
+                            Quick Links
+                        </h5>
+                        <ul class="important-link d-grid gap-sm-2 gap-1">
+                            <li>
+                                <a href="#" class="text-white opacity-75 fw-light link-effect">How It
+                                    Works</a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-white opacity-75 fw-light link-effect">Get to know
+                                    us</a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-white opacity-75 fw-light link-effect">Pricing Packages</a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-white opacity-75 fw-light link-effect">Contact
+                                    Us</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-lg-center col-xl-3 col-lg-3 col-md-5 col-sm-6 wow fadeInUp"
+                     data-wow-delay=".3s">
+                    <div class="single-footer-widget pt-0 pb-0">
+                        <div class="widget-head text-white text-uppercase fs-20 white-clr fw-semibold">
+                            Information
+                        </div>
+                        <ul class="important-link d-grid gap-sm-2 gap-1">
+                            <li>
+                                <a href="#" class="text-white opacity-75 fw-light link-effect">Help
+                                    Center</a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-white opacity-75 fw-light link-effect">Refund
+                                    Condition</a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-white opacity-75 fw-light link-effect">Become an Affiliate</a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-white opacity-75 fw-light link-effect">Cash Back
+                                    Policy</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-sm-center col-xl-4 col-lg-4 col-md-5 col-sm-6 wow fadeInUp"
+                     data-wow-delay=".5s">
+                    <div class="single-footer-widget pt-0 pb-0">
+                        <div class="widget-head text-white text-uppercase fs-20 white-clr fw-semibold">
+                            Subscribe
+                        </div>
+                        <p class="mb-4 fs-16 white-clr opacity-75">
+                            When an unknown printer took a galley of
+                            type and scrambled it to make
+                        </p>
+                        <form action="#" class="adjust-form style1 d-flex flex-column gap-2 align-items-center">
+                            <input type="text" placeholder="Type e-mail"
+                                   class="w-100 fs-14 text-white bg-1F1F1F border-0 rounded-2 py-3 px-3">
+                            <button type="submit" class="theme-btn theme3-btn w-100 theme-border d-center">
+                                Subscribe Now
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div
+                class="footer-bottom d-flex align-items-center justify-content-sm-between justify-content-center flex-wrap gap-2 fs-16 text-center">
+            <p class="fs-16 text3-clr">Copyright &copy; 2025 <a href="${CTX}/" class="theme-clr">mozzoa</a></p>
+            <div class="d-flex align-items-center gap-4">
+                <a href="javascript:void(0)">
+                    <i class="fa-brands fa-facebook-f fs-18 text-white"></i>
+                </a>
+                <a href="javascript:void(0)">
+                    <i class="fa-brands fa-twitter fs-18 text-white"></i>
+                </a>
+                <a href="javascript:void(0)">
+                    <i class="fa-brands fa-instagram fs-18 text-white"></i>
+                </a>
+                <a href="javascript:void(0)">
+                    <i class="fa-brands fa-pinterest-p fs-18 text-white"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>

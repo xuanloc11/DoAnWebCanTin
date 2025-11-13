@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--<< Header Area >>-->
+
+<head>
+    <!-- ========== Meta Tags ========== -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="authorNmaeHere">
+    <meta name="description" content="Online Food Order HTML Template">
+    <!-- ======== Page title ============ -->
+    <title>Online Food Order HTML Template</title>
+    <!--<< Favcion >>-->
+    <link rel="shortcut icon" href="assets/img/logo/favicon.png">
+    <!--<< Bootstrap min.css >>-->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!--<< All Min Css >>-->
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <!--<< Animate.css >>-->
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <!--<< Magnific Popup.css >>-->
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <!--<< MeanMenu.css >>-->
+    <link rel="stylesheet" href="assets/css/meanmenu.css">
+    <!--<< Swiper Bundle.css >>-->
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <!--<< Nice Select.css >>-->
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <!--<< Expose Font.css >>-->
+    <link rel="stylesheet" href="assets/css/expose.css">
+    <!--<< Main.css >>-->
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+
+<body class="body-bg">
+
+    <!-- Back To Top start -->
+    <!-- <button id="back-top" class="back-to-top">
+            <i class="fa-regular fa-arrow-up"></i>
+        </button> -->
+
+    <!-- Preloader Start -->
+    <div id="preloader" class="preloader">
+        <div class="animation-preloader">
+            <div class="spinner">
+            </div>
+            <div class="txt-loading">
+                <span data-text-preloader="M" class="letters-loading">
+                    M
+                </span>
+                <span data-text-preloader="O" class="letters-loading">
+                    O
+                </span>
+                <span data-text-preloader="Z" class="letters-loading">
+                    Z
+                </span>
+                <span data-text-preloader="Z" class="letters-loading">
+                    Z
+                </span>
+                <span data-text-preloader="O" class="letters-loading">
+                    O
+                </span>
+            </div>
+            <p class="text-center">Loading</p>
+        </div>
+        <div class="loader">
+            <div class="row">
+                <div class="col-3 loader-section section-left">
+                    <div class="bg"></div>
+                </div>
+                <div class="col-3 loader-section section-left">
+                    <div class="bg"></div>
+                </div>
+                <div class="col-3 loader-section section-right">
+                    <div class="bg"></div>
+                </div>
+                <div class="col-3 loader-section section-right">
+                    <div class="bg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Offcanvas Area Start -->
+    <div class="fix-area">
+        <div class="offcanvas__info">
+            <div class="offcanvas__wrapper">
+                <div class="offcanvas__content">
+                    <div class="offcanvas__top mb-4 d-flex justify-content-between align-items-center">
+                        <div class="offcanvas__logo">
+                            <a href="index.html">
+                                <img src="assets/img/logo/logo-white.png" alt="logo-img">
+                            </a>
+                        </div>
+                        <div class="offcanvas__close">
+                            <button>
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mobile-menu fix mb-3"></div>
+                    <div class="offcanvas__contact">
+                        <div class="mb-4 d-xl-block d-none">
+                            <h4 class="mb-2">Demo</h4>
+                            <a href="index.html" class="w-75 d-center">
+                                <img src="assets/img/hero/home1.jpg" alt="img" class="w-100">
+                            </a>
+                        </div>
+                        <h4>Contact Info</h4>
+                        <ul>
+                            <li class="d-flex align-items-center">
+                                <div class="offcanvas__contact-icon">
+                                    <i class="fal fa-map-marker-alt"></i>
+                                </div>
+                                <div class="offcanvas__contact-text">
+                                    <a target="_blank" href="#">Strits Es/154 Maces Road 1/8 United State</a>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <div class="offcanvas__contact-icon mr-15">
+                                    <i class="fal fa-envelope"></i>
+                                </div>
+                                <div class="offcanvas__contact-text">
+                                    <a href="mailto:info@example.com"><span
+                                            class="mailto:info@example.com">info@example.com</span></a>
+                                    <a href="mailto:info@example.com"><span
+                                            class="mailto:info@example.com">ex@example.com</span></a>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <div class="offcanvas__contact-icon mr-15">
+                                    <i class="fal fa-clock"></i>
+                                </div>
+                                <div class="offcanvas__contact-text">
+                                    <a target="_blank" href="#">Sat-friday, 02am -09pm</a>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <div class="offcanvas__contact-icon mr-15">
+                                    <i class="far fa-phone"></i>
+                                </div>
+                                <div class="offcanvas__contact-text">
+                                    <a href="tel:+11002345909" class="d-block">365 5552-0127</a>
+                                    <a href="tel:+11002345909">5421 5545 5422</a>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="header-button mt-4">
+                            <a href="contact.html"
+                                class="theme-btn d-inline-flex text-white justify-content-center align-items-center gap-xxl-2 gap-2 fs-16 rounded-1 fw-500 black-clr overflow-hidden">
+                                Get Start
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                        <div class="social-icon d-flex align-items-center">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="offcanvas__overlay"></div>
+
+    <!-- Header Section Start -->
+    <header id="header-sticky" class="header-1 position-relative header-style-inner">
+        <div class="container">
+            <div class="mega-menu-wrapper white-variation">
+                <div class="header-main">
+                    <div class="header-left">
+                        <div class="logo">
+                            <a href="index.html" class="header-logo">
+                                <img src="assets/img/logo/logo-white.png" alt="logo-img">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mean__menu-wrapper">
+                        <div class="main-menu">
+                            <nav id="mobile-menu">
+                                <ul>
+                                    <li class="has-dropdown droop active menu-thumb">
+                                        <a href="index.html">
+                                            Home
+                                            <i class="fas fa-angle-down"></i>
+                                        </a>
+                                        <ul class="submenu has-homemenu">
+                                            <li>
+                                                <div class="homemenu-items">
+                                                    <div class="homemenu menu-inside-style">
+                                                        <a href="index.html" class="homemenu-thumb d-xl-block d-none">
+                                                            <img src="assets/img/hero/home1.jpg" alt="img"
+                                                                class="w-100">
+                                                        </a>
+                                                        <a href="index.html"
+                                                            class="menu-inside fw-semibold text-black text-capitalize d-xl-none d-block">
+                                                            Home
+                                                        </a>
+                                                    </div>
+                                                    <div class="homemenu menu-inside-style">
+                                                        <a href="index-2.html"
+                                                            class="homemenu-thumb mb-15 d-xl-block d-none">
+                                                            <img src="assets/img/hero/home2.jpg" alt="img"
+                                                                class="w-100">
+                                                        </a>
+                                                        <a href="index-2.html"
+                                                            class="menu-inside fw-semibold text-black text-capitalize d-xl-none d-block">
+                                                            Home 02
+                                                        </a>
+                                                    </div>
+                                                    <div class="homemenu menu-inside-style">
+                                                        <a href="index-3.html"
+                                                            class="homemenu-thumb mb-15 d-xl-block d-none">
+                                                            <img src="assets/img/hero/home3.jpg" alt="img"
+                                                                class="w-100">
+                                                        </a>
+                                                        <a href="index-3.html"
+                                                            class="menu-inside fw-semibold text-black text-capitalize d-xl-none d-block">
+                                                            Home 03
+                                                        </a>
+                                                    </div>
+                                                    <div class="homemenu menu-inside-style">
+                                                        <a href="index-4.html"
+                                                            class="homemenu-thumb mb-15 d-xl-block d-none">
+                                                            <img src="assets/img/hero/home4.jpg" alt="img"
+                                                                class="w-100">
+                                                        </a>
+                                                        <a href="index-4.html"
+                                                            class="menu-inside fw-semibold text-black text-capitalize d-xl-none d-block">
+                                                            Home 04
+                                                        </a>
+                                                    </div>
+                                                    <div class="homemenu menu-inside-style">
+                                                        <a href="index-5.html"
+                                                            class="homemenu-thumb mb-15 d-xl-block d-none">
+                                                            <img src="assets/img/hero/home5.jpg" alt="img"
+                                                                class="w-100">
+                                                        </a>
+                                                        <a href="index-5.html"
+                                                            class="menu-inside fw-semibold text-black text-capitalize d-xl-none d-block">
+                                                            Home 05
+                                                        </a>
+                                                    </div>
+                                                    <div class="homemenu blar-comming d-xl-block d-none">
+                                                        <a href="error.html"
+                                                            class="homemenu-thumb active mb-15 d-xl-block d-none">
+                                                            <img src="assets/img/hero/home5.jpg" alt="img"
+                                                                class="w-100">
+                                                        </a>
+                                                        <a href="error.html"
+                                                            class="menu-inside fw-semibold text-black text-capitalize d-xl-none d-block">
+                                                            Coming Soon
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="menu.html">
+                                            Menu
+                                            <i class="fas fa-angle-down"></i>
+                                        </a>
+                                        <ul class="submenu">
+                                            <li><a href="single-food-menu.html">Single Food Menu</a></li>
+                                            <li><a href="list-layout.html">Menu List</a></li>
+                                            <li><a href="restaurant-list.html">Restaurant List</a></li>
+                                            <li><a href="menu-categories.html">Menu Categories</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="shop.html">
+                                            Shop
+                                            <i class="fas fa-angle-down"></i>
+                                        </a>
+                                        <ul class="submenu">
+                                            <li><a href="shop.html">Shop</a></li>
+                                            <li><a href="shop-details.html">Shop Details</a></li>
+                                            <li><a href="cart-page.html">Cart</a></li>
+                                            <li><a href="checkout.html">Checkout</a></li>
+                                            <li><a href="order-traking.html">Order Tracking</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="blog-grid.html">
+                                            Blog
+                                            <i class="fas fa-angle-down"></i>
+                                        </a>
+                                        <ul class="submenu">
+                                            <li><a href="blog-standard.html">Blog Standard</a></li>
+                                            <li><a href="blog-details.html">Blog Details</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="has-dropdown">
+                                        <a href="#0">
+                                            Pages
+                                            <i class="fas fa-angle-down"></i>
+                                        </a>
+                                        <ul class="submenu">
+                                            <li><a href="about.html">About Us</a></li>
+                                            <li><a href="faqs.html">Faqs</a></li>
+                                            <li><a href="team.html">Team</a></li>
+                                            <li><a href="team-details.html">Team Details</a></li>
+                                            <li><a href="restaurant-list.html">Restaurant List</a></li>
+                                            <li><a href="restaurant-details.html">Restaurant Details 01</a></li>
+                                            <li><a href="restaurant-details-2.html">Restaurant Details 02</a></li>
+                                            <li><a href="contact.html">Contact</a></li>
+                                            <li><a href="error.html">404</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="contact.html">Contact</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="header-right d-xl-none d-flex justify-content-end align-items-center gap-sm-3 gap-2">
+                        <button type="button" class="tolly-icon d-lg-none rounded-pill w-36px h-36px position-relative">
+                            <img src="assets/img/icons/tolly-theme.png" alt="tolly-icon">
+                            <span class="count-quan d-center count-quan-black text-white">02</span>
+                        </button>
+                        <a href="contact.html"
+                            class="rounded-pill d-center gap-2 fw-bold theme-clr login-white fs-14 h-36px w-36px px-1">
+                            <i class="fa-regular fa-user"></i>
+                        </a>
+                        <div class="header__hamburger d-lg-none d-block my-auto">
+                            <div
+                                class="sidebar__toggle black-bg d-flex align-items-center justify-content-center w-40px h-40px rounded-circle sidebar__toggle fs-20 text-white">
+                                <i class="fa-solid fa-bars"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-lg-flex d-none align-items-center gap-xxl-3 gap-3">
+                        <a href="contact.html"
+                            class="rounded-pill d-center gap-2 fw-bold theme-clr login-white fs-14 h-40px px-4">
+                            <i class="fa-regular fa-user"></i>
+                            <span class="d-lg-block d-none">Log In</span>
+                        </a>
+                        <button type="button" class="tolly-icon border w-40px h-40px rounded-circle position-relative">
+                            <img width="21" src="assets/img/icons/tolly-theme.png" alt="tolly-icon">
+                            <span class="count-quan d-center count-quan-black text-white">02</span>
+                        </button>
+                        <button type="button"
+                            class="destop-bars black-bg w-40px h-40px rounded-circle d-xl-none d-flex align-items-center justify-content-center sidebar__toggle fs-20 text-white">
+                            <i class="fa-solid fa-bars"></i>
+                        </button>
+                        <div class="language-area d-lg-flex align-items-center gap-1">
+                            <img width="19" height="19" src="assets/img/icons/glob.png" alt="img" class="globe">
+                            <select name="languate" class="w-100">
+                                <option value="all" disabled>all</option>
+                                <option value="1">
+                                    Eng
+                                </option>
+                                <option value="1">
+                                    Spn
+                                </option>
+                                <option value="1">
+                                    Us
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero section start -->
+    <section class="breadcrumb-section position-relative fix bg-cover"
+        style="background-image: url(assets/img/hero/breadcrumb-banner.jpg);">
+        <div class="container">
+            <div class="breadcrumb-content">
+                <h2 class="white-clr fw-semibold text-center heading-font mb-2">
+                    Restaurant Details 02
+                </h2>
+                <ul class="breadcrumb align-items-center justify-content-center flex-wrap gap-3">
+                    <li>
+                        <a href="index.html">
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-angle-right"></i>
+                    </li>
+                    <li>
+                        <a href="index.html">
+                            Pages
+                        </a>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-angle-right"></i>
+                    </li>
+                    <li>
+                        Restaurant Details
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <img src="assets/img/home-1/home-shape-start.png" alt="img" class="bread-shape-start position-absolute">
+        <img src="assets/img/home-1/home-shape-end.png" alt="img"
+            class="bread-shape-end position-absolute d-sm-block d-none">
+    </section>
+
+    <!-- Reservation hero start -->
+    <section class="reservation-section fix section-padding position-relative">
+        <div class="container">
+            <div class="section-title-style mx-auto mb-40 text-center">
+                <h2 class="wow fadeInUp mb-sm-3 fw-bold mb-2 white-clr text-black lh-1 fw-semibold text-capitalize text-capitalize"
+                    data-wow-delay=".4s">
+                    Make a Reservation
+                </h2>
+                <p class="fs-16 max-w-650 mx-auto wow fadeInUp" data-wow-delay="0.6s">
+                    Make a reservation today to ensure your spot at our restaurant. Enjoy hassle-free booking and get
+                    ready for a memorable
+                    dining experience.
+                </p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="calendar h-100 wow fadeInUp" data-wow-delay="0.7s">
+                        <h2 class="text-center sub-font fw-semibold mb-xl-4 mb-3 text-white">Choose Date</h2>
+                        <div class="cal-head">
+                            <button id="prev"></button>
+                            <h3 class="title">Month 0000</h3>
+                            <button id="next"></button>
+                        </div>
+                        <div class="cal-body">
+                            <ul class="days">
+                                <li>Sun</li>
+                                <li>Mon</li>
+                                <li>Tue</li>
+                                <li>Wed</li>
+                                <li>Thu</li>
+                                <li>Fri</li>
+                                <li>Sat</li>
+                            </ul>
+                            <ul class="dates">
+                                <li class="old"><span>30</span></li>
+                                <li class="old"><span>31</span></li>
+                                <li><span>1</span></li>
+                                <li><span>2</span></li>
+                                <li><span>3</span></li>
+                                <li><span>4</span></li>
+                                <li><span>5</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="ps-xl-4 wow fadeInUp" data-wow-delay="0.9s">
+                        <form action="#0" class="billing-form reservation-form p-0">
+                            <div class="row g-3">
+                                <div class="col-sm-6">
+                                    <div class="form-group m-0">
+                                        <label class="fs-14 text-black mb-2">Your Name</label>
+                                        <input type="text" placeholder="First Name">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group m-0">
+                                        <label class="fs-14 text-black mb-2">Your Email</label>
+                                        <input type="text" placeholder="Your Email">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group m-0">
+                                        <label class="fs-14 text-black mb-2">How can we contact you?</label>
+                                        <input type="text" placeholder="Phone Number Here">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group m-0">
+                                        <label class="fs-14 text-black mb-2">From</label>
+                                        <input type="text" placeholder="Start Time Here">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group m-0">
+                                        <label class="fs-14 text-black mb-2">To</label>
+                                        <input type="text" placeholder="End Time Here">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group m-0">
+                                        <label class="fs-14 text-black mb-2">Total Guests?</label>
+                                        <input type="text" placeholder="2">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group m-0">
+                                        <label class="fs-14 text-black mb-2">Aditional Information</label>
+                                        <textarea name="message" rows="3"
+                                            placeholder="Enter your Message Here"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 mt-4">
+                                    <a href="cart-page.html" class="theme-btn px-4 rounded-2">
+                                        Book Now <i class="fa-solid fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <img src="assets/img/inner-global-pasta.png" alt="img"
+            class="position-absolute top-40 end-0 float-bob-y z-n1 d-sm-block d-none">
+    </section>
+
+    <!-- Map -->
+    <div class="map-section02">
+        <div class="container-fluid p-0">
+            <div class="row g-md-0 g-3">
+                <div class="col-md-6">
+                    <div class="restaurant-map-info position-relative z-1 text-center h-100">
+                        <div class="inner">
+                            <h2 class="text-uppercase text-black mb-xl-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">VISIT
+                                OUR RESTAURANT</h2>
+                            <p class="fs-18 text-center max-w-350 mx-auto text-black wow fadeInUp"
+                                data-wow-delay="0.4s">4517 Washington Ave. Manchester, Kentucky 39495</p>
+                            <div class="mx-auto my-xxl-5 my-xl-4 my-3"
+                                style="width: 1px; height: 70px; background-color: #FF5200;"></div>
+                            <div class="text-center mb-2">
+                                <p class="text-black fs-18 mb-1 wow fadeInUp" data-wow-delay="0.5s">Monday to Saturday :
+                                    06.00 - 10.00</p>
+                                <p class="text-black fs-18 mb-2 wow fadeInUp" data-wow-delay="0.6s">Sunday is the
+                                    Holiday</p>
+                            </div>
+                            <div class="social-theme d-flex gap-2 justify-content-center align-items-center wow fadeInUp"
+                                data-wow-delay="0.7s">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-youtube"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                        <img src="assets/img/restaurant-ex-shape.png" alt="img"
+                            class="position-absolute start-0 bottom-0 pb-100 mb-5 ms-5 float-bob-y">
+                        <img src="assets/img/restaurant-ex.png" alt="img"
+                            class="position-absolute bottom-0 ms-5 d-sm-block d-none float-bob-y restaurant-shape">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52808140.21705447!2d-161.46429918210544!3d36.11412792251988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54eab584e432360b%3A0x1c3bb99243deb742!2sUnited%20States!5e0!3m2!1sen!2sbd!4v1756438029281!5m2!1sen!2sbd"
+                        style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer section start -->
+    <footer class="footer-section position-relative fix black-bg z-1">
+        <img src="assets/img/inner/footer-shape-filter.png" alt="img"
+            class="position-absolute start-0 top-0 mt-5 pt-5 float-bob-y z-n1 d-lg-block d-none opacity-25">
+        <img src="assets/img/home-4/footer4-right.png" alt="img"
+            class="position-absolute end-0 top-0 pt-100 mt-40 mx-5 float-bob-y z-n1 opacity-25">
+        <div class="container">
+            <div class="footer-widget-wrapper pb-80">
+                <div class="d-flex align-items-center justify-content-between gap-3 pb-100">
+                    <img src="assets/img/home-4/f-lin-dot.png" alt="img" class="w-100 d-xl-block d-none">
+                    <a href="index.html">
+                        <img src="assets/img/logo/logo-white.png" alt="img">
+                    </a>
+                    <img src="assets/img/home-4/f-lin-dot.png" alt="img" class="w-100 d-xl-block d-none">
+                </div>
+                <div class="row g-4">
+                    <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6 wow fadeInUp" data-wow-delay=".3s">
+                        <div class="single-footer-widget py-0">
+                            <h5 class="widget-head text-white text-uppercase fs-20 white-clr fw-semibold">
+                                Help
+                            </h5>
+                            <ul class="important-link d-grid gap-sm-2 gap-1">
+                                <li>
+                                    <a href="faqs.html" class="text-white opacity-75 fw-light link-effect">FAQs</a>
+                                </li>
+                                <li>
+                                    <a href="order-traking.html"
+                                        class="text-white opacity-75 fw-light link-effect">Delivery</a>
+                                </li>
+                                <li>
+                                    <a href="contact.html"
+                                        class="text-white opacity-75 fw-light link-effect">Contact</a>
+                                </li>
+                                <li>
+                                    <a href="order-traking.html"
+                                        class="text-white opacity-75 fw-light link-effect">Store
+                                        Locator</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6 wow fadeInUp" data-wow-delay=".4s">
+                        <div class="single-footer-widget py-0">
+                            <h5 class="widget-head text-white text-uppercase fs-20 white-clr fw-semibold">
+                                about US
+                            </h5>
+                            <ul class="important-link d-grid gap-sm-2 gap-1">
+                                <li>
+                                    <a href="about.html" class="text-white opacity-75 fw-light link-effect">Our
+                                        Story</a>
+                                </li>
+                                <li>
+                                    <a href="order-traking.html"
+                                        class="text-white opacity-75 fw-light link-effect">Delivery</a>
+                                </li>
+                                <li>
+                                    <a href="contact.html"
+                                        class="text-white opacity-75 fw-light link-effect">Contact</a>
+                                </li>
+                                <li>
+                                    <a href="about.html" class="text-white opacity-75 fw-light link-effect">Store
+                                        Locator</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6 wow fadeInUp" data-wow-delay=".5s">
+                        <div class="single-footer-widget py-0">
+                            <h5 class="widget-head text-white text-uppercase fs-20 white-clr fw-semibold">
+                                address
+                            </h5>
+                            <div class="footer-content">
+                                <p class="fs-16 white-clr opacity-75 mb-xl-3 mb-2">
+                                    1487 Rocky Horse Carre 1487Rocky
+                                    Arlington, TX 16819 United
+                                </p>
+                                <h5 class="text-white mb-lg-3 mb-2">1800 6565 222</h5>
+                                <p class="fs-16 white-clr opacity-75">info@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6 wow fadeInUp" data-wow-delay=".7s">
+                        <div class="single-footer-widget py-0">
+                            <h5 class="widget-head text-white text-uppercase fs-20 white-clr fw-semibold">
+                                CONNECT
+                            </h5>
+                            <p class="fs-16 white-clr opacity-75 mb-xl-3 mb-2">
+                                Absolutely loved the cozy vibe and Rich aroma! The coffee was perfectly brewed
+                            </p>
+                            <form action="#0" class="d-flex form-outline">
+                                <input type="text" placeholder="Email Address">
+                                <button type="button" class="btn p-0 border-0"><img
+                                        src="assets/img/icons/arrow-right-long.png" alt="icon"></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div
+                    class="d-flex align-items-center justify-content-sm-between justify-content-center flex-wrap gap-2 fs-16 text-center">
+                    <p class="fs-16 text4-clr">Copyright &copy; 2025 <a href="index.html" class="theme-clr">Mozzo</a>
+                        all Right
+                        Reserved</p>
+                    <div class="d-flex align-items-center flex-wrap gap-lg-4 gap-sm-3 gap-2">
+                        <a href="contact.html" class="fs-16 text3-clr link-effect heading-font-afasad">Privacy
+                            Policy</a>
+                        <a href="contact.html" class="fs-16 text3-clr link-effect heading-font-afasad">Terms &
+                            Conditions</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <div class="search-wrap">
+        <div class="search-inner">
+            <i class="fas fa-times search-close open" id="search-close"></i>
+            <div class="search-cell">
+                <form method="get">
+                    <div class="search-field-holder">
+                        <input type="search" class="main-search-input" placeholder="Search...">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--<< All JS Plugins >>-->
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <!--<< Viewport Js >>-->
+    <script src="assets/js/viewport.jquery.js"></script>
+    <!--<< Bootstrap Js >>-->
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <!--<< Nice Select Js >>-->
+    <script src="assets/js/jquery.nice-select.min.js"></script>
+    <!--<< Waypoints Js >>-->
+    <script src="assets/js/jquery.waypoints.js"></script>
+    <!--<< Counterup Js >>-->
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <!--<< Swiper Slider Js >>-->
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <!--<< MeanMenu Js >>-->
+    <script src="assets/js/jquery.meanmenu.min.js"></script>
+    <!--<< Magnific Popup Js >>-->
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <!--<< Wow Animation Js >>-->
+    <script src="assets/js/wow.min.js"></script>
+    <!--<< Main.js >>-->
+    <script src="assets/js/main.js"></script>
+    <script>
+        // 📅 Select the DOM elements for calendar dates container, title, and navigation buttons
+        const dates = document.querySelector(".dates");
+        const header = document.querySelector(".title");
+        const nav = document.querySelectorAll("#prev, #next");
+
+        // 🗓️ Array of month names to display in header
+        const months = [
+            "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December",
+        ];
+
+        // 📌 Initialize current date information
+        let date = new Date();           // Today's full date
+        let month = date.getMonth();     // Current month (0-11)
+        let year = date.getFullYear();   // Current year (e.g. 2025)
+
+        /**
+         * 🛠️ Function to generate and render the calendar for the current month and year
+         */
+        function renderCalendar() {
+            // 🔢 Get the weekday index of the 1st day of the month (0 = Sunday)
+            const start = new Date(year, month, 1).getDay();
+
+            // 🔚 Get the last date of the current month (e.g., 31, 30, 28)
+            const endDate = new Date(year, month + 1, 0).getDate();
+
+            // 🔚 Get the weekday index of the last date of the month
+            const end = new Date(year, month, endDate).getDay();
+
+            // 📆 Get the last date of the previous month
+            const endDatePrev = new Date(year, month, 0).getDate();
+
+            // 🧩 Placeholder for the HTML string of date elements
+            let datesHtml = "";
+
+            // ◀️ Fill in last few days of the previous month (gray out)
+            for (let i = start; i > 0; i--) {
+                datesHtml += `<li class="old"><span>${endDatePrev - i + 1}</span></li>`;
+            }
+
+            // 🔁 Loop through current month's dates
+            for (let i = 1; i <= endDate; i++) {
+                // ✅ Highlight today's date
+                let className =
+                    i === date.getDate() &&
+                        month === new Date().getMonth() &&
+                        year === new Date().getFullYear()
+                        ? ' class="today"'
+                        : "";
+                datesHtml += `<li${className}><span>${i}</span></li>`;
+            }
+
+            // ▶️ Fill in the beginning of the next month (gray out)
+            for (let i = end; i < 6; i++) {
+                datesHtml += `<li class="old"><span>${i - end + 1}</span></li>`;
+            }
+
+            // 🖋️ Inject the generated calendar HTML and header text
+            dates.innerHTML = datesHtml;
+            header.textContent = `${months[month]} ${year}`;
+        }
+
+        /**
+         * ⏮️⏭️ Add click event listeners to the Previous and Next buttons
+         */
+        nav.forEach(nav => {
+            nav.addEventListener("click", e => {
+                const btnId = e.target.id; // Get the ID of the clicked button
+
+                // ⬅️ If "prev" button clicked and current month is January
+                if (btnId === 'prev' && month === 0) {
+                    year--;       // Go to previous year
+                    month = 11;   // Set month to December
+                }
+                // ➡️ If "next" button clicked and current month is December
+                else if (btnId === 'next' && month === 11) {
+                    year++;       // Go to next year
+                    month = 0;    // Set month to January
+                }
+                // 🔁 In all other cases, simply increase or decrease the month
+                else {
+                    month = (btnId === 'next') ? month + 1 : month - 1;
+                }
+
+                // 🧠 Update the `date` object and re-render calendar
+                date = new Date(year, month, new Date().getDate());
+                year = date.getFullYear();
+                month = date.getMonth();
+
+                renderCalendar();
+            });
+        });
+
+        // 🚀 Initial calendar rendering on page load
+        renderCalendar();
+    </script>
+
+
+</body>
+
+</html>

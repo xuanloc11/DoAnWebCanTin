@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--<< Header Area >>-->
+
+<head>
+    <!-- ========== Meta Tags ========== -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="authorNmaeHere">
+    <meta name="description" content="Online Food Order HTML Template">
+    <!-- ======== Page title ============ -->
+    <title>Online Food Order HTML Template</title>
+    <!--<< Favcion >>-->
+    <link rel="shortcut icon" href="assets/img/logo/favicon.png">
+    <!--<< Bootstrap min.css >>-->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!--<< All Min Css >>-->
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <!--<< Animate.css >>-->
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <!--<< Magnific Popup.css >>-->
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <!--<< MeanMenu.css >>-->
+    <link rel="stylesheet" href="assets/css/meanmenu.css">
+    <!--<< Swiper Bundle.css >>-->
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <!--<< Nice Select.css >>-->
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <!--<< Expose Font.css >>-->
+    <link rel="stylesheet" href="assets/css/expose.css">
+    <!--<< Main.css >>-->
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+
+<body class="body-bg">
+
+    <!-- Back To Top start -->
+    <!-- <button id="back-top" class="back-to-top">
+            <i class="fa-regular fa-arrow-up"></i>
+        </button> -->
+
+    <!-- Preloader Start -->
+    <div id="preloader" class="preloader">
+        <div class="animation-preloader">
+            <div class="spinner">
+            </div>
+            <div class="txt-loading">
+                <span data-text-preloader="M" class="letters-loading">
+                    M
+                </span>
+                <span data-text-preloader="O" class="letters-loading">
+                    O
+                </span>
+                <span data-text-preloader="Z" class="letters-loading">
+                    Z
+                </span>
+                <span data-text-preloader="Z" class="letters-loading">
+                    Z
+                </span>
+                <span data-text-preloader="O" class="letters-loading">
+                    O
+                </span>
+            </div>
+            <p class="text-center">Loading</p>
+        </div>
+        <div class="loader">
+            <div class="row">
+                <div class="col-3 loader-section section-left">
+                    <div class="bg"></div>
+                </div>
+                <div class="col-3 loader-section section-left">
+                    <div class="bg"></div>
+                </div>
+                <div class="col-3 loader-section section-right">
+                    <div class="bg"></div>
+                </div>
+                <div class="col-3 loader-section section-right">
+                    <div class="bg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Offcanvas Area Start -->
+    <div class="fix-area">
+        <div class="offcanvas__info">
+            <div class="offcanvas__wrapper">
+                <div class="offcanvas__content">
+                    <div class="offcanvas__top mb-4 d-flex justify-content-between align-items-center">
+                        <div class="offcanvas__logo">
+                            <a href="index.html">
+                                <img src="assets/img/logo/logo-white.png" alt="logo-img">
+                            </a>
+                        </div>
+                        <div class="offcanvas__close">
+                            <button>
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mobile-menu fix mb-3"></div>
+                    <div class="offcanvas__contact">
+                        <div class="mb-4 d-xl-block d-none">
+                            <h4 class="mb-2">Demo</h4>
+                            <a href="index.html" class="w-75 d-center">
+                                <img src="assets/img/hero/home1.jpg" alt="img" class="w-100">
+                            </a>
+                        </div>
+                        <h4>Contact Info</h4>
+                        <ul>
+                            <li class="d-flex align-items-center">
+                                <div class="offcanvas__contact-icon">
+                                    <i class="fal fa-map-marker-alt"></i>
+                                </div>
+                                <div class="offcanvas__contact-text">
+                                    <a target="_blank" href="#">Strits Es/154 Maces Road 1/8 United State</a>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <div class="offcanvas__contact-icon mr-15">
+                                    <i class="fal fa-envelope"></i>
+                                </div>
+                                <div class="offcanvas__contact-text">
+                                    <a href="mailto:info@example.com"><span
+                                            class="mailto:info@example.com">info@example.com</span></a>
+                                    <a href="mailto:info@example.com"><span
+                                            class="mailto:info@example.com">ex@example.com</span></a>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <div class="offcanvas__contact-icon mr-15">
+                                    <i class="fal fa-clock"></i>
+                                </div>
+                                <div class="offcanvas__contact-text">
+                                    <a target="_blank" href="#">Sat-friday, 02am -09pm</a>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <div class="offcanvas__contact-icon mr-15">
+                                    <i class="far fa-phone"></i>
+                                </div>
+                                <div class="offcanvas__contact-text">
+                                    <a href="tel:+11002345909" class="d-block">365 5552-0127</a>
+                                    <a href="tel:+11002345909">5421 5545 5422</a>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="header-button mt-4">
+                            <a href="contact.html"
+                                class="theme-btn d-inline-flex text-white justify-content-center align-items-center gap-xxl-2 gap-2 fs-16 rounded-1 fw-500 black-clr overflow-hidden">
+                                Get Start
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                        <div class="social-icon d-flex align-items-center">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="offcanvas__overlay"></div>
+
+    <!-- Header Section Start -->
+    <header id="header-sticky" class="header-1 position-relative header-style-inner">
+        <div class="container">
+            <div class="mega-menu-wrapper white-variation">
+                <div class="header-main">
+                    <div class="header-left">
+                        <div class="logo">
+                            <a href="index.html" class="header-logo">
+                                <img src="assets/img/logo/logo-white.png" alt="logo-img">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mean__menu-wrapper">
+                        <div class="main-menu">
+                            <nav id="mobile-menu">
+                                <ul>
+                                    <li class="has-dropdown droop active menu-thumb">
+                                        <a href="index.html">
+                                            Home
+                                            <i class="fas fa-angle-down"></i>
+                                        </a>
+                                        <ul class="submenu has-homemenu">
+                                            <li>
+                                                <div class="homemenu-items">
+                                                    <div class="homemenu menu-inside-style">
+                                                        <a href="index.html" class="homemenu-thumb d-xl-block d-none">
+                                                            <img src="assets/img/hero/home1.jpg" alt="img"
+                                                                class="w-100">
+                                                        </a>
+                                                        <a href="index.html"
+                                                            class="menu-inside fw-semibold text-black text-capitalize d-xl-none d-block">
+                                                            Home
+                                                        </a>
+                                                    </div>
+                                                    <div class="homemenu menu-inside-style">
+                                                        <a href="index-2.html"
+                                                            class="homemenu-thumb mb-15 d-xl-block d-none">
+                                                            <img src="assets/img/hero/home2.jpg" alt="img"
+                                                                class="w-100">
+                                                        </a>
+                                                        <a href="index-2.html"
+                                                            class="menu-inside fw-semibold text-black text-capitalize d-xl-none d-block">
+                                                            Home 02
+                                                        </a>
+                                                    </div>
+                                                    <div class="homemenu menu-inside-style">
+                                                        <a href="index-3.html"
+                                                            class="homemenu-thumb mb-15 d-xl-block d-none">
+                                                            <img src="assets/img/hero/home3.jpg" alt="img"
+                                                                class="w-100">
+                                                        </a>
+                                                        <a href="index-3.html"
+                                                            class="menu-inside fw-semibold text-black text-capitalize d-xl-none d-block">
+                                                            Home 03
+                                                        </a>
+                                                    </div>
+                                                    <div class="homemenu menu-inside-style">
+                                                        <a href="index-4.html"
+                                                            class="homemenu-thumb mb-15 d-xl-block d-none">
+                                                            <img src="assets/img/hero/home4.jpg" alt="img"
+                                                                class="w-100">
+                                                        </a>
+                                                        <a href="index-4.html"
+                                                            class="menu-inside fw-semibold text-black text-capitalize d-xl-none d-block">
+                                                            Home 04
+                                                        </a>
+                                                    </div>
+                                                    <div class="homemenu menu-inside-style">
+                                                        <a href="index-5.html"
+                                                            class="homemenu-thumb mb-15 d-xl-block d-none">
+                                                            <img src="assets/img/hero/home5.jpg" alt="img"
+                                                                class="w-100">
+                                                        </a>
+                                                        <a href="index-5.html"
+                                                            class="menu-inside fw-semibold text-black text-capitalize d-xl-none d-block">
+                                                            Home 05
+                                                        </a>
+                                                    </div>
+                                                    <div class="homemenu blar-comming d-xl-block d-none">
+                                                        <a href="error.html"
+                                                            class="homemenu-thumb active mb-15 d-xl-block d-none">
+                                                            <img src="assets/img/hero/home5.jpg" alt="img"
+                                                                class="w-100">
+                                                        </a>
+                                                        <a href="error.html"
+                                                            class="menu-inside fw-semibold text-black text-capitalize d-xl-none d-block">
+                                                            Coming Soon
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="menu.html">
+                                            Menu
+                                            <i class="fas fa-angle-down"></i>
+                                        </a>
+                                        <ul class="submenu">
+                                            <li><a href="single-food-menu.html">Single Food Menu</a></li>
+                                            <li><a href="list-layout.html">Menu List</a></li>
+                                            <li><a href="restaurant-list.html">Restaurant List</a></li>
+                                            <li><a href="menu-categories.html">Menu Categories</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="shop.html">
+                                            Shop
+                                            <i class="fas fa-angle-down"></i>
+                                        </a>
+                                        <ul class="submenu">
+                                            <li><a href="shop.html">Shop</a></li>
+                                            <li><a href="shop-details.html">Shop Details</a></li>
+                                            <li><a href="cart-page.html">Cart</a></li>
+                                            <li><a href="checkout.html">Checkout</a></li>
+                                            <li><a href="order-traking.html">Order Tracking</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="blog-grid.html">
+                                            Blog
+                                            <i class="fas fa-angle-down"></i>
+                                        </a>
+                                        <ul class="submenu">
+                                            <li><a href="blog-standard.html">Blog Standard</a></li>
+                                            <li><a href="blog-details.html">Blog Details</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="has-dropdown">
+                                        <a href="#0">
+                                            Pages
+                                            <i class="fas fa-angle-down"></i>
+                                        </a>
+                                        <ul class="submenu">
+                                            <li><a href="about.html">About Us</a></li>
+                                            <li><a href="faqs.html">Faqs</a></li>
+                                            <li><a href="team.html">Team</a></li>
+                                            <li><a href="team-details.html">Team Details</a></li>
+                                            <li><a href="restaurant-list.html">Restaurant List</a></li>
+                                            <li><a href="restaurant-details.html">Restaurant Details 01</a></li>
+                                            <li><a href="restaurant-details-2.html">Restaurant Details 02</a></li>
+                                            <li><a href="contact.html">Contact</a></li>
+                                            <li><a href="error.html">404</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="contact.html">Contact</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="header-right d-xl-none d-flex justify-content-end align-items-center gap-sm-3 gap-2">
+                        <button type="button" class="tolly-icon d-lg-none rounded-pill w-36px h-36px position-relative">
+                            <img src="assets/img/icons/tolly-theme.png" alt="tolly-icon">
+                            <span class="count-quan d-center count-quan-black text-white">02</span>
+                        </button>
+                        <a href="contact.html"
+                            class="rounded-pill d-center gap-2 fw-bold theme-clr login-white fs-14 h-36px w-36px px-1">
+                            <i class="fa-regular fa-user"></i>
+                        </a>
+                        <div class="header__hamburger d-lg-none d-block my-auto">
+                            <div
+                                class="sidebar__toggle black-bg d-flex align-items-center justify-content-center w-40px h-40px rounded-circle sidebar__toggle fs-20 text-white">
+                                <i class="fa-solid fa-bars"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-lg-flex d-none align-items-center gap-xxl-3 gap-3">
+                        <a href="contact.html"
+                            class="rounded-pill d-center gap-2 fw-bold theme-clr login-white fs-14 h-40px px-4">
+                            <i class="fa-regular fa-user"></i>
+                            <span class="d-lg-block d-none">Log In</span>
+                        </a>
+                        <button type="button" class="tolly-icon border w-40px h-40px rounded-circle position-relative">
+                            <img width="21" src="assets/img/icons/tolly-theme.png" alt="tolly-icon">
+                            <span class="count-quan d-center count-quan-black text-white">02</span>
+                        </button>
+                        <button type="button"
+                            class="destop-bars black-bg w-40px h-40px rounded-circle d-xl-none d-flex align-items-center justify-content-center sidebar__toggle fs-20 text-white">
+                            <i class="fa-solid fa-bars"></i>
+                        </button>
+                        <div class="language-area d-lg-flex align-items-center gap-1">
+                            <img width="19" height="19" src="assets/img/icons/glob.png" alt="img" class="globe">
+                            <select name="languate" class="w-100">
+                                <option value="all" disabled>all</option>
+                                <option value="1">
+                                    Eng
+                                </option>
+                                <option value="1">
+                                    Spn
+                                </option>
+                                <option value="1">
+                                    Us
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Hero section start -->
+    <section class="breadcrumb-section position-relative fix bg-cover"
+        style="background-image: url(assets/img/hero/breadcrumb-banner.jpg);">
+        <div class="container">
+            <div class="breadcrumb-content">
+                <h2 class="white-clr fw-semibold text-center heading-font mb-2">
+                    List layout
+                </h2>
+                <ul class="breadcrumb align-items-center justify-content-center flex-wrap gap-3">
+                    <li>
+                        <a href="index.html">
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-angle-right"></i>
+                    </li>
+                    <li>
+                        <a href="index.html">
+                            Pages
+                        </a>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-angle-right"></i>
+                    </li>
+                    <li>
+                        List layout
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <img src="assets/img/home-1/home-shape-start.png" alt="img" class="bread-shape-start position-absolute">
+        <img src="assets/img/home-1/home-shape-end.png" alt="img"
+            class="bread-shape-end position-absolute d-sm-block d-none">
+    </section>
+
+    <!-- Popular Section start -->
+    <section class="populars-section position-relative section-padding fix wow fadeInDown" data-wow-delay=".4s">
+        <div class="container">
+            <div class="row g-3">
+                <div class="col-lg-6 col-md-6 col-xxl-4">
+                    <div class="most-popular-card bg-white card-effect smooth d-flex align-items-xxl-center justify-content-between gap-2 border rounded-12 p-xl-4 p-3 wow fadeInUp"
+                        data-wow-delay="0.3s">
+                        <div class="cont">
+                            <h6 class="mb-lg-1 mb-1"><a href="restaurant-details-2.html" class="link-effect">Breakfast
+                                    Grilled
+                                    Platter</a></h6>
+                            <p class="fs-15 mb-lg-2 mb-1 max-w-200 lh-base">Consists of grilled grilled
+                                mushroom, fried egg...</p>
+                            <h6 class="theme3-clr fs-16 fw-bold">$15.00</h6>
+                        </div>
+                        <div class="thumb rounded-2 position-relative w-90px h-90px">
+                            <img width="90" height="90" src="assets/img/home-1/popular-items1.jpg" alt="img"
+                                class="rounded-2">
+                            <a href="restaurant-details-2.html"
+                                class="w-28px h-28px z-1 position-absolute bottom-0 end-0 m-2 bg-white rounded d-center theme3-clr fs-14">
+                                <i class="fa-solid fa-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-xxl-4">
+                    <div class="most-popular-card bg-white card-effect smooth d-flex align-items-xxl-center justify-content-between gap-2 border rounded-12 p-xl-4 p-3 wow fadeInUp"
+                        data-wow-delay="0.3s">
+                        <div class="cont">
+                            <h6 class="mb-lg-1 mb-1"><a href="restaurant-details-2.html"
+                                    class="link-effect">Appetizer</a></h6>
+                            <p class="fs-15 mb-lg-2 mb-1 max-w-200 lh-base">Consists of grilled grilled
+                                mushroom, fried egg...</p>
+                            <h6 class="theme3-clr fs-16 fw-bold">$19.00</h6>
+                        </div>
+                        <div class="thumb rounded-2 position-relative w-90px h-90px">
+                            <img width="90" height="90" src="assets/img/home-1/popular-items2.jpg" alt="img"
+                                class="rounded-2">
+                            <a href="restaurant-details-2.html"
+                                class="w-28px h-28px z-1 position-absolute bottom-0 end-0 m-2 bg-white rounded d-center theme3-clr fs-14">
+                                <i class="fa-solid fa-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-xxl-4">
+                    <div class="most-popular-card bg-white card-effect smooth d-flex align-items-xxl-center justify-content-between gap-2 border rounded-12 p-xl-4 p-3 wow fadeInUp"
+                        data-wow-delay="0.3s">
+                        <div class="cont">
+                            <h6 class="mb-lg-1 mb-1"><a href="restaurant-details-2.html" class="link-effect">Chicken
+                                    Somucha</a></h6>
+                            <p class="fs-15 mb-lg-2 mb-1 max-w-200 lh-base">Consists of grilled grilled
+                                mushroom, fried egg...</p>
+                            <h6 class="theme3-clr fs-16 fw-bold">$11.00</h6>
+                        </div>
+                        <div class="thumb rounded-2 position-relative w-90px h-90px">
+                            <img width="90" height="90" src="assets/img/home-1/popular-items3.jpg" alt="img"
+                                class="rounded-2">
+                            <a href="restaurant-details-2.html"
+                                class="w-28px h-28px z-1 position-absolute bottom-0 end-0 m-2 bg-white rounded d-center theme3-clr fs-14">
+                                <i class="fa-solid fa-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-xxl-4">
+                    <div class="most-popular-card bg-white card-effect smooth d-flex align-items-xxl-center justify-content-between gap-2 border rounded-12 p-xl-4 p-3 wow fadeInUp"
+                        data-wow-delay="0.3s">
+                        <div class="cont">
+                            <h6 class="mb-lg-1 mb-1"><a href="restaurant-details-2.html" class="link-effect">Peri Peri
+                                    Pasta</a></h6>
+                            <p class="fs-15 mb-lg-2 mb-1 max-w-200 lh-base">Consists of grilled grilled
+                                mushroom, fried egg...</p>
+                            <h6 class="theme3-clr fs-16 fw-bold">$11.00</h6>
+                        </div>
+                        <div class="thumb rounded-2 position-relative w-90px h-90px">
+                            <img width="90" height="90" src="assets/img/home-1/popular-items4.jpg" alt="img"
+                                class="rounded-2">
+                            <a href="restaurant-details-2.html"
+                                class="w-28px h-28px z-1 position-absolute bottom-0 end-0 m-2 bg-white rounded d-center theme3-clr fs-14">
+                                <i class="fa-solid fa-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-xxl-4">
+                    <div class="most-popular-card bg-white card-effect smooth d-flex align-items-xxl-center justify-content-between gap-2 border rounded-12 p-xl-4 p-3 wow fadeInUp"
+                        data-wow-delay="0.3s">
+                        <div class="cont">
+                            <h6 class="mb-lg-1 mb-1"><a href="restaurant-details-2.html" class="link-effect">Peri Peri
+                                    Pasta</a></h6>
+                            <p class="fs-15 mb-lg-2 mb-1 max-w-200 lh-base">Consists of grilled grilled
+                                mushroom, fried egg...</p>
+                            <h6 class="theme3-clr fs-16 fw-bold">$11.00</h6>
+                        </div>
+                        <div class="thumb rounded-2 position-relative w-90px h-90px">
+                            <img width="90" height="90" src="assets/img/home-1/popular-items4.jpg" alt="img"
+                                class="rounded-2">
+                            <a href="restaurant-details-2.html"
+                                class="w-28px h-28px z-1 position-absolute bottom-0 end-0 m-2 bg-white rounded d-center theme3-clr fs-14">
+                                <i class="fa-solid fa-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-xxl-4">
+                    <div class="most-popular-card bg-white card-effect smooth d-flex align-items-xxl-center justify-content-between gap-2 border rounded-12 p-xl-4 p-3 wow fadeInUp"
+                        data-wow-delay="0.3s">
+                        <div class="cont">
+                            <h6 class="mb-lg-1 mb-1"><a href="restaurant-details-2.html" class="link-effect">Hot
+                                    Chocolate Coffee</a>
+                            </h6>
+                            <p class="fs-15 mb-lg-2 mb-1 max-w-200 lh-base">Consists of grilled grilled
+                                mushroom, fried egg...</p>
+                            <h6 class="theme3-clr fs-16 fw-bold">$11.00</h6>
+                        </div>
+                        <div class="thumb rounded-2 position-relative w-90px h-90px">
+                            <img width="90" height="90" src="assets/img/home-1/popular-items5.jpg" alt="img"
+                                class="rounded-2">
+                            <a href="#0"
+                                class="w-28px h-28px z-1 card-effect position-absolute bottom-0 end-0 m-2 bg-white rounded d-center theme3-clr fs-14">
+                                <i class="fa-solid fa-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-xxl-4">
+                    <div class="most-popular-card bg-white card-effect smooth d-flex align-items-xxl-center justify-content-between gap-2 border rounded-12 p-xl-4 p-3 wow fadeInUp"
+                        data-wow-delay="0.3s">
+                        <div class="cont">
+                            <h6 class="mb-lg-1 mb-1"><a href="restaurant-details-2.html" class="link-effect">Mixed
+                                    Fruits Salad</a>
+                            </h6>
+                            <p class="fs-15 mb-lg-2 mb-1 max-w-200 lh-base">Consists of grilled grilled
+                                mushroom, fried egg...</p>
+                            <h6 class="theme3-clr fs-16 fw-bold">$11.00</h6>
+                        </div>
+                        <div class="thumb rounded-2 position-relative w-90px h-90px">
+                            <img width="90" height="90" src="assets/img/home-1/popular-items6.jpg" alt="img"
+                                class="rounded-2">
+                            <a href="restaurant-details-2.html"
+                                class="w-28px h-28px z-1 position-absolute bottom-0 end-0 m-2 bg-white rounded d-center theme3-clr fs-14">
+                                <i class="fa-solid fa-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-xxl-4">
+                    <div class="most-popular-card bg-white card-effect smooth d-flex align-items-xxl-center justify-content-between gap-2 border rounded-12 p-xl-4 p-3 wow fadeInUp"
+                        data-wow-delay="0.3s">
+                        <div class="cont">
+                            <h6 class="mb-lg-1 mb-1"><a href="restaurant-details-2.html" class="link-effect">Breakfast
+                                    Grilled
+                                    Platter</a></h6>
+                            <p class="fs-15 mb-lg-2 mb-1 max-w-200 lh-base">Consists of grilled grilled
+                                mushroom, fried egg...</p>
+                            <h6 class="theme3-clr fs-16 fw-bold">$15.00</h6>
+                        </div>
+                        <div class="thumb rounded-2 position-relative w-90px h-90px">
+                            <img width="90" height="90" src="assets/img/home-1/popular-items1.jpg" alt="img"
+                                class="rounded-2">
+                            <a href="restaurant-details-2.html"
+                                class="w-28px h-28px z-1 position-absolute bottom-0 end-0 m-2 bg-white rounded d-center theme3-clr fs-14">
+                                <i class="fa-solid fa-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-xxl-4">
+                    <div class="most-popular-card bg-white card-effect smooth d-flex align-items-xxl-center justify-content-between gap-2 border rounded-12 p-xl-4 p-3 wow fadeInUp"
+                        data-wow-delay="0.3s">
+                        <div class="cont">
+                            <h6 class="mb-lg-1 mb-1"><a href="restaurant-details-2.html"
+                                    class="link-effect">Appetizer</a></h6>
+                            <p class="fs-15 mb-lg-2 mb-1 max-w-200 lh-base">Consists of grilled grilled
+                                mushroom, fried egg...</p>
+                            <h6 class="theme3-clr fs-16 fw-bold">$19.00</h6>
+                        </div>
+                        <div class="thumb rounded-2 position-relative w-90px h-90px">
+                            <img width="90" height="90" src="assets/img/home-1/popular-items2.jpg" alt="img"
+                                class="rounded-2">
+                            <a href="restaurant-details-2.html"
+                                class="w-28px h-28px z-1 position-absolute bottom-0 end-0 m-2 bg-white rounded d-center theme3-clr fs-14">
+                                <i class="fa-solid fa-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-xxl-4">
+                    <div class="most-popular-card bg-white card-effect smooth d-flex align-items-xxl-center justify-content-between gap-2 border rounded-12 p-xl-4 p-3 wow fadeInUp"
+                        data-wow-delay="0.3s">
+                        <div class="cont">
+                            <h6 class="mb-lg-1 mb-1"><a href="restaurant-details-2.html" class="link-effect">Chicken
+                                    Somucha</a></h6>
+                            <p class="fs-15 mb-lg-2 mb-1 max-w-200 lh-base">Consists of grilled grilled
+                                mushroom, fried egg...</p>
+                            <h6 class="theme3-clr fs-16 fw-bold">$11.00</h6>
+                        </div>
+                        <div class="thumb rounded-2 position-relative w-90px h-90px">
+                            <img width="90" height="90" src="assets/img/home-1/popular-items3.jpg" alt="img"
+                                class="rounded-2">
+                            <a href="restaurant-details-2.html"
+                                class="w-28px h-28px z-1 position-absolute bottom-0 end-0 m-2 bg-white rounded d-center theme3-clr fs-14">
+                                <i class="fa-solid fa-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-xxl-4">
+                    <div class="most-popular-card bg-white card-effect smooth d-flex align-items-xxl-center justify-content-between gap-2 border rounded-12 p-xl-4 p-3 wow fadeInUp"
+                        data-wow-delay="0.3s">
+                        <div class="cont">
+                            <h6 class="mb-lg-1 mb-1"><a href="restaurant-details-2.html" class="link-effect">Peri Peri
+                                    Pasta</a></h6>
+                            <p class="fs-15 mb-lg-2 mb-1 max-w-200 lh-base">Consists of grilled grilled
+                                mushroom, fried egg...</p>
+                            <h6 class="theme3-clr fs-16 fw-bold">$11.00</h6>
+                        </div>
+                        <div class="thumb rounded-2 position-relative w-90px h-90px">
+                            <img width="90" height="90" src="assets/img/home-1/popular-items4.jpg" alt="img"
+                                class="rounded-2">
+                            <a href="restaurant-details-2.html"
+                                class="w-28px h-28px z-1 position-absolute bottom-0 end-0 m-2 bg-white rounded d-center theme3-clr fs-14">
+                                <i class="fa-solid fa-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-xxl-4">
+                    <div class="most-popular-card bg-white card-effect smooth d-flex align-items-xxl-center justify-content-between gap-2 border rounded-12 p-xl-4 p-3 wow fadeInUp"
+                        data-wow-delay="0.3s">
+                        <div class="cont">
+                            <h6 class="mb-lg-1 mb-1"><a href="restaurant-details-2.html" class="link-effect">Peri Peri
+                                    Pasta</a></h6>
+                            <p class="fs-15 mb-lg-2 mb-1 max-w-200 lh-base">Consists of grilled grilled
+                                mushroom, fried egg...</p>
+                            <h6 class="theme3-clr fs-16 fw-bold">$11.00</h6>
+                        </div>
+                        <div class="thumb rounded-2 position-relative w-90px h-90px">
+                            <img width="90" height="90" src="assets/img/home-1/popular-items4.jpg" alt="img"
+                                class="rounded-2">
+                            <a href="restaurant-details-2.html"
+                                class="w-28px h-28px z-1 position-absolute bottom-0 end-0 m-2 bg-white rounded d-center theme3-clr fs-14">
+                                <i class="fa-solid fa-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-xxl-4">
+                    <div class="most-popular-card bg-white card-effect smooth d-flex align-items-xxl-center justify-content-between gap-2 border rounded-12 p-xl-4 p-3 wow fadeInUp"
+                        data-wow-delay="0.3s">
+                        <div class="cont">
+                            <h6 class="mb-lg-1 mb-1"><a href="restaurant-details-2.html" class="link-effect">Hot
+                                    Chocolate Coffee</a>
+                            </h6>
+                            <p class="fs-15 mb-lg-2 mb-1 max-w-200 lh-base">Consists of grilled grilled
+                                mushroom, fried egg...</p>
+                            <h6 class="theme3-clr fs-16 fw-bold">$11.00</h6>
+                        </div>
+                        <div class="thumb rounded-2 position-relative w-90px h-90px">
+                            <img width="90" height="90" src="assets/img/home-1/popular-items5.jpg" alt="img"
+                                class="rounded-2">
+                            <a href="#0"
+                                class="w-28px h-28px z-1 card-effect position-absolute bottom-0 end-0 m-2 bg-white rounded d-center theme3-clr fs-14">
+                                <i class="fa-solid fa-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-xxl-4">
+                    <div class="most-popular-card bg-white card-effect smooth d-flex align-items-xxl-center justify-content-between gap-2 border rounded-12 p-xl-4 p-3 wow fadeInUp"
+                        data-wow-delay="0.3s">
+                        <div class="cont">
+                            <h6 class="mb-lg-1 mb-1"><a href="restaurant-details-2.html" class="link-effect">Mixed
+                                    Fruits Salad</a>
+                            </h6>
+                            <p class="fs-15 mb-lg-2 mb-1 max-w-200 lh-base">Consists of grilled grilled
+                                mushroom, fried egg...</p>
+                            <h6 class="theme3-clr fs-16 fw-bold">$11.00</h6>
+                        </div>
+                        <div class="thumb rounded-2 position-relative w-90px h-90px">
+                            <img width="90" height="90" src="assets/img/home-1/popular-items6.jpg" alt="img"
+                                class="rounded-2">
+                            <a href="restaurant-details-2.html"
+                                class="w-28px h-28px z-1 position-absolute bottom-0 end-0 m-2 bg-white rounded d-center theme3-clr fs-14">
+                                <i class="fa-solid fa-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-xxl-4">
+                    <div class="most-popular-card bg-white card-effect smooth d-flex align-items-xxl-center justify-content-between gap-2 border rounded-12 p-xl-4 p-3 wow fadeInUp"
+                        data-wow-delay="0.3s">
+                        <div class="cont">
+                            <h6 class="mb-lg-1 mb-1"><a href="restaurant-details-2.html" class="link-effect">Hot
+                                    Chocolate Coffee</a>
+                            </h6>
+                            <p class="fs-15 mb-lg-2 mb-1 max-w-200 lh-base">Consists of grilled grilled
+                                mushroom, fried egg...</p>
+                            <h6 class="theme3-clr fs-16 fw-bold">$11.00</h6>
+                        </div>
+                        <div class="thumb rounded-2 position-relative w-90px h-90px">
+                            <img width="90" height="90" src="assets/img/home-1/popular-items5.jpg" alt="img"
+                                class="rounded-2">
+                            <a href="#0"
+                                class="w-28px h-28px z-1 card-effect position-absolute bottom-0 end-0 m-2 bg-white rounded d-center theme3-clr fs-14">
+                                <i class="fa-solid fa-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-xxl-4">
+                    <div class="most-popular-card bg-white card-effect smooth d-flex align-items-xxl-center justify-content-between gap-2 border rounded-12 p-xl-4 p-3 wow fadeInUp"
+                        data-wow-delay="0.3s">
+                        <div class="cont">
+                            <h6 class="mb-lg-1 mb-1"><a href="restaurant-details-2.html" class="link-effect">Mixed
+                                    Fruits Salad</a>
+                            </h6>
+                            <p class="fs-15 mb-lg-2 mb-1 max-w-200 lh-base">Consists of grilled grilled
+                                mushroom, fried egg...</p>
+                            <h6 class="theme3-clr fs-16 fw-bold">$11.00</h6>
+                        </div>
+                        <div class="thumb rounded-2 position-relative w-90px h-90px">
+                            <img width="90" height="90" src="assets/img/home-1/popular-items6.jpg" alt="img"
+                                class="rounded-2">
+                            <a href="restaurant-details-2.html"
+                                class="w-28px h-28px z-1 position-absolute bottom-0 end-0 m-2 bg-white rounded d-center theme3-clr fs-14">
+                                <i class="fa-solid fa-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-xxl-4">
+                    <div class="most-popular-card bg-white card-effect smooth d-flex align-items-xxl-center justify-content-between gap-2 border rounded-12 p-xl-4 p-3 wow fadeInUp"
+                        data-wow-delay="0.3s">
+                        <div class="cont">
+                            <h6 class="mb-lg-1 mb-1"><a href="restaurant-details-2.html" class="link-effect">Breakfast
+                                    Grilled
+                                    Platter</a></h6>
+                            <p class="fs-15 mb-lg-2 mb-1 max-w-200 lh-base">Consists of grilled grilled
+                                mushroom, fried egg...</p>
+                            <h6 class="theme3-clr fs-16 fw-bold">$15.00</h6>
+                        </div>
+                        <div class="thumb rounded-2 position-relative w-90px h-90px">
+                            <img width="90" height="90" src="assets/img/home-1/popular-items1.jpg" alt="img"
+                                class="rounded-2">
+                            <a href="restaurant-details-2.html"
+                                class="w-28px h-28px z-1 position-absolute bottom-0 end-0 m-2 bg-white rounded d-center theme3-clr fs-14">
+                                <i class="fa-solid fa-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-xxl-4">
+                    <div class="most-popular-card bg-white card-effect smooth d-flex align-items-xxl-center justify-content-between gap-2 border rounded-12 p-xl-4 p-3 wow fadeInUp"
+                        data-wow-delay="0.3s">
+                        <div class="cont">
+                            <h6 class="mb-lg-1 mb-1"><a href="restaurant-details-2.html"
+                                    class="link-effect">Appetizer</a></h6>
+                            <p class="fs-15 mb-lg-2 mb-1 max-w-200 lh-base">Consists of grilled grilled
+                                mushroom, fried egg...</p>
+                            <h6 class="theme3-clr fs-16 fw-bold">$19.00</h6>
+                        </div>
+                        <div class="thumb rounded-2 position-relative w-90px h-90px">
+                            <img width="90" height="90" src="assets/img/home-1/popular-items2.jpg" alt="img"
+                                class="rounded-2">
+                            <a href="restaurant-details-2.html"
+                                class="w-28px h-28px z-1 position-absolute bottom-0 end-0 m-2 bg-white rounded d-center theme3-clr fs-14">
+                                <i class="fa-solid fa-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ul class="pagination d-flex align-items-center gap-1 justify-content-center flex-wrap mt-40">
+                <li>
+                    <a href="javascript:void(0)"
+                        class="fs-17 fw-semibold text-black py-2 px-3 text-center rounded-2 pagination-bg active">
+                        01
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)"
+                        class="fs-17 fw-semibold text-black py-2 px-3 text-center rounded-2 pagination-bg">
+                        02
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)"
+                        class="fs-14 w-48px fw-semibold text-black py-2 px-3 text-center rounded-2 pagination-bg">
+                        <i class="fa-solid fa-angle-right"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <img src="assets/img/inner-global-left.png" alt="img"
+            class="position-absolute bottom-0 pb-100 mb-5 start-0 float-bob-y pt-5 z-n1 d-sm-block d-none">
+        <img src="assets/img/inner-global-pasta.png" alt="img"
+            class="position-absolute top-40 end-0 float-bob-y z-n1 d-sm-block d-none">
+    </section>
+
+
+    <!-- Footer section start -->
+    <footer class="footer-section position-relative fix black-bg z-1">
+        <img src="assets/img/inner/footer-shape-filter.png" alt="img"
+            class="position-absolute start-0 top-0 mt-5 pt-5 float-bob-y z-n1 d-lg-block d-none opacity-25">
+        <img src="assets/img/home-4/footer4-right.png" alt="img"
+            class="position-absolute end-0 top-0 pt-100 mt-40 mx-5 float-bob-y z-n1 opacity-25">
+        <div class="container">
+            <div class="footer-widget-wrapper pb-80">
+                <div class="d-flex align-items-center justify-content-between gap-3 pb-100">
+                    <img src="assets/img/home-4/f-lin-dot.png" alt="img" class="w-100 d-xl-block d-none">
+                    <a href="index.html">
+                        <img src="assets/img/logo/logo-white.png" alt="img">
+                    </a>
+                    <img src="assets/img/home-4/f-lin-dot.png" alt="img" class="w-100 d-xl-block d-none">
+                </div>
+                <div class="row g-4">
+                    <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6 wow fadeInUp" data-wow-delay=".3s">
+                        <div class="single-footer-widget py-0">
+                            <h5 class="widget-head text-white text-uppercase fs-20 white-clr fw-semibold">
+                                Help
+                            </h5>
+                            <ul class="important-link d-grid gap-sm-2 gap-1">
+                                <li>
+                                    <a href="faqs.html" class="text-white opacity-75 fw-light link-effect">FAQs</a>
+                                </li>
+                                <li>
+                                    <a href="order-traking.html"
+                                        class="text-white opacity-75 fw-light link-effect">Delivery</a>
+                                </li>
+                                <li>
+                                    <a href="contact.html"
+                                        class="text-white opacity-75 fw-light link-effect">Contact</a>
+                                </li>
+                                <li>
+                                    <a href="order-traking.html"
+                                        class="text-white opacity-75 fw-light link-effect">Store
+                                        Locator</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6 wow fadeInUp" data-wow-delay=".4s">
+                        <div class="single-footer-widget py-0">
+                            <h5 class="widget-head text-white text-uppercase fs-20 white-clr fw-semibold">
+                                about US
+                            </h5>
+                            <ul class="important-link d-grid gap-sm-2 gap-1">
+                                <li>
+                                    <a href="about.html" class="text-white opacity-75 fw-light link-effect">Our
+                                        Story</a>
+                                </li>
+                                <li>
+                                    <a href="order-traking.html"
+                                        class="text-white opacity-75 fw-light link-effect">Delivery</a>
+                                </li>
+                                <li>
+                                    <a href="contact.html"
+                                        class="text-white opacity-75 fw-light link-effect">Contact</a>
+                                </li>
+                                <li>
+                                    <a href="about.html" class="text-white opacity-75 fw-light link-effect">Store
+                                        Locator</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6 wow fadeInUp" data-wow-delay=".5s">
+                        <div class="single-footer-widget py-0">
+                            <h5 class="widget-head text-white text-uppercase fs-20 white-clr fw-semibold">
+                                address
+                            </h5>
+                            <div class="footer-content">
+                                <p class="fs-16 white-clr opacity-75 mb-xl-3 mb-2">
+                                    1487 Rocky Horse Carre 1487Rocky
+                                    Arlington, TX 16819 United
+                                </p>
+                                <h5 class="text-white mb-lg-3 mb-2">1800 6565 222</h5>
+                                <p class="fs-16 white-clr opacity-75">info@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6 wow fadeInUp" data-wow-delay=".7s">
+                        <div class="single-footer-widget py-0">
+                            <h5 class="widget-head text-white text-uppercase fs-20 white-clr fw-semibold">
+                                CONNECT
+                            </h5>
+                            <p class="fs-16 white-clr opacity-75 mb-xl-3 mb-2">
+                                Absolutely loved the cozy vibe and Rich aroma! The coffee was perfectly brewed
+                            </p>
+                            <form action="#0" class="d-flex form-outline">
+                                <input type="text" placeholder="Email Address">
+                                <button type="button" class="btn p-0 border-0"><img
+                                        src="assets/img/icons/arrow-right-long.png" alt="icon"></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div
+                    class="d-flex align-items-center justify-content-sm-between justify-content-center flex-wrap gap-2 fs-16 text-center">
+                    <p class="fs-16 text4-clr">Copyright &copy; 2025 <a href="index.html" class="theme-clr">Mozzo</a>
+                        all Right
+                        Reserved</p>
+                    <div class="d-flex align-items-center flex-wrap gap-lg-4 gap-sm-3 gap-2">
+                        <a href="contact.html" class="fs-16 text3-clr link-effect heading-font-afasad">Privacy
+                            Policy</a>
+                        <a href="contact.html" class="fs-16 text3-clr link-effect heading-font-afasad">Terms &
+                            Conditions</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <div class="search-wrap">
+        <div class="search-inner">
+            <i class="fas fa-times search-close open" id="search-close"></i>
+            <div class="search-cell">
+                <form method="get">
+                    <div class="search-field-holder">
+                        <input type="search" class="main-search-input" placeholder="Search...">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--<< All JS Plugins >>-->
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <!--<< Viewport Js >>-->
+    <script src="assets/js/viewport.jquery.js"></script>
+    <!--<< Bootstrap Js >>-->
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <!--<< Nice Select Js >>-->
+    <script src="assets/js/jquery.nice-select.min.js"></script>
+    <!--<< Waypoints Js >>-->
+    <script src="assets/js/jquery.waypoints.js"></script>
+    <!--<< Counterup Js >>-->
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <!--<< Swiper Slider Js >>-->
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <!--<< MeanMenu Js >>-->
+    <script src="assets/js/jquery.meanmenu.min.js"></script>
+    <!--<< Magnific Popup Js >>-->
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <!--<< Wow Animation Js >>-->
+    <script src="assets/js/wow.min.js"></script>
+    <!--<< Main.js >>-->
+    <script src="assets/js/main.js"></script>
+
+
+</body>
+
+</html>

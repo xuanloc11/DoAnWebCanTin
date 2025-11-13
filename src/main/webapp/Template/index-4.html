@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--<< Header Area >>-->
+
+<head>
+    <!-- ========== Meta Tags ========== -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="authorNmaeHere">
+    <meta name="description" content="Online Food Order HTML Template">
+    <!-- ======== Page title ============ -->
+    <title>Online Food Order HTML Template</title>
+    <!--<< Favcion >>-->
+    <link rel="shortcut icon" href="assets/img/logo/favicon.png">
+    <!--<< Bootstrap min.css >>-->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!--<< All Min Css >>-->
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <!--<< Animate.css >>-->
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <!--<< Magnific Popup.css >>-->
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <!--<< MeanMenu.css >>-->
+    <link rel="stylesheet" href="assets/css/meanmenu.css">
+    <!--<< Swiper Bundle.css >>-->
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <!--<< Nice Select.css >>-->
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <!--<< Expose Font.css >>-->
+    <link rel="stylesheet" href="assets/css/expose.css">
+    <!--<< Main.css >>-->
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+
+<body class="body-bg">
+
+    <!-- Back To Top start -->
+    <!-- <button id="back-top" class="back-to-top">
+            <i class="fa-regular fa-arrow-up"></i>
+        </button> -->
+
+    <!-- Preloader Start -->
+    <div id="preloader" class="preloader">
+        <div class="animation-preloader">
+            <div class="spinner">
+            </div>
+            <div class="txt-loading">
+                <span data-text-preloader="M" class="letters-loading">
+                    M
+                </span>
+                <span data-text-preloader="O" class="letters-loading">
+                    O
+                </span>
+                <span data-text-preloader="Z" class="letters-loading">
+                    Z
+                </span>
+                <span data-text-preloader="Z" class="letters-loading">
+                    Z
+                </span>
+                <span data-text-preloader="O" class="letters-loading">
+                    O
+                </span>
+            </div>
+            <p class="text-center">Loading</p>
+        </div>
+        <div class="loader">
+            <div class="row">
+                <div class="col-3 loader-section section-left">
+                    <div class="bg"></div>
+                </div>
+                <div class="col-3 loader-section section-left">
+                    <div class="bg"></div>
+                </div>
+                <div class="col-3 loader-section section-right">
+                    <div class="bg"></div>
+                </div>
+                <div class="col-3 loader-section section-right">
+                    <div class="bg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Offcanvas Area Start -->
+    <div class="fix-area">
+        <div class="offcanvas__info">
+            <div class="offcanvas__wrapper">
+                <div class="offcanvas__content">
+                    <div class="offcanvas__top mb-4 d-flex justify-content-between align-items-center">
+                        <div class="offcanvas__logo">
+                            <a href="index.html">
+                                <img src="assets/img/logo/logo-white.png" alt="logo-img">
+                            </a>
+                        </div>
+                        <div class="offcanvas__close">
+                            <button>
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mobile-menu fix mb-3"></div>
+                    <div class="offcanvas__contact">
+                        <!-- <div class="mb-4 d-xl-block d-none">
+                            <h4 class="mb-2">Demo</h4>
+                            <a href="index.html" class="w-75 d-center">
+                                <img src="assets/img/hero/home1.jpg" alt="img" class="w-100">
+                            </a>
+                        </div> -->
+                        <h4>Contact Info</h4>
+                        <ul>
+                            <li class="d-flex align-items-center">
+                                <div class="offcanvas__contact-icon">
+                                    <i class="fal fa-map-marker-alt"></i>
+                                </div>
+                                <div class="offcanvas__contact-text">
+                                    <a target="_blank" href="#">Strits Es/154 Maces Road 1/8 United State</a>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <div class="offcanvas__contact-icon mr-15">
+                                    <i class="fal fa-envelope"></i>
+                                </div>
+                                <div class="offcanvas__contact-text">
+                                    <a href="mailto:info@example.com"><span
+                                            class="mailto:info@example.com">info@example.com</span></a>
+                                    <a href="mailto:info@example.com"><span
+                                            class="mailto:info@example.com">ex@example.com</span></a>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <div class="offcanvas__contact-icon mr-15">
+                                    <i class="fal fa-clock"></i>
+                                </div>
+                                <div class="offcanvas__contact-text">
+                                    <a target="_blank" href="#">Sat-friday, 02am -09pm</a>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <div class="offcanvas__contact-icon mr-15">
+                                    <i class="far fa-phone"></i>
+                                </div>
+                                <div class="offcanvas__contact-text">
+                                    <a href="tel:+11002345909" class="d-block">365 5552-0127</a>
+                                    <a href="tel:+11002345909">5421 5545 5422</a>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="header-button mt-4">
+                            <a href="contact.html"
+                                class="theme-btn d-inline-flex text-white justify-content-center align-items-center gap-xxl-2 gap-2 fs-16 rounded-1 fw-500 black-clr overflow-hidden">
+                                Get Start
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                        <div class="social-icon d-flex align-items-center">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="offcanvas__overlay"></div>
+
+    <!-- Header Section Start -->
+    <header id="header-sticky" class="header-1 bg-white header-style03">
+        <div class="container">
+            <div class="mega-menu-wrapper">
+                <div class="header-main">
+                    <div class="header-left">
+                        <div class="logo">
+                            <a href="index.html" class="header-logo">
+                                <img src="assets/img/logo/logo-black3.png" alt="logo-img">
+                            </a>
+                        </div>
+                        <div class="line"></div>
+                        <div class="mean__menu-wrapper">
+                            <div class="main-menu">
+                                <nav id="mobile-menu">
+                                    <ul>
+                                        <li class="has-dropdown droop active menu-thumb">
+                                            <a href="index.html">
+                                                Home
+                                                <i class="fas fa-angle-down"></i>
+                                            </a>
+                                            <ul class="submenu has-homemenu">
+                                                <li>
+                                                    <div class="homemenu-items">
+                                                        <div class="homemenu menu-inside-style">
+                                                            <a href="index.html"
+                                                                class="homemenu-thumb d-xl-block d-none">
+                                                                <img src="assets/img/hero/home1.jpg" alt="img"
+                                                                    class="w-100">
+                                                            </a>
+                                                            <a href="index.html"
+                                                                class="menu-inside fw-semibold text-black text-capitalize d-xl-none d-block">
+                                                                Home
+                                                            </a>
+                                                        </div>
+                                                        <div class="homemenu menu-inside-style">
+                                                            <a href="index-2.html"
+                                                                class="homemenu-thumb mb-15 d-xl-block d-none">
+                                                                <img src="assets/img/hero/home2.jpg" alt="img"
+                                                                    class="w-100">
+                                                            </a>
+                                                            <a href="index-2.html"
+                                                                class="menu-inside fw-semibold text-black text-capitalize d-xl-none d-block">
+                                                                Home 02
+                                                            </a>
+                                                        </div>
+                                                        <div class="homemenu menu-inside-style">
+                                                            <a href="index-3.html"
+                                                                class="homemenu-thumb mb-15 d-xl-block d-none">
+                                                                <img src="assets/img/hero/home3.jpg" alt="img"
+                                                                    class="w-100">
+                                                            </a>
+                                                            <a href="index-3.html"
+                                                                class="menu-inside fw-semibold text-black text-capitalize d-xl-none d-block">
+                                                                Home 03
+                                                            </a>
+                                                        </div>
+                                                        <div class="homemenu menu-inside-style">
+                                                            <a href="index-4.html"
+                                                                class="homemenu-thumb mb-15 d-xl-block d-none">
+                                                                <img src="assets/img/hero/home4.jpg" alt="img"
+                                                                    class="w-100">
+                                                            </a>
+                                                            <a href="index-4.html"
+                                                                class="menu-inside fw-semibold text-black text-capitalize d-xl-none d-block">
+                                                                Home 04
+                                                            </a>
+                                                        </div>
+                                                        <div class="homemenu menu-inside-style">
+                                                            <a href="index-5.html"
+                                                                class="homemenu-thumb mb-15 d-xl-block d-none">
+                                                                <img src="assets/img/hero/home5.jpg" alt="img"
+                                                                    class="w-100">
+                                                            </a>
+                                                            <a href="index-5.html"
+                                                                class="menu-inside fw-semibold text-black text-capitalize d-xl-none d-block">
+                                                                Home 05
+                                                            </a>
+                                                        </div>
+                                                        <div class="homemenu blar-comming d-xl-block d-none">
+                                                            <a href="error.html"
+                                                                class="homemenu-thumb active mb-15 d-xl-block d-none">
+                                                                <img src="assets/img/hero/home5.jpg" alt="img"
+                                                                    class="w-100">
+                                                            </a>
+                                                            <a href="error.html"
+                                                                class="menu-inside fw-semibold text-black text-capitalize d-xl-none d-block">
+                                                                Coming Soon
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="menu.html">
+                                                Menu
+                                                <i class="fas fa-angle-down"></i>
+                                            </a>
+                                            <ul class="submenu">
+                                                <li><a href="single-food-menu.html">Single Food Menu</a></li>
+                                                <li><a href="list-layout.html">Menu List</a></li>
+                                                <li><a href="restaurant-list.html">Restaurant List</a></li>
+                                                <li><a href="menu-categories.html">Menu Categories</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="shop.html">
+                                                Shop
+                                                <i class="fas fa-angle-down"></i>
+                                            </a>
+                                            <ul class="submenu">
+                                                <li><a href="shop.html">Shop</a></li>
+                                                <li><a href="shop-details.html">Shop Details</a></li>
+                                                <li><a href="cart-page.html">Cart</a></li>
+                                                <li><a href="checkout.html">Checkout</a></li>
+                                                <li><a href="order-traking.html">Order Tracking</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="blog-grid.html">
+                                                Blog
+                                                <i class="fas fa-angle-down"></i>
+                                            </a>
+                                            <ul class="submenu">
+                                                <li><a href="blog-standard.html">Blog Standard</a></li>
+                                                <li><a href="blog-details.html">Blog Details</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="has-dropdown">
+                                            <a href="#0">
+                                                Pages
+                                                <i class="fas fa-angle-down"></i>
+                                            </a>
+                                            <ul class="submenu">
+                                                <li><a href="about.html">About Us</a></li>
+                                                <li><a href="faqs.html">Faqs</a></li>
+                                                <li><a href="team.html">Team</a></li>
+                                                <li><a href="team-details.html">Team Details</a></li>
+                                                <li><a href="restaurant-list.html">Restaurant List</a></li>
+                                                <li><a href="restaurant-details.html">Restaurant Details 01</a></li>
+                                                <li><a href="restaurant-details-2.html">Restaurant Details 02</a></li>
+                                                <li><a href="contact.html">Contact</a></li>
+                                                <li><a href="error.html">404</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="contact.html">Contact</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header-right d-flex justify-content-end align-items-center">
+                        <a href="#0" class="search-trigger d-lg-none d-block">
+                            <img src="assets/img/icon/search.png" alt="img">
+                        </a>
+                        <button type="button" class="tolly-icon d-lg-none position-relative">
+                            <img src="assets/img/icons/tolly.png" alt="tolly-icon">
+                            <span class="count-quan d-center count-quan-black text-white">02</span>
+                        </button>
+                        <div class="header__hamburger d-lg-none d-block my-auto">
+                            <div
+                                class="sidebar__toggle black-bg d-flex align-items-center justify-content-center w-40px h-40px rounded-circle sidebar__toggle fs-20 text-white">
+                                <i class="fa-solid fa-bars"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-lg-flex d-none align-items-center gap-xxl-3 gap-3">
+                        <a href="#0" class="search-trigger">
+                            <img src="assets/img/icon/search.png" alt="img">
+                        </a>
+                        <button type="button" class="tolly-icon position-relative">
+                            <img src="assets/img/icons/tolly.png" alt="tolly-icon">
+                            <span class="count-quan d-center count-quan-black text-white">02</span>
+                        </button>
+                        <a href="single-food-menu.html"
+                            class="theme-btn rounded-pill btn-outline-blak border-black letter-spacing-1 text-uppercase fs-13">
+                            Book a Table
+                        </a>
+                        <button type="button"
+                            class="destop-bars black-bg w-40px h-40px rounded-circle d-center sidebar__toggle fs-20 text-white">
+                            <i class="fa-solid fa-bars"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Hero section start -->
+    <section class="hero-section position-relative fix hero-style4">
+        <div class="container container-1520 p-0">
+            <div class="hero-content4 d-flex flex-md-nowrap flex-wrap align-items-end z-1 position-relative">
+                <div class="col-lg-8">
+                    <h1 class="heading-font-edensor mb-xl-4 mb-3 fw-medium text-uppercase wow fadeInUp"
+                        data-wow-delay="0.5s">A Cup Coffee, feed your soul
+                    </h1>
+                    <div class="thumb-hero4 wow fadeInDown" data-wow-delay="0.7s">
+                        <div class="thumb">
+                            <img src="assets/img/home-4/hero-thum4.png" alt="img">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="content">
+                        <div class="mb-30 pb-3">
+                            <p class="fs-18 text-dark heading-font-afasad mb-xl-4 mb-lg-3 mb-2 wow fadeInUp"
+                                data-wow-delay="0.2s">Step into a world of
+                                freshly brewed coffee, cozy
+                                ambiance, and warm conversations.</p>
+                            <a href="single-food-menu.html" class="theme-btn theme-btn-coffee btn-dark-common rounded-pill py-3 px-4 wow fadeInUp"
+                                data-wow-delay="0.3s">
+                                BOOK A TABLE
+                            </a>
+                        </div>
+                        <div class="d-flex flex-md-column flex-md-nowrap flex-wrap gap-lg-4 gap-md-3 gap-2">
+                            <div class="d-flex w-md-100 w-100 align-items-center gap-2 justify-content-between bg-black py-xxl-4 py-xl-3 py-2 px-xl-4 px-3 rounded-2 wow fadeInUp"
+                                data-wow-delay="0.3s">
+                                <h3 class="heading-font-edensor text-white">
+                                    <a href="menu-categories.html" class="heading-font-edensor link-effect text-white fw-normal"
+                                        style="letter-spacing: 1px;">
+                                        Coffee Proper <br> Roasting
+                                    </a>
+                                </h3>
+                                <a href="menu-categories.html" class="w-44px standar-icon h-44px rounded-1 d-center bg-gray">
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </a>
+                            </div>
+                            <div class="d-flex w-md-100 w-100 align-items-center gap-2 justify-content-between bg-black py-xxl-4 py-xl-3 py-2 px-xl-4 px-3 rounded-2 wow fadeInUp"
+                                data-wow-delay="0.4s">
+                                <h3 class="heading-font-edensor text-white">
+                                    <a href="menu-categories.html" class="heading-font-edensor link-effect text-white fw-normal"
+                                        style="letter-spacing: 1px;">
+                                        Served with <br> a Smile
+                                    </a>
+                                </h3>
+                                <a href="menu-categories.html" class="w-44px standar-icon h-44px rounded-1 d-center bg-gray">
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </a>
+                            </div>
+                            <div class="d-flex w-md-100 w-100 align-items-center gap-2 justify-content-between bg-black py-xxl-4 py-xl-3 py-2 px-xl-4 px-3 rounded-2 wow fadeInUp"
+                                data-wow-delay="0.5s">
+                                <h3 class="heading-font-edensor text-white">
+                                    <a href="menu-categories.html" class="heading-font-edensor link-effect text-white fw-normal"
+                                        style="letter-spacing: 1px;">
+                                        One Cup at <br> a Time
+                                    </a>
+                                </h3>
+                                <a href="menu-categories.html" class="w-44px standar-icon h-44px rounded-1 d-center bg-gray">
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </a>
+                            </div>
+                            <div class="d-flex w-md-100 w-100 align-items-center gap-2 justify-content-between bg-black py-xxl-4 py-xl-3 py-2 px-xl-4 px-3 rounded-2 wow fadeInUp"
+                                data-wow-delay="0.6s">
+                                <h3 class="heading-font-edensor text-white">
+                                    <a href="menu-categories.html" class="heading-font-edensor link-effect text-white fw-normal"
+                                        style="letter-spacing: 1px;">
+                                        Coffee Proper <br> Roasting
+                                    </a>
+                                </h3>
+                                <a href="menu-categories.html" class="w-44px standar-icon h-44px rounded-1 d-center bg-gray">
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <img src="assets/img/home-4/hero4-shae-left.png" alt="img"
+            class="position-absolute top-0 shape start-0 z-n1 d-md-block d-none">
+        <img src="assets/img/home-4/hero4-shae-right.png" alt="img"
+            class="position-absolute top-0 shape end-0 z-n1 float-bob-y">
+    </section>
+
+    <!-- About section start -->
+    <section class="about-section section-bg2 section-padding">
+        <div class="container">
+            <div class="row g-4 align-items-center">
+                <div class="col-lg-6 wow fadeInRight" data-wow-delay="0.5s">
+                    <div class="about-thumb4 w-100 card-effect wow fadeInRight">
+                        <img src="assets/img/home-4/about-thumb1.png" alt="img" class="w-100">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-content-wrap">
+                        <div class="section-title-style4 text-center mx-auto mb-40 pb-xl-1">
+                            <h5 class="heading-font-afasad text-uppercase fw-normal mb-xl-4 mb-sm-3 mb-3 pb-xxl-2 text-dark"
+                                style="letter-spacing: 2px;">welcome to caffeno</h5>
+                            <h2 class="wow fadeInUp mb-xl-4 mb-lg-3 mb-2 heading-font-edensor max-w-520 mx-auto fw-medium text-dark fs-30 lh-1 text-uppercase"
+                                data-wow-delay=".3s">
+                                Where Every <br> Cup coffee Feels <br>
+                                Like Home
+                            </h2>
+                            <p class="fs-20 heading-font-afasad max-w-520 mx-auto mb-30 pb-2 wow fadeInDown"
+                                data-wow-delay=".4s">
+                                we’re passionate about delivering rich flavors in a cozy, welcoming space. you're
+                                catching up with friends, working on
+                                your next big idea.
+                            </p>
+                            <div class="max-w-440 mx-auto d-flex align-items-center justify-content-between gap-3 max-w-520 mx-auto mb-30 pb-xl-3 wow fadeInDown"
+                                data-wow-delay=".5s">
+                                <div>
+                                    <h2 class="d-flex align-items-center justify-content-center gap-1">
+                                        <span class="count heading-font-edensor text-dark">98</span>
+                                        <span class="heading-font-edensor text-dark">%</span>
+                                    </h2>
+                                    <p class="fs-18 heading-font-afasad text-dark text-center">
+                                        Clients Satisfied and <br>
+                                        Repeating
+                                    </p>
+                                </div>
+                                <span
+                                    style="width: 1px; height: 100px; display: block; background-color: rgb(17, 17, 17, 0.5);"></span>
+                                <div>
+                                    <h2 class="d-flex align-items-center justify-content-center gap-1">
+                                        <span class="count heading-font-edensor text-dark">125</span>
+                                        <span class="heading-font-edensor text-dark">+</span>
+                                    </h2>
+                                    <p class="fs-18 heading-font-afasad text-dark text-center">
+                                        Projects Completed in <br>
+                                        24 Countries
+                                    </p>
+                                </div>
+                            </div>
+                            <a href="about.html"
+                                class="theme-btn theme-btn-coffee btn-dark-common py-lg-3 py-2 px-lg-5 px-4 rounded-pill">
+                                Learn About us
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Choose section start -->
+    <section class="choose-us-section z-1 position-relative section-padding">
+        <div class="text-center choose-coffe-cup position-absolute d-xl-block d-none">
+            <img src="assets/img/home-4/choose-coffee.png" alt="img" class="choose-coffee">
+        </div>
+        <div class="container pt-xl-5 mt-xl-5">
+            <div class="row g-4 mt-xl-4">
+                <div class="col-lg-5">
+                    <div class="section-title-style4 mx-auto mb-40 pb-xl-1">
+                        <h5 class="heading-font-afasad text-uppercase fw-normal mb-xl-4 mb-sm-3 mb-3 pb-xxl-2 text-dark wow fadeInUp"
+                            style="letter-spacing: 2px;" data-wow-delay="0.4s">wHY CHOOSE US</h5>
+                        <h2 class="wow fadeInUp mb-30 pb-xxl-2 heading-font-edensor max-w-480 fw-medium text-dark fs-30 lh-1 text-uppercase"
+                            data-wow-delay=".3s">
+                            WHERE FLAVOR MEETS COMPORT & SERVICES
+                        </h2>
+                        <a href="about.html"
+                            class="theme-btn py-lg-3 py-2 px-lg-5 px-4 btn-outline-blak rounded-pill wow fadeInUp"
+                            data-wow-delay="0.5s">
+                            Learn About us
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-7 ps-30">
+                    <div class="row g-0">
+                        <div class="col-sm-6">
+                            <div class="choose-items pb-40 border-top-0 border-end-0 border-start-0 border-bottom-0">
+                                <div class="icon d-center rounded-circle w-48px h-48px mb-xl-3 mb-2">
+                                    <img src="assets/img/icons/choo-percentage-badge.png" alt="icon">
+                                </div>
+                                <h4 class="mb-lg-2 mb-1"><a href="restaurant-list.html"
+                                        class="text-dark heading-font-afasad">Fully
+                                        Responsive</a></h4>
+                                <p class="fs-20 text-dark heading-font-afasad max-w-270">
+                                    we’re passionate about delivering rich flavors in a cozy space. you're catching up.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="choose-items pb-40 ps-40 border-top-0 border-end-0 border-bottom-0">
+                                <div class="icon d-center rounded-circle w-48px h-48px mb-xl-3 mb-2">
+                                    <img src="assets/img/icons/choo-percentage-badge.png" alt="icon">
+                                </div>
+                                <h4 class="mb-lg-2 mb-1"><a href="restaurant-list.html"
+                                        class="text-dark heading-font-afasad">Fresh
+                                        Ingredients</a></h4>
+                                <p class="fs-20 text-dark heading-font-afasad max-w-270">
+                                    we’re passionate about delivering rich flavors in a cozy space. you're catching up.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="choose-items pb-40 pt-40 border-bottom-0 border-start-0 border-end-0">
+                                <div class="icon d-center rounded-circle w-48px h-48px mb-xl-3 mb-2">
+                                    <img src="assets/img/icons/choo-percentage-badge.png" alt="icon">
+                                </div>
+                                <h4 class="mb-lg-2 mb-1"><a href="restaurant-list.html"
+                                        class="text-dark heading-font-afasad">Friendly
+                                        Atomsphere</a></h4>
+                                <p class="fs-20 text-dark heading-font-afasad max-w-270">
+                                    we’re passionate about delivering rich flavors in a cozy space. you're catching up.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="choose-items pb-40 ps-40 pt-40 border-end-0 border-bottom-0">
+                                <div class="icon d-center rounded-circle w-48px h-48px mb-xl-3 mb-2">
+                                    <img src="assets/img/icons/choo-percentage-badge.png" alt="icon">
+                                </div>
+                                <h4 class="mb-lg-2 mb-1"><a href="restaurant-list.html"
+                                        class="text-dark heading-font-afasad">Exclusive
+                                        Chef’s</a></h4>
+                                <p class="fs-20 text-dark heading-font-afasad max-w-270">
+                                    we’re passionate about delivering rich flavors in a cozy space. you're catching up.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="choose-items pt-40 border-bottom-0 border-start-0 border-end-0">
+                                <div class="icon d-center rounded-circle w-48px h-48px mb-xl-3 mb-2">
+                                    <img src="assets/img/icons/choo-percentage-badge.png" alt="icon">
+                                </div>
+                                <h4 class="mb-lg-2 mb-1"><a href="restaurant-list.html"
+                                        class="text-dark heading-font-afasad">Fast
+                                        Services</a></h4>
+                                <p class="fs-20 text-dark heading-font-afasad max-w-270">
+                                    we’re passionate about delivering rich flavors in a cozy space. you're catching up.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="choose-items ps-40 pt-40 border-bottom-0 border-end-0">
+                                <div class="icon d-center rounded-circle w-48px h-48px mb-xl-3 mb-2">
+                                    <img src="assets/img/icons/choo-percentage-badge.png" alt="icon">
+                                </div>
+                                <h4 class="mb-lg-2 mb-1"><a href="restaurant-list.html"
+                                        class="text-dark heading-font-afasad">Free
+                                        Wifi</a></h4>
+                                <p class="fs-20 text-dark heading-font-afasad max-w-270">
+                                    we’re passionate about delivering rich flavors in a cozy space. you're catching up.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <img src="assets/img/home-4/choose-shapel.png" alt="img"
+            class="position-absolute bottom-0 start-0 z-n1 d-xl-block d-none">
+    </section>
+
+    <!-- Text Slide start -->
+    <section class="text-slider-section">
+        <div class="sponsor-text-slide2 swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide w-fit">
+                    <div class="text-slide-item rounded-3">
+                        <img src="assets/img/home-4/text-shop1.png" alt="img">
+                    </div>
+                </div>
+                <div class="swiper-slide w-fit">
+                    <div class="text-slide-item rounded-3">
+                        <img src="assets/img/home-4/text-shop2.png" alt="img">
+                    </div>
+                </div>
+                <div class="swiper-slide w-fit">
+                    <div class="text-slide-item rounded-3">
+                        <img src="assets/img/home-4/text-shop3.png" alt="img">
+                    </div>
+                </div>
+                <div class="swiper-slide w-fit">
+                    <div class="text-slide-item rounded-3">
+                        <img src="assets/img/home-4/text-shop1.png" alt="img">
+                    </div>
+                </div>
+                <div class="swiper-slide w-fit">
+                    <div class="text-slide-item rounded-3">
+                        <img src="assets/img/home-4/text-shop2.png" alt="img">
+                    </div>
+                </div>
+                <div class="swiper-slide w-fit">
+                    <div class="text-slide-item rounded-3">
+                        <img src="assets/img/home-4/text-shop3.png" alt="img">
+                    </div>
+                </div>
+                <div class="swiper-slide w-fit">
+                    <div class="text-slide-item rounded-3">
+                        <img src="assets/img/home-4/text-shop1.png" alt="img">
+                    </div>
+                </div>
+                <div class="swiper-slide w-fit">
+                    <div class="text-slide-item rounded-3">
+                        <img src="assets/img/home-4/text-shop2.png" alt="img">
+                    </div>
+                </div>
+                <div class="swiper-slide w-fit">
+                    <div class="text-slide-item rounded-3">
+                        <img src="assets/img/home-4/text-shop3.png" alt="img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Table Menu Book section start -->
+    <section class="table-menu-book-section pt-100 pb-100">
+        <div class="container">
+            <div class="section-title-style4 mx-auto mb-40 pb-xl-1 text-center">
+                <h5 class="heading-font-afasad text-uppercase fw-normal mb-xl-4 mb-sm-3 mb-3 pb-xxl-2 text-dark"
+                    style="letter-spacing: 2px;">Our special menu</h5>
+                <h2 class="wow fadeInUp heading-font-edensor max-w-520 mx-auto fw-medium text-dark fs-30 lh-1 text-uppercase"
+                    data-wow-delay=".3s">
+                    Exclusive Beans, Rare Flavor.
+                </h2>
+            </div>
+            <div class="d-flex flex-column">
+                <div class="table-menu-items active position-relative overflow-hidden wow fadeInUp"
+                    data-wow-delay=".3s">
+                    <div
+                        class="d-flex flex-wrap align-items-center justify-content-between gap-lg-3 gap-2 table-menu-inner">
+                        <h2 class="heading-font-edensor text-dark"><a href="list-layout.html
+                            " class="fw-medium">Mericano cold
+                                Coffee</a></h2>
+                        <div class="d-flex align-items-center gap-xxl-5 gap-xl-4 gap-3">
+                            <img src="assets/img/home-4/slash.png" alt="img">
+                            <h2 class="heading-font-edensor fw-medium lh-1 text-dark">$12.88</h2>
+                        </div>
+                        <a href="list-layout.html"
+                            class="theme-btn py-lg-3 py-2 px-lg-5 px-4 btn-outline-blak rounded-pill">
+                            Book Now
+                        </a>
+                    </div>
+                </div>
+                <div class="table-menu-items position-relative overflow-hidden wow fadeInUp" data-wow-delay=".3s">
+                    <div
+                        class="d-flex flex-wrap align-items-center justify-content-between gap-lg-3 gap-2 table-menu-inner">
+                        <h2 class="heading-font-edensor text-dark"><a href="list-layout.html
+                            " class="fw-medium">American Espresso</a>
+                        </h2>
+                        <div class="d-flex align-items-center gap-xxl-5 gap-xl-4 gap-3">
+                            <img src="assets/img/home-4/slash.png" alt="img">
+                            <h2 class="heading-font-edensor fw-medium lh-1 text-dark">$9.88</h2>
+                        </div>
+                        <a href="list-layout.html"
+                            class="theme-btn py-lg-3 py-2 px-lg-5 px-4 btn-outline-blak rounded-pill">
+                            Book Now
+                        </a>
+                    </div>
+                </div>
+                <div class="table-menu-items position-relative overflow-hidden wow fadeInUp" data-wow-delay=".3s">
+                    <div
+                        class="d-flex flex-wrap align-items-center justify-content-between gap-lg-3 gap-2 table-menu-inner">
+                        <h2 class="heading-font-edensor text-dark"><a href="list-layout.html
+                            " class="fw-medium">Mozza Special
+                                Latte</a></h2>
+                        <div class="d-flex align-items-center gap-xxl-5 gap-xl-4 gap-3">
+                            <img src="assets/img/home-4/slash.png" alt="img">
+                            <h2 class="heading-font-edensor fw-medium lh-1 text-dark">$8.88</h2>
+                        </div>
+                        <a href="list-layout.html"
+                            class="theme-btn py-lg-3 py-2 px-lg-5 px-4 btn-outline-blak rounded-pill">
+                            Book Now
+                        </a>
+                    </div>
+                </div>
+                <div class="table-menu-items position-relative overflow-hidden wow fadeInUp" data-wow-delay=".3s">
+                    <div
+                        class="d-flex flex-wrap align-items-center justify-content-between gap-lg-3 gap-2 table-menu-inner">
+                        <h2 class="heading-font-edensor text-dark"><a href="list-layout.html
+                            " class="fw-medium">American Espresso</a>
+                        </h2>
+                        <div class="d-flex align-items-center gap-xxl-5 gap-xl-4 gap-3">
+                            <img src="assets/img/home-4/slash.png" alt="img">
+                            <h2 class="heading-font-edensor fw-medium lh-1 text-dark">MIced Americano</h2>
+                        </div>
+                        <a href="list-layout.html"
+                            class="theme-btn py-lg-3 py-2 px-lg-5 px-4 btn-outline-blak rounded-pill">
+                            Book Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="client-section z-1 position-relative section-padding bg-black fix">
+        <img src="assets/img/home-4/feedback-shape.png" alt="img"
+            class="position-absolute top-0 float-bob-y start-0 z-n1">
+        <div class="container">
+            <div class="section-title-style4 mx-auto mb-40 pb-xl-2 text-center">
+                <h5 class="heading-font-afasad text-uppercase fw-normal mb-xl-4 mb-sm-3 mb-3 pb-xxl-2 text-white wow fadeInUp"
+                    style="letter-spacing: 2px;" data-wow-delay="0.3s">Our special menu</h5>
+                <h2 class="wow fadeInUp heading-font-edensor fw-medium text-white fs-30 lh-1 text-uppercase"
+                    data-wow-delay=".5s">
+                    USERS FEEDBACK
+                </h2>
+            </div>
+            <div class="row g-4 align-items-start">
+                <div class="col-lg-9">
+                    <div class="testimonial-wrapper1 testimonial-wrapper4">
+                        <div class="swiper testimonial-slider">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div
+                                        class="testimonial-items style1 d-flex flex-md-nowrap flex-wrap align-items-center position-relative p-md-0 p-3">
+                                        <div class="testimonial-thumb rounded-circle position-relative">
+                                            <img src="assets/img/client-admin1.jpg" alt="img" class="rounded-circle">
+                                        </div>
+                                        <div class="content">
+                                            <div class="d-flex gap-1 mb-xl-3 mb-2">
+                                                <i class="fa-solid fa-star fs-16 ratting-clr"></i>
+                                                <i class="fa-solid fa-star fs-16 ratting-clr"></i>
+                                                <i class="fa-solid fa-star fs-16 ratting-clr"></i>
+                                                <i class="fa-solid fa-star fs-16 ratting-clr"></i>
+                                                <i class="fa-solid fa-star fs-16 ratting-clr"></i>
+                                            </div>
+                                            <h3 class="text-black mb-xxl-3 mb-2 heading-font-edensor fw-semibold">Great
+                                                Product! Highly Recommended!</h3>
+                                            <p class="mb-xxl-4 mb-xl-3 mb-2 heading-font-afasad fs-16 max-w-480">“ Great
+                                                Quality Products WitheryGood awrPackaging unknown
+                                                printer took a galle rambled it make pecimive centuries
+                                                Delicious Food Context ”</p>
+                                            <div class=" gap-3 d-flex align-items-center">
+                                                <img width="50" height="50" src="assets/img/admin1.jpg" alt="img"
+                                                    class="rounded-circle">
+                                                <div class="">
+                                                    <h6 class="mb-0 fw-bold heading-font-edensor black-clr">
+                                                        Annette Black
+                                                    </h6>
+                                                    <span
+                                                        class="fs-14 fw-medium text-dark d-block heading-font-afasad">Sr.Designer</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <img src="assets/img/home-4/feedback-down.png" alt="img"
+                                            class="quote-down position-absolute bottom-0 end-0">
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div
+                                        class="testimonial-items style1 d-flex flex-md-nowrap flex-wrap align-items-center position-relative p-md-0 p-3">
+                                        <div class="testimonial-thumb rounded-circle position-relative">
+                                            <img src="assets/img/client-admin1.jpg" alt="img" class="rounded-circle">
+                                        </div>
+                                        <div class="content">
+                                            <div class="d-flex gap-1 mb-xl-3 mb-2">
+                                                <i class="fa-solid fa-star fs-16 ratting-clr"></i>
+                                                <i class="fa-solid fa-star fs-16 ratting-clr"></i>
+                                                <i class="fa-solid fa-star fs-16 ratting-clr"></i>
+                                                <i class="fa-solid fa-star fs-16 ratting-clr"></i>
+                                                <i class="fa-solid fa-star fs-16 ratting-clr"></i>
+                                            </div>
+                                            <h3 class="text-black mb-xxl-3 mb-2 heading-font-edensor fw-semibold">Great
+                                                Product! Highly Recommended!
+                                            </h3>
+                                            <p class="mb-xxl-4 mb-xl-3 mb-2 heading-font-afasad fs-16 max-w-480">“ Great
+                                                Quality Products WitheryGood
+                                                awrPackaging unknown
+                                                printer took a galle rambled it make pecimive centuries
+                                                Delicious Food Context ”</p>
+                                            <div class=" gap-3 d-flex align-items-center">
+                                                <img width="50" height="50" src="assets/img/admin1.jpg" alt="img"
+                                                    class="rounded-circle">
+                                                <div class="">
+                                                    <h6 class="mb-0 fw-bold heading-font-edensor black-clr">
+                                                        Annette Black
+                                                    </h6>
+                                                    <span
+                                                        class="fs-14 fw-medium text-dark d-block heading-font-afasad">Sr.Designer</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <img src="assets/img/home-4/feedback-down.png" alt="img"
+                                            class="quote-down position-absolute bottom-0 end-0">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-dot dot-black"></div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="bg-white text-center p-30 rounded-12 position-relative">
+                        <img src="assets/img/satisfied-like.png" alt="icon" class="mb-30 pb-1"
+                            style="filter: brightness(0);">
+                        <h5 class="mb-xl-4 mb-3 text-dark heading-font-afasad fw-500">Satisfied Clients</h5>
+                        <h1 class="text-dark heading-font-edensor fw-semibold">98%</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Special Coffe section start -->
+    <section class="special-coffe-section pt-100 fix">
+        <div class="container container-1520 pt-xxl-4">
+            <h2 class="coffeeno-text heading-font-edensor text-center">COFFEENO</h2>
+            <div class="coffeeno-wrapper position-relative rounded-12 overflow-hidden d-center wow fadeInUp"
+                data-wow-delay="0.5s">
+                <img src="assets/img/home-4/coffeeno-thumb.jpg" alt="img" class="w-100">
+                <a href="https://www.youtube.com/watch?v=6stlCkUDG_s&list=PL4Gr5tOAPttLOY9IrWVjJlv4CtkYI5cI_"
+                    class="position-absolute vid-icon video-popup">
+                    <img src="assets/img/home-4/coffeeno-vid.png" alt="img">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Coffe section start -->
+    <section class="special-coffe-section fix section-padding">
+        <div class="container container-1520">
+            <div class="row g-4">
+                <div class="col-xxl-8">
+                    <div class="section-title-style4 mx-auto mb-40 pb-xl-2 text-center">
+                        <h2 class="wow fadeInUp heading-font-edensor fw-medium text-dark fs-30 lh-1 text-capitalize"
+                            data-wow-delay=".4s">
+                            our Special coffee
+                        </h2>
+                    </div>
+                    <div class="special-coffe-wrapper d-flex flex-md-nowrap flex-wrap gap-3">
+                        <div class="special-coffe-inner w-100 d-flex flex-column gap-3">
+                            <div class="special-coffe-item d-flex align-items-sm-center gap-2 wow fadeInDown"
+                                data-wow-delay="0.1s">
+                                <img width="50" height="50" src="assets/img/home-4/our-cafe1.png" alt="img"
+                                    class="rounded-circle">
+                                <div class="menu-special-item w-100">
+                                    <div
+                                        class="menu-special-head w-100 d-flex flex-sm-nowrap flex-wrap align-items-center gap-xl-4 gap-2">
+                                        <a href="single-food-menu.html" class="text-dark fw-semibold heading-font-edensor text-uppercase min-w-230">CAFE LATTE
+                                        </a>
+                                        <span class="line w-100"></span>
+                                        <h4 class="text-dark heading-font-edensor">$3.45</h4>
+                                    </div>
+                                    <p class="fs-14 text-black heading-font-afasad">Fresh Brewed Offer & Steamed Milk
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="special-coffe-item d-flex align-items-sm-center gap-2 wow fadeInDown"
+                                data-wow-delay="0.1s">
+                                <img width="50" height="50" src="assets/img/home-4/our-cafe2.png" alt="img"
+                                    class="rounded-circle">
+                                <div class="menu-special-item w-100">
+                                    <div
+                                        class="menu-special-head w-100 d-flex flex-sm-nowrap flex-wrap align-items-center gap-xl-4 gap-2">
+                                        <a href="single-food-menu.html" class="text-dark fw-semibold heading-font-edensor text-uppercase min-w-230">ICE COFFEE
+                                        </a>
+                                        <span class="line w-100"></span>
+                                        <h4 class="text-dark heading-font-edensor">$2.22</h4>
+                                    </div>
+                                    <p class="fs-14 text-black heading-font-afasad">Cold milk over espresso</p>
+                                </div>
+                            </div>
+                            <div class="special-coffe-item d-flex align-items-sm-center gap-2 wow fadeInDown"
+                                data-wow-delay="0.1s">
+                                <img width="50" height="50" src="assets/img/home-4/our-cafe3.png" alt="img"
+                                    class="rounded-circle">
+                                <div class="menu-special-item w-100">
+                                    <div
+                                        class="menu-special-head w-100 d-flex flex-sm-nowrap flex-wrap align-items-center gap-xl-4 gap-2">
+                                        <a href="single-food-menu.html" class="text-dark fw-semibold heading-font-edensor text-uppercase min-w-230">MOCHA</a>
+                                        <span class="line w-100"></span>
+                                        <h4 class="text-dark heading-font-edensor">$3.99</h4>
+                                    </div>
+                                    <p class="fs-14 text-black heading-font-afasad">Chilled blend of espresso, chocolate
+                                        & milk</p>
+                                </div>
+                            </div>
+                            <div class="special-coffe-item d-flex align-items-sm-center gap-2 wow fadeInDown"
+                                data-wow-delay="0.1s">
+                                <img width="50" height="50" src="assets/img/home-4/our-cafe4.png" alt="img"
+                                    class="rounded-circle">
+                                <div class="menu-special-item w-100">
+                                    <div
+                                        class="menu-special-head w-100 d-flex flex-sm-nowrap flex-wrap align-items-center gap-xl-4 gap-2">
+                                        <a href="single-food-menu.html" class="text-dark fw-semibold heading-font-edensor text-uppercase min-w-230">espresso
+                                        </a>
+                                        <span class="line w-100"></span>
+                                        <h4 class="text-dark heading-font-edensor">$5.45</h4>
+                                    </div>
+                                    <p class="fs-14 text-black heading-font-afasad">Espresso with steamed milk</p>
+                                </div>
+                            </div>
+                            <div class="special-coffe-item d-flex align-items-sm-center gap-2 wow fadeInDown"
+                                data-wow-delay="0.1s">
+                                <img width="50" height="50" src="assets/img/home-4/our-cafe5.png" alt="img"
+                                    class="rounded-circle">
+                                <div class="menu-special-item w-100">
+                                    <div
+                                        class="menu-special-head w-100 d-flex flex-sm-nowrap flex-wrap align-items-center gap-xl-4 gap-2">
+                                        <a href="single-food-menu.html" class="text-dark fw-semibold heading-font-edensor text-uppercase min-w-230">AMIRICANO
+                                        </a>
+                                        <span class="line w-100"></span>
+                                        <h4 class="text-dark heading-font-edensor">$2.05</h4>
+                                    </div>
+                                    <p class="fs-14 text-black heading-font-afasad">Espresso with a dash of milk foam
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="h-100 d-lg-flex d-none flex-column align-items-center gap-4">
+                            <span style="width: 1px; height: 150px; display: block; background-color: #D9D9D9;"></span>
+                            <div class="coffe-lin">
+                                <img src="assets/img/home-4/coffe-lin.png" alt="img">
+                            </div>
+                            <span style="width: 1px; height: 150px; display: block; background-color: #D9D9D9;"></span>
+                        </div>
+                        <div class="special-coffe-inner w-100 d-flex flex-column gap-3">
+                            <div class="special-coffe-item d-flex align-items-sm-center gap-2 wow fadeInDown"
+                                data-wow-delay="0.1s">
+                                <img width="50" height="50" src="assets/img/home-4/our-cafe6.png" alt="img"
+                                    class="rounded-circle">
+                                <div class="menu-special-item w-100">
+                                    <div
+                                        class="menu-special-head w-100 d-flex flex-sm-nowrap flex-wrap align-items-center gap-xl-4 gap-2">
+                                        <a href="single-food-menu.html" class="text-dark fw-semibold heading-font-edensor text-uppercase min-w-230">Cappuccino
+                                        </a>
+                                        <span class="line w-100"></span>
+                                        <h4 class="text-dark heading-font-edensor">$3.45</h4>
+                                    </div>
+                                    <p class="fs-14 text-black heading-font-afasad">Fresh Brewed Offer & Steamed Milk
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="special-coffe-item d-flex align-items-sm-center gap-2 wow fadeInDown"
+                                data-wow-delay="0.1s">
+                                <img width="50" height="50" src="assets/img/home-4/our-cafe7.png" alt="img"
+                                    class="rounded-circle">
+                                <div class="menu-special-item w-100">
+                                    <div
+                                        class="menu-special-head w-100 d-flex flex-sm-nowrap flex-wrap align-items-center gap-xl-4 gap-2">
+                                        <a href="single-food-menu.html" class="text-dark fw-semibold heading-font-edensor text-uppercase min-w-230">Iced
+                                            Americano</a>
+                                        <span class="line w-100"></span>
+                                        <h4 class="text-dark heading-font-edensor">$2.22</h4>
+                                    </div>
+                                    <p class="fs-14 text-black heading-font-afasad">Cold milk over espresso</p>
+                                </div>
+                            </div>
+                            <div class="special-coffe-item d-flex align-items-sm-center gap-2 wow fadeInDown"
+                                data-wow-delay="0.1s">
+                                <img width="50" height="50" src="assets/img/home-4/our-cafe8.png" alt="img"
+                                    class="rounded-circle">
+                                <div class="menu-special-item w-100">
+                                    <div
+                                        class="menu-special-head w-100 d-flex flex-sm-nowrap flex-wrap align-items-center gap-xl-4 gap-2">
+                                        <a href="single-food-menu.html" class="text-dark fw-semibold heading-font-edensor text-uppercase min-w-230">Mozza
+                                            Special Latte</a>
+                                        <span class="line w-100"></span>
+                                        <h4 class="text-dark heading-font-edensor">$3.99</h4>
+                                    </div>
+                                    <p class="fs-14 text-black heading-font-afasad">Chilled blend of espresso, chocolate
+                                        & milk</p>
+                                </div>
+                            </div>
+                            <div class="special-coffe-item d-flex align-items-sm-center gap-2 wow fadeInDown"
+                                data-wow-delay="0.1s">
+                                <img width="50" height="50" src="assets/img/home-4/our-cafe9.png" alt="img"
+                                    class="rounded-circle">
+                                <div class="menu-special-item w-100">
+                                    <div
+                                        class="menu-special-head w-100 d-flex flex-sm-nowrap flex-wrap align-items-center gap-xl-4 gap-2">
+                                        <a href="single-food-menu.html" class="text-dark fw-semibold heading-font-edensor text-uppercase min-w-230">Caramel
+                                            Mocha</a>
+                                        <span class="line w-100"></span>
+                                        <h4 class="text-dark heading-font-edensor">$5.45</h4>
+                                    </div>
+                                    <p class="fs-14 text-black heading-font-afasad">Espresso with steamed milk</p>
+                                </div>
+                            </div>
+                            <div class="special-coffe-item d-flex align-items-sm-center gap-2 wow fadeInDown"
+                                data-wow-delay="0.1s">
+                                <img width="50" height="50" src="assets/img/home-4/our-cafe10.png" alt="img"
+                                    class="rounded-circle">
+                                <div class="menu-special-item w-100">
+                                    <div
+                                        class="menu-special-head w-100 d-flex flex-sm-nowrap flex-wrap align-items-center gap-xl-4 gap-2">
+                                        <a href="single-food-menu.html" class="text-dark fw-semibold heading-font-edensor text-uppercase min-w-230">Vanilla
+                                            Coffee</a>
+                                        <span class="line w-100"></span>
+                                        <h4 class="text-dark heading-font-edensor">$2.05</h4>
+                                    </div>
+                                    <p class="fs-14 text-black heading-font-afasad">Espresso with a dash of milk foam
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 d-xxl-block d-none">
+                    <div class="thumb w-100 wow fadeInLeft" data-wow-delay="0.6s">
+                        <img src="assets/img/home-4/special-coffe-thumb.png" alt="img" class="w-100">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Eat section start -->
+    <section class="brand-eat-section fix">
+        <div class="container-fluid p-0">
+            <div class="row g-0">
+                <div class="col-lg-3 col-sm-6">
+                    <div class="brand-eat-item position-relative z-1 card-effect overflow-hidden">
+                        <div class="thumb">
+                            <img src="assets/img/home-4/brand-eat1.jpg" alt="img" class="w-100">
+                        </div>
+                        <div class="content py-xl-4 py-3 px-2 text-center z-1 position-absolute bottom-0 start-0 w-100">
+                            <h3 class="heading-font-edensor text-white fw-medium"><a href="menu-categories.html"
+                                    class="heading-font-edensor text-white">Chokolet Drinks Coffee</a></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="brand-eat-item position-relative z-1 card-effect overflow-hidden">
+                        <div class="thumb">
+                            <img src="assets/img/home-4/brand-eat2.jpg" alt="img" class="w-100">
+                        </div>
+                        <div class="content py-xl-4 py-3 px-2 text-center z-1 position-absolute bottom-0 start-0 w-100">
+                            <h3 class="heading-font-edensor text-white fw-medium"><a href="menu-categories.html"
+                                    class="heading-font-edensor text-white">Chokolet Drinks Coffee</a></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="brand-eat-item position-relative z-1 card-effect overflow-hidden">
+                        <div class="thumb">
+                            <img src="assets/img/home-4/brand-eat3.jpg" alt="img" class="w-100">
+                        </div>
+                        <div class="content py-xl-4 py-3 px-2 text-center z-1 position-absolute bottom-0 start-0 w-100">
+                            <h3 class="heading-font-edensor text-white fw-medium"><a href="menu-categories.html"
+                                    class="heading-font-edensor text-white">Chokolet Drinks Coffee</a></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="brand-eat-item position-relative z-1 card-effect overflow-hidden">
+                        <div class="thumb">
+                            <img src="assets/img/home-4/brand-eat4.jpg" alt="img" class="w-100">
+                        </div>
+                        <div class="content py-xl-4 py-3 px-2 text-center z-1 position-absolute bottom-0 start-0 w-100">
+                            <h3 class="heading-font-edensor text-white fw-medium"><a href="menu-categories.html"
+                                    class="heading-font-edensor text-white">Chokolet Drinks Coffee</a></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog section start -->
+    <section class="blog-section pt-100 pb-100">
+        <div class="container">
+            <div class="section-title-style4 mx-auto mb-40 text-center">
+                <h5 class="heading-font-edensor text-uppercase fw-bolder mb-xl-4 mb-lg-3 mb-2 text-dark">blog & news
+                </h5>
+                <h2 class="wow fadeInUp heading-font-edensor fw-medium text-dark fs-30 lh-1 text-capitalize"
+                    data-wow-delay=".3s">
+                    Elegants Blogs & Insights
+                </h2>
+            </div>
+            <div class="d-flex flex-lg-nowrap flex-wrap gap-xl-4 gap-3">
+                <div class="blog-single-item4 card-effect position-relative overflow-hidden wow fadeInUp flex-grow-1"
+                    data-wow-delay=".3s">
+                    <a href="blog-details.html"
+                        class="thumb rounded-12 d-block w-100 overflow-hidden mb-xl-3 mb-lg-3 mb-3">
+                        <img src="assets/img/home-4/blog4-items1.jpg" alt="img" class="w-100 overflow-hidden">
+                    </a>
+                    <div class="content z-1 bg-white rounded-12">
+                        <div>
+                            <h4 class="heading-font-edensor fw-medium mb-xxl-3 mb-sm-3 mb-2"><a href="blog-details.html"
+                                    class="lh-1 link-effect">How Local Coffee Shops Are Brewing Community</a></h4>
+                            <div class="d-flex align-items-center gap-xxl-2 gap-2 justify-content-between">
+                                <a href="blog-details.html" class="theme-btn btn-outline-blak rounded-pill">
+                                    Coffee Culture
+                                </a>
+                                <span class="line"
+                                    style="width: 30px; height: 1px; display: block; background-color: #111111;"></span>
+                                <h6 class="fs-14 heading-font-afasad text-dark">August 12, 2026</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-single-item4 card-effect position-relative overflow-hidden blog-single-item-middle wow fadeInUp"
+                    data-wow-delay=".4s">
+                    <a href="blog-details.html"
+                        class="thumb rounded-12 d-block w-100 overflow-hidden mb-xl-3 mb-lg-3 mb-3">
+                        <img src="assets/img/home-4/blog4-items2.jpg" alt="img" class="w-100 overflow-hidden">
+                    </a>
+                    <div class="content z-1 bg-white rounded-12">
+                        <div>
+                            <h2 class="heading-font-edensor fw-medium mb-xxl-3 mb-sm-3 mb-2"><a href="blog-details.html"
+                                    class="lh-1 link-effect">5 Reasons Your Morning Deserves Better Coffee</a></h2>
+                            <div class="d-flex align-items-center gap-xxl-2 gap-2 justify-content-between">
+                                <a href="blog-details.html" class="theme-btn btn-outline-blak rounded-pill">
+                                    Behind the Beans
+                                </a>
+                                <span class="line"
+                                    style="width: 30px; height: 1px; display: block; background-color: #111111;"></span>
+                                <h6 class="fs-14 heading-font-afasad text-dark">August 12, 2026</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-single-item4 card-effect position-relative overflow-hidden wow fadeInUp flex-grow-1"
+                    data-wow-delay=".5s">
+                    <a href="blog-details.html"
+                        class="thumb rounded-12 d-block w-100 overflow-hidden mb-xl-3 mb-lg-3 mb-3">
+                        <img src="assets/img/home-4/blog4-items3.jpg" alt="img" class="w-100 overflow-hidden">
+                    </a>
+                    <div class="content z-1 bg-white rounded-12">
+                        <div>
+                            <h4 class="heading-font-edensor fw-medium mb-xxl-3 mb-sm-3 mb-2"><a href="blog-details.html"
+                                    class="lh-1 link-effect">Bean to Brew The Story Behind Our Signature Coffee</a></h4>
+                            <div class="d-flex align-items-center gap-xxl-2 gap-2 justify-content-between">
+                                <a href="blog-details.html" class="theme-btn btn-outline-blak rounded-pill">
+                                    Tips & Recipes
+                                </a>
+                                <span class="line"
+                                    style="width: 30px; height: 1px; display: block; background-color: #111111;"></span>
+                                <h6 class="fs-14 heading-font-afasad text-dark">August 12, 2026</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer section start -->
+    <footer class="footer-section position-relative fix black-bg z-1">
+        <img src="assets/img/home-4/footer4-left.png" alt="img"
+            class="position-absolute start-0 top-0 mt-5 pt-5 float-bob-y z-n1 d-lg-block d-none">
+        <img src="assets/img/home-4/footer4-right.png" alt="img"
+            class="position-absolute end-0 top-0 pt-100 mt-40 mx-5 float-bob-y z-n1">
+        <div class="container">
+            <div class="footer-widget-wrapper pb-80">
+                <div class="d-flex align-items-center justify-content-between gap-3 pb-100">
+                    <img src="assets/img/home-4/f-lin-dot.png" alt="img" class="w-100 d-xl-block d-none">
+                    <a href="index.html">
+                        <img src="assets/img/logo/logo-footer4.png" alt="img">
+                    </a>
+                    <img src="assets/img/home-4/f-lin-dot.png" alt="img" class="w-100 d-xl-block d-none">
+                </div>
+                <div class="row g-4">
+                    <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6 wow fadeInUp" data-wow-delay=".3s">
+                        <div class="single-footer-widget py-0">
+                            <h5 class="widget-head text-white text-uppercase fs-20 white-clr fw-semibold">
+                                Help
+                            </h5>
+                            <ul class="important-link d-grid gap-sm-2 gap-1">
+                                <li>
+                                    <a href="faqs.html" class="text-white opacity-75 fw-light link-effect">FAQs</a>
+                                </li>
+                                <li>
+                                    <a href="order-traking.html"
+                                        class="text-white opacity-75 fw-light link-effect">Delivery</a>
+                                </li>
+                                <li>
+                                    <a href="contact.html"
+                                        class="text-white opacity-75 fw-light link-effect">Contact</a>
+                                </li>
+                                <li>
+                                    <a href="order-traking.html"
+                                        class="text-white opacity-75 fw-light link-effect">Store
+                                        Locator</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6 wow fadeInUp" data-wow-delay=".4s">
+                        <div class="single-footer-widget py-0">
+                            <h5 class="widget-head text-white text-uppercase fs-20 white-clr fw-semibold">
+                                about US
+                            </h5>
+                            <ul class="important-link d-grid gap-sm-2 gap-1">
+                                <li>
+                                    <a href="about.html" class="text-white opacity-75 fw-light link-effect">Our
+                                        Story</a>
+                                </li>
+                                <li>
+                                    <a href="order-traking.html"
+                                        class="text-white opacity-75 fw-light link-effect">Delivery</a>
+                                </li>
+                                <li>
+                                    <a href="contact.html"
+                                        class="text-white opacity-75 fw-light link-effect">Contact</a>
+                                </li>
+                                <li>
+                                    <a href="about.html" class="text-white opacity-75 fw-light link-effect">Store
+                                        Locator</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6 wow fadeInUp" data-wow-delay=".5s">
+                        <div class="single-footer-widget py-0">
+                            <h5 class="widget-head text-white text-uppercase fs-20 white-clr fw-semibold">
+                                address
+                            </h5>
+                            <div class="footer-content">
+                                <p class="fs-16 white-clr opacity-75 mb-xl-3 mb-2">
+                                    1487 Rocky Horse Carre 1487Rocky
+                                    Arlington, TX 16819 United
+                                </p>
+                                <h5 class="text-white mb-lg-3 mb-2">1800 6565 222</h5>
+                                <p class="fs-16 white-clr opacity-75">info@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6 wow fadeInUp" data-wow-delay=".7s">
+                        <div class="single-footer-widget py-0">
+                            <h5 class="widget-head text-white text-uppercase fs-20 white-clr fw-semibold">
+                                CONNECT
+                            </h5>
+                            <p class="fs-16 white-clr opacity-75 mb-xl-3 mb-2">
+                                Absolutely loved the cozy vibe and Rich aroma! The coffee was perfectly brewed
+                            </p>
+                            <form action="#0" class="d-flex form-outline">
+                                <input type="text" placeholder="Email Address">
+                                <button type="button" class="btn p-0 border-0"><img
+                                        src="assets/img/icons/arrow-right-long.png" alt="icon"></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div
+                    class="d-flex align-items-center justify-content-sm-between justify-content-center flex-wrap gap-2 fs-16 text-center">
+                    <p class="fs-16 text4-clr">Copyright &copy; 2025 <a href="index.html" class="theme-clr">Mozzo</a>
+                        all Right
+                        Reserved</p>
+                    <div class="d-flex align-items-center flex-wrap gap-lg-4 gap-sm-3 gap-2">
+                        <a href="contact.html" class="fs-16 text3-clr link-effect heading-font-afasad">Privacy
+                            Policy</a>
+                        <a href="contact.html" class="fs-16 text3-clr link-effect heading-font-afasad">Terms &
+                            Conditions</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <div class="search-wrap">
+        <div class="search-inner">
+            <i class="fas fa-times search-close open" id="search-close"></i>
+            <div class="search-cell">
+                <form method="get">
+                    <div class="search-field-holder">
+                        <input type="search" class="main-search-input" placeholder="Search...">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!--<< All JS Plugins >>-->
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <!--<< Viewport Js >>-->
+    <script src="assets/js/viewport.jquery.js"></script>
+    <!--<< Bootstrap Js >>-->
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <!--<< Nice Select Js >>-->
+    <script src="assets/js/jquery.nice-select.min.js"></script>
+    <!--<< Waypoints Js >>-->
+    <script src="assets/js/jquery.waypoints.js"></script>
+    <!--<< Counterup Js >>-->
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <!--<< Swiper Slider Js >>-->
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <!--<< MeanMenu Js >>-->
+    <script src="assets/js/jquery.meanmenu.min.js"></script>
+    <!--<< Magnific Popup Js >>-->
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <!--<< Wow Animation Js >>-->
+    <script src="assets/js/wow.min.js"></script>
+    <!--<< Main.js >>-->
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

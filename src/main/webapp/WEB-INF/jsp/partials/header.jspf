@@ -1,0 +1,155 @@
+<%@ page pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
+<c:set var="CTX" value="${pageContext.request.contextPath}" />
+<c:set var="auth" value="${sessionScope.authUser}"/>
+<c:set var="totalQty" value="${0}" />
+<c:choose>
+  <c:when test="${not empty sessionScope.cart}">
+    <c:set var="totalQty" value="${sessionScope.cart.totalQuantity}" />
+  </c:when>
+  <c:when test="${not empty sessionScope.cartMap}">
+    <c:set var="_sum" value="${0}" />
+    <c:forEach var="e" items="${sessionScope.cartMap}">
+      <c:set var="_sum" value="${_sum + e.value.totalQuantity}" />
+    </c:forEach>
+    <c:set var="totalQty" value="${_sum}" />
+  </c:when>
+</c:choose>
+
+<!-- Vietnamese font fallback for header -->
+<style>
+/* Load fonts with Vietnamese subset for proper diacritics */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap&subset=vietnamese');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&display=swap&subset=vietnamese');
+
+/* VN-capable font stack for header area */
+.header-top-section,
+#header-sticky,
+#header-sticky *:not(i):not(svg),
+/* Force override template heading fonts inside header */
+#header-sticky .heading-font,
+#header-sticky .heading-font-bhalo,
+#header-sticky [class*="heading-font"],
+#header-sticky nav a,
+#header-sticky .main-menu * {
+  font-family: "Inter", "Noto Sans", "Segoe UI", "Roboto", "Helvetica Neue", Arial, "Liberation Sans", sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+</style>
+
+<!-- Header Top Section Start -->
+<div class="header-top-section flex-wrap style05 d-lg-block d-none overflow-hidden">
+  <div class="container">
+    <div class="header-top-wrapper py-1">
+      <ul class="d-flex flex-wrap align-items-center gap-3">
+        <li>
+          <a href="#" class="located link-effect link body-font text-clr d-flex align-items-center gap-2 fs-14">
+            <!-- icon -->
+            Số 1 Võ Văn Ngân, Thủ Đức, TP. Hồ Chí Minh
+          </a>
+        </li>
+      </ul>
+      <ul class="contact-list flex-wrap">
+        <li>
+          <!-- icon -->
+          <a href="tel:+84123456789" class="link-effect link body-font text-clr">Hotline: (+84) 123 456 789</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Header Section Start -->
+<header id="header-sticky" class="header-1 position-relative bg-white header-style03 header-style05">
+  <div class="container">
+    <div class="mega-menu-wrapper">
+      <div class="header-main">
+        <div class="header-left">
+          <div class="logo">
+            <a href="${CTX}/" class="header-logo d-inline-flex align-items-center gap-2 text-decoration-none">
+              <img src="${CTX}/assets/img/Hcmute-Logo-Vector.svg-.png" alt="logo-img" style="height:40px;object-fit:contain;">
+              <span class="fw-semibold text-black d-none d-md-inline">Căn tin </span>
+            </a>
+          </div>
+        </div>
+        <div class="mean__menu-wrapper">
+          <div class="main-menu">
+            <nav id="mobile-menu">
+              <ul>
+                <li class="has-dropdown droop active menu-thumb">
+                  <a href="${CTX}/">Trang chủ </a>
+                </li>
+                <li>
+                  <a href="${CTX}/all-foods.jsp">Món ăn</a>
+                </li>
+                <li class="has-dropdown">
+                  <a href="#0">Trang <i class="fas fa-angle-down"></i></a>
+                  <ul class="submenu">
+                    <li><a href="${CTX}/cart">Giỏ hàng</a></li>
+                    <li><a href="${CTX}/checkout">Thanh toán</a></li>
+                  </ul>
+                </li>
+                <li><a href="#contact">Liên hệ</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- Mobile header right -->
+        <div class="header-right d-xl-none d-flex justify-content-end align-items-center gap-3">
+          <a href="${CTX}/cart" class="tolly-icon d-lg-none position-relative" aria-label="Giỏ hàng">
+            <img src="${CTX}/assets/img/icons/tolly.png" alt="tolly-icon">
+            <span class="count-quan d-center count-quan-black text-white"><c:out value="${totalQty}"/></span>
+          </a>
+          <c:choose>
+            <c:when test="${not empty auth}">
+              <span class="fs-14 text-black d-none d-sm-inline">Xin chào, <strong><c:out value="${empty auth.hoTen ? auth.email : auth.hoTen}"/></strong></span>
+              <a href="${CTX}/logout" class="rounded-pill d-center fw-bold fs-14 h-40px w-40px px-0" title="Đăng xuất" aria-label="Đăng xuất">
+                <i class="fa-solid fa-right-from-bracket"></i>
+              </a>
+            </c:when>
+            <c:otherwise>
+              <a href="${CTX}/login" class="border-theme5 rounded-pill d-center gap-2 fw-bold theme3-clr login-theme3 fs-14 h-40px px-3">
+                <i class="fa-regular fa-user"></i>
+                Đăng nhập
+              </a>
+            </c:otherwise>
+          </c:choose>
+          <div class="header__hamburger d-lg-none d-block my-auto">
+            <div class="sidebar__toggle black-bg d-flex align-items-center justify-content-center w-40px h-40px rounded-circle sidebar__toggle fs-20 text-white">
+              <i class="fa-solid fa-bars"></i>
+            </div>
+          </div>
+        </div>
+        <!-- Desktop header right -->
+        <div class="d-lg-flex d-none align-items-center gap-xxl-3 gap-3">
+          <c:choose>
+            <c:when test="${not empty auth}">
+              <span class="fs-14 text-black">Xin chào, <strong><c:out value="${empty auth.hoTen ? auth.email : auth.hoTen}"/></strong></span>
+            </c:when>
+            <c:otherwise>
+              <a href="${CTX}/login" class="border-theme5 rounded-pill d-center gap-2 fw-bold theme3-clr login-theme3 fs-14 h-40px px-4">
+                <i class="fa-regular fa-user"></i>
+                Đăng nhập
+              </a>
+            </c:otherwise>
+          </c:choose>
+          <a href="${CTX}/cart" class="tolly-icon border w-40px h-40px rounded-circle position-relative d-inline-flex align-items-center justify-content-center" aria-label="Giỏ hàng">
+            <img width="21" src="${CTX}/assets/img/icons/tolly.png" alt="tolly-icon">
+            <span class="count-quan d-center count-quan-black text-white"><c:out value="${totalQty}"/></span>
+          </a>
+          <button type="button" class="destop-bars black-bg w-40px h-40px rounded-circle d-xl-none d-flex align-items-center justify-content-center sidebar__toggle fs-20 text-white">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <!-- Replace language selector with logout icon when logged in -->
+          <c:if test="${not empty auth}">
+            <a href="${CTX}/logout" class="border w-40px h-40px rounded-circle d-center" title="Đăng xuất" aria-label="Đăng xuất">
+              <i class="fa-solid fa-right-from-bracket"></i>
+            </a>
+          </c:if>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
