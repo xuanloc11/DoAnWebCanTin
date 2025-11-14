@@ -7,7 +7,21 @@
 <head>
   <meta charset="UTF-8" />
   <title>Hồ sơ cá nhân</title>
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/home.css?v=20251022" />
+  <!-- Make all relative asset links resolve under the webapp context path -->
+  <base href="${pageContext.request.contextPath}/" />
+  <!-- Favicons & CSS from main template -->
+  <link rel="shortcut icon" href="assets/img/logo/favicon.png">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/animate.css">
+  <link rel="stylesheet" href="assets/css/magnific-popup.css">
+  <link rel="stylesheet" href="assets/css/meanmenu.css">
+  <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+  <link rel="stylesheet" href="assets/css/nice-select.css">
+  <link rel="stylesheet" href="assets/css/expose.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <!-- Page-specific minimal styles -->
+  <link rel="stylesheet" href="assets/css/home.css?v=20251022" />
   <style>
     .profile-shell{ max-width:1100px; margin:32px auto; display:grid; grid-template-columns: 280px 1fr; gap:28px; }
     .profile-nav{ background:#fff; border:1px solid var(--border); border-radius:14px; padding:16px; display:grid; gap:8px; position:sticky; top:16px; height:fit-content; }
@@ -29,8 +43,8 @@
     .note{ font-size:13px; }
   </style>
 </head>
-<body>
-<%@ include file="/WEB-INF/jsp/partials/header-backup.jspf" %>
+<body class="body-bg" data-context="${pageContext.request.contextPath}">
+<%@ include file="/WEB-INF/jsp/partials/header.jspf" %>
 <div class="profile-shell">
   <nav class="profile-nav" aria-label="Profile sections">
     <a href="#info" class="active">🧑 Thông tin cá nhân</a>
@@ -161,5 +175,6 @@
   }));
 })();
 </script>
+<%@ include file="/WEB-INF/jsp/partials/footer.jspf" %>
 </body>
 </html>

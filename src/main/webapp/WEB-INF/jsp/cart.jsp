@@ -10,23 +10,22 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Giỏ hàng</title>
-  <base href="${pageContext.request.contextPath}/" />
-  <link rel="shortcut icon" href="assets/img/logo/favicon.png" />
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="assets/css/all.min.css" />
-  <link rel="stylesheet" href="assets/css/animate.css" />
-  <link rel="stylesheet" href="assets/css/magnific-popup.css" />
-  <link rel="stylesheet" href="assets/css/meanmenu.css" />
-  <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="assets/css/nice-select.css" />
-  <link rel="stylesheet" href="assets/css/expose.css" />
-  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="shortcut icon" href="<c:url value='/assets/img/logo/favicon.png' />" />
+  <link rel="stylesheet" href="<c:url value='/assets/css/bootstrap.min.css' />" />
+  <link rel="stylesheet" href="<c:url value='/assets/css/all.min.css' />" />
+  <link rel="stylesheet" href="<c:url value='/assets/css/animate.css' />" />
+  <link rel="stylesheet" href="<c:url value='/assets/css/magnific-popup.css' />" />
+  <link rel="stylesheet" href="<c:url value='/assets/css/meanmenu.css' />" />
+  <link rel="stylesheet" href="<c:url value='/assets/css/swiper-bundle.min.css' />" />
+  <link rel="stylesheet" href="<c:url value='/assets/css/nice-select.css' />" />
+  <link rel="stylesheet" href="<c:url value='/assets/css/expose.css' />" />
+  <link rel="stylesheet" href="<c:url value='/assets/css/main.css' />" />
 </head>
 <body class="body-bg">
 <%@ include file="/WEB-INF/jsp/partials/header.jspf" %>
 
 <!-- breadcrumb -->
-<section class="breadcrumb-section position-relative fix bg-cover" style="background-image: url(assets/img/hero/breadcrumb-banner.jpg);">
+<section class="breadcrumb-section position-relative fix bg-cover" style="background-image: url('<c:url value='/assets/img/hero/breadcrumb-banner.jpg' />');">
   <div class="container">
     <div class="breadcrumb-content">
       <h2 class="white-clr fw-semibold text-center heading-font mb-2">Giỏ hàng</h2>
@@ -37,8 +36,8 @@
       </ul>
     </div>
   </div>
-  <img src="assets/img/home-1/home-shape-start.png" alt="img" class="bread-shape-start position-absolute">
-  <img src="assets/img/home-1/home-shape-end.png" alt="img" class="bread-shape-end position-absolute d-sm-block d-none">
+  <img src="<c:url value='/assets/img/home-1/home-shape-start.png' />" alt="img" class="bread-shape-start position-absolute">
+  <img src="<c:url value='/assets/img/home-1/home-shape-end.png' />" alt="img" class="bread-shape-end position-absolute d-sm-block d-none">
 </section>
 
 <section class="shop-section position-relative z-1 fix section-padding">
@@ -90,7 +89,7 @@
                                   </c:choose>
                                 </c:when>
                                 <c:otherwise>
-                                  <img src="assets/img/inner/shop-cart.jpg" alt="img" class="border rounded-2" style="width:72px;height:72px;object-fit:cover;" />
+                                  <img src="<c:url value='/assets/img/inner/shop-cart.jpg' />" alt="img" class="border rounded-2" style="width:72px;height:72px;object-fit:cover;" />
                                 </c:otherwise>
                               </c:choose>
                               <div>
@@ -156,16 +155,16 @@
 
 <%@ include file="/WEB-INF/jsp/partials/footer.jspf" %>
 
-<script src="assets/js/jquery-3.7.1.min.js"></script>
-<script src="assets/js/bootstrap.bundle.min.js"></script>
-<script src="assets/js/jquery.nice-select.min.js"></script>
-<script src="assets/js/jquery.waypoints.js"></script>
-<script src="assets/js/jquery.counterup.min.js"></script>
-<script src="assets/js/swiper-bundle.min.js"></script>
-<script src="assets/js/jquery.meanmenu.min.js"></script>
-<script src="assets/js/jquery.magnific-popup.min.js"></script>
-<script src="assets/js/wow.min.js"></script>
-<script src="assets/js/main.js"></script>
+<script src="<c:url value='/assets/js/jquery-3.7.1.min.js' />"></script>
+<script src="<c:url value='/assets/js/bootstrap.bundle.min.js' />"></script>
+<script src="<c:url value='/assets/js/jquery.nice-select.min.js' />"></script>
+<script src="<c:url value='/assets/js/jquery.waypoints.js' />"></script>
+<script src="<c:url value='/assets/js/jquery.counterup.min.js' />"></script>
+<script src="<c:url value='/assets/js/swiper-bundle.min.js' />"></script>
+<script src="<c:url value='/assets/js/jquery.meanmenu.min.js' />"></script>
+<script src="<c:url value='/assets/js/jquery.magnific-popup.min.js' />"></script>
+<script src="<c:url value='/assets/js/wow.min.js' />"></script>
+<script src="<c:url value='/assets/js/main.js' />"></script>
 <script>
   // Basic quantity increment/decrement binding
   document.addEventListener('click', function(e){

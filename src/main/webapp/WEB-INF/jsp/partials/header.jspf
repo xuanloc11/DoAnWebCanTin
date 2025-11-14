@@ -84,13 +84,6 @@
                 <li>
                   <a href="${CTX}/all-foods.jsp">Món ăn</a>
                 </li>
-                <li class="has-dropdown">
-                  <a href="#0">Trang <i class="fas fa-angle-down"></i></a>
-                  <ul class="submenu">
-                    <li><a href="${CTX}/cart">Giỏ hàng</a></li>
-                    <li><a href="${CTX}/checkout">Thanh toán</a></li>
-                  </ul>
-                </li>
                 <li><a href="#contact">Liên hệ</a></li>
               </ul>
             </nav>
@@ -104,7 +97,11 @@
           </a>
           <c:choose>
             <c:when test="${not empty auth}">
-              <span class="fs-14 text-black d-none d-sm-inline">Xin chào, <strong><c:out value="${empty auth.hoTen ? auth.email : auth.hoTen}"/></strong></span>
+              <span class="fs-14 text-black d-none d-sm-inline">Xin chào,
+                <a href="${CTX}/profile" class="text-black text-decoration-none">
+                  <strong><c:out value="${empty auth.hoTen ? auth.email : auth.hoTen}"/></strong>
+                </a>
+              </span>
               <a href="${CTX}/logout" class="rounded-pill d-center fw-bold fs-14 h-40px w-40px px-0" title="Đăng xuất" aria-label="Đăng xuất">
                 <i class="fa-solid fa-right-from-bracket"></i>
               </a>
@@ -126,7 +123,11 @@
         <div class="d-lg-flex d-none align-items-center gap-xxl-3 gap-3">
           <c:choose>
             <c:when test="${not empty auth}">
-              <span class="fs-14 text-black">Xin chào, <strong><c:out value="${empty auth.hoTen ? auth.email : auth.hoTen}"/></strong></span>
+              <span class="fs-14 text-black">Xin chào,
+                <a href="${CTX}/profile" class="text-black text-decoration-none">
+                  <strong><c:out value="${empty auth.hoTen ? auth.email : auth.hoTen}"/></strong>
+                </a>
+              </span>
             </c:when>
             <c:otherwise>
               <a href="${CTX}/login" class="border-theme5 rounded-pill d-center gap-2 fw-bold theme3-clr login-theme3 fs-14 h-40px px-4">

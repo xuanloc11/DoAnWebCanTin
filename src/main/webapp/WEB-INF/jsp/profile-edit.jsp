@@ -5,7 +5,21 @@
 <head>
   <meta charset="UTF-8" />
   <title>Chỉnh sửa thông tin cá nhân</title>
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/home.css?v=20251022" />
+  <!-- Make all relative asset links resolve under the webapp context path -->
+  <base href="${pageContext.request.contextPath}/" />
+  <!-- Favicons & CSS from main template -->
+  <link rel="shortcut icon" href="assets/img/logo/favicon.png">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/animate.css">
+  <link rel="stylesheet" href="assets/css/magnific-popup.css">
+  <link rel="stylesheet" href="assets/css/meanmenu.css">
+  <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+  <link rel="stylesheet" href="assets/css/nice-select.css">
+  <link rel="stylesheet" href="assets/css/expose.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <!-- Page-specific minimal styles -->
+  <link rel="stylesheet" href="assets/css/home.css?v=20251022" />
   <style>
     .wrap{ max-width:720px; margin:32px auto; padding:0 16px; }
     .card{ background:#fff; border:1px solid var(--border); border-radius:16px; padding:20px; }
@@ -14,11 +28,11 @@
     .actions{ display:flex; gap:8px; margin-top:12px; }
   </style>
 </head>
-<body>
-<%@ include file="/WEB-INF/jsp/partials/header-backup.jspf" %>
+<body class="body-bg" data-context="${pageContext.request.contextPath}">
+<%@ include file="/WEB-INF/jsp/partials/header.jspf" %>
 <div class="wrap">
   <div class="card">
-    <h1>Chỉnh sửa thông tin cá nhân</h1>
+    <h4>Chỉnh sửa thông tin cá nhân</h4>
     <form method="post" action="${pageContext.request.contextPath}/profile/edit">
       <div class="field">
         <label for="ho_ten">Họ tên</label>
@@ -39,6 +53,6 @@
     </form>
   </div>
 </div>
+<%@ include file="/WEB-INF/jsp/partials/footer.jspf" %>
 </body>
 </html>
-

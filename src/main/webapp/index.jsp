@@ -95,23 +95,26 @@
         <div class="spinner">
         </div>
         <div class="txt-loading">
-                <span data-text-preloader="M" class="letters-loading">
+                <span data-text-preloader="H" class="letters-loading">
+                    H
+                </span>
+            <span data-text-preloader="C" class="letters-loading">
+                    C
+                </span>
+            <span data-text-preloader="M" class="letters-loading">
                     M
                 </span>
-            <span data-text-preloader="O" class="letters-loading">
-                    O
+            <span data-text-preloader="U" class="letters-loading">
+                    U
                 </span>
-            <span data-text-preloader="Z" class="letters-loading">
-                    Z
+            <span data-text-preloader="T" class="letters-loading">
+                    T
                 </span>
-            <span data-text-preloader="Z" class="letters-loading">
-                    Z
-                </span>
-            <span data-text-preloader="O" class="letters-loading">
-                    O
+            <span data-text-preloader="E" class="letters-loading">
+                    E
                 </span>
         </div>
-        <p class="text-center">Loading</p>
+        <p class="text-center">Loading...</p>
     </div>
     <div class="loader">
         <div class="row">
@@ -131,119 +134,26 @@
     </div>
 </div>
 
-<!-- Offcanvas Area Start -->
-<div class="fix-area">
-    <div class="offcanvas__info">
-        <div class="offcanvas__wrapper">
-            <div class="offcanvas__content">
-                <div class="offcanvas__top mb-4 d-flex justify-content-between align-items-center">
-                    <div class="offcanvas__logo">
-                        <a href="index.html">
-                            <img src="assets/img/logo/logo-white.png" alt="logo-img">
-                        </a>
-                    </div>
-                    <div class="offcanvas__close">
-                        <button>
-                            <i class="fas fa-times"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="mobile-menu fix mb-3"></div>
-                <div class="offcanvas__contact">
-                    <div class="mb-4 d-xl-block d-none">
-                        <h4 class="mb-2">Demo</h4>
-                        <a href="index.html" class="w-75 d-center">
-                            <img src="assets/img/hero/home1.jpg" alt="img" class="w-100">
-                        </a>
-                    </div>
-                    <h4>Contact Info</h4>
-                    <ul>
-                        <li class="d-flex align-items-center">
-                            <div class="offcanvas__contact-icon">
-                                <i class="fal fa-map-marker-alt"></i>
-                            </div>
-                            <div class="offcanvas__contact-text">
-                                <a target="_blank" href="#">Strits Es/154 Maces Road 1/8 United State</a>
-                            </div>
-                        </li>
-                        <li class="d-flex align-items-center">
-                            <div class="offcanvas__contact-icon mr-15">
-                                <i class="fal fa-envelope"></i>
-                            </div>
-                            <div class="offcanvas__contact-text">
-                                <a href="mailto:info@example.com"><span
-                                        class="mailto:info@example.com">info@example.com</span></a>
-                                <a href="mailto:info@example.com"><span
-                                        class="mailto:info@example.com">ex@example.com</span></a>
-                            </div>
-                        </li>
-                        <li class="d-flex align-items-center">
-                            <div class="offcanvas__contact-icon mr-15">
-                                <i class="fal fa-clock"></i>
-                            </div>
-                            <div class="offcanvas__contact-text">
-                                <a target="_blank" href="#">Sat-friday, 02am -09pm</a>
-                            </div>
-                        </li>
-                        <li class="d-flex align-items-center">
-                            <div class="offcanvas__contact-icon mr-15">
-                                <i class="far fa-phone"></i>
-                            </div>
-                            <div class="offcanvas__contact-text">
-                                <a href="tel:+11002345909" class="d-block">365 5552-0127</a>
-                                <a href="tel:+11002345909">5421 5545 5422</a>
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="header-button mt-4">
-                        <a href="contact.html"
-                           class="theme-btn d-inline-flex text-white justify-content-center align-items-center gap-xxl-2 gap-2 fs-16 rounded-1 fw-500 black-clr overflow-hidden">
-                            Get Start
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </div>
-                    <div class="social-icon d-flex align-items-center">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="offcanvas__overlay"></div>
-
-
 <!-- Hero section start -->
 <section class="hero-section position-relative fix hero-style1 hero-style5 hero-bg5">
     <div class="container">
         <div class="hero-content1 z-1 position-relative text-center">
-            <p class="fs-18 mb-lg-3 mb-2 text-dark fw-500 lh-sm heading-font-bhalo wow fadeInUp"
-               data-wow-delay="0.5s">Explore top-rated attractions,
-                activities and more</p>
-            <h2 class="mb-30 black-clr heading-font-bhalo wow fadeInUp" data-wow-delay="0.7s">Hot Meals, Quick Bites
-                & Fresh Groceries</h2>
+            <p class="fs-18 mb-lg-3 mb-2 text-dark fw-500 lh-sm wow fadeInUp" data-wow-delay="0.5s">Bữa ăn ngon - Giá sinh viên - Phục vụ nhanh</p>
+            <h2 class="mb-30 black-clr wow fadeInUp" data-wow-delay="0.7s">Căn tin HCMUTE</h2>
             <div class="form-wrapper-five wow fadeInUp" data-wow-delay="0.8s">
-                <div
-                        class="search-adjust1 style2 w-auto bg-white rounded-2 d-flex align-items-center justify-content-between gap-2 mb-3">
-                    <div
-                            class="bg-white rounded-2 d-flex align-items-center justify-content-between gap-2 border w-100 pe-3">
-                        <form action="#" class="gap-2 d-flex align-items-center bg-white rounded-10 w-100">
-                            <input class="fs-14 w-100 py-2 px-2 border-0" type="text"
-                                   placeholder="Tìm kiếm món ăn...">
-                        </form>
-
+                <form action="all-foods.jsp" class="search-adjust1 style2 w-auto bg-white rounded-2 d-flex align-items-center justify-content-between gap-2 mb-3">
+                    <div class="bg-white rounded-2 d-flex align-items-center justify-content-between gap-2 border w-100 pe-3">
+                        <input class="fs-14 w-100 py-2 px-2 border-0" name="q" type="text" placeholder="Tìm món ăn...">
                     </div>
-                    <button type="submit"
-                            class="theme-btn theme3-btn text-nowrap px-4 h-44px fw-500 text-capitalize d-center gap-2 rounded-2">
-                        <i class="fa-solid fa-magnifying-glass fs-14"></i> <span
-                            class="d-sm-block text-capitalize d-none fs-16 fw-semibold text-white">Tìm kiếm</span>
+                    <button type="submit" class="theme-btn theme3-btn text-nowrap px-4 h-44px fw-500 d-center gap-2 rounded-2">
+                        <i class="fa-solid fa-magnifying-glass fs-14"></i> <span class="d-sm-block d-none fs-16 fw-semibold text-white">Tìm kiếm</span>
                     </button>
-                </div>
+                </form>
                 <div class="d-flex align-items-center gap-2 fs-16 text-dark wow fadeInUp" data-wow-delay="0.9s">
-                    Already member or not? <a href="#0" class="fs-18 fw-semibold theme3-clr">Sign Up!</a>
+                    <c:choose>
+                      <c:when test="${empty auth}">Chưa có tài khoản? <a href="${pageContext.request.contextPath}/login" class="fs-18 fw-semibold theme3-clr">Đăng nhập</a></c:when>
+                      <c:otherwise>Vào <a href="${pageContext.request.contextPath}/profile" class="fs-18 fw-semibold theme3-clr">hồ sơ cá nhân</a></c:otherwise>
+                    </c:choose>
                 </div>
             </div>
         </div>
@@ -768,95 +678,6 @@
         </div>
     </div>
 </div>
-
-<!-- Blog section start -->
-<section class="blog-section section-bg2 pt-100 pb-100">
-    <div class="container">
-        <div class="section-title-style1 mx-auto mb-40 max-w-450 text-center">
-            <h3 class="wow fadeInUp mb-sm-3 fw-bold mb-2 white-clr text-black fs-30 lh-1 fw-semibold text-capitalize"
-                data-wow-delay=".3s">
-                Latest blog posts
-            </h3>
-            <p class="fs-16 wow fadeInUp" data-wow-delay="0.5s">dolor sit amet consectetur. Massa a of est sit
-                commodo
-                convallis auctor aliquet ready works</p>
-        </div>
-        <div class="row g-md-4 g-4">
-            <div class="col-sm-6 col-lg-4">
-                <div class="blog-single-item card-effect position-relative rounded-16 overflow-hidden wow fadeInUp"
-                     data-wow-delay=".4s">
-                    <div class="thumb d-block w-100 overflow-hidden">
-                        <img src="assets/img/home-1/blog1.png" alt="img" class="w-100 overflow-hidden">
-                    </div>
-                    <div class="content position-absolute bottom-0 z-1 bg-white rounded-12 p-lg-4 p-3 mb-3"
-                         style="width: 90%; left: 50%; transform: translateX(-50%);">
-                        <div class="p-xxl-2">
-                            <ul class="blog-admin mb-1 d-flex align-items-center gap-2">
-                                <li class="d-flex align-items-center gap-2 text-clr">
-                                    <i class="fa-regular fa-calendar text-clr"></i> 25 May, 2025 / Food
-                                </li>
-                            </ul>
-                            <h4>
-                                <a href="blog-details.html" class="fw-semibold lh-base">
-                                    Chef’s specialty Food for
-                                    personal and all staff
-                                </a>
-                            </h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-4">
-                <div class="blog-single-item card-effect position-relative rounded-16 overflow-hidden wow fadeInUp"
-                     data-wow-delay=".6s">
-                    <div class="thumb d-block w-100 overflow-hidden">
-                        <img src="assets/img/home-1/blog2.jpg" alt="img" class="w-100 overflow-hidden">
-                    </div>
-                    <div class="content position-absolute bottom-0 z-1 bg-white rounded-12 p-lg-4 p-3 mb-3"
-                         style="width: 90%; left: 50%; transform: translateX(-50%);">
-                        <div class="p-xxl-2">
-                            <ul class="blog-admin mb-1 d-flex align-items-center gap-2">
-                                <li class="d-flex align-items-center gap-2 text-clr">
-                                    <i class="fa-regular fa-calendar text-clr"></i> 25 May, 2025 / Food
-                                </li>
-                            </ul>
-                            <h4>
-                                <a href="blog-details.html" class="fw-semibold lh-base">
-                                    Marinate chicken Mango
-                                    achiote, a Yucatecan
-                                </a>
-                            </h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-4">
-                <div class="blog-single-item card-effect position-relative rounded-16 overflow-hidden wow fadeInUp"
-                     data-wow-delay=".8s">
-                    <div class="thumb d-block w-100 overflow-hidden">
-                        <img src="assets/img/home-1/blog3.jpg" alt="img" class="w-100 overflow-hidden">
-                    </div>
-                    <div class="content position-absolute bottom-0 z-1 bg-white rounded-12 p-lg-4 p-3 mb-3"
-                         style="width: 90%; left: 50%; transform: translateX(-50%);">
-                        <div class="p-xxl-2">
-                            <ul class="blog-admin mb-1 d-flex align-items-center gap-2">
-                                <li class="d-flex align-items-center gap-2 text-clr">
-                                    <i class="fa-regular fa-calendar text-clr"></i> 25 May, 2025 / Food
-                                </li>
-                            </ul>
-                            <h4>
-                                <a href="blog-details.html" class="fw-semibold lh-base">
-                                    Preparation the best of
-                                    vegetables, and starches
-                                </a>
-                            </h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

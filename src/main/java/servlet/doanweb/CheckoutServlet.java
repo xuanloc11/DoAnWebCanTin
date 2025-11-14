@@ -105,9 +105,12 @@ public class CheckoutServlet extends HttpServlet {
             return;
         }
 
-        // All created OK
+        // All created OK: stash summary into session for success page
+        session.setAttribute("orderSuccessIds", createdOrderIds);
+        session.setAttribute("orderSuccessTotal", cart.getTotalPrice());
+        // Clear cart then go to success page
         session.removeAttribute("cart");
-        resp.sendRedirect(req.getContextPath() + "/?order=success");
+        resp.sendRedirect(req.getContextPath() + "/order-success.jsp");
     }
 
     private int parseInt(String v){ try { return Integer.parseInt(v); } catch(Exception e){ return 0; } }

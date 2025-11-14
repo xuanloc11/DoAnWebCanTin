@@ -10,25 +10,67 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Thanh toán</title>
-  <base href="${pageContext.request.contextPath}/" />
-  <link rel="shortcut icon" href="assets/img/logo/favicon.png" />
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="assets/css/all.min.css" />
-  <link rel="stylesheet" href="assets/css/animate.css" />
-  <link rel="stylesheet" href="assets/css/magnific-popup.css" />
-  <link rel="stylesheet" href="assets/css/meanmenu.css" />
-  <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="assets/css/nice-select.css" />
-  <link rel="stylesheet" href="assets/css/expose.css" />
-  <link rel="stylesheet" href="assets/css/main.css" />
+  <!-- Use context-aware URLs for assets -->
+  <link rel="shortcut icon" href="<c:url value='/assets/img/logo/favicon.png' />" />
+  <link rel="stylesheet" href="<c:url value='/assets/css/bootstrap.min.css' />" />
+  <link rel="stylesheet" href="<c:url value='/assets/css/all.min.css' />" />
+  <link rel="stylesheet" href="<c:url value='/assets/css/animate.css' />" />
+  <link rel="stylesheet" href="<c:url value='/assets/css/magnific-popup.css' />" />
+  <link rel="stylesheet" href="<c:url value='/assets/css/meanmenu.css' />" />
+  <link rel="stylesheet" href="<c:url value='/assets/css/swiper-bundle.min.css' />" />
+  <link rel="stylesheet" href="<c:url value='/assets/css/nice-select.css' />" />
+  <link rel="stylesheet" href="<c:url value='/assets/css/expose.css' />" />
+  <link rel="stylesheet" href="<c:url value='/assets/css/main.css' />" />
 </head>
 <body class="body-bg">
 <%@ include file="/WEB-INF/jsp/partials/header.jspf" %>
 
 <c:set var="isEmpty" value="${empty cart || cart.totalQuantity == 0}" />
-
+<div id="preloader" class="preloader">
+    <div class="animation-preloader">
+        <div class="spinner">
+        </div>
+        <div class="txt-loading">
+                <span data-text-preloader="H" class="letters-loading">
+                    H
+                </span>
+            <span data-text-preloader="C" class="letters-loading">
+                    C
+                </span>
+            <span data-text-preloader="M" class="letters-loading">
+                    M
+                </span>
+            <span data-text-preloader="U" class="letters-loading">
+                    U
+                </span>
+            <span data-text-preloader="T" class="letters-loading">
+                    T
+                </span>
+            <span data-text-preloader="E" class="letters-loading">
+                    E
+                </span>
+        </div>
+        <p class="text-center">Loading...</p>
+    </div>
+    <div class="loader">
+        <div class="row">
+            <div class="col-3 loader-section section-left">
+                <div class="bg"></div>
+            </div>
+            <div class="col-3 loader-section section-left">
+                <div class="bg"></div>
+            </div>
+            <div class="col-3 loader-section section-right">
+                <div class="bg"></div>
+            </div>
+            <div class="col-3 loader-section section-right">
+                <div class="bg"></div>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- breadcrumb -->
-<section class="breadcrumb-section position-relative fix bg-cover" style="background-image: url(assets/img/hero/breadcrumb-banner.jpg);">
+<section class="breadcrumb-section position-relative fix bg-cover" style="background-image: url('<c:url value='/assets/img/hero/breadcrumb-banner.jpg' />');">
   <div class="container">
     <div class="breadcrumb-content">
       <h2 class="white-clr fw-semibold text-center heading-font mb-2">Thanh toán</h2>
@@ -39,8 +81,8 @@
       </ul>
     </div>
   </div>
-  <img src="assets/img/home-1/home-shape-start.png" alt="img" class="bread-shape-start position-absolute">
-  <img src="assets/img/home-1/home-shape-end.png" alt="img" class="bread-shape-end position-absolute d-sm-block d-none">
+  <img src="<c:url value='/assets/img/home-1/home-shape-start.png' />" alt="img" class="bread-shape-start position-absolute">
+  <img src="<c:url value='/assets/img/home-1/home-shape-end.png' />" alt="img" class="bread-shape-end position-absolute d-sm-block d-none">
 </section>
 
 <section class="shop-section position-relative z-1 fix section-padding">
@@ -97,7 +139,7 @@
                             </c:choose>
                           </c:when>
                           <c:otherwise>
-                            <img width="40" height="40" src="assets/img/inner/shop-cart.jpg" alt="img" class="border rounded-2" />
+                            <img width="40" height="40" src="<c:url value='/assets/img/inner/shop-cart.jpg' />" alt="img" class="border rounded-2" />
                           </c:otherwise>
                         </c:choose>
                         <div>
@@ -135,22 +177,22 @@
       </c:otherwise>
     </c:choose>
   </div>
-  <img src="assets/img/inner-global-pasta.png" alt="img" class="position-absolute bottom-0 end-0 float-bob-y mt-4 z-n1 d-sm-block d-none">
+  <img src="<c:url value='/assets/img/inner-global-pasta.png' />" alt="img" class="position-absolute bottom-0 end-0 float-bob-y mt-4 z-n1 d-sm-block d-none">
 </section>
 
 <%@ include file="/WEB-INF/jsp/partials/footer.jspf" %>
 
-<script src="assets/js/jquery-3.7.1.min.js"></script>
-<script src="assets/js/viewport.jquery.js"></script>
-<script src="assets/js/bootstrap.bundle.min.js"></script>
-<script src="assets/js/jquery.nice-select.min.js"></script>
-<script src="assets/js/jquery.waypoints.js"></script>
-<script src="assets/js/jquery.counterup.min.js"></script>
-<script src="assets/js/swiper-bundle.min.js"></script>
-<script src="assets/js/jquery.meanmenu.min.js"></script>
-<script src="assets/js/jquery.magnific-popup.min.js"></script>
-<script src="assets/js/wow.min.js"></script>
-<script src="assets/js/main.js"></script>
+<script src="<c:url value='/assets/js/jquery-3.7.1.min.js' />"></script>
+<script src="<c:url value='/assets/js/viewport.jquery.js' />"></script>
+<script src="<c:url value='/assets/js/bootstrap.bundle.min.js' />"></script>
+<script src="<c:url value='/assets/js/jquery.nice-select.min.js' />"></script>
+<script src="<c:url value='/assets/js/jquery.waypoints.js' />"></script>
+<script src="<c:url value='/assets/js/jquery.counterup.min.js' />"></script>
+<script src="<c:url value='/assets/js/swiper-bundle.min.js' />"></script>
+<script src="<c:url value='/assets/js/jquery.meanmenu.min.js' />"></script>
+<script src="<c:url value='/assets/js/jquery.magnific-popup.min.js' />"></script>
+<script src="<c:url value='/assets/js/wow.min.js' />"></script>
+<script src="<c:url value='/assets/js/main.js' />"></script>
 <script>
   // Submit main form when clicking the right-side confirm button
   document.getElementById('confirmOrderBtn')?.addEventListener('click', function(){

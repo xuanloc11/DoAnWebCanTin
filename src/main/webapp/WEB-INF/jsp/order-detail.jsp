@@ -7,7 +7,21 @@
 <head>
   <meta charset="UTF-8" />
   <title>Chi tiết đơn hàng</title>
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/home.css?v=20251022" />
+  <!-- Make all relative asset links resolve under the webapp context path -->
+  <base href="${pageContext.request.contextPath}/" />
+  <!-- Favicons & CSS from main template -->
+  <link rel="shortcut icon" href="assets/img/logo/favicon.png">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/animate.css">
+  <link rel="stylesheet" href="assets/css/magnific-popup.css">
+  <link rel="stylesheet" href="assets/css/meanmenu.css">
+  <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+  <link rel="stylesheet" href="assets/css/nice-select.css">
+  <link rel="stylesheet" href="assets/css/expose.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <!-- Page-specific minimal styles -->
+  <link rel="stylesheet" href="assets/css/home.css?v=20251022" />
   <style>
     .order-wrap{ max-width:900px; margin:32px auto; padding:0 16px; }
     .card{ background:#fff; border:1px solid var(--border); border-radius:16px; padding:20px; margin-bottom:24px; }
@@ -23,8 +37,8 @@
     .st-MIXED{ background:#ede9fe; color:#5b21b6; }
   </style>
 </head>
-<body>
-<%@ include file="/WEB-INF/jsp/partials/header-backup.jspf" %>
+<body class="body-bg" data-context="${pageContext.request.contextPath}">
+<%@ include file="/WEB-INF/jsp/partials/header.jspf" %>
 <div class="order-wrap">
   <c:choose>
     <c:when test="${isGrouped}">
@@ -141,5 +155,6 @@
     </c:otherwise>
   </c:choose>
 </div>
+<%@ include file="/WEB-INF/jsp/partials/footer.jspf" %>
 </body>
 </html>
