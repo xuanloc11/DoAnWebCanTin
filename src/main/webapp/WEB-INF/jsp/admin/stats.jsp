@@ -14,14 +14,16 @@
 <div class="admin-shell d-flex" id="adminShell">
   <%@ include file="/WEB-INF/jsp/admin/partials/sidebar.jspf" %>
   <div class="admin-main flex-grow-1 container-fluid py-3">
-    <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
-      <nav aria-label="breadcrumb" class="mb-0">
-        <ol class="breadcrumb mb-0">
-          <li class="breadcrumb-item">Admin</li>
-          <li class="breadcrumb-item active" aria-current="page">Thống kê</li>
-        </ol>
-      </nav>
-      <form method="get" class="d-flex align-items-center gap-2">
+    <div class="dashboard-header mb-3 d-flex flex-wrap justify-content-between align-items-center gap-2">
+      <div>
+        <div class="d-flex align-items-center gap-2 mb-1">
+          <span class="badge rounded-pill bg-primary-subtle text-primary-emphasis">Thống kê</span>
+          <span class="text-muted small">Admin / Thống kê</span>
+        </div>
+        <h1 class="dashboard-title mb-0">Báo cáo & Thống kê</h1>
+        <p class="dashboard-subtitle mb-0">Tổng quan đơn hàng, doanh thu và món bán chạy.</p>
+      </div>
+      <form method="get" class="d-flex align-items-center gap-2 flex-wrap">
         <label for="daysSel" class="form-label mb-0">Khoảng ngày:</label>
         <select id="daysSel" name="days" class="form-select form-select-sm w-auto">
           <option value="7" ${days==7? 'selected' : ''}>7 ngày</option>

@@ -59,7 +59,6 @@ public class CheckoutServlet extends HttpServlet {
         List<Integer> createdOrderIds = new ArrayList<>();
         boolean failed = false;
 
-        // Create orders per stall
         for (Map.Entry<Integer, List<CartItem>> e : groups.entrySet()) {
             if (failed) break;
             int quayHangId = e.getKey();
@@ -96,7 +95,6 @@ public class CheckoutServlet extends HttpServlet {
         }
 
         if (failed) {
-            // Best-effort rollback
             for (Integer oid : createdOrderIds) {
                 try { orderItemService.clearOrder(oid); } catch (Exception ignored) {}
                 try { orderService.delete(oid); } catch (Exception ignored) {}
@@ -105,10 +103,8 @@ public class CheckoutServlet extends HttpServlet {
             return;
         }
 
-        // All created OK: stash summary into session for success page
         session.setAttribute("orderSuccessIds", createdOrderIds);
         session.setAttribute("orderSuccessTotal", cart.getTotalPrice());
-        // Clear cart then go to success page
         session.removeAttribute("cart");
         resp.sendRedirect(req.getContextPath() + "/order-success.jsp");
     }

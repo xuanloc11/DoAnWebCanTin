@@ -23,24 +23,24 @@
   <!-- Page-specific minimal styles -->
   <link rel="stylesheet" href="assets/css/home.css?v=20251022" />
   <style>
-    .profile-shell{ max-width:1100px; margin:32px auto; display:grid; grid-template-columns: 280px 1fr; gap:28px; }
-    .profile-nav{ background:#fff; border:1px solid var(--border); border-radius:14px; padding:16px; display:grid; gap:8px; position:sticky; top:16px; height:fit-content; }
-    .profile-nav a{ padding:10px 12px; border-radius:10px; text-decoration:none; color:#111827; display:flex; align-items:center; gap:8px; font-weight:500; }
+    .profile-shell{ max-width:1100px; margin:24px auto; display:grid; grid-template-columns: 260px 1fr; gap:24px; font-size:14px; }
+    .profile-nav{ background:#fff; border:1px solid var(--border); border-radius:14px; padding:12px; display:grid; gap:6px; position:sticky; top:16px; height:fit-content; font-size:13px; }
+    .profile-nav a{ padding:8px 10px; border-radius:10px; text-decoration:none; color:#111827; display:flex; align-items:center; gap:6px; font-weight:500; font-size:13px; }
     .profile-nav a.active{ background:#2563eb; color:#fff; }
-    .profile-card{ background:#fff; border:1px solid var(--border); border-radius:16px; padding:20px; }
-    h1{ margin:0 0 16px; font-size:28px; }
-    .muted{ color:var(--muted); }
-    table{ width:100%; border-collapse:collapse; }
-    th, td{ padding:10px 12px; border-bottom:1px solid #e5e7eb; text-align:left; }
-    th{ background:#f9fafb; }
-    .status-chip{ display:inline-block; padding:2px 8px; border-radius:999px; font-size:12px; font-weight:500; }
+    .profile-card{ background:#fff; border:1px solid var(--border); border-radius:16px; padding:16px 18px; font-size:14px; }
+    h1{ margin:0 0 12px; font-size:22px; }
+    .muted{ color:var(--muted); font-size:12px; }
+    table{ width:100%; border-collapse:collapse; font-size:13px; }
+    th, td{ padding:8px 10px; border-bottom:1px solid #e5e7eb; text-align:left; }
+    th{ background:#f9fafb; font-weight:600; }
+    .status-chip{ display:inline-block; padding:2px 8px; border-radius:999px; font-size:11px; font-weight:500; }
     .st-MOI_DAT{ background:#fef3c7; color:#92400e; }
     .st-DA_XAC_NHAN{ background:#d1fae5; color:#065f46; }
     .st-DANG_GIAO{ background:#bfdbfe; color:#1e3a8a; }
     .st-DA_GIAO{ background:#e0f2fe; color:#0369a1; }
     .st-CANCELLED{ background:#fee2e2; color:#b91c1c; }
     .st-MIXED{ background:#ede9fe; color:#5b21b6; }
-    .note{ font-size:13px; }
+    .note{ font-size:12px; }
   </style>
 </head>
 <body class="body-bg" data-context="${pageContext.request.contextPath}">

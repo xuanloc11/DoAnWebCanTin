@@ -21,11 +21,14 @@
   <!-- Page-specific minimal styles -->
   <link rel="stylesheet" href="assets/css/home.css?v=20251022" />
   <style>
-    .wrap{ max-width:720px; margin:32px auto; padding:0 16px; }
-    .card{ background:#fff; border:1px solid var(--border); border-radius:16px; padding:20px; }
-    .field{ display:grid; gap:6px; margin:10px 0; }
-    .field input{ padding:10px 12px; border:1px solid #e5e7eb; border-radius:10px; }
-    .actions{ display:flex; gap:8px; margin-top:12px; }
+    .wrap{ max-width:720px; margin:32px auto; padding:0 16px; font-size:14px; }
+    .card{ background:#fff; border:1px solid var(--border); border-radius:16px; padding:20px; font-size:14px; }
+    .card h4{ margin:0 0 10px; font-size:18px; }
+    .field{ display:grid; gap:4px; margin:8px 0; font-size:13px; }
+    .field label{ font-size:13px; }
+    .field input{ padding:10px 12px; border:1px solid #e5e7eb; border-radius:10px; font-size:14px; }
+    .actions{ display:flex; gap:8px; margin-top:10px; font-size:13px; }
+    .actions .btn{ font-size:13px; padding:8px 14px; }
   </style>
 </head>
 <body class="body-bg" data-context="${pageContext.request.contextPath}">

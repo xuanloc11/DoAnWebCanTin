@@ -23,18 +23,23 @@
   <!-- Page-specific minimal styles -->
   <link rel="stylesheet" href="assets/css/home.css?v=20251022" />
   <style>
-    .order-wrap{ max-width:900px; margin:32px auto; padding:0 16px; }
-    .card{ background:#fff; border:1px solid var(--border); border-radius:16px; padding:20px; margin-bottom:24px; }
-    table{ width:100%; border-collapse:collapse; }
-    th, td{ padding:10px 12px; border-bottom:1px solid #e5e7eb; text-align:left; }
-    th{ background:#f9fafb; }
-    .status-chip{ display:inline-block; padding:2px 8px; border-radius:999px; font-size:12px; font-weight:500; }
+    .order-wrap{ max-width:900px; margin:28px auto; padding:0 16px; font-size:14px; }
+    .card{ background:#fff; border:1px solid var(--border); border-radius:16px; padding:18px; margin-bottom:20px; font-size:14px; }
+    .card h1{ margin:0 0 10px; font-size:22px; }
+    .card h2{ margin:0 0 10px; font-size:18px; }
+    table{ width:100%; border-collapse:collapse; font-size:13px; }
+    th, td{ padding:8px 10px; border-bottom:1px solid #e5e7eb; text-align:left; }
+    th{ background:#f9fafb; font-weight:600; }
+    .status-chip{ display:inline-block; padding:2px 8px; border-radius:999px; font-size:11px; font-weight:500; }
     .st-MOI_DAT{ background:#fef3c7; color:#92400e; }
     .st-DA_XAC_NHAN{ background:#d1fae5; color:#065f46; }
     .st-DANG_GIAO{ background:#bfdbfe; color:#1e3a8a; }
     .st-DA_GIAO{ background:#e0f2fe; color:#0369a1; }
     .st-CANCELLED{ background:#fee2e2; color:#b91c1c; }
     .st-MIXED{ background:#ede9fe; color:#5b21b6; }
+    .muted{ color:var(--muted); font-size:12px; }
+    .actions{ margin-top:10px; font-size:13px; }
+    .actions .btn{ font-size:13px; padding:8px 14px; }
   </style>
 </head>
 <body class="body-bg" data-context="${pageContext.request.contextPath}">

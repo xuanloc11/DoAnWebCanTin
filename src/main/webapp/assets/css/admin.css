@@ -5,10 +5,83 @@
   --primary-dark: #2563eb;
   --border: #e5e7eb;
   --bg: #f9fafb;
+  --surface: #ffffff;
   --text: #1f2937;
   --muted: #6b7280;
   --shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --admin-gap: 16px;
+}
+
+html[data-bs-theme="dark"] {
+  --primary: #60a5fa;
+  --primary-light: #1e293b;
+  --primary-dark: #93c5fd;
+  --border: #334155;
+  --bg: #0f172a;
+  --surface: #020617;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --shadow: 0 10px 30px rgba(0,0,0,.6);
+}
+
+body.admin-page,
+.admin-shell {
+  background: var(--bg);
+}
+
+.admin-sidebar {
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+}
+
+.admin-main {
+  background: transparent;
+}
+
+.dashboard-header {
+  background: linear-gradient(135deg, var(--surface) 0%, #f6f8ff 100%);
+}
+
+html[data-bs-theme="dark"] .dashboard-header {
+  background: linear-gradient(135deg, #020617 0%, #0f172a 100%);
+}
+
+.table-wrap,
+.table-wrap-soft,
+.card {
+  background-color: var(--surface);
+  border-color: var(--border);
+}
+
+.table thead th {
+  background-color: rgba(148,163,184,0.08);
+}
+
+body.admin-page,
+.admin-page .admin-title,
+.admin-page .admin-nav-link,
+.admin-page .admin-nav-sublink,
+.admin-page .crumbs,
+.admin-page .dashboard-title,
+.admin-page .dashboard-subtitle,
+.admin-page .table,
+.admin-page .table td,
+.admin-page .table th,
+.admin-page .card,
+.admin-page .btn,
+.admin-page .form-label,
+.admin-page .form-select,
+.admin-page .form-control {
+  color: var(--text);
+}
+
+.admin-page .text-muted,
+.admin-page .muted {
+  color: var(--muted) !important;
+}
+
+html[data-bs-theme="dark"] .table tbody tr:hover {
+  background: rgba(148, 163, 184, 0.12);
 }
 
 .admin-page { background: var(--bg, #fff); min-height: 100vh; }

@@ -3,16 +3,24 @@
 <%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
 <aside class="admin-sidebar" aria-label="Admin navigation">
   <div class="admin-brand">
-    <a href="${pageContext.request.contextPath}/admin/management" class="brand-link">
+    <a href="${pageContext.request.contextPath}/admin/dashboard" class="brand-link">
       <span class="brand-mark">🍽️</span>
       <span class="brand-text">Quản lý Căn tin</span>
     </a>
   </div>
   <nav class="admin-nav">
     <c:set var="uri" value="${pageContext.request.requestURI}"/>
-    <c:set var="isFoods" value="${fn:contains(uri, '/admin/management') or fn:endsWith(uri,'/admin')}"/>
+    <c:set var="isDashboard" value="${fn:contains(uri, '/admin/dashboard') or fn:endsWith(uri,'/admin')}"/>
+    <c:set var="isFoods" value="${fn:contains(uri, '/admin/management')}"/>
     <c:set var="auth" value="${sessionScope.authUser}"/>
     <c:set var="role" value="${auth != null ? auth.role : ''}"/>
+
+    <!-- Dashboard -->
+    <a class="admin-nav-link ${isDashboard ? 'active' : ''}"
+       href="${pageContext.request.contextPath}/admin/dashboard">
+        <span class="nav-icon">📊</span>
+        <span class="nav-text">Dashboard</span>
+    </a>
 
     <!-- Món ăn (management) -->
     <a class="admin-nav-link ${isFoods ? 'active' : ''}"

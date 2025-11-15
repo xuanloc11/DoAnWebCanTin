@@ -13,13 +13,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="authorNmaeHere">
-    <meta name="description" content="Online Food Order HTML Template">
+    <meta name="description" content="Căng tin trực tuyến HCMUTE.">
     <!-- ======== Page title ============ -->
-    <title>Online Food Order HTML Template</title>
+    <title>Trang chủ - Căn Tin</title>
     <!-- Make all relative asset links resolve under the webapp context path -->
     <base href="${pageContext.request.contextPath}/" />
     <!--<< Favcion >>-->
-    <link rel="shortcut icon" href="assets/img/logo/favicon.png">
+    <link rel="shortcut icon" href="assets/img/Hcmute-Logo-Vector.svg-.png">
     <!--<< Bootstrap min.css >>-->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <!--<< All Min Css >>-->
@@ -333,7 +333,7 @@
 </section>
 
 <!-- restaurant Section start: replaced with dynamic Quầy hàng list -->
-<section class="restaurant-section position-relative pt-100 pb-100 fix" id="menu">
+<section class="restaurant-section position-relative pt-100 pb-60 fix" id="menu">
     <div class="container">
         <div class="d-flex align-items-end justify-content-between gap-3 flex-wrap mb-30 pb-xl-0 pb-2">
             <div class="section-title-style1">
@@ -375,6 +375,141 @@
     </div>
 </section>
 
+<!-- 4 Featured Stall Sections start -->
+<section class="pt-60 pb-80 section-bg2">
+    <div class="container">
+        <div class="section-title-style1 mx-auto mb-40 max-w-450 text-center">
+            <h3 class="wow fadeInUp text-black fs-30 lh-1 fw-semibold" data-wow-delay=".3s">
+                Quầy nổi bật
+            </h3>
+            <p class="fs-16 wow fadeInUp" data-wow-delay="0.4s">
+                Chọn nhanh 1 trong 4 quầy dưới đây để lọc món ăn theo quầy tương ứng.
+            </p>
+        </div>
+        <c:set var="featuredCount" value="0" />
+        <div class="row g-4">
+            <!-- Quầy 1 -->
+            <c:if test="${not empty quays and fn:length(quays) >= 1}">
+                <c:set var="featuredCount" value="${featuredCount + 1}" />
+                <div class="col-md-6 col-lg-3">
+                    <c:set var="q" value="${quays[0]}" />
+                    <div class="order-card_box icon-effect bg-white rounded-20 position-relative h-100 d-flex flex-column">
+                        <div class="icons smooth rounded-circle w-80px h-80px d-center theme2-bg mb-sm-4 mb-3 mx-auto mt-3">
+                            <img src="assets/img/home-1/pp-categori1.png" alt="icon" class="icon">
+                        </div>
+                        <div class="px-3 pb-4 text-center flex-grow-1 d-flex flex-column justify-content-between">
+                            <div>
+                                <h5 class="mb-2 fw-semibold text-black">
+                                    <c:out value="${q.tenQuayHang}" />
+                                </h5>
+                                <p class="fs-15 text-clr mb-2">
+                                    Vị trí: <c:out value="${empty q.viTri ? 'Chưa rõ' : q.viTri}" />
+                                </p>
+                            </div>
+                            <a class="theme-btn theme3-btn fs-14 px-3 w-100 mt-3" href="${pageContext.request.contextPath}/?quay=${q.quayHangId}#foods">
+                                Xem món quầy 1
+                            </a>
+                        </div>
+                        <div class="py-2 px-3 step-badge smooth fs-16 fw-semibold theme-clr rounded-start-pill position-absolute end-0 top-0 mt-lg-3 mt-2">
+                            Quầy 1
+                        </div>
+                    </div>
+                </div>
+            </c:if>
+
+            <!-- Quầy 2 -->
+            <c:if test="${not empty quays and fn:length(quays) >= 2}">
+                <c:set var="featuredCount" value="${featuredCount + 1}" />
+                <div class="col-md-6 col-lg-3">
+                    <c:set var="q" value="${quays[1]}" />
+                    <div class="order-card_box icon-effect bg-white rounded-20 position-relative h-100 d-flex flex-column">
+                        <div class="icons smooth rounded-circle w-80px h-80px d-center theme2-bg mb-sm-4 mb-3 mx-auto mt-3">
+                            <img src="assets/img/home-1/pp-categori2.png" alt="icon" class="icon">
+                        </div>
+                        <div class="px-3 pb-4 text-center flex-grow-1 d-flex flex-column justify-content-between">
+                            <div>
+                                <h5 class="mb-2 fw-semibold text-black">
+                                    <c:out value="${q.tenQuayHang}" />
+                                </h5>
+                                <p class="fs-15 text-clr mb-2">
+                                    Vị trí: <c:out value="${empty q.viTri ? 'Chưa rõ' : q.viTri}" />
+                                </p>
+                            </div>
+                            <a class="theme-btn theme3-btn fs-14 px-3 w-100 mt-3" href="${pageContext.request.contextPath}/?quay=${q.quayHangId}#foods">
+                                Xem món quầy 2
+                            </a>
+                        </div>
+                        <div class="py-2 px-3 step-badge smooth fs-16 fw-semibold theme-clr rounded-start-pill position-absolute end-0 top-0 mt-lg-3 mt-2">
+                            Quầy 2
+                        </div>
+                    </div>
+                </div>
+            </c:if>
+
+            <!-- Quầy 3 -->
+            <c:if test="${not empty quays and fn:length(quays) >= 3}">
+                <c:set var="featuredCount" value="${featuredCount + 1}" />
+                <div class="col-md-6 col-lg-3">
+                    <c:set var="q" value="${quays[2]}" />
+                    <div class="order-card_box icon-effect bg-white rounded-20 position-relative h-100 d-flex flex-column">
+                        <div class="icons smooth rounded-circle w-80px h-80px d-center theme2-bg mb-sm-4 mb-3 mx-auto mt-3">
+                            <img src="assets/img/home-1/pp-categori3.png" alt="icon" class="icon">
+                        </div>
+                        <div class="px-3 pb-4 text-center flex-grow-1 d-flex flex-column justify-content-between">
+                            <div>
+                                <h5 class="mb-2 fw-semibold text-black">
+                                    <c:out value="${q.tenQuayHang}" />
+                                </h5>
+                                <p class="fs-15 text-clr mb-2">
+                                    Vị trí: <c:out value="${empty q.viTri ? 'Chưa rõ' : q.viTri}" />
+                                </p>
+                            </div>
+                            <a class="theme-btn theme3-btn fs-14 px-3 w-100 mt-3" href="${pageContext.request.contextPath}/?quay=${q.quayHangId}#foods">
+                                Xem món quầy 3
+                            </a>
+                        </div>
+                        <div class="py-2 px-3 step-badge smooth fs-16 fw-semibold theme-clr rounded-start-pill position-absolute end-0 top-0 mt-lg-3 mt-2">
+                            Quầy 3
+                        </div>
+                    </div>
+                </div>
+            </c:if>
+
+            <!-- Quầy 4 -->
+            <c:if test="${not empty quays and fn:length(quays) >= 4}">
+                <c:set var="featuredCount" value="${featuredCount + 1}" />
+                <div class="col-md-6 col-lg-3">
+                    <c:set var="q" value="${quays[3]}" />
+                    <div class="order-card_box icon-effect bg-white rounded-20 position-relative h-100 d-flex flex-column">
+                        <div class="icons smooth rounded-circle w-80px h-80px d-center theme2-bg mb-sm-4 mb-3 mx-auto mt-3">
+                            <img src="assets/img/home-1/pp-categori4.png" alt="icon" class="icon">
+                        </div>
+                        <div class="px-3 pb-4 text-center flex-grow-1 d-flex flex-column justify-content-between">
+                            <div>
+                                <h5 class="mb-2 fw-semibold text-black">
+                                    <c:out value="${q.tenQuayHang}" />
+                                </h5>
+                                <p class="fs-15 text-clr mb-2">
+                                    Vị trí: <c:out value="${empty q.viTri ? 'Chưa rõ' : q.viTri}" />
+                                </p>
+                            </div>
+                            <a class="theme-btn theme3-btn fs-14 px-3 w-100 mt-3" href="${pageContext.request.contextPath}/?quay=${q.quayHangId}#foods">
+                                Xem món quầy 4
+                            </a>
+                        </div>
+                        <div class="py-2 px-3 step-badge smooth fs-16 fw-semibold theme-clr rounded-start-pill position-absolute end-0 top-0 mt-lg-3 mt-2">
+                            Quầy 4
+                        </div>
+                    </div>
+                </div>
+            </c:if>
+        </div>
+
+        <c:if test="${featuredCount == 0}">
+            <p class="fs-16 text-center mt-3">Hiện chưa có quầy hàng nào để hiển thị.</p>
+        </c:if>
+    </div>
+</section>
 <div class="how-order-section z-1 section-bg2 position-relative pb-80 pt-80 fix">
     <div class="container">
         <div class="section-title-style1 mx-auto mb-40 max-w-450 text-center">
@@ -426,7 +561,7 @@
                     </div>
                     <h4 class="mb-xl-2 mb-2"><a href="restaurant-list.html" class="link-effect">Food is on the
                         way</a></h4>
-                    <p class="fs-16">dolor sit amet consecte Massa areestery
+                    <p class="fs-16">dolor sit amet consecte Massa arestery
                         sit commodo convallis auctor aliquet
                         ready moderns areaworks</p>
                     <div
@@ -516,168 +651,97 @@
         </div>
     </div>
 </section>
+<!-- Popular Section end -->
 
-<!-- App Section start -->
-<section class="app-section position-relative py-lg-0 py-5 fix bg-cover"
-         style="background-image: url(assets/img/apps-bg5.jpg);">
-    <div class="container position-relative py-lg-5">
-        <div class="row g-4 align-items-center justify-content-between py-5">
-            <div class="col-lg-5 col-md-6">
-                <h3 class="text-dark mb-lg-3 mb-2 fw-semibold wow fadeInUp" data-wow-delay="0.3s">Download the app
-                </h3>
-                <h2 class="text-dark mb-30 fw-light wow fadeInUp" data-wow-delay="0.5s">
-                    Get <strong class="fw-bold">20% Discount</strong> of
-                    your First Order
-                </h2>
-                <div class="d-flex align-items-center gap-xl-3 gap-2 wow fadeInUp" data-wow-delay="0.7s">
-                    <img src="assets/img/google.png" alt="img">
-                    <img src="assets/img/app-store.png" alt="img">
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.9s">
-                <div class="app-thumb1" style="margin-bottom: -140px;">
-                    <img src="assets/img/app-thum5.png" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-    <img src="assets/img/fresh-beef.png" alt="img" class="app-buger position-absolute bounce-x">
-</section>
-
-<div class="client-section z-1 position-relative pb-100 pt-80 fix">
+<!-- 4 Stalls Foods Section start -->
+<section class="popular-section position-relative pt-40 pb-80 fix">
     <div class="container">
-        <div class="section-title-style1 mx-auto mb-40 max-w-450 text-center">
-            <h3 class="wow fadeInUp text-black fs-30 lh-1 fw-semibold" data-wow-delay=".4s">
-                What’s Client Think About
-                Our Services
-            </h3>
-        </div>
-        <div class="row g-4 align-items-center">
-            <div class="col-lg-9">
-                <div class="testimonial-wrapper1">
-                    <img src="assets/img/flow-theme3.png" alt="img" class="position-absolute"
-                         style="top: -50px; left: -50px;">
-                    <div class="swiper testimonial-slider">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div
-                                        class="testimonial-items style1 d-flex flex-md-nowrap flex-wrap align-items-center position-relative">
-                                    <div class="testimonial-thumb rounded-20 position-relative">
-                                        <img src="assets/img/client-admin1.jpg" alt="img" class="rounded-20">
-                                    </div>
-                                    <div class="content">
-                                        <div class="d-flex gap-1 mb-2">
-                                            <i class="fa-solid fa-star fs-16 ratting-clr"></i>
-                                            <i class="fa-solid fa-star fs-16 ratting-clr"></i>
-                                            <i class="fa-solid fa-star fs-16 ratting-clr"></i>
-                                            <i class="fa-solid fa-star fs-16 ratting-clr"></i>
-                                            <i class="fa-solid fa-star fs-16 ratting-clr"></i>
-                                        </div>
-                                        <h3 class="text-black mb-2 fw-semibold">Great Product! Highly Recommended!
-                                        </h3>
-                                        <p class="mb-lg-3 mb-2 fs-16 max-w-480">“ Great Quality Products WitheryGood
-                                            awrPackaging unknown
-                                            printer took a galle rambled it make pecimive centuries
-                                            Delicious Food Context ”</p>
-                                        <div class=" gap-3 d-flex align-items-center">
-                                            <img width="50" height="50" src="assets/img/admin1.jpg" alt="img"
-                                                 class="rounded-circle">
-                                            <div class="">
-                                                <h6 class="mb-0 fw-bold black-clr">
-                                                    Annette Black
-                                                </h6>
-                                                <span class="fs-14 fw-500 pra-clr d-block">Sr.Designer</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <img src="assets/img/quote-white.png" alt="img" class="quote-icon">
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div
-                                        class="testimonial-items style1 d-flex flex-md-nowrap flex-wrap align-items-center position-relative">
-                                    <div class="testimonial-thumb rounded-20 position-relative">
-                                        <img src="assets/img/client-admin1.jpg" alt="img" class="rounded-20">
-                                    </div>
-                                    <div class="content">
-                                        <div class="d-flex gap-1 mb-2">
-                                            <i class="fa-solid fa-star fs-16 ratting-clr"></i>
-                                            <i class="fa-solid fa-star fs-16 ratting-clr"></i>
-                                            <i class="fa-solid fa-star fs-16 ratting-clr"></i>
-                                            <i class="fa-solid fa-star fs-16 ratting-clr"></i>
-                                            <i class="fa-solid fa-star fs-16 ratting-clr"></i>
-                                        </div>
-                                        <h3 class="text-black mb-2 fw-semibold">Great Product! Highly Recommended!
-                                        </h3>
-                                        <p class="mb-lg-3 mb-2 fs-16 max-w-480">“ Great Quality Products WitheryGood
-                                            awrPackaging unknown
-                                            printer took a galle rambled it make pecimive centuries
-                                            Delicious Food Context ”</p>
-                                        <div class=" gap-3 d-flex align-items-center">
-                                            <img width="50" height="50" src="assets/img/admin1.jpg" alt="img"
-                                                 class="rounded-circle">
-                                            <div class="">
-                                                <h6 class="mb-0 fw-bold black-clr">
-                                                    Annette Black
-                                                </h6>
-                                                <span class="fs-14 fw-500 pra-clr d-block">Sr.Designer</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <img src="assets/img/quote-white.png" alt="img" class="quote-icon">
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div
-                                        class="testimonial-items style1 d-flex flex-md-nowrap flex-wrap align-items-center position-relative">
-                                    <div class="testimonial-thumb rounded-20 position-relative">
-                                        <img src="assets/img/client-admin1.jpg" alt="img" class="rounded-20">
-                                    </div>
-                                    <div class="content">
-                                        <div class="d-flex gap-1 mb-2">
-                                            <i class="fa-solid fa-star fs-16 ratting-clr"></i>
-                                            <i class="fa-solid fa-star fs-16 ratting-clr"></i>
-                                            <i class="fa-solid fa-star fs-16 ratting-clr"></i>
-                                            <i class="fa-solid fa-star fs-16 ratting-clr"></i>
-                                            <i class="fa-solid fa-star fs-16 ratting-clr"></i>
-                                        </div>
-                                        <h3 class="text-black mb-2 fw-semibold">Great Product! Highly Recommended!
-                                        </h3>
-                                        <p class="mb-lg-3 mb-2 fs-16 max-w-480">“ Great Quality Products WitheryGood
-                                            awrPackaging unknown
-                                            printer took a galle rambled it make pecimive centuries
-                                            Delicious Food Context ”</p>
-                                        <div class=" gap-3 d-flex align-items-center">
-                                            <img width="50" height="50" src="assets/img/admin1.jpg" alt="img"
-                                                 class="rounded-circle">
-                                            <div class="">
-                                                <h6 class="mb-0 fw-bold black-clr">
-                                                    Annette Black
-                                                </h6>
-                                                <span class="fs-14 fw-500 pra-clr d-block">Sr.Designer</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <img src="assets/img/quote-white.png" alt="img" class="quote-icon">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-dot dot-theme3"></div>
-                </div>
-            </div>
-            <div class="col-lg-3 mt-lg-0 mt-4">
-                <div class="theme3-bg text-center p-30 rounded-12 position-relative">
-                    <img src="assets/img/satisfied-like.png" alt="icon" class="mb-30 pb-1 wow fadeInUp"
-                         data-wow-delay="0.4s">
-                    <h5 class="mb-xl-2 text-white mb-1 fw-500 wow fadeInUp" data-wow-delay="0.5s">Satisfied Clients
-                    </h5>
-                    <h1 class="text-white fw-semibold wow fadeInUp" data-wow-delay="0.7s">98%</h1>
+        <div class="d-flex align-items-end justify-content-between gap-3 flex-wrap mb-30 pb-xl-2 pb-2">
+            <div class="section-title-style1">
+                <div class="d-flex flex-column gap-2">
+                    <h3 class="wow fadeInUp white-clr text-black fs-30 lh-1 fw-semibold" data-wow-delay=".3s">
+                        Món theo 4 quầy
+                    </h3>
+                    <span class="w-32px section-badge1 style5"></span>
                 </div>
             </div>
         </div>
+        <c:choose>
+            <c:when test="${not empty quays and not empty foods}">
+                <div class="row g-4">
+                    <c:forEach var="q" items="${quays}" varStatus="st">
+                        <c:if test="${st.index lt 4}">
+                            <div class="col-md-6 col-lg-3">
+                                <div class="border rounded-12 p-3 h-100 d-flex flex-column">
+                                    <div class="d-flex flex-column mb-2">
+                                        <h5 class="mb-1 fw-semibold text-black">Quầy ${st.index + 1}</h5>
+                                        <span class="fs-14 text-clr">
+                                            <c:out value="${q.tenQuayHang}" />
+                                        </span>
+                                        <span class="fs-13 text-muted">
+                                            Vị trí: <c:out value="${empty q.viTri ? 'Chưa rõ' : q.viTri}" />
+                                        </span>
+                                    </div>
+
+                                    <div class="d-flex flex-column gap-2 flex-grow-1">
+                                        <c:set var="hasFoodForStall" value="false" />
+                                        <c:forEach var="f" items="${foods}">
+                                            <c:if test="${f.quayHangId == q.quayHangId}">
+                                                <c:set var="hasFoodForStall" value="true" />
+                                                <div class="most-popular-card card-effect smooth d-flex align-items-center justify-content-between gap-2 border rounded-12 p-2">
+                                                    <div class="cont me-1">
+                                                        <h6 class="mb-1 fs-15"><span class="link-effect"><c:out value="${f.tenMonAn}"/></span></h6>
+                                                        <h6 class="theme3-clr fs-14 fw-bold mb-0">
+                                                            <fmt:formatNumber value="${f.gia}" type="number" groupingUsed="true" maxFractionDigits="0" /> VND
+                                                        </h6>
+                                                    </div>
+                                                    <div class="thumb rounded-2 position-relative w-60px h-60px">
+                                                        <c:choose>
+                                                            <c:when test="${not empty f.hinhAnhUrl}">
+                                                                <c:choose>
+                                                                    <c:when test="${fn:startsWith(f.hinhAnhUrl, 'http')}">
+                                                                        <img width="60" height="60" src="${f.hinhAnhUrl}" alt="${f.tenMonAn}" class="rounded-2">
+                                                                    </c:when>
+                                                                    <c:otherwise>
+                                                                        <img width="60" height="60" src="${pageContext.request.contextPath}${f.hinhAnhUrl}" alt="${f.tenMonAn}" class="rounded-2">
+                                                                    </c:otherwise>
+                                                                </c:choose>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <img width="60" height="60" src="assets/img/home-1/popular-items1.jpg" alt="img" class="rounded-2">
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                        <form method="post" action="${pageContext.request.contextPath}/cart/add" class="z-1 position-absolute bottom-0 end-0 m-1">
+                                                            <input type="hidden" name="mon_an_id" value="${f.monAnId}" />
+                                                            <input type="hidden" name="qty" value="1" />
+                                                            <button type="submit" class="w-22px h-22px bg-white rounded d-center theme3-clr fs-12" title="Thêm vào giỏ" aria-label="Thêm vào giỏ" data-mon-id="${f.monAnId}">
+                                                                <i class="fa-solid fa-plus"></i>
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </c:if>
+                                        </c:forEach>
+
+                                        <c:if test="${not hasFoodForStall}">
+                                            <p class="fs-14 text-clr mb-0">Quầy này hiện chưa có món trong danh sách mới nhất.</p>
+                                        </c:if>
+                                    </div>
+
+                                    <a class="theme-btn btn-outline-blak heading-font mt-3 w-100 text-center" href="${pageContext.request.contextPath}/?quay=${q.quayHangId}#foods">Xem tất cả món quầy này</a>
+                                </div>
+                            </div>
+                        </c:if>
+                    </c:forEach>
+                </div>
+            </c:when>
+            <c:otherwise>
+                <p class="fs-16 text-clr">Chưa có dữ liệu quầy hàng hoặc món ăn để hiển thị.</p>
+            </c:otherwise>
+        </c:choose>
     </div>
-</div>
+</section>
+<!-- 4 Stalls Foods Section end -->
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

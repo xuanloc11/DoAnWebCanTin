@@ -62,7 +62,8 @@ public class Managment extends HttpServlet {
         }
 
         // If manager, force scope to their stall regardless of query params
-        if (user != null && "truong_quay".equalsIgnoreCase(user.getRole()) && user.getQuayHangId() != null) {
+        if (user != null && "truong_quay".equalsIgnoreCase(user.getRole()) && user.getQuayHangId() != null
+                && quayId == null && (quayName == null || quayName.trim().isEmpty())) {
             Integer targetId = user.getQuayHangId();
             List<MonAn> filtered = new ArrayList<>();
             if (foods != null) {
@@ -86,7 +87,8 @@ public class Managment extends HttpServlet {
                 Set<Integer> allowedIds = new HashSet<>();
                 for (QuayHang q : quays) {
                     String qName = q.getTenQuayHang();
-                    if (qName != null && normalizeVN(qName).equals(target)) {
+                    String norm = normalizeVN(qName);
+                    if (norm != null && norm.contains(target)) {
                         allowedIds.add(q.getQuayHangId());
                     }
                 }

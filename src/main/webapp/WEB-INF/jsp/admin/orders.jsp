@@ -3,47 +3,52 @@
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <fmt:setLocale value="vi_VN"/>
 <!DOCTYPE html>
-<html lang="vi" class="admin-page">
+<html lang="vi" class="admin-page" data-bs-theme="light">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Admin - Quản lý đơn hàng</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/home.css?v=20251022" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin.css?v=20251107" />
 </head>
-<body>
-<div class="admin-shell" id="adminShell">
+<body class="bg-light">
+<div class="admin-shell d-flex" id="adminShell">
     <%@ include file="/WEB-INF/jsp/admin/partials/sidebar.jspf" %>
-    <div class="admin-main">
-        <div class="admin-topbar">
-            <div class="crumbs">Admin / Đơn hàng</div>
-            <div class="admin-actions">
-                <a href="${pageContext.request.contextPath}/" class="btn btn-ghost btn-icon">↩ Về trang chủ</a>
-                <!-- Removed: Add new order button since only students create orders -->
+    <div class="admin-main flex-grow-1 container-fluid py-3">
+        <div class="dashboard-header mb-3 d-flex flex-wrap justify-content-between align-items-center gap-3">
+            <div class="d-flex flex-column gap-1">
+                <div class="d-flex align-items-center gap-2">
+                    <span class="badge rounded-pill bg-primary-subtle text-primary-emphasis">Bảng điều khiển</span>
+                    <span class="text-muted small">Admin / Đơn hàng</span>
+                </div>
+                <h1 class="dashboard-title mb-0">Quản lý đơn hàng</h1>
+                <p class="dashboard-subtitle mb-0">Theo dõi và cập nhật trạng thái các đơn đặt món.</p>
+            </div>
+            <div class="d-flex flex-wrap align-items-center gap-2">
+                <a href="${pageContext.request.contextPath}/" class="btn btn-outline-secondary btn-sm rounded-pill">↩ Về trang chủ</a>
             </div>
         </div>
+
         <div class="admin-content">
-            <div class="admin-head">
-                <h1 class="admin-title">Quản lý đơn hàng</h1>
-            </div>
             <c:choose>
                 <c:when test="${not empty orders}">
-                    <div class="table-wrap">
-                        <table class="table">
-                            <thead>
+                    <div class="table-wrap-soft bg-white mb-3 border rounded-3">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-striped align-middle mb-0">
+                                <thead class="table-light">
                                 <tr>
-                                    <th class="col-id">ID đơn hàng</th>
-                                    <th>Tổng tiền</th>
-                                    <th>Thời gian đặt</th>
-                                    <th>Trạng thái</th>
-                                    <th>Ghi chú</th>
-                                    <th style="width:260px">Hành động</th>
+                                    <th scope="col">ID đơn hàng</th>
+                                    <th scope="col">Tổng tiền</th>
+                                    <th scope="col">Thời gian đặt</th>
+                                    <th scope="col">Trạng thái</th>
+                                    <th scope="col">Ghi chú</th>
+                                    <th scope="col" style="width:260px">Hành động</th>
                                 </tr>
-                            </thead>
-                            <tbody>
+                                </thead>
+                                <tbody>
                                 <c:forEach var="o" items="${orders}">
                                     <tr>
-                                        <td class="col-id">${o.orderId}</td>
+                                        <td class="fw-semibold">${o.orderId}</td>
                                         <td><fmt:formatNumber value="${o.tongTien}" type="number" groupingUsed="true" maxFractionDigits="0"/> VNĐ</td>
                                         <td><fmt:formatDate value="${o.thoiGianDat}" pattern="dd/MM/yyyy HH:mm" /></td>
                                         <td>
@@ -57,34 +62,35 @@
                                         </td>
                                         <td><c:out value="${o.ghiChu}"/></td>
                                         <td>
-                                            <div class="table-actions" style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
-                                                <a class="btn btn-ghost" href="${pageContext.request.contextPath}/admin/orders/detail?id=${o.orderId}">Xem</a>
-                                                <!-- Update status form -->
-                                                <form action="${pageContext.request.contextPath}/admin/orders/status" method="post" style="display:flex; gap:6px; align-items:center;">
+                                            <div class="d-flex flex-wrap gap-2 align-items-center">
+                                                <a class="btn btn-outline-secondary btn-sm" href="${pageContext.request.contextPath}/admin/orders/detail?id=${o.orderId}">Xem</a>
+                                                <form action="${pageContext.request.contextPath}/admin/orders/status" method="post" class="d-flex flex-wrap gap-2 align-items-center">
                                                     <input type="hidden" name="order_id" value="${o.orderId}" />
-                                                    <select name="status" class="btn btn-ghost" style="min-width:160px">
+                                                    <select name="status" class="form-select form-select-sm" style="min-width:160px">
                                                         <option value="MOI_DAT" ${o.trangThaiOrder eq 'MOI_DAT' ? 'selected' : ''}>Mới đặt</option>
                                                         <option value="DA_XAC_NHAN" ${o.trangThaiOrder eq 'DA_XAC_NHAN' ? 'selected' : ''}>Đã xác nhận</option>
                                                         <option value="DANG_GIAO" ${o.trangThaiOrder eq 'DANG_GIAO' ? 'selected' : ''}>Đang giao</option>
                                                         <option value="DA_GIAO" ${o.trangThaiOrder eq 'DA_GIAO' ? 'selected' : ''}>Đã giao</option>
                                                     </select>
-                                                    <button class="btn btn-small" type="submit">Cập nhật</button>
+                                                    <button class="btn btn-primary btn-sm" type="submit">Cập nhật</button>
                                                 </form>
                                             </div>
                                         </td>
                                     </tr>
                                 </c:forEach>
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </c:when>
                 <c:otherwise>
-                    <p class="muted">Chưa có dữ liệu đơn hàng.</p>
+                    <div class="alert alert-info shadow-sm">Chưa có dữ liệu đơn hàng.</div>
                 </c:otherwise>
             </c:choose>
         </div>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/admin.js?v=20251022"></script>
 </body>
 </html>

@@ -37,6 +37,14 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* Ensure logo text stays on one line next to the logo icon */
+.header-logo {
+  white-space: nowrap;
+}
+.header-logo span {
+  white-space: nowrap;
+}
 </style>
 
 <!-- Header Top Section Start -->
@@ -46,14 +54,12 @@
       <ul class="d-flex flex-wrap align-items-center gap-3">
         <li>
           <a href="#" class="located link-effect link body-font text-clr d-flex align-items-center gap-2 fs-14">
-            <!-- icon -->
             Số 1 Võ Văn Ngân, Thủ Đức, TP. Hồ Chí Minh
           </a>
         </li>
       </ul>
       <ul class="contact-list flex-wrap">
         <li>
-          <!-- icon -->
           <a href="tel:+84123456789" class="link-effect link body-font text-clr">Hotline: (+84) 123 456 789</a>
         </li>
       </ul>
@@ -70,7 +76,7 @@
           <div class="logo">
             <a href="${CTX}/" class="header-logo d-inline-flex align-items-center gap-2 text-decoration-none">
               <img src="${CTX}/assets/img/Hcmute-Logo-Vector.svg-.png" alt="logo-img" style="height:40px;object-fit:contain;">
-              <span class="fw-semibold text-black d-none d-md-inline">Căn tin </span>
+              <span class="fw-semibold text-black d-none d-md-inline">Căn tin HCMUTE</span>
             </a>
           </div>
         </div>
@@ -83,6 +89,9 @@
                 </li>
                 <li>
                   <a href="${CTX}/all-foods.jsp">Món ăn</a>
+                </li>
+                <li>
+                  <a href="${CTX}/menu/stalls">Menu</a>
                 </li>
                 <li><a href="#contact">Liên hệ</a></li>
               </ul>
@@ -102,6 +111,19 @@
                   <strong><c:out value="${empty auth.hoTen ? auth.email : auth.hoTen}"/></strong>
                 </a>
               </span>
+              <!-- Mobile: link trang quản trị cho admin / trưởng quầy -->
+              <c:if test="${auth.role eq 'bgh_admin'}">
+                <a href="${CTX}/admin/management" class="border-theme5 rounded-pill d-center gap-1 fw-bold fs-13 h-32px px-2">
+                  <i class="fa-solid fa-gauge-high"></i>
+                  Admin
+                </a>
+              </c:if>
+              <c:if test="${auth.role eq 'truong_quay'}">
+                <a href="${CTX}/admin/orders" class="border-theme5 rounded-pill d-center gap-1 fw-bold fs-13 h-32px px-2">
+                  <i class="fa-solid fa-shop"></i>
+                  Quản lý quầy
+                </a>
+              </c:if>
               <a href="${CTX}/logout" class="rounded-pill d-center fw-bold fs-14 h-40px w-40px px-0" title="Đăng xuất" aria-label="Đăng xuất">
                 <i class="fa-solid fa-right-from-bracket"></i>
               </a>
@@ -128,6 +150,19 @@
                   <strong><c:out value="${empty auth.hoTen ? auth.email : auth.hoTen}"/></strong>
                 </a>
               </span>
+              <!-- Desktop: link trang quản trị cho admin / trưởng quầy -->
+              <c:if test="${auth.role eq 'bgh_admin'}">
+                <a href="${CTX}/admin/management" class="border-theme5 rounded-pill d-center gap-2 fw-bold fs-14 h-40px px-3">
+                  <i class="fa-solid fa-gauge-high"></i>
+                  Trang quản trị
+                </a>
+              </c:if>
+              <c:if test="${auth.role eq 'truong_quay'}">
+                <a href="${CTX}/admin/orders" class="border-theme5 rounded-pill d-center gap-2 fw-bold fs-14 h-40px px-3">
+                  <i class="fa-solid fa-shop"></i>
+                  Quản lý quầy
+                </a>
+              </c:if>
             </c:when>
             <c:otherwise>
               <a href="${CTX}/login" class="border-theme5 rounded-pill d-center gap-2 fw-bold theme3-clr login-theme3 fs-14 h-40px px-4">

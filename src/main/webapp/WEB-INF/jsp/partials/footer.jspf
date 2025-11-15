@@ -9,16 +9,16 @@
                     <div class="single-footer-widget pt-0 pb-0">
                         <div class="widget-head">
                             <a href="${CTX}/">
-                                <img src="${CTX}/assets/img/logo/logo-white.png" alt="logo-img">
+                                <img src="${CTX}/assets/img/Hcmute-Logo-Vector.svg-.png" alt="logo-img" style
+                                ="height:70px;object-fit:contain;">
                             </a>
                         </div>
                         <div class="footer-content">
                             <p class="fs-16 white-clr opacity-75 mb-xl-3 mb-2">
-                                1487 Rocky Horse Carre 1487Rocky
-                                Arlington, TX 16819 United
+                                Số 1 Võ Văn Ngân, Thủ Đức, TP. Hồ Chí Minh
                             </p>
-                            <h5 class="text-white mb-lg-3 mb-2">1800 6565 222</h5>
-                            <p class="fs-16 white-clr opacity-75">info@gmail.com</p>
+                            <h5 class="text-white mb-lg-3 mb-2">0912345678</h5>
+                            <p class="fs-16 white-clr opacity-75">ptchc@hcmute.edu.vn</p>
                         </div>
                     </div>
                 </div>
@@ -26,23 +26,20 @@
                      data-wow-delay=".4s">
                     <div class="single-footer-widget pt-0 pb-0">
                         <h5 class="widget-head text-white text-uppercase fs-20 white-clr fw-semibold">
-                            Quick Links
+                            Quầy hàng
                         </h5>
                         <ul class="important-link d-grid gap-sm-2 gap-1">
                             <li>
-                                <a href="#" class="text-white opacity-75 fw-light link-effect">How It
-                                    Works</a>
+                                <a href="${CTX}/all-foods.jsp?quay=1" class="text-white opacity-75 fw-light link-effect">Quầy Cơm</a>
                             </li>
                             <li>
-                                <a href="#" class="text-white opacity-75 fw-light link-effect">Get to know
-                                    us</a>
+                                <a href="${CTX}/all-foods.jsp?quay=2" class="text-white opacity-75 fw-light link-effect">Quầy Bún Phở</a>
                             </li>
                             <li>
-                                <a href="#" class="text-white opacity-75 fw-light link-effect">Pricing Packages</a>
+                                <a href="${CTX}/all-foods.jsp?quay=3" class="text-white opacity-75 fw-light link-effect">Quầy Nước & Cafe</a>
                             </li>
                             <li>
-                                <a href="#" class="text-white opacity-75 fw-light link-effect">Contact
-                                    Us</a>
+                                <a href="${CTX}/all-foods.jsp?quay=4" class="text-white opacity-75 fw-light link-effect">Quầy Đồ ăn Vặt</a>
                             </li>
                         </ul>
                     </div>
@@ -51,23 +48,17 @@
                      data-wow-delay=".3s">
                     <div class="single-footer-widget pt-0 pb-0">
                         <div class="widget-head text-white text-uppercase fs-20 white-clr fw-semibold">
-                            Information
+                            Thông tin
                         </div>
                         <ul class="important-link d-grid gap-sm-2 gap-1">
                             <li>
-                                <a href="#" class="text-white opacity-75 fw-light link-effect">Help
-                                    Center</a>
+                                <a href="${CTX}/profile#orders" class="text-white opacity-75 fw-light link-effect">Xem đơn hàng</a>
                             </li>
                             <li>
-                                <a href="#" class="text-white opacity-75 fw-light link-effect">Refund
-                                    Condition</a>
+                                <a href="${CTX}/profile" class="text-white opacity-75 fw-light link-effect">Xem thông tin cá nhân</a>
                             </li>
                             <li>
-                                <a href="#" class="text-white opacity-75 fw-light link-effect">Become an Affiliate</a>
-                            </li>
-                            <li>
-                                <a href="#" class="text-white opacity-75 fw-light link-effect">Cash Back
-                                    Policy</a>
+                                <a href="https://hcmute.edu.vn/?ModuleId=3b96bb7b-5b23-4b4b-b5f3-fcc6041ee427" class="text-white opacity-75 fw-light link-effect">Liên hệ</a>
                             </li>
                         </ul>
                     </div>
@@ -76,17 +67,16 @@
                      data-wow-delay=".5s">
                     <div class="single-footer-widget pt-0 pb-0">
                         <div class="widget-head text-white text-uppercase fs-20 white-clr fw-semibold">
-                            Subscribe
+                            Đăng ký nhận tin mới
                         </div>
                         <p class="mb-4 fs-16 white-clr opacity-75">
-                            When an unknown printer took a galley of
-                            type and scrambled it to make
+                            Căn tin cập nhật món mới mỗi ngày
                         </p>
                         <form action="#" class="adjust-form style1 d-flex flex-column gap-2 align-items-center">
-                            <input type="text" placeholder="Type e-mail"
+                            <input type="text" placeholder="Nhập địa chỉ email trường"
                                    class="w-100 fs-14 text-white bg-1F1F1F border-0 rounded-2 py-3 px-3">
                             <button type="submit" class="theme-btn theme3-btn w-100 theme-border d-center">
-                                Subscribe Now
+                                Đăng ký
                             </button>
                         </form>
                     </div>
@@ -95,7 +85,7 @@
         </div>
         <div
                 class="footer-bottom d-flex align-items-center justify-content-sm-between justify-content-center flex-wrap gap-2 fs-16 text-center">
-            <p class="fs-16 text3-clr">Copyright &copy; 2025 <a href="${CTX}/" class="theme-clr">mozzoa</a></p>
+            <p class="fs-16 text3-clr">Copyright &copy; 2025 <a href="${CTX}/" class="theme-clr">HCMUTE</a></p>
             <div class="d-flex align-items-center gap-4">
                 <a href="javascript:void(0)">
                     <i class="fa-brands fa-facebook-f fs-18 text-white"></i>

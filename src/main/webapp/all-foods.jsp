@@ -25,7 +25,49 @@
 </head>
 <body class="body-bg" data-context="${pageContext.request.contextPath}">
 <%@ include file="/WEB-INF/jsp/partials/header.jspf" %>
-
+<div id="preloader" class="preloader">
+    <div class="animation-preloader">
+        <div class="spinner">
+        </div>
+        <div class="txt-loading">
+                <span data-text-preloader="H" class="letters-loading">
+                    H
+                </span>
+            <span data-text-preloader="C" class="letters-loading">
+                    C
+                </span>
+            <span data-text-preloader="M" class="letters-loading">
+                    M
+                </span>
+            <span data-text-preloader="U" class="letters-loading">
+                    U
+                </span>
+            <span data-text-preloader="T" class="letters-loading">
+                    T
+                </span>
+            <span data-text-preloader="E" class="letters-loading">
+                    E
+                </span>
+        </div>
+        <p class="text-center">Loading...</p>
+    </div>
+    <div class="loader">
+        <div class="row">
+            <div class="col-3 loader-section section-left">
+                <div class="bg"></div>
+            </div>
+            <div class="col-3 loader-section section-left">
+                <div class="bg"></div>
+            </div>
+            <div class="col-3 loader-section section-right">
+                <div class="bg"></div>
+            </div>
+            <div class="col-3 loader-section section-right">
+                <div class="bg"></div>
+            </div>
+        </div>
+    </div>
+</div>
 <%
     MonAnService monSvc = new MonAnService();
     QuayHangService qSvc = new QuayHangService();
@@ -150,27 +192,31 @@
                                 <div class="col-sm-6 col-lg-4">
                                     <div class="restaurant-card rounded-4 overflow-hidden restaurant-card_text position-relative border card-scale h-100 rounded-12">
                                         <div class="thumb rounded-top-3 d-block position-relative">
-                                            <c:choose>
-                                                <c:when test="${not empty f.hinhAnhUrl}">
-                                                    <c:choose>
-                                                        <c:when test="${fn:startsWith(f.hinhAnhUrl, 'http')}">
-                                                            <img src="${f.hinhAnhUrl}" alt="${f.tenMonAn}" class="w-100">
-                                                        </c:when>
-                                                        <c:otherwise>
-                                                            <img src="${pageContext.request.contextPath}${f.hinhAnhUrl}" alt="${f.tenMonAn}" class="w-100">
-                                                        </c:otherwise>
-                                                    </c:choose>
-                                                </c:when>
-                                                <c:otherwise>
-                                                    <img src="assets/img/inner/shop-grid1.jpg" alt="img" class="w-100">
-                                                </c:otherwise>
-                                            </c:choose>
+                                            <a href="${pageContext.request.contextPath}/mon-an?id=${f.monAnId}">
+                                                <c:choose>
+                                                    <c:when test="${not empty f.hinhAnhUrl}">
+                                                        <c:choose>
+                                                            <c:when test="${fn:startsWith(f.hinhAnhUrl, 'http')}">
+                                                                <img src="${f.hinhAnhUrl}" alt="${f.tenMonAn}" class="w-100" />
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <img src="${pageContext.request.contextPath}${f.hinhAnhUrl}" alt="${f.tenMonAn}" class="w-100" />
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <img src="assets/img/inner/shop-grid1.jpg" alt="img" class="w-100" />
+                                                    </c:otherwise>
+                                                </c:choose>
+                                            </a>
                                         </div>
                                         <div class="cont py-3 px-xxl-4 px-3">
                                             <h6 class="mb-2">
-                                                <span class="text-black link-effect"><c:out value="${f.tenMonAn}"/></span>
+                                                <a href="${pageContext.request.contextPath}/mon-an?id=${f.monAnId}" class="text-black link-effect">
+                                                    <c:out value="${f.tenMonAn}" />
+                                                </a>
                                             </h6>
-                                            <p class="fs-12 mb-3 lh-18"><c:out value="${empty f.moTa ? 'Không có mô tả' : f.moTa}"/></p>
+                                            <p class="fs-12 mb-3 lh-18"><c:out value="${empty f.moTa ? 'Không có mô tả' : f.moTa}" /></p>
                                             <div class="d-flex align-items-center gap-sm-3 gap-2 flex-wrap">
                                                 <div class="d-flex align-items-center gap-1">
                                                     <span class="theme3-clr fw-semibold fs-16">

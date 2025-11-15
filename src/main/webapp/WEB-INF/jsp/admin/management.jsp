@@ -12,23 +12,76 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/home.css?v=20251021" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin.css?v=20251107" />
+    <style>
+        /* Dashboard polish */
+        body.admin-page, .admin-shell { background-color: #f5f7fb; }
+        .admin-main { min-height: 100vh; }
+        .dashboard-header {
+            backdrop-filter: blur(10px);
+            background: linear-gradient(135deg, #ffffff 0%, #f6f8ff 100%);
+            border-radius: 16px;
+            box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+            padding: 18px 20px;
+        }
+        .dashboard-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+        .dashboard-subtitle {
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+        .stat-card {
+            border-radius: 14px;
+            border: 1px solid rgba(148, 163, 184, 0.25);
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+            transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+            background: #ffffff;
+        }
+        .stat-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(59, 130, 246, 0.45);
+            box-shadow: 0 18px 40px rgba(37, 99, 235, 0.15);
+        }
+        .stat-label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: .06em; color:#6b7280; }
+        .stat-value { font-size: 1.7rem; font-weight: 700; }
+        .stat-chip { font-size: 0.76rem; border-radius: 999px; padding-inline: .7rem; }
+        .filter-card {
+            border-radius: 14px;
+            border: 1px solid rgba(148, 163, 184, 0.35);
+            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+            background: #ffffff;
+        }
+        #foodsTable thead th { font-size: 0.78rem; text-transform: uppercase; letter-spacing: .06em; }
+        #foodsTable tbody td { font-size: 0.9rem; }
+        .badge-quay { font-size: .78rem; border-radius: 999px; }
+        .btn-ghost { border-radius: 999px; }
+        .table-wrap-soft { border-radius: 14px; overflow: hidden; border: 1px solid rgba(148, 163, 184, 0.35); }
+        .pagination-sm .page-link { border-radius: 999px !important; }
+    </style>
 </head>
-<body class="bg-light">
+<body class="bg-light admin-page">
 <div class="admin-shell d-flex" id="adminShell">
     <%@ include file="/WEB-INF/jsp/admin/partials/sidebar.jspf" %>
     <div class="admin-main flex-grow-1 container-fluid py-3">
-        <!-- Topbar / Breadcrumb + actions -->
-        <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
-            <nav aria-label="breadcrumb" class="mb-0">
-                <ol class="breadcrumb mb-0">
-                    <li class="breadcrumb-item">Admin</li>
-                    <li class="breadcrumb-item active" aria-current="page">Món ăn</li>
-                </ol>
-            </nav>
-            <div class="d-flex gap-2">
-                <a href="${pageContext.request.contextPath}/" class="btn btn-outline-secondary btn-sm"><span class="me-1">↩</span>Về trang chủ</a>
-                <a class="btn btn-primary btn-sm" href="${pageContext.request.contextPath}/admin/monan/add"><span class="me-1">＋</span>Thêm món ăn</a>
-                <button id="themeToggle" type="button" class="btn btn-outline-secondary btn-sm" aria-label="Đổi giao diện" title="Đổi giao diện sáng/tối">🌓</button>
+        <!-- Dashboard header -->
+        <div class="dashboard-header mb-3 d-flex flex-wrap justify-content-between align-items-center gap-3">
+            <div class="d-flex flex-column gap-1">
+                <div class="d-flex align-items-center gap-2">
+                    <span class="badge rounded-pill bg-primary-subtle text-primary-emphasis">Bảng điều khiển</span>
+                    <span class="text-muted small">Admin / Món ăn</span>
+                </div>
+                <h1 class="dashboard-title mb-0">Quản lý món ăn</h1>
+                <p class="dashboard-subtitle mb-0">Xem, tìm kiếm và quản lý toàn bộ món ăn trong căn tin.</p>
+            </div>
+            <div class="d-flex flex-wrap align-items-center gap-2">
+                <a href="${pageContext.request.contextPath}/" class="btn btn-outline-secondary btn-sm btn-ghost">
+                    <span class="me-1">↩</span>Về trang chủ
+                </a>
+                <a class="btn btn-primary btn-sm rounded-pill" href="${pageContext.request.contextPath}/admin/monan/add">
+                    <span class="me-1">＋</span>Thêm món ăn
+                </a>
+                <button id="themeToggle" type="button" class="btn btn-outline-secondary btn-sm rounded-pill" aria-label="Đổi giao diện" title="Đổi giao diện sáng/tối">🌓</button>
             </div>
         </div>
 
@@ -37,23 +90,65 @@
             <c:set var="total" value="${fn:length(foods)}"/>
             <div class="row g-3 mb-3">
                 <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="card shadow-sm h-100">
-                        <div class="card-body">
-                            <div class="text-uppercase small text-muted">Tổng món</div>
-                            <div class="display-6 fw-semibold">${total}</div>
+                    <div class="stat-card p-3 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="stat-label mb-1">Tổng số món</div>
+                            <div class="stat-value">${total}</div>
                         </div>
+                        <span class="stat-chip bg-primary-subtle text-primary-emphasis align-self-start mt-2">Tất cả quầy</span>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="stat-card p-3 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="stat-label mb-1">Quầy đang quản lý</div>
+                            <div class="stat-value">
+                                <c:choose>
+                                    <c:when test="${not empty quayMap}">
+                                        ${fn:length(quayMap)}
+                                    </c:when>
+                                    <c:otherwise>-</c:otherwise>
+                                </c:choose>
+                            </div>
+                        </div>
+                        <span class="stat-chip bg-success-subtle text-success-emphasis align-self-start mt-2">Hoạt động</span>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="stat-card p-3 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="stat-label mb-1">Giá trung bình</div>
+                            <div class="stat-value">
+                                <c:choose>
+                                    <c:when test="${not empty foods}">
+                                        <fmt:formatNumber value="${avgPrice}" pattern="#,#00" />
+                                    </c:when>
+                                    <c:otherwise>0</c:otherwise>
+                                </c:choose>
+                            </div>
+                        </div>
+                        <span class="stat-chip bg-warning-subtle text-warning-emphasis align-self-start mt-2">Tham khảo</span>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="stat-card p-3 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="stat-label mb-1">Trạng thái</div>
+                            <div class="stat-value">${total > 0 ? 'Sẵn sàng' : 'Trống'}</div>
+                        </div>
+                        <span class="stat-chip bg-secondary-subtle text-secondary-emphasis align-self-start mt-2">Hệ thống</span>
                     </div>
                 </div>
             </div>
 
             <!-- Toolbar: search + filter info -->
-            <div class="card shadow-sm mb-3" role="region" aria-label="Bộ lọc và tìm kiếm">
+            <div class="filter-card mb-3" role="region" aria-label="Bộ lọc và tìm kiếm">
                 <div class="card-body">
-                    <div class="row g-2 align-items-center">
+                    <div class="row g-3 align-items-end">
                         <div class="col-12 col-md-5 col-lg-4">
+                            <label for="searchInput" class="form-label mb-1 small text-muted">Tìm kiếm món ăn</label>
                             <div class="input-group">
                                 <span class="input-group-text" id="search-addon" aria-hidden="true">🔎</span>
-                                <label for="searchInput" class="visually-hidden">Tìm kiếm món ăn</label>
                                 <input id="searchInput" class="form-control" placeholder="Tìm theo tên món, mô tả..." autocomplete="off" aria-describedby="search-addon" />
                                 <button id="clearQuery" type="button" class="btn btn-outline-secondary d-none" aria-label="Xóa tìm kiếm">×</button>
                             </div>
@@ -64,19 +159,23 @@
                                 <option value="">Tất cả</option>
                             </select>
                         </div>
-                        <div class="col-6 col-md-auto">
+                        <div class="col-6 col-md-3 col-lg-2">
+                            <label class="form-label mb-1 small text-muted">&nbsp;</label>
                             <button id="clearFilters" class="btn btn-outline-secondary w-100" type="button">Xóa bộ lọc</button>
                         </div>
                         <div class="col-12 col-md">
-                            <span id="rowCount" class="text-muted small" aria-live="polite"></span>
+                            <div class="d-flex justify-content-md-end justify-content-start align-items-center gap-2">
+                                <span id="rowCount" class="text-muted small" aria-live="polite"></span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Table + pagination -->
             <c:choose>
                 <c:when test="${not empty foods}">
-                    <div class="card shadow-sm">
+                    <div class="table-wrap-soft bg-white mb-3">
                         <div class="table-responsive position-relative">
                             <table class="table table-hover table-striped table-bordered align-middle mb-0" id="foodsTable" aria-describedby="foods-help">
                                 <thead class="table-light" style="position:sticky;top:0;z-index:2;">
@@ -98,9 +197,13 @@
                                         data-gia="${f.gia}"
                                         data-mota="${fn:escapeXml(f.moTa)}">
                                         <td class="col-id fw-semibold">${f.monAnId}</td>
-                                        <td><c:out value="${empty quayMap ? f.quayHangId : (quayMap[f.quayHangId] != null ? quayMap[f.quayHangId] : f.quayHangId)}"/></td>
+                                        <td>
+                                            <span class="badge badge-quay bg-info-subtle text-info-emphasis">
+                                                <c:out value="${empty quayMap ? f.quayHangId : (quayMap[f.quayHangId] != null ? quayMap[f.quayHangId] : f.quayHangId)}"/>
+                                            </span>
+                                        </td>
                                         <td>${f.tenMonAn}</td>
-                                        <td><fmt:formatNumber value="${f.gia}" pattern="#,##0"/> VNĐ</td>
+                                        <td><fmt:formatNumber value="${f.gia}" pattern="#,#00"/> VNĐ</td>
                                         <td class="text-truncate" style="max-width: 320px;"><c:out value="${f.moTa}"/></td>
                                         <td>
                                             <c:if test="${not empty f.hinhAnhUrl}">
@@ -131,14 +234,14 @@
                     </div>
                 </c:when>
                 <c:otherwise>
-                    <div class="alert alert-info">Chưa có dữ liệu món ăn.</div>
+                    <div class="alert alert-info shadow-sm">Chưa có dữ liệu món ăn.</div>
                 </c:otherwise>
             </c:choose>
 
             <!-- Pagination controls -->
             <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mt-3" aria-label="Phân trang danh sách">
                 <div class="d-flex align-items-center gap-2">
-                    <label for="rowsPerPage" class="form-label mb-0">Số dòng mỗi trang</label>
+                    <label for="rowsPerPage" class="form-label mb-0 small">Số dòng mỗi trang</label>
                     <select id="rowsPerPage" class="form-select form-select-sm w-auto">
                         <option value="5">5</option>
                         <option value="10" selected>10</option>
@@ -147,10 +250,10 @@
                     </select>
                 </div>
                 <nav>
-                    <ul class="pagination pagination-sm mb-0">
-                        <li class="page-item"><button id="prevPage" class="page-link" type="button">‹ Trước</button></li>
-                        <li class="page-item disabled"><span id="pageInfo" class="page-link">Trang 1</span></li>
-                        <li class="page-item"><button id="nextPage" class="page-link" type="button">Sau ›</button></li>
+                    <ul class="pagination pagination-sm mb-0 gap-1">
+                        <li class="page-item"><button id="prevPage" class="page-link px-3" type="button">‹ Trước</button></li>
+                        <li class="page-item disabled"><span id="pageInfo" class="page-link px-3">Trang 1</span></li>
+                        <li class="page-item"><button id="nextPage" class="page-link px-3" type="button">Sau ›</button></li>
                     </ul>
                 </nav>
             </div>
@@ -306,14 +409,12 @@
   const type = sp.get('type') || 'success';
   if (msg && toast) {
     toast.textContent = decodeURIComponent(msg);
-    // Apply Bootstrap-like styles without JS API
     toast.classList.add('show');
     if (type === 'success') toast.classList.add('text-bg-success');
     else if (type === 'error' || type === 'danger') toast.classList.add('text-bg-danger');
     else if (type === 'warning') toast.classList.add('text-bg-warning');
     else toast.classList.add('text-bg-secondary');
     setTimeout(()=>toast.classList.remove('show'), 2500);
-    // remove query params without reloading
     history.replaceState({}, '', location.pathname);
   }
 

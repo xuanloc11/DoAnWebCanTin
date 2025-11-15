@@ -1,46 +1,52 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
-<html lang="vi" class="admin-page">
+<html lang="vi" class="admin-page" data-bs-theme="light">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Admin - Quản lý người dùng</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/home.css?v=20251022" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin.css?v=20251107" />
 </head>
-<body>
-<div class="admin-shell" id="adminShell">
+<body class="bg-light">
+<div class="admin-shell d-flex" id="adminShell">
     <%@ include file="/WEB-INF/jsp/admin/partials/sidebar.jspf" %>
-    <div class="admin-main">
-        <div class="admin-topbar">
-            <div class="crumbs">Admin / Người dùng</div>
-            <div class="admin-actions">
-                <a href="${pageContext.request.contextPath}/" class="btn btn-ghost btn-icon">↩ Về trang chủ</a>
-                <a class="btn btn-primary btn-icon" href="${pageContext.request.contextPath}/admin/users/add">＋ Thêm người dùng</a>
+    <div class="admin-main flex-grow-1 container-fluid py-3">
+        <div class="dashboard-header mb-3 d-flex flex-wrap justify-content-between align-items-center gap-3">
+            <div class="d-flex flex-column gap-1">
+                <div class="d-flex align-items-center gap-2">
+                    <span class="badge rounded-pill bg-primary-subtle text-primary-emphasis">Bảng điều khiển</span>
+                    <span class="text-muted small">Admin / Người dùng</span>
+                </div>
+                <h1 class="dashboard-title mb-0">Quản lý người dùng</h1>
+                <p class="dashboard-subtitle mb-0">Quản lý tài khoản và phân quyền người dùng trong hệ thống.</p>
+            </div>
+            <div class="d-flex flex-wrap align-items-center gap-2">
+                <a href="${pageContext.request.contextPath}/" class="btn btn-outline-secondary btn-sm rounded-pill">↩ Về trang chủ</a>
+                <a class="btn btn-primary btn-sm rounded-pill" href="${pageContext.request.contextPath}/admin/users/add">＋ Thêm người dùng</a>
             </div>
         </div>
+
         <div class="admin-content">
-            <div class="admin-head">
-                <h1 class="admin-title">Quản lý người dùng</h1>
-            </div>
             <c:choose>
                 <c:when test="${not empty users}">
-                    <div class="table-wrap">
-                        <table class="table">
-                            <thead>
+                    <div class="table-wrap-soft bg-white mb-3 border rounded-3">
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle mb-0">
+                                <thead class="table-light">
                                 <tr>
-                                    <th class="col-id">ID</th>
-                                    <th>Họ tên</th>
-                                    <th>Email</th>
-                                    <th>Vai trò</th>
-                                    <th style="width:160px">Hành động</th>
+                                    <th scope="col" style="width:80px;">ID</th>
+                                    <th scope="col">Họ tên</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Vai trò</th>
+                                    <th scope="col" style="width:180px">Hành động</th>
                                 </tr>
-                            </thead>
-                            <tbody>
+                                </thead>
+                                <tbody>
                                 <c:forEach var="u" items="${users}">
                                     <tr>
-                                        <td class="col-id">${u.userId}</td>
+                                        <td class="fw-semibold">${u.userId}</td>
                                         <td><c:out value="${u.hoTen}"/></td>
                                         <td><c:out value="${u.email}"/></td>
                                         <td>
@@ -53,27 +59,29 @@
                                             </c:choose>
                                         </td>
                                         <td>
-                                            <div class="table-actions" style="display:flex; gap:6px;">
-                                                <a class="btn btn-small" href="${pageContext.request.contextPath}/admin/users/edit?id=${u.userId}">Sửa</a>
-                                                <form action="${pageContext.request.contextPath}/admin/users/delete" method="post" onsubmit="return confirm('Xóa người dùng #${u.userId}?');">
+                                            <div class="btn-group btn-group-sm" role="group">
+                                                <a class="btn btn-outline-primary" href="${pageContext.request.contextPath}/admin/users/edit?id=${u.userId}">✏️ Sửa</a>
+                                                <form action="${pageContext.request.contextPath}/admin/users/delete" method="post" onsubmit="return confirm('Xóa người dùng #${u.userId}?');" class="d-inline">
                                                     <input type="hidden" name="user_id" value="${u.userId}" />
-                                                    <button class="btn btn-small btn-danger" type="submit">Xóa</button>
+                                                    <button class="btn btn-outline-danger" type="submit">🗑️ Xóa</button>
                                                 </form>
                                             </div>
                                         </td>
                                     </tr>
                                 </c:forEach>
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </c:when>
                 <c:otherwise>
-                    <p class="muted">Chưa có dữ liệu người dùng.</p>
+                    <div class="alert alert-info shadow-sm">Chưa có dữ liệu người dùng.</div>
                 </c:otherwise>
             </c:choose>
         </div>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/admin.js?v=20251022"></script>
 </body>
 </html>
