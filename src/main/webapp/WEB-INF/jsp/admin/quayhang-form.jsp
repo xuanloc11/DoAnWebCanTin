@@ -5,7 +5,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Admin - <c:out value="${mode eq 'edit' ? 'Sửa quầy hàng' : 'Thêm quầy hàng'}"/></title>
+    <link rel="shortcut icon" href="<c:url value='/assets/img/Hcmute-Logo-Vector.svg-.png' />" />
+
+    <title>Admin - <c:out value="${mode eq 'edit' ? 'Sửa quầy hàng' : 'Thêm quầy hàng'}"/></title>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/home.css?v=20251022" />
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin.css?v=20251107" />
   <style>

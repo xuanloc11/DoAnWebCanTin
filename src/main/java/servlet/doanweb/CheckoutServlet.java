@@ -55,6 +55,10 @@ public class CheckoutServlet extends HttpServlet {
         }
 
         String ghiChu = req.getParameter("ghi_chu");
+        String pttt = req.getParameter("phuong_thuc_thanh_toan");
+        if (pttt == null || pttt.isBlank()) {
+            pttt = "CASH"; // mặc định thanh toán tiền mặt
+        }
         Timestamp now = Timestamp.from(Instant.now());
         List<Integer> createdOrderIds = new ArrayList<>();
         boolean failed = false;
@@ -76,7 +80,14 @@ public class CheckoutServlet extends HttpServlet {
             o.setTongTien(groupTotal);
             o.setThoiGianDat(now);
             o.setTrangThaiOrder("MOI_DAT");
-            o.setGhiChu(ghiChu);
+            // Lưu ghi chú kèm thông tin phương thức thanh toán nếu model Order chưa có field riêng
+            String fullNote = ghiChu;
+            if (fullNote == null || fullNote.isBlank()) {
+                fullNote = "PTTT: " + pttt;
+            } else {
+                fullNote = ghiChu + " | PTTT: " + pttt;
+            }
+            o.setGhiChu(fullNote);
 
             int newOrderId = orderService.create(o);
             if (newOrderId <= 0) { failed = true; break; }

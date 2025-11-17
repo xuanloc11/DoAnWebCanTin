@@ -10,7 +10,7 @@
   <!-- Make all relative asset links resolve under the webapp context path -->
   <base href="${pageContext.request.contextPath}/" />
   <!-- Favicons & CSS from main template -->
-  <link rel="shortcut icon" href="assets/img/logo/favicon.png">
+    <link rel="shortcut icon" href="assets/img/Hcmute-Logo-Vector.svg-.png">
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/all.min.css">
   <link rel="stylesheet" href="assets/css/animate.css">
@@ -61,7 +61,7 @@
             <c:when test="${me.role eq 'bgh_admin'}">BGH Admin</c:when>
             <c:when test="${me.role eq 'truong_quay'}">Trưởng quầy</c:when>
             <c:when test="${me.role eq 'nhan_vien_quay'}">Nhân viên quầy</c:when>
-            <c:when test="${me.role eq 'hoc_sinh'}">Học sinh</c:when>
+            <c:when test="${me.role eq 'hoc_sinh'}">Sinh viên</c:when>
             <c:otherwise><c:out value="${me.role}"/></c:otherwise>
           </c:choose>
         </p>

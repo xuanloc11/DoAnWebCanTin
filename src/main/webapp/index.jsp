@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="authorNmaeHere">
+    <meta name="author" content="Xuan Loc">
     <meta name="description" content="Căng tin - HCMUTE.">
     <!-- ======== Page title ============ -->
     <title>Trang chủ - Căn Tin</title>
@@ -169,134 +169,6 @@
          class="position-absolute ms-40 ps-3 d-lg-block d-none" style="bottom: -30px;">
 </section>
 
-<!-- Menu Section start -->
-<section class="menu-section-5 pt-100 fix">
-    <div class="container">
-        <div class="text-center gap-2 mb-30 pb-md-2 pb-2">
-            <h3 class="wow fadeInUp white-clr text-black fs-30 lh-1 fw-semibold" data-wow-delay=".5s">
-                Popular Categories
-            </h3>
-        </div>
-        <div class="menu-section-wrap position-relative menu-bg">
-            <div class="swiper menu-slid-wrap">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="menu-component text-center d-flex flex-column gap-2">
-                            <a href="restaurant-list.html"
-                               class="card-split w-90px h-90px mx-auto rounded-circle d-center bg-white">
-                                <img width="60" height="60" src="assets/img/home-1/pp-categori1.png" alt="icon"
-                                     class="rounded-3">
-                            </a>
-                            <div>
-                                <h6 class="text-black pt-1"><a href="restaurant-list.html"
-                                                               class="text-black">Kebab</a></h6>
-                                <span class="fs-14">( 07 )</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="menu-component text-center d-flex flex-column gap-2">
-                            <a href="restaurant-list.html"
-                               class="card-split w-90px h-90px mx-auto rounded-circle d-center bg-white">
-                                <img width="60" height="60" src="assets/img/home-1/pp-categori2.png" alt="icon"
-                                     class="rounded-3">
-                            </a>
-                            <div>
-                                <h6 class="text-black pt-1"><a href="restaurant-list.html"
-                                                               class="text-black">Burger</a></h6>
-                                <span class="fs-14">( 12 )</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="menu-component text-center d-flex flex-column gap-2">
-                            <a href="restaurant-list.html"
-                               class="card-split w-90px h-90px mx-auto rounded-circle d-center bg-white">
-                                <img width="60" height="60" src="assets/img/home-1/pp-categori3.png" alt="icon"
-                                     class="rounded-3">
-                            </a>
-                            <div>
-                                <h6 class="text-black pt-1"><a href="restaurant-list.html"
-                                                               class="text-black">Pizza</a></h6>
-                                <span class="fs-14">( 18 )</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="menu-component text-center d-flex flex-column gap-2">
-                            <a href="restaurant-list.html"
-                               class="card-split w-90px h-90px mx-auto rounded-circle d-center bg-white">
-                                <img width="60" height="60" src="assets/img/home-1/pp-categori4.png" alt="icon"
-                                     class="rounded-3">
-                            </a>
-                            <div>
-                                <h6 class="text-black pt-1"><a href="restaurant-list.html"
-                                                               class="text-black">Sandwich</a></h6>
-                                <span class="fs-14">( 05 )</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="menu-component text-center d-flex flex-column gap-2">
-                            <a href="restaurant-list.html"
-                               class="card-split w-90px h-90px mx-auto rounded-circle d-center bg-white">
-                                <img width="60" height="60" src="assets/img/home-1/pp-categori5.png" alt="icon"
-                                     class="rounded-3">
-                            </a>
-                            <div>
-                                <h6 class="text-black pt-1"><a href="restaurant-list.html"
-                                                               class="text-black">Bakery</a></h6>
-                                <span class="fs-14">( 07 )</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="menu-component text-center d-flex flex-column gap-2">
-                            <a href="restaurant-list.html"
-                               class="card-split w-90px h-90px mx-auto rounded-circle d-center bg-white">
-                                <img width="60" height="60" src="assets/img/home-1/pp-categori6.png" alt="icon"
-                                     class="rounded-3">
-                            </a>
-                            <div>
-                                <h6 class="text-black pt-1"><a href="restaurant-list.html"
-                                                               class="text-black">Pasta</a></h6>
-                                <span class="fs-14">( 03 )</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="menu-component text-center d-flex flex-column gap-2">
-                            <a href="restaurant-list.html"
-                               class="card-split w-90px h-90px mx-auto rounded-circle d-center bg-white">
-                                <img width="60" height="60" src="assets/img/home-1/pp-categori7.png" alt="icon"
-                                     class="rounded-3">
-                            </a>
-                            <div>
-                                <h6 class="text-black pt-1"><a href="restaurant-list.html"
-                                                               class="text-black">Appetizers</a></h6>
-                                <span class="fs-14">( 02 )</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div
-                    class="adjustment-arrow d-flex justify-content-lg-between justify-content-center mt-lg-0 mt-4 align-items-center gap-3">
-                <div class="arrow arrow-start d-center bg-white rounded-circle">
-                    <button type="button" class="slide-btn5 rounded-circle d-center btn-outline-blak array-prev">
-                        <i class="fa-solid fa-arrow-left"></i>
-                    </button>
-                </div>
-                <div class="arrow arrow-end d-center bg-white rounded-circle">
-                    <button type="button" class="slide-btn5 rounded-circle d-center btn-outline-blak array-next">
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
 <!-- Offer Section start -->
 <section class="offer-section5 position-relative pt-100 fix">
     <div class="container">
@@ -332,55 +204,12 @@
     </div>
 </section>
 
-<!-- restaurant Section start: replaced with dynamic Quầy hàng list -->
-<section class="restaurant-section position-relative pt-100 pb-60 fix" id="menu">
-    <div class="container">
-        <div class="d-flex align-items-end justify-content-between gap-3 flex-wrap mb-30 pb-xl-0 pb-2">
-            <div class="section-title-style1">
-                <div class="d-flex flex-column gap-2">
-                    <h3 class="wow fadeInUp white-clr text-black fs-30 lh-1 fw-semibold" data-wow-delay=".3s">
-                        Danh sách quầy hàng
-                    </h3>
-                    <span class="w-32px section-badge1 style5"></span>
-                </div>
-            </div>
-        </div>
-        <c:choose>
-            <c:when test="${not empty quays}">
-                <div class="row g-4">
-                    <c:forEach var="q" items="${quays}">
-                        <div class="col-sm-6 col-lg-4 col-xl-3">
-                            <div class="restaurant-card card-effect border h-100 rounded-12">
-                                <div class="cont py-3 px-xxl-4 px-3">
-                                    <h6 class="mb-2">
-                                        <span class="text-black">${q.tenQuayHang}</span>
-                                    </h6>
-                                    <div class="d-flex align-items-center gap-2 fs-14 text-clr mb-2">
-                                        <i class="fa-solid fa-location-dot"></i>
-                                        <span><c:out value="${empty q.viTri ? 'Chưa rõ' : q.viTri}"/></span>
-                                    </div>
-                                    <div>
-                                        <a class="theme-btn btn-outline-blak heading-font" href="${pageContext.request.contextPath}/?quay=${q.quayHangId}#foods">Xem món của quầy</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </c:forEach>
-                </div>
-            </c:when>
-            <c:otherwise>
-                <p class="fs-16 text-clr">Không có quầy hàng nào để hiển thị.</p>
-            </c:otherwise>
-        </c:choose>
-    </div>
-</section>
-
 <!-- 4 Featured Stall Sections start -->
 <section class="pt-60 pb-80 section-bg2">
     <div class="container">
         <div class="section-title-style1 mx-auto mb-40 max-w-450 text-center">
             <h3 class="wow fadeInUp text-black fs-30 lh-1 fw-semibold" data-wow-delay=".3s">
-                Quầy nổi bật
+                Danh mục quầy hàng
             </h3>
             <p class="fs-16 wow fadeInUp" data-wow-delay="0.4s">
                 Chọn nhanh 1 trong 4 quầy dưới đây để lọc món ăn theo quầy tương ứng.

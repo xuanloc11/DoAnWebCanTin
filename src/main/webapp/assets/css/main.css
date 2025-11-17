@@ -4055,10 +4055,12 @@ input::placeholder {
 
 .pb-80 {
   padding-bottom: 80px;
+  padding-top: 80px
 }
 @media (max-width: 991px) {
   .pb-80 {
     padding-bottom: 60px;
+    padding-top: 60px;
   }
 }
 
@@ -4714,7 +4716,7 @@ input::placeholder {
 }
 
 .hero-style5 .hero-content1 {
-  padding: 175px 0 175px;
+  padding: 255px 0 175px;
 }
 .hero-style5 h2 {
   font-size: 40px;
@@ -4871,6 +4873,7 @@ input::placeholder {
 
 .hero-section {
   position: relative;
+    height: 900px;
 }
 .hero-section .dots {
   display: flex;

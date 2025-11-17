@@ -7,7 +7,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Admin - <c:out value="${mode eq 'edit' ? 'Sửa món ăn' : 'Thêm món ăn'}"/></title>
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/home.css?v=20251021" />
+    <link rel="shortcut icon" href="<c:url value='/assets/img/Hcmute-Logo-Vector.svg-.png' />" />
+
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/home.css?v=20251021" />
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin.css?v=20251107" />
   <style>
     .form-card{ background:#fff; border:1px solid var(--border); border-radius: 14px; padding:16px; box-shadow: var(--shadow); max-width:720px; }

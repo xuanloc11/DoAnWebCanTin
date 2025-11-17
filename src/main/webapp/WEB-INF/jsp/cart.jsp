@@ -10,7 +10,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Giỏ hàng</title>
-  <link rel="shortcut icon" href="<c:url value='/assets/img/logo/favicon.png' />" />
+    <link rel="shortcut icon" href="<c:url value='/assets/img/Hcmute-Logo-Vector.svg-.png' />" />
   <link rel="stylesheet" href="<c:url value='/assets/css/bootstrap.min.css' />" />
   <link rel="stylesheet" href="<c:url value='/assets/css/all.min.css' />" />
   <link rel="stylesheet" href="<c:url value='/assets/css/animate.css' />" />
@@ -138,11 +138,11 @@
               <h5 class="text-black fw-600 mb-3">Tổng thanh toán</h5>
               <div class="d-flex justify-content-between align-items-center py-2 border-bottom">
                 <span class="text-muted">Tạm tính</span>
-                <span class="text-black fw-500"><fmt:formatNumber value="${cart.totalPrice}" type="number" groupingUsed="true" maxFractionDigits="0" /> VND</span>
+                <span class="text-black fw-500" data-cart-subtotal><fmt:formatNumber value="${cart.totalPrice}" type="number" groupingUsed="true" maxFractionDigits="0" /> VND</span>
               </div>
               <div class="d-flex justify-content-between align-items-center py-2">
                 <span class="text-muted">Tổng</span>
-                <span class="text-black fw-600"><fmt:formatNumber value="${cart.totalPrice}" type="number" groupingUsed="true" maxFractionDigits="0" /> VND</span>
+                <span class="text-black fw-600" data-cart-subtotal><fmt:formatNumber value="${cart.totalPrice}" type="number" groupingUsed="true" maxFractionDigits="0" /> VND</span>
               </div>
               <a href="${pageContext.request.contextPath}/checkout" class="theme-btn w-100 mt-3">Tiến hành thanh toán</a>
             </div>
@@ -166,14 +166,31 @@
 <script src="<c:url value='/assets/js/wow.min.js' />"></script>
 <script src="<c:url value='/assets/js/main.js' />"></script>
 <script>
-  // Basic quantity increment/decrement binding
-  document.addEventListener('click', function(e){
-    if(e.target.closest('.quantityIncrement')){
-      const input = e.target.closest('.quantity-wrapper').querySelector('input[type="number"]');
-      const val = parseInt(input.value||'0',10)+1; input.value = val; input.dispatchEvent(new Event('change'));}
-    if(e.target.closest('.quantityDecrement')){
-      const input = e.target.closest('.quantity-wrapper').querySelector('input[type="number"]');
-      const cur = parseInt(input.value||'0',10); const val = Math.max(0, cur-1); input.value = val; input.dispatchEvent(new Event('change'));}
+  // Quantity increment/decrement: mỗi lần click chỉ +1 / -1
+  document.addEventListener('click', function (e) {
+    const incBtn = e.target.closest('button.quantityIncrement');
+    const decBtn = e.target.closest('button.quantityDecrement');
+    if (!incBtn && !decBtn) return;
+
+    const wrapper = (incBtn || decBtn).closest('.quantity-wrapper');
+    if (!wrapper) return;
+
+    const input = wrapper.querySelector('input[type="number"]');
+    if (!input) return;
+
+    const current = parseInt(input.value, 10) || 0;
+    let next = current;
+
+    if (incBtn) {
+      next = current + 1;
+    } else if (decBtn) {
+      next = Math.max(0, current - 1);
+    }
+
+    if (next !== current) {
+      input.value = next;
+      input.dispatchEvent(new Event('change', { bubbles: true }));
+    }
   });
 </script>
 </body>

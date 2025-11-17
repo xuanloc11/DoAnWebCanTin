@@ -10,7 +10,7 @@
   <!-- Make all relative asset links resolve under the webapp context path -->
   <base href="${pageContext.request.contextPath}/" />
   <!-- Favicons & CSS from main template -->
-  <link rel="shortcut icon" href="assets/img/logo/favicon.png">
+    <link rel="shortcut icon" href="assets/img/Hcmute-Logo-Vector.svg-.png">
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/all.min.css">
   <link rel="stylesheet" href="assets/css/animate.css">

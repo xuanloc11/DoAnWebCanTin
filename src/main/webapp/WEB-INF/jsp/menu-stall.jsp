@@ -8,6 +8,8 @@
     <meta charset="UTF-8">
     <title>Menu quầy - Căn tin</title>
     <base href="${pageContext.request.contextPath}/" />
+    <link rel="shortcut icon" href="assets/img/Hcmute-Logo-Vector.svg-.png">
+
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/main.css">
 </head>

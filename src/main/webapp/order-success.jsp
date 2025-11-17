@@ -9,7 +9,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Đặt hàng thành công</title>
-  <link rel="shortcut icon" href="<c:url value='/assets/img/logo/favicon.png' />" />
+    <link rel="shortcut icon" href="assets/img/Hcmute-Logo-Vector.svg-.png">
   <link rel="stylesheet" href="<c:url value='/assets/css/bootstrap.min.css' />" />
   <link rel="stylesheet" href="<c:url value='/assets/css/all.min.css' />" />
   <link rel="stylesheet" href="<c:url value='/assets/css/main.css' />" />

@@ -6,7 +6,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Admin - <c:out value="${mode eq 'edit' ? 'Sửa người dùng' : 'Thêm người dùng'}"/></title>
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/home.css?v=20251022" />
+    <link rel="shortcut icon" href="<c:url value='/assets/img/Hcmute-Logo-Vector.svg-.png' />" />
+
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/home.css?v=20251022" />
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin.css?v=20251107" />
   <style>
     .form-card{ background:#fff; border:1px solid var(--border); border-radius: 14px; padding:16px; box-shadow: var(--shadow); max-width:720px; }
@@ -69,7 +71,7 @@
                   <option value="bgh_admin" ${currentRole eq 'bgh_admin' ? 'selected' : ''}>BGH Admin</option>
                   <option value="truong_quay" ${currentRole eq 'truong_quay' ? 'selected' : ''}>Trưởng quầy</option>
                   <option value="nhan_vien_quay" ${currentRole eq 'nhan_vien_quay' ? 'selected' : ''}>Nhân viên quầy</option>
-                  <option value="hoc_sinh" ${currentRole eq 'hoc_sinh' ? 'selected' : ''}>Học sinh</option>
+                  <option value="hoc_sinh" ${currentRole eq 'hoc_sinh' ? 'selected' : ''}>Sinh viên</option>
                 </select>
               </c:otherwise>
             </c:choose>

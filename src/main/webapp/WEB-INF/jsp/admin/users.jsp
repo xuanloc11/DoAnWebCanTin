@@ -6,6 +6,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Admin - Quản lý người dùng</title>
+    <link rel="shortcut icon" href="<c:url value='/assets/img/Hcmute-Logo-Vector.svg-.png' />" />
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin.css?v=20251107" />
 </head>
@@ -54,7 +56,7 @@
                                                 <c:when test="${u.role eq 'bgh_admin'}">BGH Admin</c:when>
                                                 <c:when test="${u.role eq 'truong_quay'}">Trưởng quầy</c:when>
                                                 <c:when test="${u.role eq 'nhan_vien_quay'}">Nhân viên quầy</c:when>
-                                                <c:when test="${u.role eq 'hoc_sinh'}">Học sinh</c:when>
+                                                <c:when test="${u.role eq 'hoc_sinh'}">Sinh viên</c:when>
                                                 <c:otherwise><c:out value="${u.role}"/></c:otherwise>
                                             </c:choose>
                                         </td>

@@ -11,7 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Thanh toán</title>
   <!-- Use context-aware URLs for assets -->
-  <link rel="shortcut icon" href="<c:url value='/assets/img/logo/favicon.png' />" />
+    <link rel="shortcut icon" href="<c:url value='/assets/img/Hcmute-Logo-Vector.svg-.png' />" />
   <link rel="stylesheet" href="<c:url value='/assets/css/bootstrap.min.css' />" />
   <link rel="stylesheet" href="<c:url value='/assets/css/all.min.css' />" />
   <link rel="stylesheet" href="<c:url value='/assets/css/animate.css' />" />
@@ -109,6 +109,16 @@
                   <div class="col-12">
                     <label for="ghi_chu" class="form-label">Ghi chú (tuỳ chọn)</label>
                     <textarea id="ghi_chu" name="ghi_chu" class="form-control" placeholder="Ví dụ: Ít cay, thêm hành..." rows="4"></textarea>
+                  </div>
+                  <div class="col-12 mt-2">
+                    <label class="form-label d-block mb-1">Phương thức thanh toán</label>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="phuong_thuc_thanh_toan" id="pttt_cash" value="CASH" checked>
+                      <label class="form-check-label" for="pttt_cash">
+                        Thanh toán tiền mặt khi nhận món
+                      </label>
+                    </div>
+                    <!-- Có thể bổ sung thêm các phương thức khác sau này (MOMO, VNPay, v.v.) -->
                   </div>
                 </div>
                 <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mt-3">

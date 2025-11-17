@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Chi tiết món ăn</title>
     <base href="${pageContext.request.contextPath}/" />
-    <link rel="shortcut icon" href="assets/img/logo/favicon.png" />
+    <link rel="shortcut icon" href="assets/img/Hcmute-Logo-Vector.svg-.png">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="assets/css/all.min.css" />
     <link rel="stylesheet" href="assets/css/animate.css" />
@@ -84,26 +84,43 @@
                 <span class="theme3-clr fw-semibold fs-24">
                   <fmt:formatNumber value="${food.gia}" type="number" groupingUsed="true" maxFractionDigits="0" /> VND
                 </span>
-                <c:if test="${not empty food.trangThaiMon}">
-                  <span class="badge bg-${food.trangThaiMon == 'on' ? 'success' : 'secondary'} text-uppercase">
-                    <c:out value="${food.trangThaiMon == 'on' ? 'Đang bán' : 'Tạm ngừng'}" />
-                  </span>
-                </c:if>
+                <c:choose>
+                  <c:when test="${empty food.trangThaiMon or food.trangThaiMon eq 'con_hang'}">
+                    <span class="badge bg-success text-uppercase">Còn hàng</span>
+                  </c:when>
+                  <c:otherwise>
+                    <span class="badge bg-secondary text-uppercase">Tạm ngừng</span>
+                  </c:otherwise>
+                </c:choose>
               </div>
-              <p class="fs-16 mb-4">
-                <c:out value="${empty food.moTa ? 'Hiện chưa có mô tả chi tiết cho món ăn này.' : food.moTa}" />
-              </p>
+              <c:choose>
+                <c:when test="${empty food.moTa}">
+                  <p class="fs-16 mb-4">Hiện chưa có mô tả chi tiết cho món ăn này.</p>
+                </c:when>
+                <c:otherwise>
+                  <div class="fs-16 mb-4">
+                    ${food.moTa}
+                  </div>
+                </c:otherwise>
+              </c:choose>
 
-              <form method="post" action="${pageContext.request.contextPath}/cart/add" class="d-flex align-items-center gap-3 mb-4">
-                <input type="hidden" name="mon_an_id" value="${food.monAnId}" />
-                <div class="d-flex align-items-center gap-2">
-                  <label for="qty" class="mb-0">Số lượng:</label>
-                  <input type="number" id="qty" name="qty" value="1" min="1" class="form-control" style="width: 100px;" />
-                </div>
-                <button type="submit" class="theme-btn heading-font rounded-pill py-2 px-4">
-                  Thêm vào giỏ hàng
-                </button>
-              </form>
+              <c:choose>
+                <c:when test="${empty food.trangThaiMon or food.trangThaiMon eq 'con_hang'}">
+                  <form method="post" action="${pageContext.request.contextPath}/cart/add" class="d-flex align-items-center gap-3 mb-4">
+                    <input type="hidden" name="mon_an_id" value="${food.monAnId}" />
+                    <div class="d-flex align-items-center gap-2">
+                      <label for="qty" class="mb-0">Số lượng:</label>
+                      <input type="number" id="qty" name="qty" value="1" min="1" class="form-control" style="width: 100px;" />
+                    </div>
+                    <button type="submit" class="theme-btn heading-font rounded-pill py-2 px-4">
+                      Thêm vào giỏ hàng
+                    </button>
+                  </form>
+                </c:when>
+                <c:otherwise>
+                  <p class="text-danger mb-4">Món ăn này hiện đang tạm ngừng phục vụ hoặc đã hết hàng, vui lòng chọn món khác.</p>
+                </c:otherwise>
+              </c:choose>
 
               <div class="fs-14 text-clr">
                 <p class="mb-1">Mã món: <strong>#${food.monAnId}</strong></p>
