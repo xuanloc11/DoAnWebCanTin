@@ -57,6 +57,12 @@
                 <input type="hidden" name="role" value="nhan_vien_quay" />
                 <div class="hint">Trưởng quầy chỉ tạo/sửa được tài khoản Nhân viên quầy.</div>
               </c:when>
+              <c:when test="${selfAdminEdit}">
+                <!-- Admin đang tự sửa tài khoản của mình: khóa vai trò -->
+                <input type="text" id="role_text" value="BGH Admin" disabled />
+                <input type="hidden" name="role" value="bgh_admin" />
+                <div class="hint">Bạn không thể thay đổi vai trò của tài khoản admin.</div>
+              </c:when>
               <c:otherwise>
                 <c:set var="currentRole" value="${mode eq 'edit' ? user.role : 'hoc_sinh'}"/>
                 <select id="role" name="role">

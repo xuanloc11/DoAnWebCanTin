@@ -111,7 +111,7 @@
                   <strong><c:out value="${empty auth.hoTen ? auth.email : auth.hoTen}"/></strong>
                 </a>
               </span>
-              <!-- Mobile: link trang quản trị cho admin / trưởng quầy -->
+              <!-- Mobile: link trang quản trị cho admin / trưởng quầy / nhân viên quầy -->
               <c:if test="${auth.role eq 'bgh_admin'}">
                 <a href="${CTX}/admin/management" class="border-theme5 rounded-pill d-center gap-1 fw-bold fs-13 h-32px px-2">
                   <i class="fa-solid fa-gauge-high"></i>
@@ -122,6 +122,12 @@
                 <a href="${CTX}/admin/orders" class="border-theme5 rounded-pill d-center gap-1 fw-bold fs-13 h-32px px-2">
                   <i class="fa-solid fa-shop"></i>
                   Quản lý quầy
+                </a>
+              </c:if>
+              <c:if test="${auth.role eq 'nhan_vien_quay'}">
+                <a href="${CTX}/admin/orders" class="border-theme5 rounded-pill d-center gap-1 fw-bold fs-13 h-32px px-2">
+                  <i class="fa-solid fa-gauge-high"></i>
+                  Quản trị
                 </a>
               </c:if>
               <a href="${CTX}/logout" class="rounded-pill d-center fw-bold fs-14 h-40px w-40px px-0" title="Đăng xuất" aria-label="Đăng xuất">
@@ -150,7 +156,7 @@
                   <strong><c:out value="${empty auth.hoTen ? auth.email : auth.hoTen}"/></strong>
                 </a>
               </span>
-              <!-- Desktop: link trang quản trị cho admin / trưởng quầy -->
+              <!-- Desktop: link trang quản trị cho admin / trưởng quầy / nhân viên quầy -->
               <c:if test="${auth.role eq 'bgh_admin'}">
                 <a href="${CTX}/admin/management" class="border-theme5 rounded-pill d-center gap-2 fw-bold fs-14 h-40px px-3">
                   <i class="fa-solid fa-gauge-high"></i>
@@ -161,6 +167,12 @@
                 <a href="${CTX}/admin/orders" class="border-theme5 rounded-pill d-center gap-2 fw-bold fs-14 h-40px px-3">
                   <i class="fa-solid fa-shop"></i>
                   Quản lý quầy
+                </a>
+              </c:if>
+              <c:if test="${auth.role eq 'nhan_vien_quay'}">
+                <a href="${CTX}/admin/orders" class="border-theme5 rounded-pill d-center gap-2 fw-bold fs-14 h-40px px-3">
+                  <i class="fa-solid fa-gauge-high"></i>
+                  Quản trị
                 </a>
               </c:if>
             </c:when>

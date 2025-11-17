@@ -65,9 +65,9 @@ public class AuthLogin implements Filter {
             return;
         }
 
-        // Staff (nhan_vien_quay) only orders access
+        // Staff (nhan_vien_quay) access: orders + foods + menu (scoped by stall in servlets)
         if (isStaff(role)) {
-            if (isOrdersPath(pathOnly)) {
+            if (isOrdersPath(pathOnly) || isFoodsPath(pathOnly) || isMenuPath(pathOnly)) {
                 chain.doFilter(request, response);
                 return;
             }

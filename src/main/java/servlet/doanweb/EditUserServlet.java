@@ -35,6 +35,10 @@ public class EditUserServlet extends HttpServlet {
                 return;
             }
         }
+        // Đánh dấu nếu đây là tài khoản admin đang tự sửa chính mình, để JSP ẩn dropdown role
+        if (auth != null && auth.getUserId() == u.getUserId() && "bgh_admin".equalsIgnoreCase(u.getRole())) {
+            req.setAttribute("selfAdminEdit", true);
+        }
         req.setAttribute("mode", "edit");
         req.setAttribute("user", u);
         req.getRequestDispatcher("/WEB-INF/jsp/admin/user-form.jsp").forward(req, resp);
@@ -65,17 +69,28 @@ public class EditUserServlet extends HttpServlet {
         if (password != null && !password.isEmpty()) {
             u.setPassword(password);
         }
-        String role = sanitizeRole(RequestUtil.s(req, "role"));
+
+        // Mặc định lấy role từ request rồi sanitize
+        String requestedRole = RequestUtil.s(req, "role");
+        String role = sanitizeRole(requestedRole);
+
         Integer qid = null;
         String qh = RequestUtil.s(req, "quay_hang_id");
         if (qh != null && !qh.isEmpty()) {
             try { qid = Integer.parseInt(qh); } catch (NumberFormatException ignored) {}
         }
+
         if (auth != null && "truong_quay".equalsIgnoreCase(auth.getRole())) {
             // Force constraints for manager actions
             role = "nhan_vien_quay";
             qid = auth.getQuayHangId();
         }
+
+        // KHÓA: Admin không thể đổi role của chính mình, luôn giữ bgh_admin
+        if (auth != null && auth.getUserId() == u.getUserId() && "bgh_admin".equalsIgnoreCase(u.getRole())) {
+            role = "bgh_admin";
+        }
+
         u.setRole(role);
         u.setDonVi(RequestUtil.s(req, "don_vi"));
         u.setQuayHangId(qid);
