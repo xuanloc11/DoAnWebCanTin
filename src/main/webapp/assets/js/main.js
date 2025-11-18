@@ -908,16 +908,6 @@
 		}
 	});
 
-	//<< 23 >> quntity increment and decrement
-	$(document).on("click", ".quantityIncrement", function () {
-		const input = $(this).siblings("input");
-		input.val(parseInt(input.val(), 10) + 1);
-	});
-	$(document).on("click", ".quantityDecrement", function () {
-		const input = $(this).siblings("input");
-		const currentVal = parseInt(input.val(), 10);
-		if (currentVal > 1) input.val(currentVal - 1);
-	});
 
 	//<< 24 >> Preloader
 	function loader() {

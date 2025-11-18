@@ -102,7 +102,7 @@
         <div class="header-right d-xl-none d-flex justify-content-end align-items-center gap-3">
           <a href="${CTX}/cart" class="tolly-icon d-lg-none position-relative" aria-label="Giỏ hàng">
             <img src="${CTX}/assets/img/icons/tolly.png" alt="tolly-icon">
-            <span class="count-quan d-center count-quan-black text-white"><c:out value="${totalQty}"/></span>
+            <span class="count-quan d-center count-quan-black text-white" data-cart-total-qty="${totalQty}"><c:out value="${totalQty}"/></span>
           </a>
           <c:choose>
             <c:when test="${not empty auth}">
@@ -185,7 +185,7 @@
           </c:choose>
           <a href="${CTX}/cart" class="tolly-icon border w-40px h-40px rounded-circle position-relative d-inline-flex align-items-center justify-content-center" aria-label="Giỏ hàng">
             <img width="21" src="${CTX}/assets/img/icons/tolly.png" alt="tolly-icon">
-            <span class="count-quan d-center count-quan-black text-white"><c:out value="${totalQty}"/></span>
+            <span class="count-quan d-center count-quan-black text-white" data-cart-total-qty="${totalQty}"><c:out value="${totalQty}"/></span>
           </a>
           <button type="button" class="destop-bars black-bg w-40px h-40px rounded-circle d-xl-none d-flex align-items-center justify-content-center sidebar__toggle fs-20 text-white">
             <i class="fa-solid fa-bars"></i>

@@ -223,7 +223,7 @@
                                                         <fmt:formatNumber value="${f.gia}" type="number" groupingUsed="true" maxFractionDigits="0" /> VND
                                                     </span>
                                                 </div>
-                                                <form method="post" action="${pageContext.request.contextPath}/cart/add">
+                                                <form method="post" action="${pageContext.request.contextPath}/cart/add" class="add-to-cart-form">
                                                     <input type="hidden" name="mon_an_id" value="${f.monAnId}" />
                                                     <input type="hidden" name="qty" value="1" />
                                                     <button type="submit" class="theme-btn btn-outline-theme heading-font rounded-pill py-2 px-3" data-mon-id="${f.monAnId}">Thêm vào giỏ</button>
@@ -257,5 +257,43 @@
 <script src="assets/js/jquery.magnific-popup.min.js"></script>
 <script src="assets/js/wow.min.js"></script>
 <script src="assets/js/main.js"></script>
+<script>
+  // Thêm vào giỏ bằng AJAX để không reload trang nhưng vẫn dùng đúng servlet /cart/add
+  $(function () {
+    $(document).on('submit', '.add-to-cart-form', function (e) {
+      e.preventDefault();
+      var $form = $(this);
+      var url = $form.attr('action');
+      var data = $form.serialize();
+
+      $.ajax({
+        url: url,
+        type: 'POST',
+        data: data,
+        headers: { 'X-Requested-With': 'XMLHttpRequest' }, // để AddToCartServlet hiểu là AJAX
+        dataType: 'json',
+        success: function (resp) {
+          if (resp && resp.status === 'ok') {
+            // Cập nhật badge số lượng giỏ hàng trên header nếu có
+            if (resp.cartTotals && typeof resp.cartTotals.totalQuantity !== 'undefined') {
+              var $badge = $('[data-cart-total-qty]');
+              if ($badge.length) {
+                $badge.text(resp.cartTotals.totalQuantity);
+              }
+            }
+            // Nếu muốn vẫn reload để đảm bảo mọi thứ đồng bộ, bỏ comment dòng dưới:
+            // window.location.reload();
+          } else {
+            alert((resp && resp.message) || 'Không thể thêm món vào giỏ.');
+          }
+        },
+        error: function (xhr) {
+          console.error('Lỗi AddToCart AJAX', xhr.status, xhr.responseText);
+          alert('Có lỗi xảy ra khi thêm vào giỏ, vui lòng thử lại.');
+        }
+      });
+    });
+  });
+</script>
 </body>
 </html>

@@ -33,7 +33,7 @@ public class CartServlet extends HttpServlet {
         Cart cart = (Cart) session.getAttribute("cart");
         if (cart == null) {
             if (isAjax(req)) {
-                writeJson(resp, 0, 0, 0);
+                writeJson(resp, 0L, 0L, 0);
             } else {
                 resp.sendRedirect(req.getContextPath()+"/cart");
             }
@@ -51,18 +51,22 @@ public class CartServlet extends HttpServlet {
         } else if ("clear".equalsIgnoreCase(action)) {
             session.removeAttribute("cart");
             if (isAjax(req)) {
-                writeJson(resp, 0, 0, 0);
+                writeJson(resp, 0L, 0L, 0);
             } else {
                 resp.sendRedirect(req.getContextPath()+"/cart");
             }
             return;
         } else if ("update".equalsIgnoreCase(action) || action == null) {
+            // Cập nhật theo monAnId để khớp với name="qty_${it.monAn.monAnId}" trên UI
             for (Map.Entry<Integer, CartItem> e : cart.getItems().entrySet()) {
-                String param = req.getParameter("qty_" + e.getKey());
+                CartItem item = e.getValue();
+                if (item == null || item.getMonAn() == null) continue;
+                int monAnId = item.getMonAn().getMonAnId();
+                String param = req.getParameter("qty_" + monAnId);
                 if (param != null) {
                     try {
                         int q = Integer.parseInt(param);
-                        cart.updateItem(e.getKey(), q);
+                        cart.updateItem(monAnId, q);
                     } catch (NumberFormatException ignored) {}
                 }
             }
@@ -73,7 +77,7 @@ public class CartServlet extends HttpServlet {
             for (CartItem item : cart.getItems().values()) {
                 totalQuantity += item.getSoLuong();
             }
-            long totalPrice = cart.getTotalPrice().longValue();
+            long totalPrice = cart.getTotalPrice() == null ? 0L : cart.getTotalPrice().longValue();
             writeJson(resp, totalPrice, totalPrice, totalQuantity);
         } else {
             resp.sendRedirect(req.getContextPath()+"/cart");

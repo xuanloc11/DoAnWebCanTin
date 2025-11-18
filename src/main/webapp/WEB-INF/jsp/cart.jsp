@@ -166,31 +166,76 @@
 <script src="<c:url value='/assets/js/wow.min.js' />"></script>
 <script src="<c:url value='/assets/js/main.js' />"></script>
 <script>
-  // Quantity increment/decrement: mỗi lần click chỉ +1 / -1
+  // Quantity increment/decrement: mỗi lần click chỉ +1 / -1, tránh bắt sự kiện hai lần khi click vào icon bên trong
   document.addEventListener('click', function (e) {
-    const incBtn = e.target.closest('button.quantityIncrement');
-    const decBtn = e.target.closest('button.quantityDecrement');
-    if (!incBtn && !decBtn) return;
-
-    const wrapper = (incBtn || decBtn).closest('.quantity-wrapper');
-    if (!wrapper) return;
-
-    const input = wrapper.querySelector('input[type="number"]');
-    if (!input) return;
-
-    const current = parseInt(input.value, 10) || 0;
-    let next = current;
-
-    if (incBtn) {
-      next = current + 1;
-    } else if (decBtn) {
-      next = Math.max(0, current - 1);
-    }
-
-    if (next !== current) {
+    if (e.target.matches('button.quantityIncrement')) {
+      const wrapper = e.target.closest('.quantity-wrapper');
+      if (!wrapper) return;
+      const input = wrapper.querySelector('input[type="number"]');
+      if (!input) return;
+      const current = parseInt(input.value, 10) || 0;
+      const next = current + 1;
+      input.value = next;
+      input.dispatchEvent(new Event('change', { bubbles: true }));
+    } else if (e.target.matches('button.quantityDecrement')) {
+      const wrapper = e.target.closest('.quantity-wrapper');
+      if (!wrapper) return;
+      const input = wrapper.querySelector('input[type="number"]');
+      if (!input) return;
+      const current = parseInt(input.value, 10) || 0;
+      const next = Math.max(0, current - 1);
       input.value = next;
       input.dispatchEvent(new Event('change', { bubbles: true }));
     }
+  });
+
+  // Gửi AJAX cập nhật giỏ khi số lượng thay đổi, không cần nhấn nút "Cập nhật giỏ"
+  document.addEventListener('change', function (e) {
+    if (!e.target.matches('input[type="number"][name^="qty_"]')) return;
+    const input = e.target;
+    const form = input.closest('form');
+    if (!form || !form.action) return;
+
+    // Gửi toàn bộ form y như khi bấm "Cập nhật giỏ", thêm ajax=1
+    const formData = new FormData(form);
+    formData.append('ajax', '1');
+
+    const url = form.getAttribute('action');
+    console.log('Cart AJAX update URL:', url, 'changed:', input.name + '=' + input.value);
+
+    fetch(url, {
+      method: 'POST',
+      headers: { 'X-Requested-With': 'XMLHttpRequest' },
+      body: formData
+    })
+      .then(function (resp) {
+        if (!resp.ok) {
+          console.error('Cart AJAX HTTP error', resp.status, resp.url);
+          throw resp;
+        }
+        return resp.json();
+      })
+      .then(function (data) {
+        console.log('Cart AJAX response:', data);
+        if (!data || typeof data.subtotal === 'undefined' || typeof data.total === 'undefined') return;
+
+        // Cập nhật tổng tiền ở box bên phải
+        const subtotalEls = document.querySelectorAll('[data-cart-subtotal]');
+        if (subtotalEls.length >= 2) {
+          subtotalEls[0].textContent = new Intl.NumberFormat('vi-VN').format(data.subtotal) + ' VND';
+          subtotalEls[1].textContent = new Intl.NumberFormat('vi-VN').format(data.total) + ' VND';
+        }
+
+        // Cập nhật badge số lượng giỏ hàng trên header
+        if (typeof data.totalQuantity !== 'undefined') {
+          document.querySelectorAll('[data-cart-total-qty]').forEach(function (el) {
+            el.textContent = data.totalQuantity;
+          });
+        }
+      })
+      .catch(function (err) {
+        console.error('Lỗi cập nhật giỏ AJAX', err);
+      });
   });
 </script>
 </body>

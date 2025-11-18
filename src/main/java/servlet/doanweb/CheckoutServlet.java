@@ -57,7 +57,7 @@ public class CheckoutServlet extends HttpServlet {
         String ghiChu = req.getParameter("ghi_chu");
         String pttt = req.getParameter("phuong_thuc_thanh_toan");
         if (pttt == null || pttt.isBlank()) {
-            pttt = "CASH"; // mặc định thanh toán tiền mặt
+            pttt = "Tiền Mặt"; // mặc định thanh toán tiền mặt
         }
         Timestamp now = Timestamp.from(Instant.now());
         List<Integer> createdOrderIds = new ArrayList<>();
