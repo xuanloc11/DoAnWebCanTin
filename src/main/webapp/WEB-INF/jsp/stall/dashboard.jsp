@@ -26,16 +26,9 @@
           Chỉ số về số lượng đơn, doanh thu và các món bán chạy trong quầy của bạn.
         </p>
       </div>
-      <form method="get" class="d-flex align-items-center gap-2 flex-wrap">
-        <label for="daysSel" class="form-label mb-0">Khoảng ngày:</label>
-        <c:set var="_days" value="${empty days ? 7 : days}" />
-        <select id="daysSel" name="days" class="form-select form-select-sm w-auto">
-          <option value="7"  ${_days == 7  ? 'selected' : ''}>7 ngày</option>
-          <option value="30" ${_days == 30 ? 'selected' : ''}>30 ngày</option>
-          <option value="90" ${_days == 90 ? 'selected' : ''}>90 ngày</option>
-        </select>
-        <button class="btn btn-primary btn-sm" type="submit">Áp dụng</button>
-      </form>
+      <div class="d-flex flex-wrap align-items-center gap-2">
+        <a href="${pageContext.request.contextPath}/" class="btn btn-outline-secondary btn-sm rounded-pill">Về trang chủ</a>
+      </div>
     </div>
 
     <c:set var="stallDashboard" value="${dashboard}" />

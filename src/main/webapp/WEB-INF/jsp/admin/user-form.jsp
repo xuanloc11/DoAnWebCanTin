@@ -52,26 +52,18 @@
             <c:if test="${mode eq 'edit'}"><div class="hint">Để trống nếu không đổi mật khẩu</div></c:if>
           </div>
           <div class="field">
-            <label for="role">Vai trò</label>
             <c:choose>
-              <c:when test="${auth != null && auth.role eq 'truong_quay'}">
-                <input type="text" id="role_text" value="Nhân viên quầy" disabled />
-                <input type="hidden" name="role" value="nhan_vien_quay" />
-                <div class="hint">Trưởng quầy chỉ tạo/sửa được tài khoản Nhân viên quầy.</div>
-              </c:when>
               <c:when test="${selfAdminEdit}">
-                <!-- Admin đang tự sửa tài khoản của mình: khóa vai trò -->
-                <input type="text" id="role_text" value="BGH Admin" disabled />
                 <input type="hidden" name="role" value="bgh_admin" />
-                <div class="hint">Bạn không thể thay đổi vai trò của tài khoản admin.</div>
+                <p class="form-text text-muted">Bạn đang chỉnh sửa tài khoản quản trị BGH; vai trò này không thể thay đổi.</p>
               </c:when>
               <c:otherwise>
-                <c:set var="currentRole" value="${mode eq 'edit' ? user.role : 'hoc_sinh'}"/>
-                <select id="role" name="role">
-                  <option value="bgh_admin" ${currentRole eq 'bgh_admin' ? 'selected' : ''}>BGH Admin</option>
-                  <option value="truong_quay" ${currentRole eq 'truong_quay' ? 'selected' : ''}>Trưởng quầy</option>
-                  <option value="nhan_vien_quay" ${currentRole eq 'nhan_vien_quay' ? 'selected' : ''}>Nhân viên quầy</option>
-                  <option value="hoc_sinh" ${currentRole eq 'hoc_sinh' ? 'selected' : ''}>Sinh viên</option>
+                <label for="role" class="form-label">Vai trò</label>
+                <select id="role" name="role" class="form-select">
+                    <c:set var="currentRole" value="${empty user ? 'hoc_sinh' : user.role}" />
+                    <option value="hoc_sinh" ${currentRole eq 'hoc_sinh' ? 'selected' : ''}>Sinh viên</option>
+                    <option value="truong_quay" ${currentRole eq 'truong_quay' ? 'selected' : ''}>Trưởng quầy</option>
+                    <option value="bgh_admin" ${currentRole eq 'bgh_admin' ? 'selected' : ''}>BGH Admin</option>
                 </select>
               </c:otherwise>
             </c:choose>

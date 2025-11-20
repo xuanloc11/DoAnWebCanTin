@@ -60,7 +60,6 @@
           <c:choose>
             <c:when test="${me.role eq 'bgh_admin'}">BGH Admin</c:when>
             <c:when test="${me.role eq 'truong_quay'}">Trưởng quầy</c:when>
-            <c:when test="${me.role eq 'nhan_vien_quay'}">Nhân viên quầy</c:when>
             <c:when test="${me.role eq 'hoc_sinh'}">Sinh viên</c:when>
             <c:otherwise><c:out value="${me.role}"/></c:otherwise>
           </c:choose>

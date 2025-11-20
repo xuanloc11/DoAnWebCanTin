@@ -45,7 +45,7 @@ public class Managment extends HttpServlet {
         }
         User user = (User) auth;
         String role = user.getRole() == null ? null : user.getRole().toLowerCase();
-        boolean isStallStaff = "truong_quay".equals(role) || "nhan_vien_quay".equals(role);
+        boolean isStallStaff = "truong_quay".equals(role);
 
         String quayName = req.getParameter("quay_name");
         String quayIdParam = req.getParameter("quay_id");

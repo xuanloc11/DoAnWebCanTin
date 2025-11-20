@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import models.User;
 import service.UserService;
+import service.QuayHangService;
 
 import java.io.IOException;
 import java.net.URLEncoder;
@@ -17,10 +18,13 @@ import java.nio.charset.StandardCharsets;
 @WebServlet(name = "AddUserServlet", urlPatterns = "/admin/users/add")
 public class AddUserServlet extends HttpServlet {
     private final UserService service = new UserService();
+    private final QuayHangService quayHangService = new QuayHangService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("mode", "create");
+        // nạp danh sách quầy cho dropdown
+        req.setAttribute("quays", quayHangService.getAll());
         req.getRequestDispatcher("/WEB-INF/jsp/admin/user-form.jsp").forward(req, resp);
     }
 
@@ -40,10 +44,10 @@ public class AddUserServlet extends HttpServlet {
             try { qid = Integer.parseInt(qh); } catch (NumberFormatException ignored) {}
         }
 
-        // If manager, force constraints: can only create nhan_vien_quay in their stall
+        // Nếu là trưởng quầy, không còn tạo nhân viên quầy riêng: ép tất cả user mới về vai trò học sinh trong đơn vị của họ
         if (auth != null && "truong_quay".equalsIgnoreCase(auth.getRole())) {
-            role = "nhan_vien_quay";
-            qid = auth.getQuayHangId();
+            role = "hoc_sinh";
+            // có thể giữ quayHangId nếu muốn gán sinh viên vào quầy, hoặc để null tùy yêu cầu nghiệp vụ
         }
 
         u.setRole(role);
@@ -58,7 +62,6 @@ public class AddUserServlet extends HttpServlet {
         if (role == null) return "hoc_sinh";
         String r = role.trim();
         if (r.equalsIgnoreCase("bgh_admin")) return "bgh_admin";
-        if (r.equalsIgnoreCase("nhan_vien_quay")) return "nhan_vien_quay";
         if (r.equalsIgnoreCase("truong_quay")) return "truong_quay";
         if (r.equalsIgnoreCase("hoc_sinh")) return "hoc_sinh";
         return "hoc_sinh";

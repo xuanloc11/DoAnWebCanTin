@@ -1,6 +1,8 @@
 package service;
 
 import models.User;
+import models.Page;
+import models.PageRequest;
 import repository.UserRepository;
 
 import java.util.List;
@@ -39,5 +41,16 @@ public class UserService {
 
     public boolean delete(int id) {
         return repo.delete(id);
+    }
+
+    public Page<User> getPage(PageRequest pr) {
+        List<User> all = repo.getAllUsers();
+        int total = all.size();
+        int page = pr.getPage();
+        int size = pr.getSize();
+        int fromIndex = Math.min(pr.getOffset(), total);
+        int toIndex = Math.min(fromIndex + size, total);
+        List<User> content = all.subList(fromIndex, toIndex);
+        return new Page<>(content, page, size, total);
     }
 }

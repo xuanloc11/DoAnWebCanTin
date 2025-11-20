@@ -1,6 +1,8 @@
 package service;
 
 import models.Order;
+import models.Page;
+import models.PageRequest;
 import repository.OrderRepository;
 import repositoryimpl.OrderRepositoryImpl;
 
@@ -17,4 +19,12 @@ public class OrderService {
     public boolean cancel(int id) { return orderRepository.cancel(id); }
     public boolean updateStatus(int id, String status) { return orderRepository.updateStatus(id, status); }
     public List<Order> byUser(int userId) { return orderRepository.findByUser(userId); }
+
+    public Page<Order> getPage(PageRequest pr) {
+        int offset = pr.getOffset();
+        int limit = pr.getSize();
+        List<Order> content = orderRepository.findPage(offset, limit);
+        long total = orderRepository.countAll();
+        return new Page<>(content, pr.getPage(), pr.getSize(), total);
+    }
 }

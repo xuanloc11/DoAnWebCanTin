@@ -67,6 +67,62 @@
         } catch(NumberFormatException ignored) {}
     }
     request.setAttribute("foods", foods);
+
+    // --- Thực đơn hôm nay cho trang chủ (tái sử dụng logic từ FourStallsMenuServlet) ---
+    service.MenuService menuService = new service.MenuService();
+    service.MenuMonAnService menuMonAnService = new service.MenuMonAnService();
+
+    java.sql.Date today = new java.sql.Date(System.currentTimeMillis());
+    String todayStr = today.toString(); // yyyy-MM-dd
+    request.setAttribute("todayLabel", todayStr);
+
+    java.util.Map<Integer, java.util.List<models.MonAn>> todayFoodsByStall = new java.util.HashMap<>();
+
+    java.util.List<QuayHang> _allQuays = quays;
+    if (_allQuays != null && !_allQuays.isEmpty()) {
+        java.util.List<models.Menu> allMenus = menuService.all();
+        java.util.Map<Integer, java.util.List<models.Menu>> menusByQuay = new java.util.HashMap<>();
+        for (models.Menu m : allMenus) {
+            if (m.getNgayApDung() == null) continue;
+            String menuDateStr = m.getNgayApDung().toString();
+            if (!todayStr.equals(menuDateStr)) continue;
+            menusByQuay.computeIfAbsent(m.getQuayHangId(), k -> new java.util.ArrayList<>()).add(m);
+        }
+
+        int count = 0;
+        for (QuayHang q : _allQuays) {
+            if (count >= 4) break; // chỉ hiển thị tối đa 4 quầy trên trang chủ
+            int qid = q.getQuayHangId();
+
+            java.util.List<models.Menu> todayMenus = menusByQuay.get(qid);
+            if (todayMenus == null || todayMenus.isEmpty()) {
+                count++;
+                continue;
+            }
+
+            java.util.Set<Integer> monAnIds = new java.util.LinkedHashSet<>();
+            for (models.Menu m : todayMenus) {
+                java.util.List<Integer> ids = menuMonAnService.monAnIds(m.getMenuId());
+                if (ids != null) {
+                    monAnIds.addAll(ids);
+                }
+            }
+
+            java.util.List<models.MonAn> foodsToday = new java.util.ArrayList<>();
+            for (Integer monId : monAnIds) {
+                models.MonAn f = monAnService.get(monId);
+                if (f != null) {
+                    foodsToday.add(f);
+                }
+            }
+
+            if (!foodsToday.isEmpty()) {
+                todayFoodsByStall.put(qid, foodsToday);
+            }
+            count++;
+        }
+    }
+    request.setAttribute("todayFoodsByStall", todayFoodsByStall);
 %>
 
 <!-- Compute cart total quantity from session for header counters -->
@@ -167,6 +223,96 @@
          style="left: 220px;">
     <img src="assets/img/home-1/chees-burger-hero.png" alt="img"
          class="position-absolute ms-40 ps-3 d-lg-block d-none" style="bottom: -30px;">
+</section>
+
+<!-- Thực đơn hôm nay trên trang chủ -->
+<section class="pt-60 pb-40">
+    <div class="container">
+        <div class="mb-4 d-flex justify-content-between align-items-center flex-wrap gap-2">
+            <div>
+                <h2 class="fs-30 fw-semibold mb-1">Thực đơn hôm nay</h2>
+                <p class="mb-0 text-muted">
+                    <c:choose>
+                        <c:when test="${not empty todayLabel}">Thực đơn ngày ${todayLabel}.</c:when>
+                        <c:otherwise>Danh sách các món được phục vụ trong ngày hôm nay.</c:otherwise>
+                    </c:choose>
+                </p>
+            </div>
+            <a href="${pageContext.request.contextPath}/menu/stalls" class="theme-btn btn-outline-blak">Xem chi tiết thực đơn</a>
+        </div>
+
+        <c:choose>
+            <c:when test="${not empty quays}">
+                <div class="row g-4">
+                    <c:forEach var="q" items="${quays}">
+                        <c:set var="foodsToday" value="${todayFoodsByStall[q.quayHangId]}" />
+                        <c:if test="${not empty foodsToday}">
+                            <div class="col-md-6 col-lg-3">
+                                <div class="border rounded-12 p-3 h-100 d-flex flex-column">
+                                    <div class="d-flex flex-column mb-2">
+                                        <h5 class="mb-1 fw-semibold text-black">
+                                            <c:out value="${q.tenQuayHang}" />
+                                        </h5>
+                                        <span class="fs-13 text-muted">
+                                            Vị trí: <c:out value="${empty q.viTri ? 'Chưa rõ' : q.viTri}" />
+                                        </span>
+                                    </div>
+
+                                    <div class="d-flex flex-column gap-2 flex-grow-1">
+                                        <c:forEach var="f" items="${foodsToday}">
+                                            <div class="most-popular-card card-effect smooth d-flex align-items-center justify-content-between gap-2 border rounded-12 p-2">
+                                                <div class="cont me-1">
+                                                    <h6 class="mb-1 fs-15">
+                                                        <a href="${pageContext.request.contextPath}/mon-an?id=${f.monAnId}" class="link-effect text-black">
+                                                            <c:out value="${f.tenMonAn}"/>
+                                                        </a>
+                                                    </h6>
+                                                    <h6 class="theme3-clr fs-14 fw-bold mb-0">
+                                                        <fmt:formatNumber value="${f.gia}" type="number" groupingUsed="true" maxFractionDigits="0" /> VND
+                                                    </h6>
+                                                </div>
+                                                <div class="thumb rounded-2 position-relative w-60px h-60px">
+                                                    <c:choose>
+                                                        <c:when test="${not empty f.hinhAnhUrl}">
+                                                            <c:choose>
+                                                                <c:when test="${fn:startsWith(f.hinhAnhUrl, 'http')}">
+                                                                    <img width="60" height="60" src="${f.hinhAnhUrl}" alt="${f.tenMonAn}" class="rounded-2">
+                                                                </c:when>
+                                                                <c:otherwise>
+                                                                    <img width="60" height="60" src="${pageContext.request.contextPath}${f.hinhAnhUrl}" alt="${f.tenMonAn}" class="rounded-2">
+                                                                </c:otherwise>
+                                                            </c:choose>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <img width="60" height="60" src="assets/img/home-1/popular-items1.jpg" alt="img" class="rounded-2">
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                    <form method="post" action="${pageContext.request.contextPath}/cart/add" class="z-1 position-absolute bottom-0 end-0 m-1">
+                                                        <input type="hidden" name="mon_an_id" value="${f.monAnId}" />
+                                                        <input type="hidden" name="qty" value="1" />
+                                                        <button type="submit" class="w-22px h-22px bg-white rounded d-center theme3-clr fs-12" title="Thêm vào giỏ" aria-label="Thêm vào giỏ" data-mon-id="${f.monAnId}">
+                                                            <i class="fa-solid fa-plus"></i>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </c:forEach>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:if>
+                    </c:forEach>
+                </div>
+
+                <c:if test="${empty todayFoodsByStall}">
+                    <p class="fs-16 text-clr mt-4">Hôm nay chưa có món nào được cấu hình trong thực đơn.</p>
+                </c:if>
+            </c:when>
+            <c:otherwise>
+                <p class="fs-16 text-clr">Chưa có quầy hàng nào để hiển thị.</p>
+            </c:otherwise>
+        </c:choose>
+    </div>
 </section>
 
 <!-- 4 Featured Stall Sections start -->
@@ -329,7 +475,19 @@
                                     <div class="most-popular-card card-effect smooth d-flex align-items-xxl-center justify-content-between gap-2 border rounded-12 p-xl-4 p-3">
                                         <div class="cont">
                                             <h6 class="mb-lg-1 mb-1"><span class="link-effect"><c:out value="${f.tenMonAn}"/></span></h6>
-                                            <p class="fs-15 mb-lg-2 mb-1 max-w-200 lh-base"><c:out value="${empty f.moTa ? 'Không có mô tả' : f.moTa}"/></p>
+                                            <p class="fs-15 mb-lg-2 mb-1 max-w-200 lh-base">
+                                                <c:choose>
+                                                    <c:when test="${empty f.moTa}">
+                                                        Không có mô tả
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <c:set var="_rawDesc" value="${f.moTa}" />
+                                                        <c:set var="_noOpenP" value="${fn:replace(_rawDesc, '<p>', '')}" />
+                                                        <c:set var="_cleanDesc" value="${fn:replace(_noOpenP, '</p>', '')}" />
+                                                        <c:out value="${_cleanDesc}"/>
+                                                    </c:otherwise>
+                                                </c:choose>
+                                            </p>
                                             <h6 class="theme3-clr fs-16 fw-bold">
                                                 <fmt:formatNumber value="${f.gia}" type="number" groupingUsed="true" maxFractionDigits="0" /> VND
                                             </h6>

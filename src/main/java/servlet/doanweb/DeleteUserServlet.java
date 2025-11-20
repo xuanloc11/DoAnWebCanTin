@@ -27,8 +27,8 @@ public class DeleteUserServlet extends HttpServlet {
             User target = service.get(id);
             if (target != null) {
                 if (auth != null && "truong_quay".equalsIgnoreCase(auth.getRole())) {
-                    // Only allow delete if staff in same stall
-                    if (!"nhan_vien_quay".equalsIgnoreCase(target.getRole()) || auth.getQuayHangId() == null || !auth.getQuayHangId().equals(target.getQuayHangId())) {
+                    // Trưởng quầy không được xóa tài khoản BGH admin
+                    if ("bgh_admin".equalsIgnoreCase(target.getRole())) {
                         resp.sendRedirect(req.getContextPath() + "/admin/users");
                         return;
                     }

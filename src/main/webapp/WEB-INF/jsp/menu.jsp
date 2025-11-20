@@ -15,7 +15,6 @@
 </head>
 <body class="body-bg">
 <%@ include file="/WEB-INF/jsp/partials/header.jspf" %>
-
 <div class="container pt-80 pb-80">
     <div class="mb-4 d-flex justify-content-between align-items-center flex-wrap gap-2">
         <div>

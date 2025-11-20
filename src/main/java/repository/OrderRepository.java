@@ -12,4 +12,6 @@ public interface OrderRepository {
     boolean cancel(int id); // New: mark order as cancelled instead of deleting
     boolean updateStatus(int id, String status); // New: update only status
     List<Order> findByUser(int userId); // Added for profile
+    List<Order> findPage(int offset, int limit);
+    long countAll();
 }

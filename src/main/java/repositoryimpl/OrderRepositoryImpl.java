@@ -146,6 +146,40 @@ public class OrderRepositoryImpl implements OrderRepository {
         return orders;
     }
 
+    @Override
+    public List<Order> findPage(int offset, int limit) {
+        List<Order> orders = new ArrayList<>();
+        String sql = "SELECT `order_id`, `user_id`, `quay_hang_id`, `tong_tien`, `thoi_gian_dat`, `trang_thai_order`, `ghi_chu` FROM `Orders` ORDER BY `thoi_gian_dat` DESC LIMIT ? OFFSET ?";
+        try (Connection conn = DataSourceUtil.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, limit);
+            ps.setInt(2, offset);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    orders.add(map(rs));
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Failed to query paged Orders", e);
+        }
+        return orders;
+    }
+
+    @Override
+    public long countAll() {
+        String sql = "SELECT COUNT(*) FROM `Orders`";
+        try (Connection conn = DataSourceUtil.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                return rs.getLong(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Failed to count Orders", e);
+        }
+        return 0;
+    }
+
     private Order map(ResultSet rs) throws SQLException {
         Order o = new Order();
         o.setOrderId(rs.getInt("order_id"));

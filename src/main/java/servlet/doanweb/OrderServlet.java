@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import models.Order;
+import models.Page;
 import models.User;
 import service.OrderService;
 
@@ -27,6 +28,16 @@ public class OrderServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession(false);
         User auth = (session != null) ? (User) session.getAttribute("authUser") : null;
+
+        // Parse pagination params
+        int page = 1;
+        int size = 10;
+        try { page = Integer.parseInt(req.getParameter("page")); } catch (Exception ignored) {}
+        try { size = Integer.parseInt(req.getParameter("size")); } catch (Exception ignored) {}
+        if (page <= 0) page = 1;
+        if (size <= 0) size = 10;
+
+        // Load all then filter (to keep existing filter logic simple)
         List<Order> list = orderService.getAllOrders();
 
         // Restrict for truong_quay & nhan_vien_quay: only orders for their stall
@@ -100,7 +111,15 @@ public class OrderServlet extends HttpServlet {
             list = filtered;
         }
 
-        req.setAttribute("orders", list);
+        // Apply pagination on filtered list
+        int total = list.size();
+        int fromIndex = Math.min((page - 1) * size, total);
+        int toIndex = Math.min(fromIndex + size, total);
+        List<Order> pageContent = list.subList(fromIndex, toIndex);
+        Page<Order> pageObj = new Page<>(pageContent, page, size, total);
+
+        req.setAttribute("orders", pageContent);
+        req.setAttribute("page", pageObj);
         req.getRequestDispatcher("/WEB-INF/jsp/admin/orders.jsp").forward(req, resp);
     }
 }

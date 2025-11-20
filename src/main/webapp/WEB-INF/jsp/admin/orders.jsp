@@ -1,5 +1,6 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <fmt:setLocale value="vi_VN"/>
 <!DOCTYPE html>
@@ -68,8 +69,8 @@
                         <c:if test="${not empty param.from}">, từ ngày <strong><c:out value="${param.from}"/></strong></c:if>
                         <c:if test="${not empty param.to}">, đến ngày <strong><c:out value="${param.to}"/></strong></c:if>
                     </c:if>
-                    <c:if test="${not empty orders}">
-                        <span class="ms-2">Số lượng đơn hàng: <strong>${fn:length(orders)}</strong></span>
+                    <c:if test="${page ne null}">
+                        <span class="ms-2">Tổng đơn: <strong>${page.totalElements}</strong></span>
                     </c:if>
                 </div>
             </form>
@@ -126,6 +127,27 @@
                             </table>
                         </div>
                     </div>
+
+                    <c:if test="${page ne null && page.totalPages > 1}">
+                        <nav aria-label="Phân trang đơn hàng" class="d-flex justify-content-between align-items-center px-2 pb-2">
+                            <div class="small text-muted">
+                                Trang <strong>${page.pageNumber}</strong> / ${page.totalPages}
+                            </div>
+                            <ul class="pagination pagination-sm mb-0">
+                                <li class="page-item ${page.first ? 'disabled' : ''}">
+                                    <a class="page-link" href="${pageContext.request.contextPath}/admin/orders?page=${page.pageNumber - 1}&size=${page.pageSize}&q=${fn:escapeXml(param.q)}&status=${param.status}&from=${param.from}&to=${param.to}">«</a>
+                                </li>
+                                <c:forEach var="i" begin="1" end="${page.totalPages}">
+                                    <li class="page-item ${i == page.pageNumber ? 'active' : ''}">
+                                        <a class="page-link" href="${pageContext.request.contextPath}/admin/orders?page=${i}&size=${page.pageSize}&q=${fn:escapeXml(param.q)}&status=${param.status}&from=${param.from}&to=${param.to}">${i}</a>
+                                    </li>
+                                </c:forEach>
+                                <li class="page-item ${page.last ? 'disabled' : ''}">
+                                    <a class="page-link" href="${pageContext.request.contextPath}/admin/orders?page=${page.pageNumber + 1}&size=${page.pageSize}&q=${fn:escapeXml(param.q)}&status=${param.status}&from=${param.from}&to=${param.to}">»</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </c:if>
                 </c:when>
                 <c:otherwise>
                     <div class="alert alert-info shadow-sm">Chưa có dữ liệu đơn hàng.</div>

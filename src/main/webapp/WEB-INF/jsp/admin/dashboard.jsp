@@ -24,6 +24,7 @@
         <p class="dashboard-subtitle mb-0">Số liệu nhanh về món, đơn hàng, quầy và doanh thu.</p>
       </div>
       <div class="d-flex flex-wrap align-items-center gap-2">
+        <a href="${pageContext.request.contextPath}/" class="btn btn-outline-secondary btn-sm rounded-pill">🏠 Về trang chủ</a>
         <button id="adminThemeToggle" type="button" class="btn btn-outline-secondary btn-sm rounded-pill" aria-label="Đổi giao diện" title="Đổi giao diện sáng/tối">🌓 Giao diện</button>
       </div>
     </div>

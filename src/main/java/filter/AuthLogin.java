@@ -65,16 +65,6 @@ public class AuthLogin implements Filter {
             return;
         }
 
-        // Staff (nhan_vien_quay) access: orders + foods + menu (scoped by stall in servlets)
-        if (isStaff(role)) {
-            if (isOrdersPath(pathOnly) || isFoodsPath(pathOnly) || isMenuPath(pathOnly)) {
-                chain.doFilter(request, response);
-                return;
-            }
-            resp.sendRedirect(req.getContextPath() + "/");
-            return;
-        }
-
         // Other roles (e.g. hoc_sinh) denied
         resp.sendRedirect(req.getContextPath() + "/");
     }
@@ -82,7 +72,6 @@ public class AuthLogin implements Filter {
     private String safe(String r) { return r == null ? "" : r.trim().toLowerCase(); }
 
     private boolean isAdmin(String role) { return "bgh_admin".equalsIgnoreCase(role); }
-    private boolean isStaff(String role) { return "nhan_vien_quay".equalsIgnoreCase(role); }
     private boolean isManager(String role) { return "truong_quay".equalsIgnoreCase(role); }
 
     private boolean isOrdersPath(String path) {
@@ -97,7 +86,7 @@ public class AuthLogin implements Filter {
         if (path == null) return false;
         return path.startsWith("/admin/monan");
     }
-    private boolean isFoodsPath(String path) { // management listing
+    private boolean isFoodsPath(String path) {
         if (path == null) return false;
         return path.startsWith("/admin/management") || "/admin".equals(path);
     }

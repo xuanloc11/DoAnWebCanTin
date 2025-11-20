@@ -44,7 +44,6 @@
                         <option value="">Tất cả</option>
                         <option value="bgh_admin" ${param.role eq 'bgh_admin' ? 'selected' : ''}>BGH Admin</option>
                         <option value="truong_quay" ${param.role eq 'truong_quay' ? 'selected' : ''}>Trưởng quầy</option>
-                        <option value="nhan_vien_quay" ${param.role eq 'nhan_vien_quay' ? 'selected' : ''}>Nhân viên quầy</option>
                         <option value="hoc_sinh" ${param.role eq 'hoc_sinh' ? 'selected' : ''}>Sinh viên</option>
                     </select>
                 </div>
@@ -58,8 +57,8 @@
                         <c:if test="${not empty param.q}">tên/email chứa "<strong><c:out value="${param.q}"/></strong>"</c:if>
                         <c:if test="${not empty param.role}">, vai trò = <strong><c:out value="${param.role}"/></strong></c:if>
                     </c:if>
-                    <c:if test="${not empty users}">
-                        <span class="ms-2">Tổng số: <strong>${fn:length(users)}</strong></span>
+                    <c:if test="${page ne null}">
+                        <span class="ms-2">Tổng số: <strong>${page.totalElements}</strong></span>
                     </c:if>
                 </div>
             </form>
@@ -88,7 +87,6 @@
                                             <c:choose>
                                                 <c:when test="${u.role eq 'bgh_admin'}">BGH Admin</c:when>
                                                 <c:when test="${u.role eq 'truong_quay'}">Trưởng quầy</c:when>
-                                                <c:when test="${u.role eq 'nhan_vien_quay'}">Nhân viên quầy</c:when>
                                                 <c:when test="${u.role eq 'hoc_sinh'}">Sinh viên</c:when>
                                                 <c:otherwise><c:out value="${u.role}"/></c:otherwise>
                                             </c:choose>
@@ -108,6 +106,27 @@
                             </table>
                         </div>
                     </div>
+
+                    <c:if test="${page ne null && page.totalPages > 1}">
+                        <nav aria-label="Phân trang người dùng" class="d-flex justify-content-between align-items-center px-2 pb-2">
+                            <div class="small text-muted">
+                                Trang <strong>${page.pageNumber}</strong> / ${page.totalPages}
+                            </div>
+                            <ul class="pagination pagination-sm mb-0">
+                                <li class="page-item ${page.first ? 'disabled' : ''}">
+                                    <a class="page-link" href="${pageContext.request.contextPath}/admin/users?page=${page.pageNumber - 1}&size=${page.pageSize}&q=${fn:escapeXml(param.q)}&role=${param.role}">«</a>
+                                </li>
+                                <c:forEach var="i" begin="1" end="${page.totalPages}">
+                                    <li class="page-item ${i == page.pageNumber ? 'active' : ''}">
+                                        <a class="page-link" href="${pageContext.request.contextPath}/admin/users?page=${i}&size=${page.pageSize}&q=${fn:escapeXml(param.q)}&role=${param.role}">${i}</a>
+                                    </li>
+                                </c:forEach>
+                                <li class="page-item ${page.last ? 'disabled' : ''}">
+                                    <a class="page-link" href="${pageContext.request.contextPath}/admin/users?page=${page.pageNumber + 1}&size=${page.pageSize}&q=${fn:escapeXml(param.q)}&role=${param.role}">»</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </c:if>
                 </c:when>
                 <c:otherwise>
                     <div class="alert alert-info shadow-sm">Chưa có dữ liệu người dùng.</div>

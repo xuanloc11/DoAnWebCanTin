@@ -47,8 +47,8 @@
       </a>
     </c:if>
 
-    <!-- Các mục chỉ dành cho TRƯỞNG QUẦY / NHÂN VIÊN, KHÔNG cho admin bgh_admin -->
-    <c:if test="${role eq 'truong_quay' || role eq 'nhan_vien_quay'}">
+    <!-- Các mục chỉ dành cho TRƯỞNG QUẦY -->
+    <c:if test="${role eq 'truong_quay'}">
       <!-- Món ăn (management) -->
       <a class="admin-nav-link ${isFoods ? 'active' : ''}"
          href="${pageContext.request.contextPath}/admin/management">
@@ -90,7 +90,7 @@
         </div>
       </c:if>
 
-      <!-- Menu: chỉ cho trưởng quầy / nhân viên quầy -->
+      <!-- Menu: chỉ cho trưởng quầy -->
       <a class="admin-nav-link ${fn:endsWith(uri, '/admin/menu') or fn:contains(uri, '/admin/menu/') ? 'active' : ''}"
          href="${pageContext.request.contextPath}/admin/menu">
         <span class="nav-icon"></span>
@@ -98,8 +98,8 @@
       </a>
     </c:if>
 
-    <!-- Orders: CHỈ cho trưởng quầy / nhân viên quầy; KHÔNG cho admin bgh_admin -->
-    <c:if test="${role eq 'truong_quay' || role eq 'nhan_vien_quay'}">
+    <!-- Orders: CHỈ cho trưởng quầy; KHÔNG cho admin bgh_admin -->
+    <c:if test="${role eq 'truong_quay'}">
       <a class="admin-nav-link ${fn:endsWith(uri, '/admin/orders') || fn:contains(uri, '/admin/orders/') ? 'active' : ''}"
          href="${pageContext.request.contextPath}/admin/orders">
         <span class="nav-icon"></span>

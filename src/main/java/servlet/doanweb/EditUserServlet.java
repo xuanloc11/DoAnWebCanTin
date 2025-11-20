@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import models.User;
 import service.UserService;
+import service.QuayHangService;
 
 import java.io.IOException;
 import java.net.URLEncoder;
@@ -17,6 +18,7 @@ import java.nio.charset.StandardCharsets;
 @WebServlet(name = "EditUserServlet", urlPatterns = "/admin/users/edit")
 public class EditUserServlet extends HttpServlet {
     private final UserService service = new UserService();
+    private final QuayHangService quayHangService = new QuayHangService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -28,19 +30,24 @@ public class EditUserServlet extends HttpServlet {
         }
         HttpSession session = req.getSession(false);
         User auth = (session != null) ? (User) session.getAttribute("authUser") : null;
+
+        // Nếu là trưởng quầy, hiện tại không còn phân cấp nhân viên quầy riêng, cho phép chỉnh sửa thông tin cơ bản nhưng không đổi role vượt quyền
         if (auth != null && "truong_quay".equalsIgnoreCase(auth.getRole())) {
-            // Only allow edit if target is staff in same stall
-            if (!"nhan_vien_quay".equalsIgnoreCase(u.getRole()) || auth.getQuayHangId() == null || !auth.getQuayHangId().equals(u.getQuayHangId())) {
+            // Không cho trưởng quầy chỉnh tài khoản BGH admin
+            if ("bgh_admin".equalsIgnoreCase(u.getRole())) {
                 resp.sendRedirect(req.getContextPath() + "/admin/users");
                 return;
             }
         }
+
         // Đánh dấu nếu đây là tài khoản admin đang tự sửa chính mình, để JSP ẩn dropdown role
         if (auth != null && auth.getUserId() == u.getUserId() && "bgh_admin".equalsIgnoreCase(u.getRole())) {
             req.setAttribute("selfAdminEdit", true);
         }
         req.setAttribute("mode", "edit");
         req.setAttribute("user", u);
+        // nạp danh sách quầy cho dropdown
+        req.setAttribute("quays", quayHangService.getAll());
         req.getRequestDispatcher("/WEB-INF/jsp/admin/user-form.jsp").forward(req, resp);
     }
 
@@ -55,12 +62,10 @@ public class EditUserServlet extends HttpServlet {
         HttpSession session = req.getSession(false);
         User auth = (session != null) ? (User) session.getAttribute("authUser") : null;
 
-        // Manager can only edit staff in their stall
-        if (auth != null && "truong_quay".equalsIgnoreCase(auth.getRole())) {
-            if (!"nhan_vien_quay".equalsIgnoreCase(u.getRole()) || auth.getQuayHangId() == null || !auth.getQuayHangId().equals(u.getQuayHangId())) {
-                resp.sendRedirect(req.getContextPath() + "/admin/users");
-                return;
-            }
+        // Trưởng quầy không được sửa tài khoản BGH admin
+        if (auth != null && "truong_quay".equalsIgnoreCase(auth.getRole()) && "bgh_admin".equalsIgnoreCase(u.getRole())) {
+            resp.sendRedirect(req.getContextPath() + "/admin/users");
+            return;
         }
 
         u.setHoTen(RequestUtil.s(req, "ho_ten"));
@@ -70,7 +75,6 @@ public class EditUserServlet extends HttpServlet {
             u.setPassword(password);
         }
 
-        // Mặc định lấy role từ request rồi sanitize
         String requestedRole = RequestUtil.s(req, "role");
         String role = sanitizeRole(requestedRole);
 
@@ -80,10 +84,17 @@ public class EditUserServlet extends HttpServlet {
             try { qid = Integer.parseInt(qh); } catch (NumberFormatException ignored) {}
         }
 
+        // Nếu là trưởng quầy: không cho tự nâng quyền thành BGH admin, và không gán role vượt quyền
         if (auth != null && "truong_quay".equalsIgnoreCase(auth.getRole())) {
-            // Force constraints for manager actions
-            role = "nhan_vien_quay";
-            qid = auth.getQuayHangId();
+            // Nếu người bị sửa là chính trưởng quầy, luôn giữ vai trò trưởng quầy
+            if (auth.getUserId() == u.getUserId()) {
+                role = "truong_quay";
+            } else {
+                // Với tài khoản khác, trưởng quầy chỉ chỉnh được thông tin, ép role về hoc_sinh hoặc giữ nguyên nếu đã là truong_quay/hoc_sinh
+                if (!"truong_quay".equalsIgnoreCase(u.getRole())) {
+                    role = "hoc_sinh";
+                }
+            }
         }
 
         // KHÓA: Admin không thể đổi role của chính mình, luôn giữ bgh_admin
@@ -103,7 +114,6 @@ public class EditUserServlet extends HttpServlet {
         if (role == null) return "hoc_sinh";
         String r = role.trim();
         if (r.equalsIgnoreCase("bgh_admin")) return "bgh_admin";
-        if (r.equalsIgnoreCase("nhan_vien_quay")) return "nhan_vien_quay";
         if (r.equalsIgnoreCase("truong_quay")) return "truong_quay";
         if (r.equalsIgnoreCase("hoc_sinh")) return "hoc_sinh";
         return "hoc_sinh";
