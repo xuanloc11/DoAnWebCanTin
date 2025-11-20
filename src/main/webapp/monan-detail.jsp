@@ -99,7 +99,7 @@
                 </c:when>
                 <c:otherwise>
                   <div class="fs-16 mb-4">
-                    ${food.moTa}
+                    <c:out value="${food.moTa}" escapeXml="false" />
                   </div>
                 </c:otherwise>
               </c:choose>

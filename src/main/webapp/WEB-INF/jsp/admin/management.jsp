@@ -212,7 +212,17 @@
                                         </td>
                                         <td>${f.tenMonAn}</td>
                                         <td><fmt:formatNumber value="${f.gia}" pattern="#,#00"/> VNĐ</td>
-                                        <td class="text-truncate" style="max-width: 320px;"><c:out value="${f.moTa}"/></td>
+                                        <td class="text-truncate" style="max-width: 320px;">
+                                            <c:choose>
+                                                <c:when test="${empty f.moTa}">
+                                                    <span class="text-muted">(Không có mô tả)</span>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <c:set var="plainDesc" value="${fn:replace(fn:replace(fn:replace(f.moTa, '<p>', ''), '</p>', ''), '&nbsp;', ' ')}" />
+                                                    <c:out value="${plainDesc}" />
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </td>
                                         <td>
                                             <c:if test="${not empty f.hinhAnhUrl}">
                                                 <c:choose>
