@@ -25,7 +25,7 @@ public class DataSourceUtil {
                 MysqlDataSource mysql = new MysqlDataSource();
                 mysql.setURL("jdbc:mysql://localhost:3306/cantin?useSSL=false&characterEncoding=UTF-8");
                 mysql.setUser("root");
-                mysql.setPassword("123456");
+                mysql.setPassword("12345");
                 ds = mysql;
             }
         }
