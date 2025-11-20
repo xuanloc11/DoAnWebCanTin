@@ -27,7 +27,7 @@ public class LoginServlet extends HttpServlet {
                 User u = (User) session.getAttribute("authUser");
                 // default landing: admin -> admin dashboard; others -> home
                 next = (u != null && u.getRole() != null && u.getRole().equalsIgnoreCase("bgh_admin"))
-                        ? "/admin/management" : "/";
+                        ? "/admin/dashboard" : "/";
             }
             resp.sendRedirect(req.getContextPath() + next);
             return;
@@ -54,8 +54,14 @@ public class LoginServlet extends HttpServlet {
 
         String next = sanitizeNext(req);
         if (next == null) {
-            // default landing: admin -> admin dashboard; others -> home
-            next = (u.getRole() != null && u.getRole().equalsIgnoreCase("bgh_admin")) ? "/admin/management" : "/";
+            // default landing: admin -> admin dashboard; stall manager -> stall dashboard; others -> home
+            if (u.getRole() != null && u.getRole().equalsIgnoreCase("bgh_admin")) {
+                next = "/admin/dashboard";
+            } else if (u.getRole() != null && u.getRole().equalsIgnoreCase("truong_quay")) {
+                next = "/stall/dashboard";
+            } else {
+                next = "/";
+            }
         }
         resp.sendRedirect(req.getContextPath() + next);
     }

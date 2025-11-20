@@ -88,19 +88,50 @@ html[data-bs-theme="dark"] .table tbody tr:hover {
 .admin-wrap { width: min(1200px, 100% - 32px); margin: 24px auto; }
 
 /* Admin shell layout (sidebar + main) */
-/* Reduce sidebar width so the box is not too big */
-.admin-shell { display: grid; grid-template-columns: minmax(180px, 220px) 1fr; min-height: 100vh; background: var(--bg); }
-.admin-shell.collapsed { grid-template-columns: 72px 1fr; }
+/* Sidebar has fixed width; main takes remaining space */
+.admin-shell {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr); /* fixed sidebar, flexible main */
+  align-items: flex-start;                      /* prevent stretching children */
+  min-height: 100vh;
+  background: var(--bg);
+}
+.admin-shell.collapsed { grid-template-columns: 72px minmax(0, 1fr); }
 
-/* Sidebar styles: tighten paddings and spacing */
-.admin-sidebar { position: sticky; top: 0; min-height: 100dvh; height: auto; overflow-y: auto; background: #ffffff; border-right: 1px solid var(--border); padding: 16px; display: grid; grid-template-rows: auto 1fr auto; gap: 16px; }
+/* Sidebar styles: use flex column so height only grows with content, not 1fr grid row */
+.admin-sidebar {
+  position: sticky;
+  top: 0;
+  min-height: 100dvh;
+  height: auto;
+  overflow-y: auto;
+  background: #ffffff;
+  border-right: 1px solid var(--border);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
 .admin-brand .brand-link { display: flex; align-items: center; gap: 8px; text-decoration: none; color: inherit; font-weight: 700; padding: 0 4px; }
 .admin-brand .brand-mark { font-size: 20px; color: var(--primary); }
-.admin-nav { display: grid; gap: 6px; }
-.admin-nav-link { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 8px; color: var(--muted); text-decoration: none; font-weight: 500; }
+.admin-nav { display: flex; flex-direction: column; gap: 6px; }
+.admin-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 500;
+  height: auto;               /* avoid stretching full column height */
+  line-height: 1.3;
+    padding-top: 90px;
+    padding-bottom: 90px;
+}
 .admin-nav-link:hover { background: var(--primary-light); color: var(--primary-dark); }
 .admin-nav-link.active { background: var(--primary); color: #fff; font-weight: 600; }
-.admin-side-meta { display: flex; justify-content: center; }
+.admin-side-meta { display: flex; justify-content: center; margin-top: auto; }
 
 /* Collapse state: hide texts, keep icons compact */
 .admin-shell.collapsed .brand-text { display: none; }

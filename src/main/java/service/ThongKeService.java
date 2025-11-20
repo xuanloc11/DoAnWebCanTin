@@ -103,4 +103,70 @@ public class ThongKeService {
         } catch (SQLException e){ throw new RuntimeException("Failed to compute top dishes", e); }
         return out;
     }
+
+    /** Thống kê số đơn theo ngày cho 1 quầy cụ thể. */
+    public List<DailyCount> ordersCountByDayForStall(int days, int quayHangId){
+        String sql = "SELECT DATE(o.thoi_gian_dat) AS d, COUNT(*) AS c " +
+                "FROM Orders o WHERE o.thoi_gian_dat >= ? AND o.quay_hang_id = ? " +
+                "AND (o.trang_thai_order IS NULL OR o.trang_thai_order <> 'CANCELLED') " +
+                "GROUP BY DATE(o.thoi_gian_dat) ORDER BY d";
+        List<DailyCount> out = new ArrayList<>();
+        try (Connection con = ds.getConnection(); PreparedStatement ps = con.prepareStatement(sql)){
+            ps.setTimestamp(1, cutoffDays(days));
+            ps.setInt(2, quayHangId);
+            try (ResultSet rs = ps.executeQuery()){
+                while (rs.next()){
+                    Date d = rs.getDate("d");
+                    int c = rs.getInt("c");
+                    out.add(new DailyCount(d.toLocalDate(), c));
+                }
+            }
+        } catch (SQLException e){ throw new RuntimeException("Failed to compute orders per day for stall", e); }
+        return out;
+    }
+
+    /** Doanh thu theo ngày cho 1 quầy (tổng doanh thu trong khoảng days). */
+    public BigDecimal revenueForStall(int days, int quayHangId){
+        String sql = "SELECT SUM(COALESCE(o.tong_tien,0)) AS rev " +
+                "FROM Orders o WHERE o.thoi_gian_dat >= ? AND o.quay_hang_id = ? " +
+                "AND (o.trang_thai_order IS NULL OR o.trang_thai_order <> 'CANCELLED')";
+        try (Connection con = ds.getConnection(); PreparedStatement ps = con.prepareStatement(sql)){
+            ps.setTimestamp(1, cutoffDays(days));
+            ps.setInt(2, quayHangId);
+            try (ResultSet rs = ps.executeQuery()){
+                if (rs.next()){
+                    BigDecimal rev = rs.getBigDecimal("rev");
+                    return rev == null ? BigDecimal.ZERO : rev;
+                }
+            }
+        } catch (SQLException e){ throw new RuntimeException("Failed to compute revenue for stall", e); }
+        return BigDecimal.ZERO;
+    }
+
+    /** Top món bán chạy cho 1 quầy cụ thể. */
+    public List<TopDish> topDishesForStall(int limit, int days, int quayHangId){
+        String sql = "SELECT i.mon_an_id AS id, m.ten_mon_an AS name, SUM(i.so_luong) AS qty, " +
+                "SUM(i.so_luong * COALESCE(i.don_gia_mon_an_luc_dat,0)) AS rev " +
+                "FROM OrderItems i JOIN Orders o ON i.order_id = o.order_id " +
+                "LEFT JOIN MonAn m ON i.mon_an_id = m.mon_an_id " +
+                "WHERE o.thoi_gian_dat >= ? AND o.quay_hang_id = ? " +
+                "AND (o.trang_thai_order IS NULL OR o.trang_thai_order <> 'CANCELLED') " +
+                "GROUP BY i.mon_an_id, m.ten_mon_an ORDER BY qty DESC LIMIT ?";
+        List<TopDish> out = new ArrayList<>();
+        try (Connection con = ds.getConnection(); PreparedStatement ps = con.prepareStatement(sql)){
+            ps.setTimestamp(1, cutoffDays(days));
+            ps.setInt(2, quayHangId);
+            ps.setInt(3, Math.max(1, limit));
+            try (ResultSet rs = ps.executeQuery()){
+                while (rs.next()){
+                    Integer id = (Integer) rs.getObject("id");
+                    String name = rs.getString("name");
+                    long qty = rs.getLong("qty");
+                    BigDecimal rev = rs.getBigDecimal("rev");
+                    out.add(new TopDish(id, name, qty, rev == null ? BigDecimal.ZERO : rev));
+                }
+            }
+        } catch (SQLException e){ throw new RuntimeException("Failed to compute top dishes for stall", e); }
+        return out;
+    }
 }

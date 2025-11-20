@@ -159,26 +159,13 @@
             <div class="filter-card mb-3" role="region" aria-label="Bộ lọc và tìm kiếm">
                 <div class="card-body">
                     <div class="row g-3 align-items-end">
-                        <div class="col-12 col-md-5 col-lg-4">
+                        <div class="col-12 col-md-6 col-lg-5">
                             <label for="searchInput" class="form-label mb-1 small text-muted">Tìm kiếm món ăn</label>
                             <div class="input-group">
                                 <span class="input-group-text" id="search-addon" aria-hidden="true">🔎</span>
                                 <input id="searchInput" class="form-control" placeholder="Tìm theo tên món, mô tả..." autocomplete="off" aria-describedby="search-addon" />
                                 <button id="clearQuery" type="button" class="btn btn-outline-secondary d-none" aria-label="Xóa tìm kiếm">×</button>
                             </div>
-                        </div>
-                        <div class="col-6 col-md-3 col-lg-2">
-                            <label for="filterQuay" class="form-label mb-1 small text-muted">Quầy</label>
-                            <c:choose>
-                              <c:when test="${isStallStaff}">
-                                <input type="text" class="form-control form-control-sm" value="Quầy của bạn" disabled />
-                              </c:when>
-                              <c:otherwise>
-                                <select id="filterQuay" class="form-select form-select-sm" aria-label="Lọc theo quầy">
-                                    <option value="">Tất cả</option>
-                                </select>
-                              </c:otherwise>
-                            </c:choose>
                         </div>
                         <div class="col-6 col-md-3 col-lg-2">
                             <label class="form-label mb-1 small text-muted">&nbsp;</label>
@@ -301,30 +288,12 @@
   const prevBtn = document.getElementById('prevPage');
   const nextBtn = document.getElementById('nextPage');
   const pageInfo = document.getElementById('pageInfo');
-  const quaySel = document.getElementById('filterQuay');
   const themeToggle = document.getElementById('themeToggle');
   if(!table) return;
   const tbody = table.querySelector('tbody');
   const toText = (v) => (v ?? '').toString().toLowerCase();
   let state = { page: 1, perPage: parseInt(rowsPerSel?.value || '10', 10), totalFiltered: 0 };
   let totalRows = 0;
-
-  function populateQuayOptions(){
-    if (!quaySel) return;
-    const seen = new Set();
-    const frag = document.createDocumentFragment();
-    Array.from(tbody.querySelectorAll('tr')).forEach(tr => {
-      const quay = tr.dataset.quay || '';
-      if (quay && !seen.has(quay)) {
-        seen.add(quay);
-        const opt = document.createElement('option');
-        opt.value = quay;
-        opt.textContent = quay;
-        frag.appendChild(opt);
-      }
-    });
-    quaySel.appendChild(frag);
-  }
 
   function updateClearQuery(){
     if (clearQuery) {
@@ -335,15 +304,11 @@
 
   function applyFilters(){
     const q = toText(search.value);
-    const quayFilter = (quaySel.value || '').toLowerCase();
     let matched = 0;
     tbody.querySelectorAll('tr').forEach(tr => {
       const ten = toText(tr.dataset.ten);
       const moTa = toText(tr.dataset.mota);
-      const quay = toText(tr.dataset.quay);
-      const matchText = !q || ten.includes(q) || moTa.includes(q);
-      const matchQuay = !quayFilter || quay === quayFilter;
-      const match = matchText && matchQuay;
+      const match = !q || ten.includes(q) || moTa.includes(q);
       tr.dataset.filtered = match ? '1' : '0';
       if (match) matched++;
     });
@@ -403,14 +368,13 @@
   });
 
   search.addEventListener('input', applyFilters);
-  quaySel.addEventListener('change', applyFilters);
   if (clearQuery) {
     clearQuery.addEventListener('click', () => { search.value=''; applyFilters(); search.focus(); });
   }
   rowsPerSel.addEventListener('change', () => { state.perPage = parseInt(rowsPerSel.value,10); state.page = 1; renderPage(); });
   prevBtn.addEventListener('click', () => { if (state.page > 1) { state.page--; renderPage(); } });
   nextBtn.addEventListener('click', () => { state.page++; renderPage(); });
-  clearBtn.addEventListener('click', ()=>{ search.value=''; quaySel.value=''; applyFilters(); });
+  clearBtn.addEventListener('click', ()=>{ search.value=''; applyFilters(); });
 
   // Theme toggle
   function applyTheme(theme){
@@ -442,7 +406,6 @@
 
   // initial
   totalRows = tbody.querySelectorAll('tr').length;
-  populateQuayOptions();
   applyFilters();
 })();
 </script>
