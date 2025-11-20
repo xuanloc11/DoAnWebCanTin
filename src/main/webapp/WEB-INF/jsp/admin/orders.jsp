@@ -32,6 +32,48 @@
         </div>
 
         <div class="admin-content">
+            <!-- Search / filter bar for orders -->
+            <form method="get" class="row g-2 align-items-end mb-3">
+                <div class="col-sm-4 col-md-3">
+                    <label for="q" class="form-label mb-1 small text-muted">Tìm kiếm đơn hàng</label>
+                    <input type="text" id="q" name="q" value="${fn:escapeXml(param.q)}" class="form-control form-control-sm" placeholder="ID đơn hàng, ghi chú..." />
+                </div>
+                <div class="col-sm-3 col-md-2">
+                    <label for="status" class="form-label mb-1 small text-muted">Trạng thái</label>
+                    <select id="status" name="status" class="form-select form-select-sm">
+                        <option value="">Tất cả trạng thái</option>
+                        <option value="MOI_DAT" ${param.status eq 'MOI_DAT' ? 'selected' : ''}>Mới đặt</option>
+                        <option value="DA_XAC_NHAN" ${param.status eq 'DA_XAC_NHAN' ? 'selected' : ''}>Đã xác nhận</option>
+                        <option value="DANG_GIAO" ${param.status eq 'DANG_GIAO' ? 'selected' : ''}>Đang giao</option>
+                        <option value="DA_GIAO" ${param.status eq 'DA_GIAO' ? 'selected' : ''}>Đã giao</option>
+                    </select>
+                </div>
+                <div class="col-sm-3 col-md-2">
+                    <label for="from" class="form-label mb-1 small text-muted">Từ ngày</label>
+                    <input type="date" id="from" name="from" value="${param.from}" class="form-control form-control-sm" />
+                </div>
+                <div class="col-sm-3 col-md-2">
+                    <label for="to" class="form-label mb-1 small text-muted">Đến ngày</label>
+                    <input type="date" id="to" name="to" value="${param.to}" class="form-control form-control-sm" />
+                </div>
+                <div class="col-sm-4 col-md-3 d-flex align-items-end gap-2">
+                    <button type="submit" class="btn btn-primary btn-sm rounded-pill px-3">Lọc</button>
+                    <a href="${pageContext.request.contextPath}/admin/orders" class="btn btn-outline-secondary btn-sm rounded-pill">Xóa bộ lọc</a>
+                </div>
+                <div class="col-12 small text-muted mt-1">
+                    <c:if test="${not empty param.q || not empty param.status || not empty param.from || not empty param.to}">
+                        <span>Filter: </span>
+                        <c:if test="${not empty param.q}">tìm kiếm "<strong><c:out value="${param.q}"/></strong>"</c:if>
+                        <c:if test="${not empty param.status}">, trạng thái = <strong><c:out value="${param.status}"/></strong></c:if>
+                        <c:if test="${not empty param.from}">, từ ngày <strong><c:out value="${param.from}"/></strong></c:if>
+                        <c:if test="${not empty param.to}">, đến ngày <strong><c:out value="${param.to}"/></strong></c:if>
+                    </c:if>
+                    <c:if test="${not empty orders}">
+                        <span class="ms-2">Số lượng đơn hàng: <strong>${fn:length(orders)}</strong></span>
+                    </c:if>
+                </div>
+            </form>
+
             <c:choose>
                 <c:when test="${not empty orders}">
                     <div class="table-wrap-soft bg-white mb-3 border rounded-3">

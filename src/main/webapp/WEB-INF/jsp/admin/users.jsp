@@ -1,5 +1,6 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
 <!DOCTYPE html>
 <html lang="vi" class="admin-page" data-bs-theme="light">
 <head>
@@ -31,6 +32,38 @@
         </div>
 
         <div class="admin-content">
+            <!-- Search bar for users -->
+            <form method="get" class="row g-2 align-items-center mb-3">
+                <div class="col-sm-4 col-md-3">
+                    <label for="q" class="form-label mb-1 small text-muted">Tìm kiếm</label>
+                    <input type="text" id="q" name="q" value="${fn:escapeXml(param.q)}" class="form-control form-control-sm" placeholder="Nhập tên, email, ID..." />
+                </div>
+                <div class="col-sm-3 col-md-2">
+                    <label for="role" class="form-label mb-1 small text-muted">Vai trò</label>
+                    <select id="role" name="role" class="form-select form-select-sm">
+                        <option value="">Tất cả</option>
+                        <option value="bgh_admin" ${param.role eq 'bgh_admin' ? 'selected' : ''}>BGH Admin</option>
+                        <option value="truong_quay" ${param.role eq 'truong_quay' ? 'selected' : ''}>Trưởng quầy</option>
+                        <option value="nhan_vien_quay" ${param.role eq 'nhan_vien_quay' ? 'selected' : ''}>Nhân viên quầy</option>
+                        <option value="hoc_sinh" ${param.role eq 'hoc_sinh' ? 'selected' : ''}>Sinh viên</option>
+                    </select>
+                </div>
+                <div class="col-sm-3 col-md-2 d-flex align-items-end gap-2">
+                    <button type="submit" class="btn btn-primary btn-sm rounded-pill px-3">Tìm kiếm</button>
+                    <a href="${pageContext.request.contextPath}/admin/users" class="btn btn-outline-secondary btn-sm rounded-pill">Xóa</a>
+                </div>
+                <div class="col-12 col-md-auto ms-md-auto text-md-end small text-muted">
+                    <c:if test="${not empty param.q || not empty param.role}">
+                        <span>Bộ lọc: </span>
+                        <c:if test="${not empty param.q}">tên/email chứa "<strong><c:out value="${param.q}"/></strong>"</c:if>
+                        <c:if test="${not empty param.role}">, vai trò = <strong><c:out value="${param.role}"/></strong></c:if>
+                    </c:if>
+                    <c:if test="${not empty users}">
+                        <span class="ms-2">Tổng số: <strong>${fn:length(users)}</strong></span>
+                    </c:if>
+                </div>
+            </form>
+
             <c:choose>
                 <c:when test="${not empty users}">
                     <div class="table-wrap-soft bg-white mb-3 border rounded-3">
