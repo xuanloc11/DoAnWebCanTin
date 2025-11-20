@@ -216,7 +216,9 @@
                                                     <c:out value="${f.tenMonAn}" />
                                                 </a>
                                             </h6>
-                                            <p class="fs-12 mb-3 lh-18"><c:out value="${empty f.moTa ? 'Không có mô tả' : f.moTa}" /></p>
+                                            <p class="fs-12 mb-3 lh-18" data-desc-raw>
+                                              <c:out value="${empty f.moTa ? 'Không có mô tả' : f.moTa}" escapeXml="false" />
+                                            </p>
                                             <div class="d-flex align-items-center gap-sm-3 gap-2 flex-wrap">
                                                 <div class="d-flex align-items-center gap-1">
                                                     <span class="theme3-clr fw-semibold fs-16">
@@ -257,43 +259,110 @@
 <script src="assets/js/jquery.magnific-popup.min.js"></script>
 <script src="assets/js/wow.min.js"></script>
 <script src="assets/js/main.js"></script>
-<script>
-  // Thêm vào giỏ bằng AJAX để không reload trang nhưng vẫn dùng đúng servlet /cart/add
-  $(function () {
-    $(document).on('submit', '.add-to-cart-form', function (e) {
-      e.preventDefault();
-      var $form = $(this);
-      var url = $form.attr('action');
-      var data = $form.serialize();
 
-      $.ajax({
-        url: url,
-        type: 'POST',
-        data: data,
-        headers: { 'X-Requested-With': 'XMLHttpRequest' }, // để AddToCartServlet hiểu là AJAX
-        dataType: 'json',
-        success: function (resp) {
-          if (resp && resp.status === 'ok') {
-            // Cập nhật badge số lượng giỏ hàng trên header nếu có
-            if (resp.cartTotals && typeof resp.cartTotals.totalQuantity !== 'undefined') {
-              var $badge = $('[data-cart-total-qty]');
-              if ($badge.length) {
-                $badge.text(resp.cartTotals.totalQuantity);
-              }
-            }
-            // Nếu muốn vẫn reload để đảm bảo mọi thứ đồng bộ, bỏ comment dòng dưới:
-            // window.location.reload();
-          } else {
-            alert((resp && resp.message) || 'Không thể thêm món vào giỏ.');
+<script>
+// Dùng chung logic AJAX thêm vào giỏ + popup giống trang index
+(function(){
+  function formatPrice(num){ try { const n = parseFloat(num); if(isNaN(n)) return num; return n.toLocaleString('vi-VN'); } catch(e){ return num; } }
+  function showToast(msg, type){
+    let t = document.getElementById('toast');
+    if(!t){
+      t = document.createElement('div');
+      t.id = 'toast';
+      t.style.cssText = 'position:fixed;bottom:24px;right:24px;background:#1f2937;color:#fff;padding:14px 18px;border-radius:12px;display:none;z-index:2000;box-shadow:0 8px 24px rgba(0,0,0,.25);font-size:14px;line-height:1.4;max-width:320px;';
+      t.innerHTML = '<div style="display:flex;align-items:center;gap:8px;"><span id="toastIcon" style="font-size:18px;">✅</span><span id="toastMsg"></span></div>';
+      document.body.appendChild(t);
+    }
+    const m = document.getElementById('toastMsg');
+    const ic = document.getElementById('toastIcon');
+    m.textContent = msg;
+    if(type==='error'){ t.style.background='#b91c1c'; ic.textContent='⚠️'; }
+    else if(type==='info'){ t.style.background='#1e3a8a'; ic.textContent='ℹ️'; }
+    else if(type==='warn'){ t.style.background='#92400e'; ic.textContent='⚠️'; }
+    else { t.style.background='#065f46'; ic.textContent='✅'; }
+    t.style.display='block';
+    t.style.opacity='1';
+    t.style.transform='translateY(0)';
+    setTimeout(()=>{
+      t.style.opacity='0';
+      t.style.transform='translateY(10px)';
+      setTimeout(()=>{ t.style.display='none'; },400);
+    },3000);
+  }
+  function updateHeaderBadges(totalQty){
+    const badges = document.querySelectorAll('.count-quan,[data-cart-total-qty]');
+    badges.forEach(b => { b.textContent = String(totalQty); });
+  }
+  function extractTotals(json){
+    if(json && json.cartTotals){
+      return { qty: json.cartTotals.totalQuantity ?? 0, price: json.cartTotals.totalPrice ?? 0 };
+    }
+    if(json && json.cart){
+      return { qty: json.cart.totalQuantity ?? 0, price: json.cart.totalPrice ?? 0 };
+    }
+    return null;
+  }
+
+  document.addEventListener('submit', function(e){
+    const form = e.target;
+    if (!(form instanceof HTMLFormElement)) return;
+    if (!form.action) return;
+    const targetPath = (new URL(form.action, location.origin)).pathname;
+    if (!targetPath.endsWith('/cart/add')) return; // không phải form thêm giỏ
+
+    e.preventDefault();
+    const monId = (form.querySelector('input[name="mon_an_id"]')||{}).value || (form.querySelector('button[data-mon-id]')||{}).getAttribute?.('data-mon-id') || '';
+    const qty = (form.querySelector('input[name="qty"]')||{}).value || '1';
+    const payload = new URLSearchParams();
+    if(monId) payload.append('mon_an_id', monId);
+    payload.append('qty', qty);
+    payload.append('ajax','1');
+
+    fetch(form.action, {
+      method:'POST',
+      body: payload,
+      headers:{
+        'X-Requested-With':'XMLHttpRequest',
+        'Accept':'application/json',
+        'Content-Type':'application/x-www-form-urlencoded'
+      }
+    })
+      .then(async r=>{ let j; try{ j = await r.json(); }catch(_){ j = {status:'error', message:'Phản hồi không hợp lệ'}; } return { ok:r.ok, status:r.status, json:j }; })
+      .then(out=>{
+        const json = out.json || {};
+        if(out.ok && (json.status==='ok' || json.success===true)){
+          const totals = extractTotals(json);
+          if(totals){
+            const qtyNum = Math.max(0, parseInt(totals.qty||0,10));
+            updateHeaderBadges(qtyNum);
           }
-        },
-        error: function (xhr) {
-          console.error('Lỗi AddToCart AJAX', xhr.status, xhr.responseText);
-          alert('Có lỗi xảy ra khi thêm vào giỏ, vui lòng thử lại.');
+          showToast((json.message||'Đã thêm vào giỏ hàng') + ' (+'+(json.quantityAdded||qty)+')', 'success');
+        } else {
+          showToast(json.message || ('Lỗi ('+out.status+') khi thêm vào giỏ'), 'error');
         }
-      });
-    });
+      })
+      .catch(()=> showToast('Không thể thêm vào giỏ hàng', 'error'));
   });
+})();
+
+// Làm sạch mô tả CKEditor: bỏ HTML, cắt max 100 ký tự (giữ lại logic cũ)
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('[data-desc-raw]').forEach(function (p) {
+    var rawHtml = p.innerHTML || '';
+    var tmp = document.createElement('div');
+    tmp.innerHTML = rawHtml;
+    var text = tmp.textContent || tmp.innerText || '';
+    text = text.trim();
+    if (!text) {
+      p.textContent = 'Không có mô tả';
+      return;
+    }
+    if (text.length > 100) {
+      text = text.substring(0, 100) + '...';
+    }
+    p.textContent = text;
+  });
+});
 </script>
 </body>
 </html>

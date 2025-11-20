@@ -45,7 +45,6 @@ public class StallMenuServlet extends HttpServlet {
 
         req.setAttribute("stall", stall);
         req.setAttribute("foods", foods);
-        req.getRequestDispatcher("/WEB-INF/jsp/menu-stall.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/jsp/menu-quay.jsp").forward(req, resp);
     }
 }
-

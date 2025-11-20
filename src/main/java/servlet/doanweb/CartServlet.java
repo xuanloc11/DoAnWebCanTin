@@ -42,6 +42,8 @@ public class CartServlet extends HttpServlet {
 
         String removeParam = req.getParameter("remove");
         String action = req.getParameter("action");
+        System.out.println("[CartServlet] action=" + action + ", remove=" + removeParam);
+
         if (removeParam != null && !removeParam.isBlank()) {
             int monId = parseInt(removeParam);
             cart.removeItem(monId);
@@ -57,19 +59,23 @@ public class CartServlet extends HttpServlet {
             }
             return;
         } else if ("update".equalsIgnoreCase(action) || action == null) {
-            // Cập nhật theo monAnId để khớp với name="qty_${it.monAn.monAnId}" trên UI
+            System.out.println("[CartServlet] UPDATE branch - syncing from qty_* params");
             for (Map.Entry<Integer, CartItem> e : cart.getItems().entrySet()) {
                 CartItem item = e.getValue();
                 if (item == null || item.getMonAn() == null) continue;
                 int monAnId = item.getMonAn().getMonAnId();
                 String param = req.getParameter("qty_" + monAnId);
+                System.out.println("[CartServlet] param qty_" + monAnId + "=" + param);
                 if (param != null) {
                     try {
                         int q = Integer.parseInt(param);
                         cart.updateItem(monAnId, q);
-                    } catch (NumberFormatException ignored) {}
+                    } catch (NumberFormatException ex) {
+                        ex.printStackTrace();
+                    }
                 }
             }
+            System.out.println("[CartServlet] After update: totalQty=" + cart.getTotalQuantity() + ", totalPrice=" + cart.getTotalPrice());
         }
 
         if (isAjax(req)) {
@@ -78,6 +84,7 @@ public class CartServlet extends HttpServlet {
                 totalQuantity += item.getSoLuong();
             }
             long totalPrice = cart.getTotalPrice() == null ? 0L : cart.getTotalPrice().longValue();
+            System.out.println("[CartServlet] Responding JSON: totalQty=" + totalQuantity + ", totalPrice=" + totalPrice);
             writeJson(resp, totalPrice, totalPrice, totalQuantity);
         } else {
             resp.sendRedirect(req.getContextPath()+"/cart");

@@ -14,53 +14,62 @@
     <c:set var="isFoods" value="${fn:contains(uri, '/admin/management')}"/>
     <c:set var="auth" value="${sessionScope.authUser}"/>
     <c:set var="role" value="${auth != null ? auth.role : ''}"/>
-
-    <!-- Dashboard -->
+    <!-- lấy tên quầy của trưởng quầy, giả sử lưu trong auth.quayTen hoặc map được từ quayHangId -->
+      <c:set var="isDashboard" value="${fn:contains(uri, '/admin/dashboard') || fn:endsWith(uri,'/admin')}"/>
+    <!-- Dashboard: luôn hiện -->
     <a class="admin-nav-link ${isDashboard ? 'active' : ''}"
        href="${pageContext.request.contextPath}/admin/dashboard">
         <span class="nav-icon">📊</span>
         <span class="nav-text">Dashboard</span>
     </a>
 
-    <!-- Món ăn (management) -->
-    <a class="admin-nav-link ${isFoods ? 'active' : ''}"
-       href="${pageContext.request.contextPath}/admin/management">
-        <span class="nav-icon">🍔</span>
-        <span class="nav-text">Món ăn</span>
-    </a>
-    <c:if test="${isFoods}">
-      <div class="admin-subnav" style="margin-left: 36px; display: grid; gap: 4px;">
-        <c:set var="qn" value="${param.quay_name}"/>
-        <c:url var="comUrl" value="/admin/management"><c:param name="quay_name" value="Quầy cơm"/></c:url>
-        <c:url var="bunUrl" value="/admin/management"><c:param name="quay_name" value="Quầy bún phở"/></c:url>
-        <c:url var="nuocUrl" value="/admin/management"><c:param name="quay_name" value="Quầy nước"/></c:url>
-        <c:url var="vatUrl" value="/admin/management"><c:param name="quay_name" value="Quầy đồ ăn vặt"/></c:url>
-        <a class="admin-nav-sublink ${qn eq 'Quầy cơm' ? 'active' : ''}" href="${comUrl}">🍚 Quầy cơm</a>
-        <a class="admin-nav-sublink ${qn eq 'Quầy bún phở' ? 'active' : ''}" href="${bunUrl}">🍜 Quầy bún phở</a>
-        <a class="admin-nav-sublink ${qn eq 'Quầy nước' ? 'active' : ''}" href="${nuocUrl}">🥤 Quầy nước</a>
-        <a class="admin-nav-sublink ${qn eq 'Quầy đồ ăn vặt' ? 'active' : ''}" href="${vatUrl}">🍟 Quầy đồ ăn vặt</a>
-      </div>
-    </c:if>
+    <!-- Các mục chỉ dành cho TRƯỞNG QUẦY / NHÂN VIÊN, KHÔNG cho admin bgh_admin -->
+    <c:if test="${role eq 'truong_quay' || role eq 'nhan_vien_quay'}">
+      <!-- Món ăn (management) -->
+      <a class="admin-nav-link ${isFoods ? 'active' : ''}"
+         href="${pageContext.request.contextPath}/admin/management">
+          <span class="nav-icon">🍔</span>
+          <span class="nav-text">Món ăn</span>
+      </a>
+      <c:if test="${isFoods}">
+        <div class="admin-subnav" style="margin-left: 36px; display: grid; gap: 4px;">
+          <c:set var="qn" value="${param.quay_name}"/>
+          <!-- URL cố định cho 4 quầy -->
+          <c:url var="comUrl" value="/admin/management"><c:param name="quay_name" value="Quầy cơm"/></c:url>
+          <c:url var="bunUrl" value="/admin/management"><c:param name="quay_name" value="Quầy bún phở"/></c:url>
+          <c:url var="nuocUrl" value="/admin/management"><c:param name="quay_name" value="Quầy nước"/></c:url>
+          <c:url var="vatUrl" value="/admin/management"><c:param name="quay_name" value="Quầy đồ ăn vặt"/></c:url>
 
-    <!-- Menu -->
-    <a class="admin-nav-link ${fn:endsWith(uri, '/admin/menu') or fn:contains(uri, '/admin/menu/') ? 'active' : ''}"
-       href="${pageContext.request.contextPath}/admin/menu">
-        <span class="nav-icon">🗒️</span>
-        <span class="nav-text">Menu</span>
-    </a>
+          <!-- Chỉ hiển thị đúng quầy tương ứng với trưởng quầy đang đăng nhập -->
+          <c:choose>
+            <c:when test="${stallName eq 'Quầy cơm'}">
+              <a class="admin-nav-sublink ${qn eq 'Quầy cơm' ? 'active' : ''}" href="${comUrl}">🍚 Quầy cơm</a>
+            </c:when>
+            <c:when test="${stallName eq 'Quầy bún phở'}">
+              <a class="admin-nav-sublink ${qn eq 'Quầy bún phở' ? 'active' : ''}" href="${bunUrl}">🍜 Quầy bún phở</a>
+            </c:when>
+            <c:when test="${stallName eq 'Quầy nước'}">
+              <a class="admin-nav-sublink ${qn eq 'Quầy nước' ? 'active' : ''}" href="${nuocUrl}">🥤 Quầy nước</a>
+            </c:when>
+            <c:when test="${stallName eq 'Quầy đồ ăn vặt'}">
+              <a class="admin-nav-sublink ${qn eq 'Quầy đồ ăn vặt' ? 'active' : ''}" href="${vatUrl}">🍟 Quầy đồ ăn vặt</a>
+            </c:when>
+            <%-- fallback: nếu vì lý do nào đó không có stallName, vẫn ẩn hết submenu để tránh nhầm lẫn --%>
+          </c:choose>
+        </div>
+      </c:if>
 
-    <!-- Quầy hàng: only admin -->
-    <c:if test="${role eq 'bgh_admin'}">
-      <a class="admin-nav-link ${fn:endsWith(uri, '/admin/quayhang') ? 'active' : ''}"
-         href="${pageContext.request.contextPath}/admin/quayhang">
-          <span class="nav-icon">🏪</span>
-          <span class="nav-text">Quầy hàng</span>
+      <!-- Menu: chỉ cho trưởng quầy / nhân viên quầy -->
+      <a class="admin-nav-link ${fn:endsWith(uri, '/admin/menu') or fn:contains(uri, '/admin/menu/') ? 'active' : ''}"
+         href="${pageContext.request.contextPath}/admin/menu">
+          <span class="nav-icon">🗒️</span>
+          <span class="nav-text">Menu</span>
       </a>
     </c:if>
 
-    <!-- Orders: admin, manager, staff -->
+    <!-- Orders: admin, manager, staff (nếu bạn muốn admin vẫn xem đơn hàng) -->
     <c:if test="${role eq 'bgh_admin' || role eq 'truong_quay' || role eq 'nhan_vien_quay'}">
-      <a class="admin-nav-link ${fn:endsWith(uri, '/admin/orders') or fn:contains(uri, '/admin/orders/') ? 'active' : ''}"
+      <a class="admin-nav-link ${fn:endsWith(uri, '/admin/orders') || fn:contains(uri, '/admin/orders/') ? 'active' : ''}"
          href="${pageContext.request.contextPath}/admin/orders">
           <span class="nav-icon">🛒</span>
           <span class="nav-text">Đơn hàng</span>
@@ -69,7 +78,7 @@
 
     <!-- Users: admin & manager (manager limited by servlet) -->
     <c:if test="${role eq 'bgh_admin' || role eq 'truong_quay'}">
-      <a class="admin-nav-link ${fn:endsWith(uri, '/admin/users') or fn:contains(uri, '/admin/users/') ? 'active' : ''}"
+      <a class="admin-nav-link ${fn:endsWith(uri, '/admin/users') || fn:contains(uri, '/admin/users/') ? 'active' : ''}"
          href="${pageContext.request.contextPath}/admin/users">
           <span class="nav-icon">👥</span>
           <span class="nav-text">Người dùng</span>
@@ -80,7 +89,7 @@
     <c:if test="${role eq 'bgh_admin'}">
       <a class="admin-nav-link ${fn:endsWith(uri, '/admin/stats') ? 'active' : ''}"
          href="${pageContext.request.contextPath}/admin/stats">
-          <span class="nav-icon">📊</span>
+          <span class="nav-icon">📈</span>
           <span class="nav-text">Thống kê</span>
       </a>
     </c:if>

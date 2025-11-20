@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.text.Normalizer;
+import java.util.stream.Collectors;
 
 @WebServlet(name = "ManagementServlet", urlPatterns = "/admin/management")
 public class Managment extends HttpServlet {
@@ -43,6 +44,9 @@ public class Managment extends HttpServlet {
             return;
         }
         User user = (User) auth;
+        String role = user.getRole() == null ? null : user.getRole().toLowerCase();
+        boolean isStallStaff = "truong_quay".equals(role) || "nhan_vien_quay".equals(role);
+
         String quayName = req.getParameter("quay_name");
         String quayIdParam = req.getParameter("quay_id");
         Integer quayId = null;
@@ -53,7 +57,6 @@ public class Managment extends HttpServlet {
         List<MonAn> foods = monAnService.all();
         List<QuayHang> quays = quayHangService.getAll();
 
-        // Build quầy map id -> name for display
         Map<Integer, String> quayMap = new HashMap<>();
         if (quays != null) {
             for (QuayHang q : quays) {
@@ -61,19 +64,19 @@ public class Managment extends HttpServlet {
             }
         }
 
-        // If manager, force scope to their stall regardless of query params
-        if (user != null && "truong_quay".equalsIgnoreCase(user.getRole()) && user.getQuayHangId() != null
-                && quayId == null && (quayName == null || quayName.trim().isEmpty())) {
+        if (isStallStaff && user.getQuayHangId() != null) {
+            // Tài khoản thuộc quầy: CHỈ xem món của quầy mình, bỏ qua mọi tham số lọc theo quầy
             Integer targetId = user.getQuayHangId();
-            List<MonAn> filtered = new ArrayList<>();
             if (foods != null) {
-                for (MonAn m : foods) {
-                    if (targetId.equals(m.getQuayHangId())) filtered.add(m);
-                }
+                foods = foods.stream()
+                        .filter(m -> targetId.equals(m.getQuayHangId()))
+                        .collect(Collectors.toList());
             }
-            foods = filtered;
+            // Không dùng quayId / quayName cho loại tài khoản này
+            quayName = null;
+            quayId = null;
         } else {
-            // Previous filters by quay_id or quay_name
+            // Admin có thể lọc theo quay_id hoặc quay_name như cũ
             if (quayId != null && foods != null) {
                 List<MonAn> filtered = new ArrayList<>();
                 for (MonAn m : foods) {
@@ -101,7 +104,7 @@ public class Managment extends HttpServlet {
                     }
                     foods = filtered;
                 } else {
-                    foods = new ArrayList<>(); // no matches -> empty list
+                    foods = new ArrayList<>();
                 }
             }
         }
@@ -110,6 +113,7 @@ public class Managment extends HttpServlet {
         req.setAttribute("quayMap", quayMap);
         req.setAttribute("quay_name", quayName);
         if (quayId != null) req.setAttribute("quay_id", quayId);
+        req.setAttribute("authUser", user);
         req.getRequestDispatcher("/WEB-INF/jsp/admin/management.jsp").forward(req, resp);
     }
 }

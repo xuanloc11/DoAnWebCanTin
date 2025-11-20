@@ -99,7 +99,7 @@
                             </div>
                           </td>
                           <td class="p-3">
-                            <h6 class="theme-clr fw-500 m-0"><fmt:formatNumber value="${it.monAn.gia}" type="number" groupingUsed="true" maxFractionDigits="0" /> VND</h6>
+                            <h6 class="theme-clr fw-500 m-0" data-unit-price="${it.monAn.gia}"><fmt:formatNumber value="${it.monAn.gia}" type="number" groupingUsed="true" maxFractionDigits="0" /> VND</h6>
                           </td>
                           <td class="p-3">
                             <div class="quantity-wrapper d-inline-flex align-items-center">
@@ -109,7 +109,7 @@
                             </div>
                           </td>
                           <td class="p-3">
-                            <h6 class="theme-clr fw-500 m-0"><fmt:formatNumber value="${it.tongGia}" type="number" groupingUsed="true" maxFractionDigits="0" /> VND</h6>
+                            <h6 class="theme-clr fw-500 m-0" data-line-subtotal><fmt:formatNumber value="${it.tongGia}" type="number" groupingUsed="true" maxFractionDigits="0" /> VND</h6>
                           </td>
                           <td class="text-center">
                             <button type="submit" class="btn p-0 border-0" name="remove" value="${it.monAn.monAnId}" title="Xóa">
@@ -126,7 +126,6 @@
                     <a href="${pageContext.request.contextPath}/" class="theme-btn btn-outline-blak">Tiếp tục mua sắm</a>
                   </div>
                   <div class="d-flex gap-2">
-                    <button class="theme-btn btn-outline-blak" type="submit">Cập nhật giỏ</button>
                     <button class="theme-btn" type="submit" name="action" value="clear" onclick="return confirm('Xóa toàn bộ giỏ hàng?');">Xóa giỏ</button>
                   </div>
                 </div>
@@ -142,7 +141,7 @@
               </div>
               <div class="d-flex justify-content-between align-items-center py-2">
                 <span class="text-muted">Tổng</span>
-                <span class="text-black fw-600" data-cart-subtotal><fmt:formatNumber value="${cart.totalPrice}" type="number" groupingUsed="true" maxFractionDigits="0" /> VND</span>
+                <span class="text-black fw-600" data-cart-total><fmt:formatNumber value="${cart.totalPrice}" type="number" groupingUsed="true" maxFractionDigits="0" /> VND</span>
               </div>
               <a href="${pageContext.request.contextPath}/checkout" class="theme-btn w-100 mt-3">Tiến hành thanh toán</a>
             </div>
@@ -166,7 +165,7 @@
 <script src="<c:url value='/assets/js/wow.min.js' />"></script>
 <script src="<c:url value='/assets/js/main.js' />"></script>
 <script>
-  // Quantity increment/decrement: mỗi lần click chỉ +1 / -1, tránh bắt sự kiện hai lần khi click vào icon bên trong
+  // Quantity increment/decrement: mỗi lần click chỉ +1 / -1
   document.addEventListener('click', function (e) {
     if (e.target.matches('button.quantityIncrement')) {
       const wrapper = e.target.closest('.quantity-wrapper');
@@ -174,8 +173,7 @@
       const input = wrapper.querySelector('input[type="number"]');
       if (!input) return;
       const current = parseInt(input.value, 10) || 0;
-      const next = current + 1;
-      input.value = next;
+      input.value = current + 1;
       input.dispatchEvent(new Event('change', { bubbles: true }));
     } else if (e.target.matches('button.quantityDecrement')) {
       const wrapper = e.target.closest('.quantity-wrapper');
@@ -189,24 +187,31 @@
     }
   });
 
-  // Gửi AJAX cập nhật giỏ khi số lượng thay đổi, không cần nhấn nút "Cập nhật giỏ"
+  // Gửi AJAX cập nhật giỏ khi số lượng thay đổi (không cần nút "Cập nhật giỏ")
   document.addEventListener('change', function (e) {
     if (!e.target.matches('input[type="number"][name^="qty_"]')) return;
     const input = e.target;
-    const form = input.closest('form');
-    if (!form || !form.action) return;
+    const fieldName = input.name;
+    const fieldValue = input.value;
 
-    // Gửi toàn bộ form y như khi bấm "Cập nhật giỏ", thêm ajax=1
-    const formData = new FormData(form);
-    formData.append('ajax', '1');
-
+    const form = document.querySelector('form[action$="/cart"]');
+    if (!form) return;
     const url = form.getAttribute('action');
-    console.log('Cart AJAX update URL:', url, 'changed:', input.name + '=' + input.value);
+
+    const params = new URLSearchParams();
+    params.set('action', 'update');
+    params.set('ajax', '1');
+    params.set(fieldName, fieldValue);
+
+    console.log('Cart AJAX update URL:', url, 'changed:', fieldName + '=' + fieldValue);
 
     fetch(url, {
       method: 'POST',
-      headers: { 'X-Requested-With': 'XMLHttpRequest' },
-      body: formData
+      headers: {
+        'X-Requested-With': 'XMLHttpRequest',
+        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+      },
+      body: params.toString()
     })
       .then(function (resp) {
         if (!resp.ok) {
@@ -219,14 +224,29 @@
         console.log('Cart AJAX response:', data);
         if (!data || typeof data.subtotal === 'undefined' || typeof data.total === 'undefined') return;
 
-        // Cập nhật tổng tiền ở box bên phải
-        const subtotalEls = document.querySelectorAll('[data-cart-subtotal]');
-        if (subtotalEls.length >= 2) {
-          subtotalEls[0].textContent = new Intl.NumberFormat('vi-VN').format(data.subtotal) + ' VND';
-          subtotalEls[1].textContent = new Intl.NumberFormat('vi-VN').format(data.total) + ' VND';
-        }
+        const fmt = new Intl.NumberFormat('vi-VN');
+        const subtotalEl = document.querySelector('[data-cart-subtotal]');
+        const totalEl = document.querySelector('[data-cart-total]');
+        if (subtotalEl) subtotalEl.textContent = fmt.format(data.subtotal) + ' VND';
+        if (totalEl) totalEl.textContent = fmt.format(data.total) + ' VND';
 
-        // Cập nhật badge số lượng giỏ hàng trên header
+        // Cập nhật tạm tính từng dòng trong bảng giỏ hàng
+        document.querySelectorAll('.quantity-wrapper').forEach(function (wrapper) {
+          const qtyInput = wrapper.querySelector('input[type="number"]');
+          if (!qtyInput) return;
+          const qty = parseInt(qtyInput.value, 10) || 0;
+
+          const row = wrapper.closest('tr');
+          if (!row) return;
+          const unitPriceEl = row.querySelector('[data-unit-price]');
+          const lineSubtotalEl = row.querySelector('[data-line-subtotal]');
+          if (!unitPriceEl || !lineSubtotalEl) return;
+
+          const unitPrice = parseInt(unitPriceEl.getAttribute('data-unit-price'), 10) || 0;
+          const lineSubtotal = unitPrice * qty;
+          lineSubtotalEl.textContent = fmt.format(lineSubtotal) + ' VND';
+        });
+
         if (typeof data.totalQuantity !== 'undefined') {
           document.querySelectorAll('[data-cart-total-qty]').forEach(function (el) {
             el.textContent = data.totalQuantity;

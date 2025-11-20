@@ -93,7 +93,6 @@
                 <li>
                   <a href="${CTX}/menu/stalls">Menu</a>
                 </li>
-                <li><a href="#contact">Liên hệ</a></li>
               </ul>
             </nav>
           </div>

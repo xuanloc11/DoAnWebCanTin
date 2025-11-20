@@ -2,6 +2,8 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+<c:set var="auth" value="${requestScope.authUser != null ? requestScope.authUser : sessionScope.authUser}" />
+<c:set var="isStallStaff" value="${auth != null && (auth.role eq 'truong_quay' || auth.role eq 'nhan_vien_quay')}" />
 <!DOCTYPE html>
 <html lang="vi" class="admin-page" data-bs-theme="light">
 <head>
@@ -74,7 +76,12 @@
                     <span class="text-muted small">Admin / Món ăn</span>
                 </div>
                 <h1 class="dashboard-title mb-0">Quản lý món ăn</h1>
-                <p class="dashboard-subtitle mb-0">Xem, tìm kiếm và quản lý toàn bộ món ăn trong căn tin.</p>
+                <p class="dashboard-subtitle mb-0">
+                  <c:choose>
+                    <c:when test="${isStallStaff}">Xem, tìm kiếm và quản lý món ăn của quầy bạn.</c:when>
+                    <c:otherwise>Xem, tìm kiếm và quản lý toàn bộ món ăn trong căn tin.</c:otherwise>
+                  </c:choose>
+                </p>
             </div>
             <div class="d-flex flex-wrap align-items-center gap-2">
                 <a href="${pageContext.request.contextPath}/" class="btn btn-outline-secondary btn-sm btn-ghost">
@@ -97,7 +104,12 @@
                             <div class="stat-label mb-1">Tổng số món</div>
                             <div class="stat-value">${total}</div>
                         </div>
-                        <span class="stat-chip bg-primary-subtle text-primary-emphasis align-self-start mt-2">Tất cả quầy</span>
+                        <span class="stat-chip bg-primary-subtle text-primary-emphasis align-self-start mt-2">
+                          <c:choose>
+                            <c:when test="${isStallStaff}">Quầy của bạn</c:when>
+                            <c:otherwise>Tất cả quầy</c:otherwise>
+                          </c:choose>
+                        </span>
                     </div>
                 </div>
                 <div class="col-12 col-sm-6 col-lg-3">
@@ -157,9 +169,16 @@
                         </div>
                         <div class="col-6 col-md-3 col-lg-2">
                             <label for="filterQuay" class="form-label mb-1 small text-muted">Quầy</label>
-                            <select id="filterQuay" class="form-select form-select-sm" aria-label="Lọc theo quầy">
-                                <option value="">Tất cả</option>
-                            </select>
+                            <c:choose>
+                              <c:when test="${isStallStaff}">
+                                <input type="text" class="form-control form-control-sm" value="Quầy của bạn" disabled />
+                              </c:when>
+                              <c:otherwise>
+                                <select id="filterQuay" class="form-select form-select-sm" aria-label="Lọc theo quầy">
+                                    <option value="">Tất cả</option>
+                                </select>
+                              </c:otherwise>
+                            </c:choose>
                         </div>
                         <div class="col-6 col-md-3 col-lg-2">
                             <label class="form-label mb-1 small text-muted">&nbsp;</label>
@@ -291,6 +310,7 @@
   let totalRows = 0;
 
   function populateQuayOptions(){
+    if (!quaySel) return;
     const seen = new Set();
     const frag = document.createDocumentFragment();
     Array.from(tbody.querySelectorAll('tr')).forEach(tr => {

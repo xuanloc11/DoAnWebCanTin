@@ -106,7 +106,7 @@
 
               <c:choose>
                 <c:when test="${empty food.trangThaiMon or food.trangThaiMon eq 'con_hang'}">
-                  <form method="post" action="${pageContext.request.contextPath}/cart/add" class="d-flex align-items-center gap-3 mb-4">
+                  <form method="post" action="${pageContext.request.contextPath}/cart/add" class="d-flex align-items-center gap-3 mb-4 add-to-cart-form">
                     <input type="hidden" name="mon_an_id" value="${food.monAnId}" />
                     <div class="d-flex align-items-center gap-2">
                       <label for="qty" class="mb-0">Số lượng:</label>
@@ -147,5 +147,90 @@
 <script src="assets/js/jquery.magnific-popup.min.js"></script>
 <script src="assets/js/wow.min.js"></script>
 <script src="assets/js/main.js"></script>
+
+<script>
+// Dùng chung handler submit /cart/add từ index (toast + cập nhật badge)
+(function(){
+  function showToast(msg, type){
+    let t = document.getElementById('toast');
+    if(!t){
+      t = document.createElement('div');
+      t.id = 'toast';
+      t.style.cssText = 'position:fixed;bottom:24px;right:24px;background:#1f2937;color:#fff;padding:14px 18px;border-radius:12px;display:none;z-index:2000;box-shadow:0 8px 24px rgba(0,0,0,.25);font-size:14px;line-height:1.4;max-width:320px;';
+      t.innerHTML = '<div style="display:flex;align-items:center;gap:8px;"><span id="toastIcon" style="font-size:18px;">✅</span><span id="toastMsg"></span></div>';
+      document.body.appendChild(t);
+    }
+    const m = document.getElementById('toastMsg');
+    const ic = document.getElementById('toastIcon');
+    m.textContent = msg;
+    if(type==='error'){ t.style.background='#b91c1c'; ic.textContent='⚠️'; }
+    else if(type==='info'){ t.style.background='#1e3a8a'; ic.textContent='ℹ️'; }
+    else if(type==='warn'){ t.style.background='#92400e'; ic.textContent='⚠️'; }
+    else { t.style.background='#065f46'; ic.textContent='✅'; }
+    t.style.display='block';
+    t.style.opacity='1';
+    t.style.transform='translateY(0)';
+    setTimeout(()=>{
+      t.style.opacity='0';
+      t.style.transform='translateY(10px)';
+      setTimeout(()=>{ t.style.display='none'; },400);
+    },3000);
+  }
+  function updateHeaderBadges(totalQty){
+    const badges = document.querySelectorAll('.count-quan,[data-cart-total-qty]');
+    badges.forEach(b => { b.textContent = String(totalQty); });
+  }
+  function extractTotals(json){
+    if(json && json.cartTotals){
+      return { qty: json.cartTotals.totalQuantity ?? 0, price: json.cartTotals.totalPrice ?? 0 };
+    }
+    if(json && json.cart){
+      return { qty: json.cart.totalQuantity ?? 0, price: json.cart.totalPrice ?? 0 };
+    }
+    return null;
+  }
+
+  document.addEventListener('submit', function(e){
+    const form = e.target;
+    if (!(form instanceof HTMLFormElement)) return;
+    if (!form.action) return;
+    const targetPath = (new URL(form.action, location.origin)).pathname;
+    if (!targetPath.endsWith('/cart/add')) return;
+
+    e.preventDefault();
+    const monId = (form.querySelector('input[name="mon_an_id"]')||{}).value || (form.querySelector('button[data-mon-id]')||{}).getAttribute?.('data-mon-id') || '';
+    const qty = (form.querySelector('input[name="qty"]')||{}).value || '1';
+    const payload = new URLSearchParams();
+    if(monId) payload.append('mon_an_id', monId);
+    payload.append('qty', qty);
+    payload.append('ajax','1');
+
+    fetch(form.action, {
+      method:'POST',
+      body: payload,
+      headers:{
+        'X-Requested-With':'XMLHttpRequest',
+        'Accept':'application/json',
+        'Content-Type':'application/x-www-form-urlencoded'
+      }
+    })
+      .then(async r=>{ let j; try{ j = await r.json(); }catch(_){ j = {status:'error', message:'Phản hồi không hợp lệ'}; } return { ok:r.ok, status:r.status, json:j }; })
+      .then(out=>{
+        const json = out.json || {};
+        if(out.ok && (json.status==='ok' || json.success===true)){
+          const totals = extractTotals(json);
+          if(totals){
+            const qtyNum = Math.max(0, parseInt(totals.qty||0,10));
+            updateHeaderBadges(qtyNum);
+          }
+          showToast((json.message||'Đã thêm vào giỏ hàng') + ' (+'+(json.quantityAdded||qty)+')', 'success');
+        } else {
+          showToast(json.message || ('Lỗi ('+out.status+') khi thêm vào giỏ'), 'error');
+        }
+      })
+      .catch(()=> showToast('Không thể thêm vào giỏ hàng', 'error'));
+  });
+})();
+</script>
 </body>
 </html>

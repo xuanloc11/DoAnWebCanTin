@@ -115,7 +115,6 @@
   </div>
 </div>
 <script src="${pageContext.request.contextPath}/assets/js/admin.js?v=20251022"></script>
-<!-- CKEditor 5 CDN and initialization -->
 <script src="https://cdn.ckeditor.com/ckeditor5/39.0.0/classic/ckeditor.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function () {

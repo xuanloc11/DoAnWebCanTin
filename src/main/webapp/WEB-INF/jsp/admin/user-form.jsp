@@ -81,15 +81,23 @@
             <input id="don_vi" name="don_vi" value="${mode eq 'edit' ? user.donVi : ''}" />
           </div>
           <div class="field">
-            <label for="quay_hang_id">Quầy hàng ID (tùy chọn)</label>
+            <label for="quay_hang_id">Quầy hàng (tùy chọn)</label>
             <c:choose>
               <c:when test="${auth != null && auth.role eq 'truong_quay' && auth.quayHangId != null}">
-                <input id="quay_hang_id_text" value="${auth.quayHangId}" disabled />
+                <input id="quay_hang_id_text" value="Quầy #${auth.quayHangId}" disabled />
                 <input type="hidden" name="quay_hang_id" value="${auth.quayHangId}" />
                 <div class="hint">Tự động gán vào quầy của bạn.</div>
               </c:when>
               <c:otherwise>
-                <input id="quay_hang_id" name="quay_hang_id" type="number" step="1" min="1" value="${mode eq 'edit' ? user.quayHangId : ''}" />
+                <select id="quay_hang_id" name="quay_hang_id">
+                  <option value="">-- Không gán quầy --</option>
+                  <c:forEach var="q" items="${quays}">
+                    <option value="${q.quayHangId}" ${mode eq 'edit' && user.quayHangId == q.quayHangId ? 'selected' : ''}>
+                      <c:out value="${q.tenQuayHang}" /> (ID: ${q.quayHangId})
+                    </option>
+                  </c:forEach>
+                </select>
+                <div class="hint">Chọn quầy làm việc cho tài khoản (để trống nếu không thuộc quầy nào).</div>
               </c:otherwise>
             </c:choose>
           </div>
