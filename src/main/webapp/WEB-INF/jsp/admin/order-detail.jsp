@@ -72,7 +72,9 @@
           <div class="row"><div class="label">Quầy hàng</div><div><c:out value="${quay != null ? quay.tenQuayHang : order.quayHangId}"/></div></div>
           <div class="row"><div class="label">Tổng tiền (DB)</div><div><fmt:formatNumber value="${order.tongTien}" pattern="#,##0"/> ₫</div></div>
           <div class="row"><div class="label">Tổng tính lại</div><div><fmt:formatNumber value="${calcTotal}" pattern="#,##0"/> ₫</div></div>
-          <div class="row" style="grid-column:1 / -1"><div class="label">Ghi chú</div><div><c:out value="${order.ghiChu}"/></div></div>
+          <div class="row" style="grid-column:1 / -1"><div class="label">Ghi chú</div><div></div></div>
+            <div class="row" style="grid-column:1 / -1"><div class="label">Phương thức thanh toán:</div><div><c:out value="${order.ghiChu}"/></div></div>
+
         </div>
 
         <div class="items" role="region" aria-label="Danh sách món">
