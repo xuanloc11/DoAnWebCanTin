@@ -16,7 +16,6 @@ public class ThongKeService {
         public DailyCount(LocalDate date, int count){ this.date = date; this.count = count; }
         public LocalDate getDate(){ return date; }
         public int getCount(){ return count; }
-        // Helper for JSP fmt:formatDate
         public java.sql.Date getDateSql(){ return date == null ? null : java.sql.Date.valueOf(date); }
     }
 

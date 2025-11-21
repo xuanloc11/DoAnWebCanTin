@@ -40,6 +40,9 @@
     .muted{ color:var(--muted); font-size:12px; }
     .actions{ margin-top:10px; font-size:13px; }
     .actions .btn{ font-size:13px; padding:8px 14px; }
+    /* Canh trái nhãn PTTT và các dòng tổng kết */
+    .summary-row{ display:flex; justify-content:space-between; padding:4px 0; }
+    .summary-label{ font-weight:600; }
   </style>
 </head>
 <body class="body-bg" data-context="${pageContext.request.contextPath}">

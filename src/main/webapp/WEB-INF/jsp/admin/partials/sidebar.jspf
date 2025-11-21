@@ -107,8 +107,8 @@
       </a>
     </c:if>
 
-    <!-- Users: admin & manager (manager limited by servlet) -->
-    <c:if test="${role eq 'bgh_admin' || role eq 'truong_quay'}">
+    <!-- Users: chỉ admin (bỏ cho trưởng quầy) -->
+    <c:if test="${role eq 'bgh_admin'}">
       <a class="admin-nav-link ${fn:endsWith(uri, '/admin/users') || fn:contains(uri, '/admin/users/') ? 'active' : ''}"
          href="${pageContext.request.contextPath}/admin/users">
         <span class="nav-icon"></span>

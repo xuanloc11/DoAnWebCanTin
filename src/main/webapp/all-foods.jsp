@@ -108,7 +108,6 @@
     request.setAttribute("foods", filtered);
     request.setAttribute("quays", quays);
 %>
-
 <!-- breadcrumb -->
 <section class="breadcrumb-section position-relative fix bg-cover" style="background-image: url(assets/img/hero/breadcrumb-banner.jpg);">
     <div class="container">
@@ -124,7 +123,6 @@
     <img src="assets/img/home-1/home-shape-start.png" alt="img" class="bread-shape-start position-absolute">
     <img src="assets/img/home-1/home-shape-end.png" alt="img" class="bread-shape-end position-absolute d-sm-block d-none">
 </section>
-
 <section class="shop-section position-relative z-1 fix section-padding">
     <div class="container">
         <div class="row g-4">
@@ -132,13 +130,13 @@
                 <div class="shop-category cmn-shadow-shop mb-xxl-4 mb-3">
                     <h4 class="mb-3">Quầy hàng</h4>
                     <div class="d-flex flex-column gap-3">
-                        <a href="${pageContext.request.contextPath}/all-foods.jsp" class="d-flex w-100 link-effect align-items-center justify-content-between border-bottom pb-3">
+                        <a href="${pageContext.request.contextPath}/mon-an-list" class="d-flex w-100 link-effect align-items-center justify-content-between border-bottom pb-3">
                             <span class="d-flex align-items-center gap-1 fs-15 text-clr">
                                 <img src="assets/img/icons/shop-check.png" alt="img">Tất cả quầy
                             </span>
                         </a>
                         <c:forEach var="qq" items="${quays}">
-                            <a href="${pageContext.request.contextPath}/all-foods.jsp?quay=${qq.quayHangId}" class="d-flex w-100 link-effect align-items-center justify-content-between border-bottom pb-3 ${param.quay == qq.quayHangId ? 'active' : ''}">
+                            <a href="${pageContext.request.contextPath}/mon-an-list?quay=${qq.quayHangId}" class="d-flex w-100 link-effect align-items-center justify-content-between border-bottom pb-3 ${param.quay == qq.quayHangId ? 'active' : ''}">
                                 <span class="d-flex align-items-center gap-1 fs-15 text-clr">
                                     <img src="assets/img/icons/shop-check.png" alt="img">
                                     <c:out value="${qq.tenQuayHang}"/>
@@ -149,7 +147,7 @@
                 </div>
                 <div class="shop-category cmn-shadow-shop mb-xxl-4 mb-3">
                     <h4 class="mb-3">Bộ lọc</h4>
-                    <form method="get" action="${pageContext.request.contextPath}/all-foods.jsp" class="d-flex flex-column gap-3">
+                    <form method="get" action="${pageContext.request.contextPath}/mon-an-list" class="d-flex flex-column gap-3">
                         <input type="search" class="form-control" name="q" placeholder="Tìm món..." value="${fn:escapeXml(param.q)}" />
                         <select class="form-select" name="status">
                             <option value="" ${empty param.status ? 'selected' : ''}>Tình trạng</option>
@@ -161,8 +159,16 @@
                             <input type="number" class="form-control" name="maxPrice" placeholder="Giá đến" value="${param.maxPrice}" />
                         </div>
                         <input type="hidden" name="quay" value="${param.quay}" />
+                        <!-- chọn số món mỗi trang -->
+                        <select class="form-select" name="size">
+                          <c:set var="curSize" value="${empty param.size ? 9 : param.size}" />
+                          <option value="6" ${curSize == 6 ? 'selected' : ''}>6 món/trang</option>
+                          <option value="9" ${curSize == 9 ? 'selected' : ''}>9 món/trang</option>
+                          <option value="12" ${curSize == 12 ? 'selected' : ''}>12 món/trang</option>
+                          <option value="24" ${curSize == 24 ? 'selected' : ''}>24 món/trang</option>
+                        </select>
                         <button class="theme-btn w-100" type="submit">Áp dụng</button>
-                        <a class="theme-btn btn-outline-blak w-100" href="${pageContext.request.contextPath}/all-foods.jsp">Đặt lại</a>
+                        <a class="theme-btn btn-outline-blak w-100" href="${pageContext.request.contextPath}/mon-an-list">Đặt lại</a>
                     </form>
                 </div>
             </div>
@@ -216,9 +222,6 @@
                                                     <c:out value="${f.tenMonAn}" />
                                                 </a>
                                             </h6>
-                                            <p class="fs-12 mb-3 lh-18" data-desc-raw>
-                                              <c:out value="${empty f.moTa ? 'Không có mô tả' : f.moTa}" escapeXml="false" />
-                                            </p>
                                             <div class="d-flex align-items-center gap-sm-3 gap-2 flex-wrap">
                                                 <div class="d-flex align-items-center gap-1">
                                                     <span class="theme3-clr fw-semibold fs-16">
@@ -245,9 +248,7 @@
         </div>
     </div>
 </section>
-
 <%@ include file="/WEB-INF/jsp/partials/footer.jspf" %>
-
 <script src="assets/js/jquery-3.7.1.min.js"></script>
 <script src="assets/js/viewport.jquery.js"></script>
 <script src="assets/js/bootstrap.bundle.min.js"></script>
@@ -259,7 +260,6 @@
 <script src="assets/js/jquery.magnific-popup.min.js"></script>
 <script src="assets/js/wow.min.js"></script>
 <script src="assets/js/main.js"></script>
-
 <script>
 // Dùng chung logic AJAX thêm vào giỏ + popup giống trang index
 (function(){

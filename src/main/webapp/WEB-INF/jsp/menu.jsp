@@ -9,12 +9,31 @@
     <title>Thực đơn hôm nay - Căn tin</title>
     <base href="${pageContext.request.contextPath}/" />
     <link rel="shortcut icon" href="assets/img/Hcmute-Logo-Vector.svg-.png">
-
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/animate.css" />
+    <link rel="stylesheet" href="assets/css/magnific-popup.css" />
+    <link rel="stylesheet" href="assets/css/meanmenu.css" />
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="assets/css/nice-select.css" />
+    <link rel="stylesheet" href="assets/css/expose.css" />
 </head>
 <body class="body-bg">
 <%@ include file="/WEB-INF/jsp/partials/header.jspf" %>
+<section class="breadcrumb-section position-relative fix bg-cover" style="background-image: url(assets/img/hero/breadcrumb-banner.jpg);">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <h2 class="white-clr fw-semibold text-center heading-font mb-2">Thực đơn căn tin</h2>
+            <ul class="breadcrumb align-items-center justify-content-center flex-wrap gap-3">
+                <li><a href="${pageContext.request.contextPath}/">Trang chủ</a></li>
+                <li><i class="fa-solid fa-angle-right"></i></li>
+                <li>Menu</li>
+            </ul>
+        </div>
+    </div>
+    <img src="assets/img/home-1/home-shape-start.png" alt="img" class="bread-shape-start position-absolute">
+    <img src="assets/img/home-1/home-shape-end.png" alt="img" class="bread-shape-end position-absolute d-sm-block d-none">
+</section>
 <div class="container pt-80 pb-80">
     <div class="mb-4 d-flex justify-content-between align-items-center flex-wrap gap-2">
         <div>
@@ -106,6 +125,15 @@
 
 <script src="assets/js/bootstrap.bundle.min.js"></script>
 <script src="assets/js/jquery-3.7.1.min.js"></script>
+<script src="assets/js/viewport.jquery.js"></script>
+<script src="assets/js/jquery.nice-select.min.js"></script>
+<script src="assets/js/jquery.waypoints.js"></script>
+<script src="assets/js/jquery.counterup.min.js"></script>
+<script src="assets/js/swiper-bundle.min.js"></script>
+<script src="assets/js/jquery.meanmenu.min.js"></script>
+<script src="assets/js/jquery.magnific-popup.min.js"></script>
+<script src="assets/js/wow.min.js"></script>
+<script src="assets/js/main.js"></script>
 <script>
   // Gửi thêm vào giỏ bằng AJAX cho nút dấu "+" trong thực đơn hôm nay
   $(function () {

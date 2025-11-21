@@ -55,7 +55,7 @@
             <c:choose>
               <c:when test="${selfAdminEdit}">
                 <input type="hidden" name="role" value="bgh_admin" />
-                <p class="form-text text-muted">Bạn đang chỉnh sửa tài khoản quản trị BGH; vai trò này không thể thay đổi.</p>
+                <p class="form-text text-muted">Bạn đang chỉnh sửa tài khoản quản trị ; vai trò này không thể thay đổi.</p>
               </c:when>
               <c:otherwise>
                 <label for="role" class="form-label">Vai trò</label>

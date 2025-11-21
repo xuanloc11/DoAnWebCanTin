@@ -21,7 +21,11 @@
       .table-wrap-soft { border-radius: 14px; overflow: hidden; border:1px solid rgba(148,163,184,.35); background:#fff; }
       .item-chip{ display:inline-block; background:#f6f7f8; border:1px solid rgba(148,163,184,.4); padding:2px 6px; border-radius:999px; margin:1px 4px 1px 0; font-size:12px; }
       .muted{ color:#6b7280; }
-      .col-id{ width:70px; }
+      /* canh lại các cột để không bị lệch */
+      .col-date { width:140px; white-space:nowrap; }
+      .col-name { min-width:220px; }
+      .col-items { min-width:260px; }
+      .col-actions { width:200px; white-space:nowrap; }
     </style>
 </head>
 <body class="admin-page bg-light">
@@ -55,21 +59,19 @@
                             <table class="table table-hover table-striped table-bordered align-middle mb-0">
                                 <thead class="table-light">
                                 <tr>
-                                    <th class="col-id" scope="col">ID</th>
-                                    <th scope="col">Ngày áp dụng</th>
-                                    <th scope="col">Tên thực đơn</th>
-                                    <th scope="col">Món</th>
-                                    <th scope="col" style="width:220px">Hành động</th>
+                                    <th class="col-date" scope="col">Ngày áp dụng</th>
+                                    <th class="col-name" scope="col">Tên thực đơn</th>
+                                    <th class="col-items" scope="col">Món</th>
+                                    <th class="col-actions" scope="col">Hành động</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <c:forEach var="m" items="${menus}">
                                     <c:set var="items" value="${menuItemsMap[m.menuId]}"/>
                                     <tr>
-                                        <td class="fw-semibold">${m.menuId}</td>
-                                        <td><fmt:formatDate value="${m.ngayApDung}" pattern="dd/MM/yyyy"/></td>
-                                        <td><c:out value="${m.tenThucDon}"/></td>
-                                        <td>
+                                        <td class="col-date"><fmt:formatDate value="${m.ngayApDung}" pattern="dd/MM/yyyy"/></td>
+                                        <td class="col-name"><c:out value="${m.tenThucDon}"/></td>
+                                        <td class="col-items">
                                             <c:choose>
                                                 <c:when test="${not empty items}">
                                                     <c:forEach var="it" items="${items}" varStatus="st">
@@ -86,7 +88,7 @@
                                                 </c:otherwise>
                                             </c:choose>
                                         </td>
-                                        <td>
+                                        <td class="col-actions">
                                             <div class="btn-group btn-group-sm" role="group">
                                                 <a class="btn btn-outline-primary" href="${pageContext.request.contextPath}/admin/menu/edit?id=${m.menuId}">✏️ Sửa</a>
                                                 <form action="${pageContext.request.contextPath}/admin/menu/delete" method="post" onsubmit="return confirm('Xóa menu này?');" class="d-inline">

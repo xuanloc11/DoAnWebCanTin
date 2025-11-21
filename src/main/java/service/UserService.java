@@ -14,7 +14,6 @@ public class UserService {
         if (email == null || password == null) return null;
         User u = repo.findByEmail(email.trim());
         if (u == null) return null;
-        // Demo: plaintext compare; replace with hashing in production
         return password.equals(u.getPassword()) ? u : null;
     }
 

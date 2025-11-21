@@ -3869,7 +3869,8 @@ table .quantity-wrapper button {
 }
 
 .pb-40 {
-  padding-bottom: 40px;
+  padding-bottom: 60px;
+    padding-top: 100px;
 }
 
 .ps-40 {
@@ -4113,6 +4114,7 @@ input::placeholder {
   }
   .pb-40 {
     padding-bottom: 30px;
+      padding-top: 80px;
   }
   .ps-40 {
     padding-left: 30px;

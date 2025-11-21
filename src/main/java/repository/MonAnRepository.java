@@ -2,6 +2,8 @@ package repository;
 
 import Util.DataSourceUtil;
 import models.MonAn;
+import models.Page;
+import models.PageRequest;
 
 import javax.sql.DataSource;
 import java.math.BigDecimal;
@@ -120,6 +122,68 @@ public class MonAnRepository {
             try (ResultSet rs = ps.executeQuery()) { while (rs.next()) list.add(map(rs)); }
         } catch (SQLException e) { throw new RuntimeException("Failed to query MonAn by stall", e); }
         return list;
+    }
+
+    public Page<MonAn> findPage(Integer quayId, String q, String status, BigDecimal minPrice, BigDecimal maxPrice, PageRequest pr) {
+        String baseWhere = " FROM MonAn m WHERE 1=1";
+        StringBuilder where = new StringBuilder(baseWhere);
+        List<Object> params = new ArrayList<>();
+
+        if (quayId != null) {
+            where.append(" AND m.quay_hang_id = ?");
+            params.add(quayId);
+        }
+        if (q != null && !q.isBlank()) {
+            where.append(" AND (LOWER(m.ten_mon_an) LIKE ? OR LOWER(m.mo_ta) LIKE ?)");
+            String like = "%" + q.toLowerCase() + "%";
+            params.add(like);
+            params.add(like);
+        }
+        if (status != null && !status.isBlank()) {
+            where.append(" AND LOWER(m.trang_thai_mon) LIKE ?");
+            params.add("%" + status.toLowerCase() + "%");
+        }
+        if (minPrice != null) {
+            where.append(" AND m.gia >= ?");
+            params.add(minPrice);
+        }
+        if (maxPrice != null) {
+            where.append(" AND m.gia <= ?");
+            params.add(maxPrice);
+        }
+
+        String countSql = "SELECT COUNT(*)" + where;
+        long total = 0;
+        try (Connection con = ds.getConnection();
+             PreparedStatement ps = con.prepareStatement(countSql)) {
+            for (int i = 0; i < params.size(); i++) {
+                ps.setObject(i + 1, params.get(i));
+            }
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) total = rs.getLong(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Failed to count MonAn page", e);
+        }
+
+        String dataSql = "SELECT m.mon_an_id, m.quay_hang_id, m.ten_mon_an, m.mo_ta, m.gia, m.hinh_anh_url, m.trang_thai_mon" +
+                where + " ORDER BY m.mon_an_id DESC LIMIT ? OFFSET ?";
+        List<MonAn> content = new ArrayList<>();
+        try (Connection con = ds.getConnection();
+             PreparedStatement ps = con.prepareStatement(dataSql)) {
+            int idx = 1;
+            for (Object p : params) {
+                ps.setObject(idx++, p);
+            }
+            ps.setInt(idx++, pr.getSize());
+            ps.setInt(idx, pr.getOffset());
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) content.add(map(rs));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Failed to query MonAn page", e);
+        }
+        return new Page<>(content, pr.getPage(), pr.getSize(), total);
     }
 
     private MonAn map(ResultSet rs) throws SQLException {
