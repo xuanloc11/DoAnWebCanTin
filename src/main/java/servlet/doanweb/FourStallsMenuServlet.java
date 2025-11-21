@@ -29,7 +29,6 @@ public class FourStallsMenuServlet extends HttpServlet {
         List<QuayHang> quays = quayHangService.getAll();
         req.setAttribute("quays", quays);
 
-        // Ngày hôm nay (dùng cho cả filter và hiển thị trên view)
         Date today = new Date(System.currentTimeMillis());
         String todayStr = today.toString(); // yyyy-MM-dd
         req.setAttribute("todayLabel", todayStr);
@@ -37,7 +36,6 @@ public class FourStallsMenuServlet extends HttpServlet {
         Map<Integer, List<MonAn>> todayFoodsByStall = new HashMap<>();
 
         if (quays != null && !quays.isEmpty()) {
-            // Lấy toàn bộ menu một lần rồi group theo quầy cho nhanh
             List<Menu> allMenus = menuService.all();
             Map<Integer, List<Menu>> menusByQuay = new HashMap<>();
             for (Menu m : allMenus) {

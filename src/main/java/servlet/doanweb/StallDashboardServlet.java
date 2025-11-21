@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 @WebServlet(name = "StallDashboardServlet", urlPatterns = "/stall/dashboard")
-public class StallDashboardServlet extends HttpServlet {
+public class  StallDashboardServlet extends HttpServlet {
 
     private final ThongKeService thongKeService = new ThongKeService();
 

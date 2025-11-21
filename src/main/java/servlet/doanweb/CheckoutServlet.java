@@ -47,7 +47,6 @@ public class CheckoutServlet extends HttpServlet {
         if (cart == null || cart.getItems().isEmpty()) { resp.sendRedirect(req.getContextPath()+"/cart"); return; }
         if (auth == null) { resp.sendRedirect(req.getContextPath()+"/login?next=/checkout"); return; }
 
-        // Group cart items by stall (quayHangId)
         Map<Integer, List<CartItem>> groups = new LinkedHashMap<>();
         for (CartItem ci : cart.getItems().values()) {
             int qh = (ci.getMonAn() != null) ? ci.getMonAn().getQuayHangId() : 0;
@@ -83,9 +82,9 @@ public class CheckoutServlet extends HttpServlet {
             // Lưu ghi chú kèm thông tin phương thức thanh toán nếu model Order chưa có field riêng
             String fullNote = ghiChu;
             if (fullNote == null || fullNote.isBlank()) {
-                fullNote = "PTTT: " + pttt;
+                fullNote = "Phương Thức Thanh Toán: " + pttt;
             } else {
-                fullNote = ghiChu + " | PTTT: " + pttt;
+                fullNote = ghiChu + " | Phương Thức Thanh Toán: " + pttt;
             }
             o.setGhiChu(fullNote);
 

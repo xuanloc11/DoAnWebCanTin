@@ -24,13 +24,11 @@ public class AdminStatsServlet extends HttpServlet {
             resp.sendRedirect(req.getContextPath() + "/login?next=/admin/stats");
             return;
         }
-        // Only admin role can view global stats
         if (!"bgh_admin".equalsIgnoreCase(auth.getRole())) {
             resp.sendError(HttpServletResponse.SC_FORBIDDEN, "Chỉ admin mới truy cập được thống kê");
             return;
         }
 
-        // Read optional filters
         int days = 30;
         String daysParam = req.getParameter("days");
         if (daysParam != null) {

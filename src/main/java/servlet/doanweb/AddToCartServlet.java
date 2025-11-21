@@ -27,7 +27,7 @@ public class AddToCartServlet extends HttpServlet {
         int monAnId = parseInt(rawId);
         int qty = Math.max(1, parseInt(req.getParameter("qty")));
         boolean ajax = isAjax(req);
-        // Debug log
+        //log để xem thông tin là thêm món ăn nào, số lượng bao nhiêu
         System.out.println("[AddToCart] params=" + req.getParameterMap().keySet() + ", raw mon_an_id=" + rawId + ", parsed=" + monAnId + ", qty=" + qty + ", ajax=" + ajax);
         if (monAnId <= 0) {
             if (ajax) { writeJson(resp, 400, jsonError("INVALID_ID", "Thiếu hoặc sai tham số mon_an_id")); return; }
@@ -45,11 +45,9 @@ public class AddToCartServlet extends HttpServlet {
             resp.sendRedirect(back); return;
         }
         HttpSession session = req.getSession();
-        // Unified session cart
         Cart cart = (Cart) session.getAttribute("cart");
         if (cart == null) {
             cart = new Cart();
-            // Migrate old structure if exists
             @SuppressWarnings("unchecked") Map<Integer, Cart> cartMapOld = (Map<Integer, Cart>) session.getAttribute("cartMap");
             if (cartMapOld != null) {
                 for (Cart c : cartMapOld.values()) cart.mergeFrom(c);

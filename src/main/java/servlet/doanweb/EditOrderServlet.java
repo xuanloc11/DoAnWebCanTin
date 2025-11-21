@@ -12,7 +12,7 @@ import java.io.IOException;
 public class EditOrderServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.sendError(HttpServletResponse.SC_FORBIDDEN, "Chức năng cập nhật đơn đã bị vô hiệu hóa. Học sinh tạo đơn, nhân viên chỉ được xem/hủy.");
+        resp.sendError(HttpServletResponse.SC_FORBIDDEN, "Chức năng cập nhật đơn đã bị vô hiệu hóa");
     }
 
     @Override

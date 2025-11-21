@@ -29,7 +29,6 @@ public class OrderServlet extends HttpServlet {
         HttpSession session = req.getSession(false);
         User auth = (session != null) ? (User) session.getAttribute("authUser") : null;
 
-        // Parse pagination params
         int page = 1;
         int size = 10;
         try { page = Integer.parseInt(req.getParameter("page")); } catch (Exception ignored) {}
@@ -37,10 +36,8 @@ public class OrderServlet extends HttpServlet {
         if (page <= 0) page = 1;
         if (size <= 0) size = 10;
 
-        // Load all then filter (to keep existing filter logic simple)
         List<Order> list = orderService.getAllOrders();
 
-        // Restrict for truong_quay & nhan_vien_quay: only orders for their stall
         if (auth != null && ("truong_quay".equalsIgnoreCase(auth.getRole()) || "nhan_vien_quay".equalsIgnoreCase(auth.getRole()))) {
             Integer qid = auth.getQuayHangId();
             List<Order> filtered = new ArrayList<>();
@@ -52,7 +49,6 @@ public class OrderServlet extends HttpServlet {
             list = filtered;
         }
 
-        // Apply filter params
         String q = req.getParameter("q");
         String status = req.getParameter("status");
         String from = req.getParameter("from");
@@ -111,7 +107,6 @@ public class OrderServlet extends HttpServlet {
             list = filtered;
         }
 
-        // Apply pagination on filtered list
         int total = list.size();
         int fromIndex = Math.min((page - 1) * size, total);
         int toIndex = Math.min(fromIndex + size, total);

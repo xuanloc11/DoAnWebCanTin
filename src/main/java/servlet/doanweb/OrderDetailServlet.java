@@ -64,7 +64,6 @@ public class OrderDetailServlet extends HttpServlet {
             }
         }
         boolean isGrouped = sameTsOrders.size() > 1;
-        // If grouped, build a merged item view across all stall orders
         List<OrderItem> mergedItems = new ArrayList<>();
         Map<Integer, MonAn> mergedMonMap = new HashMap<>();
         BigDecimal mergedTotal = BigDecimal.ZERO;

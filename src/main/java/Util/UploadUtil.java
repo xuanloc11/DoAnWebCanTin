@@ -17,7 +17,6 @@ public class UploadUtil {
     public static final long MAX_IMAGE_BYTES = 8L * 1024 * 1024; // 8MB
 
     public static Path getBaseDir(ServletContext ctx) {
-        // Priority: env var -> sysprop -> realPath(/uploads) -> user.home
         String env = System.getenv("DOANWEB_UPLOAD_DIR");
         if (env != null && !env.trim().isEmpty()) {
             return ensureDir(Paths.get(env));
@@ -39,7 +38,6 @@ public class UploadUtil {
         if (part.getSize() > MAX_IMAGE_BYTES) throw new IOException("File quá lớn");
         String ct = part.getContentType();
         if (ct == null || !ct.toLowerCase(Locale.ROOT).startsWith("image/")) {
-            // Fallback: allow by extension for some browsers
             String submitted = part.getSubmittedFileName();
             if (submitted == null || !isAllowedImageExt(submitted)) {
                 throw new IOException("Định dạng không hỗ trợ");
@@ -49,7 +47,6 @@ public class UploadUtil {
         if (submitted == null || submitted.trim().isEmpty()) return null;
         String baseName = Paths.get(submitted).getFileName().toString();
         String safeName = sanitize(baseName);
-        // Optional: partition by date to avoid too many files in one directory
         LocalDate today = LocalDate.now();
         Path targetDir = getBaseDir(ctx).resolve(subDir).resolve(String.valueOf(today.getYear()))
                 .resolve(String.format("%02d", today.getMonthValue()))
@@ -60,7 +57,6 @@ public class UploadUtil {
         try (InputStream in = part.getInputStream(); FileOutputStream out = new FileOutputStream(dest.toFile())) {
             in.transferTo(out);
         }
-        // Build URL path relative to context
         String urlPath = "/uploads/" + subDir + "/" + today.getYear() + "/" + String.format("%02d", today.getMonthValue()) + "/" + String.format("%02d", today.getDayOfMonth()) + "/" + fileName;
         return urlPath;
     }
@@ -71,7 +67,6 @@ public class UploadUtil {
     }
 
     public static String sanitize(String name) {
-        // Remove path parts and keep only safe chars
         String n = name.replace("\\", "/");
         n = n.substring(n.lastIndexOf('/') + 1);
         n = n.replaceAll("[^a-zA-Z0-9._-]", "-");
@@ -82,7 +77,6 @@ public class UploadUtil {
         try {
             Files.createDirectories(p);
         } catch (IOException e) {
-            //noinspection ResultOfMethodCallIgnored
             new File(p.toString()).mkdirs();
         }
         return p;

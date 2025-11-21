@@ -30,7 +30,6 @@ public class UpdateOrderStatusServlet extends HttpServlet {
             resp.sendRedirect(redirect + "?type=error&msg=" + msg);
             return;
         }
-        // Scope check for manager/staff
         HttpSession session = req.getSession(false);
         User auth = (session != null) ? (User) session.getAttribute("authUser") : null;
         if (auth != null && ("truong_quay".equalsIgnoreCase(auth.getRole()) || "nhan_vien_quay".equalsIgnoreCase(auth.getRole()))) {

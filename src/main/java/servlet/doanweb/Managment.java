@@ -27,7 +27,6 @@ public class Managment extends HttpServlet {
     private final MonAnService monAnService = new MonAnService();
     private final QuayHangService quayHangService = new QuayHangService();
 
-    // Normalize Vietnamese/Unicode string for diacritic-insensitive comparison
     private static String normalizeVN(String s) {
         if (s == null) return null;
         String n = Normalizer.normalize(s, Normalizer.Form.NFD)
@@ -76,7 +75,6 @@ public class Managment extends HttpServlet {
             quayName = null;
             quayId = null;
         } else {
-            // Admin có thể lọc theo quay_id hoặc quay_name như cũ
             if (quayId != null && foods != null) {
                 List<MonAn> filtered = new ArrayList<>();
                 for (MonAn m : foods) {

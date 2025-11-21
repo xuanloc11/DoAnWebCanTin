@@ -31,7 +31,6 @@ public class AddMonAnServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("mode", "create");
-        // Provide list of stalls for dropdown
         List<QuayHang> quays = quayHangService.getAll();
         req.setAttribute("quays", quays);
         req.getRequestDispatcher("/WEB-INF/jsp/admin/monan-form.jsp").forward(req, resp);
@@ -51,7 +50,6 @@ public class AddMonAnServlet extends HttpServlet {
         m.setMoTa(RequestUtil.s(req, "mo_ta"));
         m.setGia(RequestUtil.bd(req, "gia", BigDecimal.ZERO));
 
-        // Handle image: prefer uploaded file, fallback to URL
         String savedPath = null;
         try {
             Part part = null;

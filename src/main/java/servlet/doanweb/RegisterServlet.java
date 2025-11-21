@@ -29,7 +29,6 @@ public class RegisterServlet extends HttpServlet {
         String password = RequestUtil.s(req, "password");
         String confirm = RequestUtil.s(req, "confirm_password");
 
-        // Basic validations
         if (hoTen == null || hoTen.isEmpty()) {
             req.setAttribute("error", "Vui lòng nhập họ tên");
             req.setAttribute("ho_ten", hoTen);
@@ -68,7 +67,6 @@ public class RegisterServlet extends HttpServlet {
             return;
         }
 
-        // Create user (default role: hoc_sinh; donVi/quayHangId null)
         User u = new User();
         u.setHoTen(hoTen);
         u.setEmail(email);

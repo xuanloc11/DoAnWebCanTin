@@ -40,7 +40,6 @@ public class StallMenuServlet extends HttpServlet {
             return;
         }
 
-        // Lấy tất cả món của quầy; nếu byStall hỗ trợ limit = 0 hoặc giá trị đặc biệt để lấy hết
         List<MonAn> foods = monAnService.byStall(quayId, 0);
 
         req.setAttribute("stall", stall);

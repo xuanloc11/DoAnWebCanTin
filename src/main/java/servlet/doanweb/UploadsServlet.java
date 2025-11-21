@@ -16,13 +16,11 @@ import java.nio.file.Paths;
 public class UploadsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        // Map URL /uploads/... to physical file under the base uploads directory
         String rel = req.getPathInfo(); // includes leading /
         if (rel == null || rel.trim().isEmpty() || "/".equals(rel)) {
             resp.sendError(HttpServletResponse.SC_NOT_FOUND);
             return;
         }
-        // Try to read from the same base path as UploadUtil
         String base = getServletContext().getRealPath("/uploads");
         if (base == null) {
             resp.sendError(HttpServletResponse.SC_NOT_FOUND);

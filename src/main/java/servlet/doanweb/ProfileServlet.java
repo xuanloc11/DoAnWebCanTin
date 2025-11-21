@@ -21,7 +21,6 @@ public class ProfileServlet extends HttpServlet {
     private final OrderService orderService = new OrderService();
     private final QuayHangService quayHangService = new QuayHangService();
 
-    // View model for grouped orders
     public static class GroupedOrderView {
         private Date thoiGianDat; // display time (from timestamp)
         private BigDecimal tongTien; // sum across stalls
@@ -40,7 +39,6 @@ public class ProfileServlet extends HttpServlet {
         public List<String> getStallNames() { return stallNames; }
         public void setStallNames(List<String> stallNames) { this.stallNames = stallNames; }
         public int getPrimaryOrderId() { return (orderIds == null || orderIds.isEmpty()) ? 0 : orderIds.get(0); }
-        // Convenience joined string for JSP
         public String getStallsDisplay() {
             if (stallNames == null || stallNames.isEmpty()) return "";
             return String.join(", ", new LinkedHashSet<>(stallNames));
@@ -56,7 +54,6 @@ public class ProfileServlet extends HttpServlet {
             return;
         }
         List<Order> myOrders = orderService.byUser(auth.getUserId());
-        // Build map id -> name for stalls
         Map<Integer, String> quayMap = new HashMap<>();
         try {
             List<QuayHang> quays = quayHangService.getAll();
@@ -65,14 +62,12 @@ public class ProfileServlet extends HttpServlet {
             }
         } catch (Exception ignored) {}
 
-        // Group orders by checkout timestamp to the second (robust against DB precision)
         Map<Long, List<Order>> grouped = new LinkedHashMap<>();
         for (Order o : myOrders) {
             if (o.getThoiGianDat() == null) continue;
             long key = o.getThoiGianDat().getTime() / 1000L; // seconds
             grouped.computeIfAbsent(key, k -> new ArrayList<>()).add(o);
         }
-        // Sort keys desc (newest first)
         List<Long> keys = new ArrayList<>(grouped.keySet());
         keys.sort(Comparator.reverseOrder());
 

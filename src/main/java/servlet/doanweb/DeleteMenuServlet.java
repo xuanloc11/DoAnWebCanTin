@@ -28,7 +28,6 @@ public class DeleteMenuServlet extends HttpServlet {
         if (id > 0) {
             Menu m = service.get(id);
             if (m != null) {
-                // Manager can only delete menus of their stall
                 if (auth != null && "truong_quay".equalsIgnoreCase(auth.getRole())) {
                     Integer qid = auth.getQuayHangId();
                     if (qid == null || !qid.equals(m.getQuayHangId())) {

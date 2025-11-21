@@ -36,7 +36,6 @@ public class AdminOrderDetailServlet extends HttpServlet {
         HttpSession session = req.getSession(false);
         User auth = session == null ? null : (User) session.getAttribute("authUser");
         if (auth == null) { resp.sendRedirect(req.getContextPath()+"/login?next=/admin/orders"); return; }
-        // Optional role check: only admin / truong_quay / nhan_vien_quay allowed
         String role = auth.getRole() == null ? "" : auth.getRole().toLowerCase();
         if (!(role.equals("bgh_admin") || role.equals("truong_quay") || role.equals("nhan_vien_quay"))) {
             resp.sendError(403, "Không có quyền xem đơn hàng"); return;
@@ -46,7 +45,6 @@ public class AdminOrderDetailServlet extends HttpServlet {
         if (id <= 0) { resp.sendRedirect(req.getContextPath()+"/admin/orders"); return; }
         Order order = orderService.get(id);
         if (order == null) { resp.sendError(404, "Đơn hàng không tồn tại"); return; }
-        // If staff/quay manager restrict to their stall
         if ((role.equals("truong_quay") || role.equals("nhan_vien_quay")) && auth.getQuayHangId() != null) {
             if (!auth.getQuayHangId().equals(order.getQuayHangId())) { resp.sendError(403, "Không thuộc quầy của bạn"); return; }
         }

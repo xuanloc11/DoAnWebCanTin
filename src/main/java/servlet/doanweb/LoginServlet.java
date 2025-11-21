@@ -19,7 +19,6 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // If already logged in, redirect away from the login page
         HttpSession session = req.getSession(false);
         if (session != null && session.getAttribute("authUser") != null) {
             String next = sanitizeNext(req);

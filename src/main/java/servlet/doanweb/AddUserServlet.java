@@ -23,7 +23,6 @@ public class AddUserServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("mode", "create");
-        // nạp danh sách quầy cho dropdown
         req.setAttribute("quays", quayHangService.getAll());
         req.getRequestDispatcher("/WEB-INF/jsp/admin/user-form.jsp").forward(req, resp);
     }
@@ -44,10 +43,8 @@ public class AddUserServlet extends HttpServlet {
             try { qid = Integer.parseInt(qh); } catch (NumberFormatException ignored) {}
         }
 
-        // Nếu là trưởng quầy, không còn tạo nhân viên quầy riêng: ép tất cả user mới về vai trò học sinh trong đơn vị của họ
         if (auth != null && "truong_quay".equalsIgnoreCase(auth.getRole())) {
             role = "hoc_sinh";
-            // có thể giữ quayHangId nếu muốn gán sinh viên vào quầy, hoặc để null tùy yêu cầu nghiệp vụ
         }
 
         u.setRole(role);

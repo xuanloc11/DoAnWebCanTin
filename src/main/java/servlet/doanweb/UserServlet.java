@@ -23,7 +23,6 @@ public class UserServlet extends HttpServlet {
         HttpSession session = req.getSession(false);
         User auth = (session != null) ? (User) session.getAttribute("authUser") : null;
 
-        // Parse pagination params
         int page = 1;
         int size = 10;
         try { page = Integer.parseInt(req.getParameter("page")); } catch (Exception ignored) {}
@@ -33,10 +32,6 @@ public class UserServlet extends HttpServlet {
 
         List<User> users = userService.getAllUsers();
 
-        // Hiện tại không còn role nhân viên quầy, nên trưởng quầy không bị giới hạn danh sách theo quầy ở đây
-        // (quyền truy cập đã được kiểm soát ở Filter và các servlet khác nếu cần)
-
-        // Apply search filters
         String q = req.getParameter("q");
         String role = req.getParameter("role");
         if ((q != null && !q.trim().isEmpty()) || (role != null && !role.trim().isEmpty())) {
@@ -60,7 +55,6 @@ public class UserServlet extends HttpServlet {
             users = searched;
         }
 
-        // Apply pagination on filtered list
         int total = users.size();
         int fromIndex = Math.min((page - 1) * size, total);
         int toIndex = Math.min(fromIndex + size, total);
