@@ -26,7 +26,6 @@ public class AuthLogin implements Filter {
         User user = (auth instanceof User) ? (User) auth : null;
 
         if (user == null) {
-            // Build next path without context path to avoid double context on redirect after login
             String ctx = req.getContextPath();
             String uri = req.getRequestURI();
             String pathOnly = uri.startsWith(ctx) ? uri.substring(ctx.length()) : uri;
@@ -42,30 +41,25 @@ public class AuthLogin implements Filter {
         String uri = req.getRequestURI();
         String pathOnly = uri.startsWith(ctx) ? uri.substring(ctx.length()) : uri;
 
-        // Admin full access
+        // Admin full quyền
         if (isAdmin(role)) {
             chain.doFilter(request, response);
             return;
         }
 
-        // Manager (truong_quay) scoped access
         if (isManager(role)) {
-            // Deny quầy hàng structure management
             if (isQuayHangPath(pathOnly)) {
                 resp.sendRedirect(req.getContextPath() + "/");
                 return;
             }
-            // Allow foods, menu, orders, users (filtered later in servlets) + root /admin
             if (isFoodsPath(pathOnly) || isMonAnPath(pathOnly) || isMenuPath(pathOnly) || isOrdersPath(pathOnly) || isUsersPath(pathOnly) || "/admin".equals(pathOnly)) {
                 chain.doFilter(request, response);
                 return;
             }
-            // Block everything else
             resp.sendRedirect(req.getContextPath() + "/");
             return;
         }
 
-        // Other roles (e.g. hoc_sinh) denied
         resp.sendRedirect(req.getContextPath() + "/");
     }
 

@@ -21,7 +21,6 @@ public class EncodingFilter implements Filter {
 
         chain.doFilter(request, response);
 
-        // After downstream processing, ensure HTML responses declare charset
         if (response instanceof HttpServletResponse && request instanceof HttpServletRequest) {
             HttpServletResponse res = (HttpServletResponse) response;
             HttpServletRequest req = (HttpServletRequest) request;
