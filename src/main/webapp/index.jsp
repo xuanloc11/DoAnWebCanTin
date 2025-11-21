@@ -140,12 +140,6 @@
   </c:when>
 </c:choose>
 
-<!-- Back To Top start -->
-<!-- <button id="back-top" class="back-to-top">
-        <i class="fa-regular fa-arrow-up"></i>
-    </button> -->
-
-<!-- Preloader Start -->
 <div id="preloader" class="preloader">
     <div class="animation-preloader">
         <div class="spinner">

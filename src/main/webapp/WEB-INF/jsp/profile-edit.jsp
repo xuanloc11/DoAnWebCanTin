@@ -42,7 +42,7 @@
         <input id="ho_ten" name="ho_ten" value="${me.hoTen}"/>
       </div>
       <div class="field">
-        <label for="don_vi">Đơn vị</label>
+        <label for="don_vi">Đơn Vị</label>
         <input id="don_vi" name="don_vi" value="${me.donVi}"/>
       </div>
       <div class="field">

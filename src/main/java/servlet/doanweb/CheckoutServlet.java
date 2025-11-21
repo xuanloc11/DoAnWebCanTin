@@ -79,12 +79,11 @@ public class CheckoutServlet extends HttpServlet {
             o.setTongTien(groupTotal);
             o.setThoiGianDat(now);
             o.setTrangThaiOrder("MOI_DAT");
-            // Lưu ghi chú kèm thông tin phương thức thanh toán nếu model Order chưa có field riêng
             String fullNote = ghiChu;
             if (fullNote == null || fullNote.isBlank()) {
-                fullNote = "Phương Thức Thanh Toán: " + pttt;
+                fullNote = pttt;
             } else {
-                fullNote = ghiChu + " | Phương Thức Thanh Toán: " + pttt;
+                fullNote = ghiChu + pttt;
             }
             o.setGhiChu(fullNote);
 

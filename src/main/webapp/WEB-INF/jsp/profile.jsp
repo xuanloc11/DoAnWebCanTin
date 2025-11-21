@@ -48,7 +48,6 @@
 <div class="profile-shell">
   <nav class="profile-nav" aria-label="Profile sections">
     <a href="#info" class="active">🧑 Thông tin cá nhân</a>
-    <a href="#orders">🛒 Đơn hàng</a>
   </nav>
   <div class="profile-main">
     <section id="info" class="profile-card" aria-labelledby="info-title">
@@ -56,17 +55,9 @@
       <c:if test="${not empty me}">
         <p><strong>Họ tên:</strong> <c:out value="${me.hoTen}"/></p>
         <p><strong>Email:</strong> <c:out value="${me.email}"/></p>
-        <p><strong>Vai trò:</strong>
-          <c:choose>
-            <c:when test="${me.role eq 'bgh_admin'}">BGH Admin</c:when>
-            <c:when test="${me.role eq 'truong_quay'}">Trưởng quầy</c:when>
-            <c:when test="${me.role eq 'hoc_sinh'}">Sinh viên</c:when>
-            <c:otherwise><c:out value="${me.role}"/></c:otherwise>
-          </c:choose>
-        </p>
-        <p><strong>Đơn vị:</strong> <c:out value="${empty me.donVi ? '(Chưa cập nhật)' : me.donVi}"/></p>
+        <p><strong>Lớp:</strong> <c:out value="${empty me.donVi ? '(Chưa cập nhật)' : me.donVi}"/></p>
         <c:if test="${not empty me.quayHangId}">
-          <p><strong>Quầy hàng ID:</strong> <c:out value="${me.quayHangId}"/></p>
+          <p><strong>Quầy hàng:</strong> <c:out value="${me.quayHangId}"/></p>
         </c:if>
         <p class="note muted">Nếu thông tin chưa đúng, liên hệ quản trị để cập nhật.</p>
         <p>
@@ -124,7 +115,6 @@
         </c:otherwise>
       </c:choose>
 
-      <!-- Keep the legacy per-order table hidden (can be toggled for debug) -->
       <c:if test="false">
         <table>
           <thead>

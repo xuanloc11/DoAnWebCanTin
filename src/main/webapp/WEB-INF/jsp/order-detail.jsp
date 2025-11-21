@@ -52,7 +52,7 @@
     <c:when test="${isGrouped}">
       <div class="card">
         <h1>Đơn gộp (nhiều quầy) - ${order.thoiGianDat}</h1>
-        <p><strong>Quầy liên quan:</strong> <c:out value="${mergedStallsDisplay}"/></p>
+        <p><strong>Quầy:</strong> <c:out value="${mergedStallsDisplay}"/></p>
         <p><strong>Tổng tiền:</strong> <fmt:formatNumber value="${mergedTotal}" type="number" groupingUsed="true" maxFractionDigits="0" /> VNĐ</p>
         <p><strong>Đơn con:</strong>
           <c:forEach var="o" items="${groupOrders}" varStatus="st">
@@ -121,7 +121,8 @@
           </span>
         </p>
         <c:if test="${not empty order.ghiChu}">
-          <p><strong>Ghi chú:</strong> <c:out value="${order.ghiChu}"/></p>
+          <p><strong>Ghi chú:</strong></p>
+          <p><strong>Phương thức thanh toán: </strong><c:out value="${order.ghiChu}"/></p>
         </c:if>
       </div>
 

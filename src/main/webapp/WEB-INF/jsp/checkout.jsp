@@ -113,7 +113,7 @@
                   <div class="col-12 mt-2">
                     <label class="form-label d-block mb-1">Phương thức thanh toán</label>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="phuong_thuc_thanh_toan" id="pttt_cash" value="CASH" checked>
+                      <input class="form-check-input" type="radio" name="phuong_thuc_thanh_toan" id="pttt_cash" value="Tiền Mặt" checked>
                       <label class="form-check-label" for="pttt_cash">
                         Thanh toán tiền mặt khi nhận món
                       </label>
