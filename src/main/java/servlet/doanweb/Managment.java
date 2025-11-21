@@ -39,7 +39,7 @@ public class Managment extends HttpServlet {
         HttpSession session = req.getSession(false);
         Object auth = (session == null) ? null : session.getAttribute("authUser");
         if (auth == null) {
-            resp.sendRedirect(req.getContextPath() + "/login?next=/admin");
+            resp.sendRedirect(req.getContextPath() + "/login?next=/admin/dashboard");
             return;
         }
         User user = (User) auth;

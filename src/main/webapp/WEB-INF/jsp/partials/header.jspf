@@ -112,7 +112,7 @@
               </span>
               <!-- Mobile: link trang quản trị cho admin / trưởng quầy -->
               <c:if test="${auth.role eq 'bgh_admin'}">
-                <a href="${CTX}/admin/management" class="border-theme5 rounded-pill d-center gap-1 fw-bold fs-13 h-32px px-2">
+                <a href="${CTX}/admin/dashboard" class="border-theme5 rounded-pill d-center gap-1 fw-bold fs-13 h-32px px-2">
                   <i class="fa-solid fa-gauge-high"></i>
                   Admin
                 </a>
@@ -151,13 +151,13 @@
               </span>
               <!-- Desktop: link trang quản trị cho admin / trưởng quầy -->
               <c:if test="${auth.role eq 'bgh_admin'}">
-                <a href="${CTX}/admin/management" class="border-theme5 rounded-pill d-center gap-2 fw-bold fs-14 h-40px px-3">
+                <a href="${CTX}/admin/dashboard" class="border-theme5 rounded-pill d-center gap-2 fw-bold fs-14 h-40px px-3">
                   <i class="fa-solid fa-gauge-high"></i>
                   Trang quản trị
                 </a>
               </c:if>
               <c:if test="${auth.role eq 'truong_quay'}">
-                <a href="${CTX}/admin/orders" class="border-theme5 rounded-pill d-center gap-2 fw-bold fs-14 h-40px px-3">
+                <a href="${CTX}/stall/dashboard" class="border-theme5 rounded-pill d-center gap-2 fw-bold fs-14 h-40px px-3">
                   <i class="fa-solid fa-shop"></i>
                   Quản lý quầy
                 </a>
