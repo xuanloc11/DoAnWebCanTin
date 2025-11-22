@@ -22,6 +22,65 @@
     <link rel="stylesheet" href="assets/css/nice-select.css" />
     <link rel="stylesheet" href="assets/css/expose.css" />
     <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        /* Grid image improvements */
+        .food-grid-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        }
+        .restaurant-card:hover .food-grid-image {
+            transform: scale(1.05);
+        }
+        .thumb {
+            position: relative;
+            overflow: hidden;
+        }
+        .thumb::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            pointer-events: none;
+        }
+        .restaurant-card:hover .thumb::after {
+            opacity: 1;
+        }
+        .restaurant-card {
+            transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+        .restaurant-card:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+        }
+        /* Responsive image grid */
+        @media (max-width: 768px) {
+            .thumb {
+                height: 200px !important;
+            }
+        }
+        @media (min-width: 992px) {
+            .thumb {
+                height: 280px;
+            }
+        }
+        /* Loading placeholder */
+        .food-grid-image[loading="lazy"] {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+    </style>
 </head>
 <body class="body-bg" data-context="${pageContext.request.contextPath}">
 <%@ include file="/WEB-INF/jsp/partials/header.jspf" %>
@@ -91,7 +150,7 @@
             boolean ok = true;
             if(q != null && !q.isEmpty()){
                 String hay = (m.getTenMonAn()==null?"":m.getTenMonAn()).toLowerCase() + " " +
-                             (m.getMoTa()==null?"":m.getMoTa()).toLowerCase();
+                        (m.getMoTa()==null?"":m.getMoTa()).toLowerCase();
                 if(m.getQuayHangId()!=0){
                     for(QuayHang qq : quays){ if(qq.getQuayHangId()==m.getQuayHangId()){ hay += " "+(qq.getTenQuayHang()==null?"":qq.getTenQuayHang().toLowerCase()); break; } }
                 }
@@ -161,11 +220,11 @@
                         <input type="hidden" name="quay" value="${param.quay}" />
                         <!-- chọn số món mỗi trang -->
                         <select class="form-select" name="size">
-                          <c:set var="curSize" value="${empty param.size ? 9 : param.size}" />
-                          <option value="6" ${curSize == 6 ? 'selected' : ''}>6 món/trang</option>
-                          <option value="9" ${curSize == 9 ? 'selected' : ''}>9 món/trang</option>
-                          <option value="12" ${curSize == 12 ? 'selected' : ''}>12 món/trang</option>
-                          <option value="24" ${curSize == 24 ? 'selected' : ''}>24 món/trang</option>
+                            <c:set var="curSize" value="${empty param.size ? 9 : param.size}" />
+                            <option value="6" ${curSize == 6 ? 'selected' : ''}>6 món/trang</option>
+                            <option value="9" ${curSize == 9 ? 'selected' : ''}>9 món/trang</option>
+                            <option value="12" ${curSize == 12 ? 'selected' : ''}>12 món/trang</option>
+                            <option value="24" ${curSize == 24 ? 'selected' : ''}>24 món/trang</option>
                         </select>
                         <button class="theme-btn w-100" type="submit">Áp dụng</button>
                         <a class="theme-btn btn-outline-blak w-100" href="${pageContext.request.contextPath}/mon-an-list">Đặt lại</a>
@@ -197,21 +256,33 @@
                             <c:forEach var="f" items="${foods}">
                                 <div class="col-sm-6 col-lg-4">
                                     <div class="restaurant-card rounded-4 overflow-hidden restaurant-card_text position-relative border card-scale h-100 rounded-12">
-                                        <div class="thumb rounded-top-3 d-block position-relative">
-                                            <a href="${pageContext.request.contextPath}/mon-an?id=${f.monAnId}">
+                                        <div class="thumb rounded-top-3 d-block position-relative overflow-hidden" style="height: 250px; background: #f5f5f5;">
+                                            <a href="${pageContext.request.contextPath}/mon-an?id=${f.monAnId}" class="d-block h-100">
                                                 <c:choose>
                                                     <c:when test="${not empty f.hinhAnhUrl}">
                                                         <c:choose>
                                                             <c:when test="${fn:startsWith(f.hinhAnhUrl, 'http')}">
-                                                                <img src="${f.hinhAnhUrl}" alt="${f.tenMonAn}" class="w-100" />
+                                                                <img src="${f.hinhAnhUrl}"
+                                                                     alt="${f.tenMonAn}"
+                                                                     class="w-100 h-100 object-fit-cover food-grid-image"
+                                                                     style="transition: transform 0.3s ease-in-out; object-fit: cover;"
+                                                                     loading="lazy" />
                                                             </c:when>
                                                             <c:otherwise>
-                                                                <img src="${pageContext.request.contextPath}${f.hinhAnhUrl}" alt="${f.tenMonAn}" class="w-100" />
+                                                                <img src="${pageContext.request.contextPath}${f.hinhAnhUrl}"
+                                                                     alt="${f.tenMonAn}"
+                                                                     class="w-100 h-100 object-fit-cover food-grid-image"
+                                                                     style="transition: transform 0.3s ease-in-out; object-fit: cover;"
+                                                                     loading="lazy" />
                                                             </c:otherwise>
                                                         </c:choose>
                                                     </c:when>
                                                     <c:otherwise>
-                                                        <img src="assets/img/inner/shop-grid1.jpg" alt="img" class="w-100" />
+                                                        <img src="assets/img/inner/shop-grid1.jpg"
+                                                             alt="${f.tenMonAn}"
+                                                             class="w-100 h-100 object-fit-cover food-grid-image"
+                                                             style="transition: transform 0.3s ease-in-out; object-fit: cover;"
+                                                             loading="lazy" />
                                                     </c:otherwise>
                                                 </c:choose>
                                             </a>
@@ -261,108 +332,108 @@
 <script src="assets/js/wow.min.js"></script>
 <script src="assets/js/main.js"></script>
 <script>
-// Dùng chung logic AJAX thêm vào giỏ + popup giống trang index
-(function(){
-  function formatPrice(num){ try { const n = parseFloat(num); if(isNaN(n)) return num; return n.toLocaleString('vi-VN'); } catch(e){ return num; } }
-  function showToast(msg, type){
-    let t = document.getElementById('toast');
-    if(!t){
-      t = document.createElement('div');
-      t.id = 'toast';
-      t.style.cssText = 'position:fixed;bottom:24px;right:24px;background:#1f2937;color:#fff;padding:14px 18px;border-radius:12px;display:none;z-index:2000;box-shadow:0 8px 24px rgba(0,0,0,.25);font-size:14px;line-height:1.4;max-width:320px;';
-      t.innerHTML = '<div style="display:flex;align-items:center;gap:8px;"><span id="toastIcon" style="font-size:18px;">✅</span><span id="toastMsg"></span></div>';
-      document.body.appendChild(t);
-    }
-    const m = document.getElementById('toastMsg');
-    const ic = document.getElementById('toastIcon');
-    m.textContent = msg;
-    if(type==='error'){ t.style.background='#b91c1c'; ic.textContent='⚠️'; }
-    else if(type==='info'){ t.style.background='#1e3a8a'; ic.textContent='ℹ️'; }
-    else if(type==='warn'){ t.style.background='#92400e'; ic.textContent='⚠️'; }
-    else { t.style.background='#065f46'; ic.textContent='✅'; }
-    t.style.display='block';
-    t.style.opacity='1';
-    t.style.transform='translateY(0)';
-    setTimeout(()=>{
-      t.style.opacity='0';
-      t.style.transform='translateY(10px)';
-      setTimeout(()=>{ t.style.display='none'; },400);
-    },3000);
-  }
-  function updateHeaderBadges(totalQty){
-    const badges = document.querySelectorAll('.count-quan,[data-cart-total-qty]');
-    badges.forEach(b => { b.textContent = String(totalQty); });
-  }
-  function extractTotals(json){
-    if(json && json.cartTotals){
-      return { qty: json.cartTotals.totalQuantity ?? 0, price: json.cartTotals.totalPrice ?? 0 };
-    }
-    if(json && json.cart){
-      return { qty: json.cart.totalQuantity ?? 0, price: json.cart.totalPrice ?? 0 };
-    }
-    return null;
-  }
-
-  document.addEventListener('submit', function(e){
-    const form = e.target;
-    if (!(form instanceof HTMLFormElement)) return;
-    if (!form.action) return;
-    const targetPath = (new URL(form.action, location.origin)).pathname;
-    if (!targetPath.endsWith('/cart/add')) return; // không phải form thêm giỏ
-
-    e.preventDefault();
-    const monId = (form.querySelector('input[name="mon_an_id"]')||{}).value || (form.querySelector('button[data-mon-id]')||{}).getAttribute?.('data-mon-id') || '';
-    const qty = (form.querySelector('input[name="qty"]')||{}).value || '1';
-    const payload = new URLSearchParams();
-    if(monId) payload.append('mon_an_id', monId);
-    payload.append('qty', qty);
-    payload.append('ajax','1');
-
-    fetch(form.action, {
-      method:'POST',
-      body: payload,
-      headers:{
-        'X-Requested-With':'XMLHttpRequest',
-        'Accept':'application/json',
-        'Content-Type':'application/x-www-form-urlencoded'
-      }
-    })
-      .then(async r=>{ let j; try{ j = await r.json(); }catch(_){ j = {status:'error', message:'Phản hồi không hợp lệ'}; } return { ok:r.ok, status:r.status, json:j }; })
-      .then(out=>{
-        const json = out.json || {};
-        if(out.ok && (json.status==='ok' || json.success===true)){
-          const totals = extractTotals(json);
-          if(totals){
-            const qtyNum = Math.max(0, parseInt(totals.qty||0,10));
-            updateHeaderBadges(qtyNum);
-          }
-          showToast((json.message||'Đã thêm vào giỏ hàng') + ' (+'+(json.quantityAdded||qty)+')', 'success');
-        } else {
-          showToast(json.message || ('Lỗi ('+out.status+') khi thêm vào giỏ'), 'error');
+    // Dùng chung logic AJAX thêm vào giỏ + popup giống trang index
+    (function(){
+        function formatPrice(num){ try { const n = parseFloat(num); if(isNaN(n)) return num; return n.toLocaleString('vi-VN'); } catch(e){ return num; } }
+        function showToast(msg, type){
+            let t = document.getElementById('toast');
+            if(!t){
+                t = document.createElement('div');
+                t.id = 'toast';
+                t.style.cssText = 'position:fixed;bottom:24px;right:24px;background:#1f2937;color:#fff;padding:14px 18px;border-radius:12px;display:none;z-index:2000;box-shadow:0 8px 24px rgba(0,0,0,.25);font-size:14px;line-height:1.4;max-width:320px;';
+                t.innerHTML = '<div style="display:flex;align-items:center;gap:8px;"><span id="toastIcon" style="font-size:18px;">✅</span><span id="toastMsg"></span></div>';
+                document.body.appendChild(t);
+            }
+            const m = document.getElementById('toastMsg');
+            const ic = document.getElementById('toastIcon');
+            m.textContent = msg;
+            if(type==='error'){ t.style.background='#b91c1c'; ic.textContent='⚠️'; }
+            else if(type==='info'){ t.style.background='#1e3a8a'; ic.textContent='ℹ️'; }
+            else if(type==='warn'){ t.style.background='#92400e'; ic.textContent='⚠️'; }
+            else { t.style.background='#065f46'; ic.textContent='✅'; }
+            t.style.display='block';
+            t.style.opacity='1';
+            t.style.transform='translateY(0)';
+            setTimeout(()=>{
+                t.style.opacity='0';
+                t.style.transform='translateY(10px)';
+                setTimeout(()=>{ t.style.display='none'; },400);
+            },3000);
         }
-      })
-      .catch(()=> showToast('Không thể thêm vào giỏ hàng', 'error'));
-  });
-})();
+        function updateHeaderBadges(totalQty){
+            const badges = document.querySelectorAll('.count-quan,[data-cart-total-qty]');
+            badges.forEach(b => { b.textContent = String(totalQty); });
+        }
+        function extractTotals(json){
+            if(json && json.cartTotals){
+                return { qty: json.cartTotals.totalQuantity ?? 0, price: json.cartTotals.totalPrice ?? 0 };
+            }
+            if(json && json.cart){
+                return { qty: json.cart.totalQuantity ?? 0, price: json.cart.totalPrice ?? 0 };
+            }
+            return null;
+        }
 
-// Làm sạch mô tả CKEditor: bỏ HTML, cắt max 100 ký tự (giữ lại logic cũ)
-document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('[data-desc-raw]').forEach(function (p) {
-    var rawHtml = p.innerHTML || '';
-    var tmp = document.createElement('div');
-    tmp.innerHTML = rawHtml;
-    var text = tmp.textContent || tmp.innerText || '';
-    text = text.trim();
-    if (!text) {
-      p.textContent = 'Không có mô tả';
-      return;
-    }
-    if (text.length > 100) {
-      text = text.substring(0, 100) + '...';
-    }
-    p.textContent = text;
-  });
-});
+        document.addEventListener('submit', function(e){
+            const form = e.target;
+            if (!(form instanceof HTMLFormElement)) return;
+            if (!form.action) return;
+            const targetPath = (new URL(form.action, location.origin)).pathname;
+            if (!targetPath.endsWith('/cart/add')) return; // không phải form thêm giỏ
+
+            e.preventDefault();
+            const monId = (form.querySelector('input[name="mon_an_id"]')||{}).value || (form.querySelector('button[data-mon-id]')||{}).getAttribute?.('data-mon-id') || '';
+            const qty = (form.querySelector('input[name="qty"]')||{}).value || '1';
+            const payload = new URLSearchParams();
+            if(monId) payload.append('mon_an_id', monId);
+            payload.append('qty', qty);
+            payload.append('ajax','1');
+
+            fetch(form.action, {
+                method:'POST',
+                body: payload,
+                headers:{
+                    'X-Requested-With':'XMLHttpRequest',
+                    'Accept':'application/json',
+                    'Content-Type':'application/x-www-form-urlencoded'
+                }
+            })
+                .then(async r=>{ let j; try{ j = await r.json(); }catch(_){ j = {status:'error', message:'Phản hồi không hợp lệ'}; } return { ok:r.ok, status:r.status, json:j }; })
+                .then(out=>{
+                    const json = out.json || {};
+                    if(out.ok && (json.status==='ok' || json.success===true)){
+                        const totals = extractTotals(json);
+                        if(totals){
+                            const qtyNum = Math.max(0, parseInt(totals.qty||0,10));
+                            updateHeaderBadges(qtyNum);
+                        }
+                        showToast((json.message||'Đã thêm vào giỏ hàng') + ' (+'+(json.quantityAdded||qty)+')', 'success');
+                    } else {
+                        showToast(json.message || ('Lỗi ('+out.status+') khi thêm vào giỏ'), 'error');
+                    }
+                })
+                .catch(()=> showToast('Không thể thêm vào giỏ hàng', 'error'));
+        });
+    })();
+
+    // Làm sạch mô tả CKEditor: bỏ HTML, cắt max 100 ký tự (giữ lại logic cũ)
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('[data-desc-raw]').forEach(function (p) {
+            var rawHtml = p.innerHTML || '';
+            var tmp = document.createElement('div');
+            tmp.innerHTML = rawHtml;
+            var text = tmp.textContent || tmp.innerText || '';
+            text = text.trim();
+            if (!text) {
+                p.textContent = 'Không có mô tả';
+                return;
+            }
+            if (text.length > 100) {
+                text = text.substring(0, 100) + '...';
+            }
+            p.textContent = text;
+        });
+    });
 </script>
 </body>
 </html>

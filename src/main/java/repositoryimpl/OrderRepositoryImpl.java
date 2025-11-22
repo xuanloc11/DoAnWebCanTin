@@ -1,13 +1,19 @@
 package repositoryimpl;
 
+import java.math.BigDecimal;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Timestamp;
+import java.sql.Types;
+import java.util.ArrayList;
+import java.util.List;
+
 import Util.DataSourceUtil;
 import models.Order;
 import repository.OrderRepository;
-
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.math.BigDecimal;
 
 public class OrderRepositoryImpl implements OrderRepository {
     @Override
@@ -178,6 +184,18 @@ public class OrderRepositoryImpl implements OrderRepository {
             throw new RuntimeException("Failed to count Orders", e);
         }
         return 0;
+    }
+
+    @Override
+    public boolean deleteByUserId(int userId) {
+        String sql = "DELETE FROM `Orders` WHERE `user_id`=?";
+        try (Connection conn = DataSourceUtil.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, userId);
+            return ps.executeUpdate() >= 0; // Return true even if no rows deleted
+        } catch (SQLException e) {
+            throw new RuntimeException("Failed to delete Orders by user_id", e);
+        }
     }
 
     private Order map(ResultSet rs) throws SQLException {

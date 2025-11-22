@@ -14,4 +14,5 @@ public interface OrderRepository {
     List<Order> findByUser(int userId); // Added for profile
     List<Order> findPage(int offset, int limit);
     long countAll();
+    boolean deleteByUserId(int userId); // Delete all orders by user_id
 }

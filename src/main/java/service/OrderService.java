@@ -1,12 +1,12 @@
 package service;
 
+import java.util.List;
+
 import models.Order;
 import models.Page;
 import models.PageRequest;
 import repository.OrderRepository;
 import repositoryimpl.OrderRepositoryImpl;
-
-import java.util.List;
 
 public class OrderService {
     private final OrderRepository orderRepository = new OrderRepositoryImpl();
@@ -19,6 +19,7 @@ public class OrderService {
     public boolean cancel(int id) { return orderRepository.cancel(id); }
     public boolean updateStatus(int id, String status) { return orderRepository.updateStatus(id, status); }
     public List<Order> byUser(int userId) { return orderRepository.findByUser(userId); }
+    public boolean deleteByUserId(int userId) { return orderRepository.deleteByUserId(userId); }
 
     public Page<Order> getPage(PageRequest pr) {
         int offset = pr.getOffset();
