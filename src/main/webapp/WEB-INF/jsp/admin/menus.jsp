@@ -45,7 +45,7 @@
                 <a href="${pageContext.request.contextPath}/" class="btn btn-outline-secondary btn-sm rounded-pill">
                     ↩ Về trang chủ
                 </a>
-                <a class="btn btn-primary btn-sm rounded-pill" href="${pageContext.request.contextPath}/admin/menu/add">
+                <a class="btn btn-outline-primary btn-sm" href="${pageContext.request.contextPath}/admin/menu/add">
                     ＋ Thêm menu
                 </a>
             </div>

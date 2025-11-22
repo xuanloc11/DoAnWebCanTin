@@ -42,13 +42,13 @@
                     <label for="role" class="form-label mb-1 small text-muted">Vai trò</label>
                     <select id="role" name="role" class="form-select form-select-sm">
                         <option value="">Tất cả</option>
-                        <option value="bgh_admin" ${param.role eq 'bgh_admin' ? 'selected' : ''}>BGH Admin</option>
+                        <option value="bgh_admin" ${param.role eq 'bgh_admin' ? 'selected' : ''}>Quản Trị</option>
                         <option value="truong_quay" ${param.role eq 'truong_quay' ? 'selected' : ''}>Trưởng quầy</option>
                         <option value="hoc_sinh" ${param.role eq 'hoc_sinh' ? 'selected' : ''}>Sinh viên</option>
                     </select>
                 </div>
                 <div class="col-sm-3 col-md-2 d-flex align-items-end gap-2">
-                    <button type="submit" class="btn btn-primary btn-sm rounded-pill px-3">Tìm kiếm</button>
+                    <button type="submit" class="btn btn-primary btn-sm rounded-pill">Tìm kiếm</button>
                     <a href="${pageContext.request.contextPath}/admin/users" class="btn btn-outline-secondary btn-sm rounded-pill">Xóa</a>
                 </div>
                 <div class="col-12 col-md-auto ms-md-auto text-md-end small text-muted">
@@ -85,7 +85,7 @@
                                         <td><c:out value="${u.email}"/></td>
                                         <td>
                                             <c:choose>
-                                                <c:when test="${u.role eq 'bgh_admin'}">BGH Admin</c:when>
+                                                <c:when test="${u.role eq 'bgh_admin'}">Quản Trị</c:when>
                                                 <c:when test="${u.role eq 'truong_quay'}">Trưởng quầy</c:when>
                                                 <c:when test="${u.role eq 'hoc_sinh'}">Sinh viên</c:when>
                                                 <c:otherwise><c:out value="${u.role}"/></c:otherwise>

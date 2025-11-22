@@ -34,7 +34,7 @@
     <c:set var="stallDashboard" value="${dashboard}" />
 
     <div class="row g-3 mb-3">
-      <div class="col-12 col-sm-6 col-lg-4">
+      <div class="col-12 col-sm-6 col-lg-3">
         <div class="card shadow-sm border-0 h-100">
           <div class="card-body">
             <div class="text-muted small text-uppercase mb-1">
@@ -46,7 +46,7 @@
           </div>
         </div>
       </div>
-      <div class="col-12 col-sm-6 col-lg-4">
+      <div class="col-12 col-sm-6 col-lg-3">
         <div class="card shadow-sm border-0 h-100">
           <div class="card-body">
             <div class="text-muted small text-uppercase mb-1">
@@ -59,7 +59,25 @@
           </div>
         </div>
       </div>
-      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="col-12 col-sm-6 col-lg-3">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-body">
+                    <div class="text-muted small text-uppercase mb-1">Doanh thu hôm nay</div>
+                    <h3 class="mb-0 text-primary">
+                        <fmt:formatNumber value="${stallDashboard.revenueToday != null ? stallDashboard.revenueToday : 0}" pattern="#,#00"/>
+                        VNĐ
+                    </h3>
+                    <div class="text-muted small mt-1">
+                        <%
+                            java.util.Date now = new java.util.Date();
+                            request.setAttribute("today", now);
+                        %>
+                        <fmt:formatDate value="${today}" pattern="dd/MM/yyyy"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+      <div class="col-12 col-sm-6 col-lg-3">
         <div class="card shadow-sm border-0 h-100">
           <div class="card-body">
             <div class="text-muted small text-uppercase mb-1">Món bán chạy (Top)</div>

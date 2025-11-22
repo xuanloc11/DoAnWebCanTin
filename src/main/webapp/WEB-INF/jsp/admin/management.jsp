@@ -98,7 +98,7 @@
             <!-- Stats cards -->
             <c:set var="total" value="${fn:length(foods)}"/>
             <div class="row g-3 mb-3">
-                <div class="col-12 col-sm-6 col-lg-3">
+                <div class="col-12 col-sm-6 col-lg-4">
                     <div class="stat-card p-3 h-100 d-flex flex-column justify-content-between">
                         <div>
                             <div class="stat-label mb-1">Tổng số món</div>
@@ -112,7 +112,7 @@
                         </span>
                     </div>
                 </div>
-                <div class="col-12 col-sm-6 col-lg-3">
+                <div class="col-12 col-sm-6 col-lg-4">
                     <div class="stat-card p-3 h-100 d-flex flex-column justify-content-between">
                         <div>
                             <div class="stat-label mb-1">Quầy đang quản lý</div>
@@ -126,31 +126,6 @@
                             </div>
                         </div>
                         <span class="stat-chip bg-success-subtle text-success-emphasis align-self-start mt-2">Hoạt động</span>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="stat-card p-3 h-100 d-flex flex-column justify-content-between">
-                        <div>
-                            <div class="stat-label mb-1">Giá trung bình</div>
-                            <div class="stat-value">
-                                <c:choose>
-                                    <c:when test="${not empty foods}">
-                                        <fmt:formatNumber value="${avgPrice}" pattern="#,#00" />
-                                    </c:when>
-                                    <c:otherwise>0</c:otherwise>
-                                </c:choose>
-                            </div>
-                        </div>
-                        <span class="stat-chip bg-warning-subtle text-warning-emphasis align-self-start mt-2">Tham khảo</span>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="stat-card p-3 h-100 d-flex flex-column justify-content-between">
-                        <div>
-                            <div class="stat-label mb-1">Trạng thái</div>
-                            <div class="stat-value">${total > 0 ? 'Sẵn sàng' : 'Trống'}</div>
-                        </div>
-                        <span class="stat-chip bg-secondary-subtle text-secondary-emphasis align-self-start mt-2">Hệ thống</span>
                     </div>
                 </div>
             </div>

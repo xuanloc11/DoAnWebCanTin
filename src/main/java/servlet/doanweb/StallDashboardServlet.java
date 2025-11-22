@@ -35,6 +35,7 @@ public class  StallDashboardServlet extends HttpServlet {
 
         List<ThongKeService.DailyCount> daily = thongKeService.ordersCountByDayForStall(days, stallId);
         BigDecimal revenue7d = thongKeService.revenueForStall(days, stallId);
+        BigDecimal revenueToday = thongKeService.revenueTodayForStall(stallId);
         List<ThongKeService.TopDish> topDishes = thongKeService.topDishesForStall(top, days, stallId);
 
         Map<String, Object> dashboard = new HashMap<>();
@@ -42,6 +43,7 @@ public class  StallDashboardServlet extends HttpServlet {
         dashboard.put("days", days);
         dashboard.put("totalOrders", daily.stream().mapToInt(ThongKeService.DailyCount::getCount).sum());
         dashboard.put("revenue7d", revenue7d);
+        dashboard.put("revenueToday", revenueToday);
         dashboard.put("topDishes", topDishes);
         dashboard.put("daily", daily);
 

@@ -58,7 +58,7 @@
                     <input type="date" id="to" name="to" value="${param.to}" class="form-control form-control-sm" />
                 </div>
                 <div class="col-sm-4 col-md-3 d-flex align-items-end gap-2">
-                    <button type="submit" class="btn btn-primary btn-sm rounded-pill px-3">Lọc</button>
+                    <button type="submit" class="btn btn-light btn-sm rounded-pill px-3">Lọc</button>
                     <a href="${pageContext.request.contextPath}/admin/orders" class="btn btn-outline-secondary btn-sm rounded-pill">Xóa bộ lọc</a>
                 </div>
                 <div class="col-12 small text-muted mt-1">
@@ -117,7 +117,7 @@
                                                         <option value="DANG_GIAO" ${o.trangThaiOrder eq 'DANG_GIAO' ? 'selected' : ''}>Đang giao</option>
                                                         <option value="DA_GIAO" ${o.trangThaiOrder eq 'DA_GIAO' ? 'selected' : ''}>Đã giao</option>
                                                     </select>
-                                                    <button class="btn btn-primary btn-sm" type="submit">Cập nhật</button>
+                                                    <button class="btn btn-outline-primary btn-sm" type="submit">Cập nhật</button>
                                                 </form>
                                             </div>
                                         </td>
