@@ -18,7 +18,7 @@ import java.util.Set;
 @WebServlet(name = "UpdateOrderStatusServlet", urlPatterns = "/admin/orders/status")
 public class UpdateOrderStatusServlet extends HttpServlet {
     private final OrderService service = new OrderService();
-    private static final Set<String> ALLOWED = Set.of("MOI_DAT", "DA_XAC_NHAN", "DANG_GIAO", "DA_GIAO");
+    private static final Set<String> ALLOWED = Set.of("MOI_DAT", "DA_XAC_NHAN", "DANG_GIAO", "DA_GIAO", "DA_HUY");
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {

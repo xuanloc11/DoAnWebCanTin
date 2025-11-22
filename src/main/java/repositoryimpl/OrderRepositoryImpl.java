@@ -113,7 +113,7 @@ public class OrderRepositoryImpl implements OrderRepository {
 
     @Override
     public boolean cancel(int id) {
-        String sql = "UPDATE `Orders` SET `trang_thai_order`='CANCELLED' WHERE `order_id`=?";
+        String sql = "UPDATE `Orders` SET `trang_thai_order`='DA_HUY' WHERE `order_id`=?";
         try (Connection conn = DataSourceUtil.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, id);

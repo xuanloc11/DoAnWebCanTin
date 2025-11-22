@@ -44,7 +44,6 @@
 <%@ include file="/WEB-INF/jsp/partials/header.jspf" %>
 
 <%
-    // Restore dynamic data loading
     MonAnService monAnService = new MonAnService();
     List<MonAn> foods = monAnService.latest(9);
     request.setAttribute("foods", foods);
@@ -68,7 +67,7 @@
     }
     request.setAttribute("foods", foods);
 
-    // --- Thực đơn hôm nay cho trang chủ (tái sử dụng logic từ FourStallsMenuServlet) ---
+    // --- Thực đơn hôm nay cho trang chủ ---
     service.MenuService menuService = new service.MenuService();
     service.MenuMonAnService menuMonAnService = new service.MenuMonAnService();
 
@@ -184,7 +183,6 @@
     </div>
 </div>
 
-<!-- Hero section start -->
 <section class="hero-section position-relative fix hero-style1 hero-style5 hero-bg5">
     <div class="container">
         <div class="hero-content1 z-1 position-relative text-center">

@@ -15,5 +15,6 @@ public class OrderItemService {
     public boolean update(OrderItem i) { return repo.update(i); }
     public boolean delete(int id) { return repo.delete(id); }
     public boolean clearOrder(int orderId) { return repo.deleteByOrderId(orderId); }
+    public boolean deleteByMonAnId(int monAnId) { return repo.deleteByMonAnId(monAnId); }
 }
 

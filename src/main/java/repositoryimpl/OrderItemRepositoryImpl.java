@@ -99,6 +99,18 @@ public class OrderItemRepositoryImpl implements OrderItemRepository {
         }
     }
 
+    @Override
+    public boolean deleteByMonAnId(int monAnId) {
+        String sql = "DELETE FROM `OrderItems` WHERE `mon_an_id`=?";
+        try (Connection con = DataSourceUtil.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, monAnId);
+            return ps.executeUpdate() >= 0; // >= 0 because it's OK if no rows exist
+        } catch (SQLException e) {
+            throw new RuntimeException("Failed to delete OrderItems by mon_an_id", e);
+        }
+    }
+
     private OrderItem map(ResultSet rs) throws SQLException {
         OrderItem i = new OrderItem();
         i.setOrderItemId(rs.getInt("order_item_id"));

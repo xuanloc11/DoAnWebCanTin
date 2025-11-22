@@ -47,6 +47,18 @@ public class MenuMonAnRepositoryImpl implements MenuMonAnRepository {
     }
 
     @Override
+    public boolean removeByMonAn(int monAnId) {
+        String sql = "DELETE FROM `Menu_MonAn` WHERE `mon_an_id`=?";
+        try (Connection con = DataSourceUtil.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, monAnId);
+            return ps.executeUpdate() >= 0; // >= 0 because it's OK if no rows exist
+        } catch (SQLException e) {
+            throw new RuntimeException("Failed to remove Menu_MonAn links by mon_an_id", e);
+        }
+    }
+
+    @Override
     public List<Integer> findMonAnIdsByMenu(int menuId) {
         String sql = "SELECT `mon_an_id` FROM `Menu_MonAn` WHERE `menu_id`=?";
         List<Integer> ids = new ArrayList<>();

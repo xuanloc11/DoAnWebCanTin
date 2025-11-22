@@ -47,6 +47,7 @@
                         <option value="DA_XAC_NHAN" ${param.status eq 'DA_XAC_NHAN' ? 'selected' : ''}>Đã xác nhận</option>
                         <option value="DANG_GIAO" ${param.status eq 'DANG_GIAO' ? 'selected' : ''}>Đang giao</option>
                         <option value="DA_GIAO" ${param.status eq 'DA_GIAO' ? 'selected' : ''}>Đã giao</option>
+                        <option value="DA_HUY" ${param.status eq 'DA_HUY' ? 'selected' : ''}>Đã hủy</option>
                     </select>
                 </div>
                 <div class="col-sm-3 col-md-2">
@@ -102,6 +103,7 @@
                                                 <c:when test="${o.trangThaiOrder eq 'DA_XAC_NHAN'}">Đã xác nhận</c:when>
                                                 <c:when test="${o.trangThaiOrder eq 'DANG_GIAO'}">Đang giao</c:when>
                                                 <c:when test="${o.trangThaiOrder eq 'DA_GIAO'}">Đã giao</c:when>
+                                                <c:when test="${o.trangThaiOrder eq 'DA_HUY' || o.trangThaiOrder eq 'CANCELLED'}">Đã hủy</c:when>
                                                 <c:otherwise><c:out value="${o.trangThaiOrder}"/></c:otherwise>
                                             </c:choose>
                                         </td>
@@ -116,6 +118,7 @@
                                                         <option value="DA_XAC_NHAN" ${o.trangThaiOrder eq 'DA_XAC_NHAN' ? 'selected' : ''}>Đã xác nhận</option>
                                                         <option value="DANG_GIAO" ${o.trangThaiOrder eq 'DANG_GIAO' ? 'selected' : ''}>Đang giao</option>
                                                         <option value="DA_GIAO" ${o.trangThaiOrder eq 'DA_GIAO' ? 'selected' : ''}>Đã giao</option>
+                                                        <option value="DA_HUY" ${o.trangThaiOrder eq 'DA_HUY' || o.trangThaiOrder eq 'CANCELLED' ? 'selected' : ''}>Đã hủy</option>
                                                     </select>
                                                     <button class="btn btn-outline-primary btn-sm" type="submit">Cập nhật</button>
                                                 </form>

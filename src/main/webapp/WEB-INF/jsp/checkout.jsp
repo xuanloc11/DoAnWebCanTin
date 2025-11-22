@@ -152,13 +152,13 @@
                           </c:otherwise>
                         </c:choose>
                         <div>
-                          <h6 class="text-black fs-12 lh-1 max-w-180 fw-500 m-0"><c:out value="${it.monAn.tenMonAn}"/></h6>
-                          <span class="fw-semibold theme-clr fs-12">
+                          <h4 class="text-black fs-15 lh-1 max-w-180 fw-500 m-0"><c:out value="${it.monAn.tenMonAn}"/></h4>
+                          <span class="fw-semibold theme-clr fs-15">
                             <fmt:formatNumber value="${it.monAn.gia}" type="number" groupingUsed="true" maxFractionDigits="0" /> VND
                           </span>
                         </div>
                       </div>
-                      <div class="fs-12 text-muted">x${it.soLuong}</div>
+                      <div class="fs-14 text-muted">x${it.soLuong}</div>
                     </div>
                   </c:forEach>
                 </div>

@@ -10,4 +10,5 @@ public interface OrderItemRepository {
     boolean update(OrderItem item);
     boolean delete(int id);
     boolean deleteByOrderId(int orderId);
+    boolean deleteByMonAnId(int monAnId);
 }
