@@ -5,21 +5,24 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import models.Order;
 import service.MonAnService;
-import service.OrderService;
 import service.QuayHangService;
 import service.ThongKeService;
 
+
+
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.*;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 
 @WebServlet(name = "AdminDashboardServlet", urlPatterns = "/admin/dashboard")
 public class AdminDashboardServlet extends HttpServlet {
     private final MonAnService monAnService = new MonAnService();
     private final QuayHangService quayHangService = new QuayHangService();
-    private final OrderService orderService = new OrderService();
     private final ThongKeService thongKeService = new ThongKeService();
 
     @Override
@@ -57,15 +60,10 @@ public class AdminDashboardServlet extends HttpServlet {
         dashboard.put("revenue7d", revenue7d);
 
         try {
-            List<Order> allOrders = orderService.getAllOrders();
-            if (allOrders != null && !allOrders.isEmpty()) {
-                allOrders.sort(Comparator.comparing(Order::getThoiGianDat, Comparator.nullsLast(Comparator.naturalOrder())).reversed());
-                dashboard.put("recentOrders", allOrders.subList(0, Math.min(5, allOrders.size())));
-            } else {
-                dashboard.put("recentOrders", Collections.emptyList());
-            }
+            BigDecimal revenueToday = thongKeService.revenueToday();
+            dashboard.put("revenueToday", revenueToday);
         } catch (Exception e) {
-            dashboard.put("recentOrders", Collections.emptyList());
+            dashboard.put("revenueToday", BigDecimal.ZERO);
         }
 
         try {
@@ -73,6 +71,20 @@ public class AdminDashboardServlet extends HttpServlet {
             dashboard.put("topDishes", tops != null ? tops : Collections.emptyList());
         } catch (Exception e) {
             dashboard.put("topDishes", Collections.emptyList());
+        }
+
+        try {
+            List<ThongKeService.DailyCount> ordersByDay = thongKeService.ordersCountByDay(days);
+            dashboard.put("ordersByDay", ordersByDay != null ? ordersByDay : Collections.emptyList());
+        } catch (Exception e) {
+            dashboard.put("ordersByDay", Collections.emptyList());
+        }
+
+        try {
+            List<ThongKeService.StallRevenue> revenueByStall = thongKeService.revenueByStall(days);
+            dashboard.put("revenueByStall", revenueByStall != null ? revenueByStall : Collections.emptyList());
+        } catch (Exception e) {
+            dashboard.put("revenueByStall", Collections.emptyList());
         }
 
         req.setAttribute("dashboard", dashboard);

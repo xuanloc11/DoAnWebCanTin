@@ -123,7 +123,6 @@
                 </div>
                 <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mt-3">
                   <a class="theme-btn btn-outline-blak" href="${pageContext.request.contextPath}/cart">↩ Quay lại giỏ</a>
-                  <button class="theme-btn" type="submit">Đặt hàng</button>
                 </div>
               </form>
             </div>

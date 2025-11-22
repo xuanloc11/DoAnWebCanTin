@@ -168,4 +168,24 @@ public class ThongKeService {
         } catch (SQLException e){ throw new RuntimeException("Failed to compute top dishes for stall", e); }
         return out;
     }
+    public BigDecimal revenueToday(){
+        LocalDate today = LocalDate.now();
+        java.sql.Date todayDate = java.sql.Date.valueOf(today);
+        java.sql.Date tomorrowDate = java.sql.Date.valueOf(today.plusDays(1));
+
+        String sql = "SELECT SUM(COALESCE(o.tong_tien,0)) AS rev " +
+                "FROM Orders o WHERE o.thoi_gian_dat >= ? AND o.thoi_gian_dat < ? " +
+                "AND (o.trang_thai_order IS NULL OR o.trang_thai_order <> 'CANCELLED')";
+        try (Connection con = ds.getConnection(); PreparedStatement ps = con.prepareStatement(sql)){
+            ps.setDate(1, todayDate);
+            ps.setDate(2, tomorrowDate);
+            try (ResultSet rs = ps.executeQuery()){
+                if (rs.next()){
+                    BigDecimal rev = rs.getBigDecimal("rev");
+                    return rev == null ? BigDecimal.ZERO : rev;
+                }
+            }
+        } catch (SQLException e){ throw new RuntimeException("Failed to compute revenue today", e); }
+        return BigDecimal.ZERO;
+    }
 }

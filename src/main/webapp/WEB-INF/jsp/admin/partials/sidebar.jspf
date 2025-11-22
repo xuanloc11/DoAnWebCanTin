@@ -34,7 +34,7 @@
       <a class="admin-nav-link ${isDashboardAdmin ? 'active' : ''}"
          href="${pageContext.request.contextPath}/admin/dashboard">
         <span class="nav-icon"></span>
-        <span class="nav-text">Dashboard</span>
+        <span class="nav-text">Tổng Quan</span>
       </a>
     </c:if>
 
@@ -43,7 +43,7 @@
       <a class="admin-nav-link ${isDashboardStall ? 'active' : ''}"
          href="${pageContext.request.contextPath}/stall/dashboard">
         <span class="nav-icon"></span>
-        <span class="nav-text">Dashboard</span>
+        <span class="nav-text">Tổng Quan</span>
       </a>
     </c:if>
 
